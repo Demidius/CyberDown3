@@ -1,4 +1,5 @@
 using BsseCode.Hero;
+using Cinemachine;
 using Zenject;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ namespace BsseCode.Services.Factory
     {
         private readonly DiContainer _container;
         private readonly GameObject _playerPrefab;
+        private Camera _mainCamera;
+        private CinemachineVirtualCamera _virtualCamera;
 
         public PlayerFactory(DiContainer container, GameObject playerPrefab)
         {
@@ -15,10 +18,18 @@ namespace BsseCode.Services.Factory
             _playerPrefab = playerPrefab;
         }
 
+        [Inject]
+        public void Construct(CinemachineVirtualCamera virtualCamera)
+        {
+            _virtualCamera = virtualCamera;
+        }
+        
         public Player Create(Vector2 position)
         {
             var playerInstance = _container.InstantiatePrefabForComponent<Player>(_playerPrefab, position, Quaternion.identity, null);
+            _virtualCamera.Follow = playerInstance.transform;
             return playerInstance;
+            
         }
     }
 }

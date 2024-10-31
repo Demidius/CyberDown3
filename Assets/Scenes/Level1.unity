@@ -396,12 +396,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 221638638446595341, guid: d8680ed075fdc2247849eecd801159e3, type: 3}
       propertyPath: _monoInstallers.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 221638638446595341, guid: d8680ed075fdc2247849eecd801159e3, type: 3}
       propertyPath: _monoInstallers.Array.data[1]
       value: 
       objectReference: {fileID: 1277061327}
+    - target: {fileID: 221638638446595341, guid: d8680ed075fdc2247849eecd801159e3, type: 3}
+      propertyPath: _monoInstallers.Array.data[2]
+      value: 
+      objectReference: {fileID: 1277061328}
     - target: {fileID: 482970943309235126, guid: d8680ed075fdc2247849eecd801159e3, type: 3}
       propertyPath: m_Name
       value: SceneContext
@@ -453,6 +457,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 482970943309235126, guid: d8680ed075fdc2247849eecd801159e3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1277061327}
+    - targetCorrespondingSourceObject: {fileID: 482970943309235126, guid: d8680ed075fdc2247849eecd801159e3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1277061328}
   m_SourcePrefab: {fileID: 100100000, guid: d8680ed075fdc2247849eecd801159e3, type: 3}
 --- !u!1 &675129569
 GameObject:
@@ -537,6 +544,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerPrefab: {fileID: 404093767089904752, guid: 83e5d73ca5d34c542bd2ef871ff947c5, type: 3}
+--- !u!114 &1277061328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277061323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9a41c02c564b7794c12a38bd298eb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1503241107
 GameObject:
   m_ObjectHideFlags: 0
