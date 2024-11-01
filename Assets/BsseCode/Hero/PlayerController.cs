@@ -20,7 +20,6 @@ namespace BsseCode.Hero
 
         private void Update()
         {
-            // Получаем движение от сервиса ввода
             Vector2 movementInput = _inputService.GetMovementInput();
             Move(movementInput);
         }

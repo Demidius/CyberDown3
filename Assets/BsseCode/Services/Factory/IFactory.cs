@@ -1,8 +1,9 @@
+using BsseCode.Services.Input;
 using UnityEngine;
 
 namespace BsseCode.Services.Factory
 {
-    public interface IFactory<T>
+    public interface IFactory<T> : IService
     {
         T Create(Vector2 position);
     }

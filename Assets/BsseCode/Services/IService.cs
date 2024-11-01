@@ -1,4 +1,4 @@
-namespace BsseCode.Services.Input
+namespace BsseCode.Services
 {
     public interface IService
     {
