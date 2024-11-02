@@ -15,7 +15,12 @@ namespace BsseCode.Installers
             // Привязываем фабрику игрока, передавая префаб
             Container.Bind<PlayerFactory>()
                 .AsSingle()
-                .WithArguments(_playerPrefab);
+                .WithArguments(_playerPrefab);  
+            
+            
+            Container.Bind<IFactoryComponent>()
+                .To<FactoryComponent>()
+                .AsSingle();
         }
     }
 }

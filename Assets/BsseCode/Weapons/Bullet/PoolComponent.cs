@@ -22,6 +22,7 @@ namespace BsseCode.Weapons.Bullet
             Container = container;
             poolCount = count;
             Instantiate(poolCount);
+            Debug.Log("Pool Container");
         }
 
         public void ReturnToPool(T element)

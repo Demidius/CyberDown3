@@ -4,6 +4,7 @@ namespace BsseCode.Weapons.Bullet
 {
     public interface IPoolBullet
     {
-        void GetBullet(Vector3 direction, float speed);
+        Bullet GetBullet();
+        public PoolComponent<Bullet> PoolComponent { get;  }
     }
 }

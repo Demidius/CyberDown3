@@ -1,4 +1,6 @@
 using System.Collections;
+using BsseCode.Hero;
+using BsseCode.Services;
 using UnityEngine;
 
 namespace BsseCode.Weapons.Bullet
@@ -6,14 +8,35 @@ namespace BsseCode.Weapons.Bullet
     public class Bullet : MonoBehaviour, IBullet
     {
         [SerializeField] private float lifetime = 2f;
-   
-        private PoolComponent<Bullet> _poolComponent;
 
-        public void SetParameters(float speed, PoolComponent<Bullet> poolComponent)
+        private IPoolBullet _poolComponent;
+        private float _speed;
+        private readonly MoveService _moveService;
+        private Vector2 _direction;
+
+        public Bullet()
         {
-            _poolComponent = poolComponent;
+            _moveService = new MoveService();
         }
 
+        public void SetParameters(float speed, Vector2 direction, IPoolBullet poolBullet)
+        {
+            _poolComponent = poolBullet;
+            _speed = speed;
+            _direction = direction;
+        }
+
+        private void Update()
+        {
+            Vector3 newPosition = _moveService.Move( _direction , _speed, this.transform.position );
+            transform.position = newPosition;
+        }
+        
+        
+        
+        
+        
+        
         private void OnEnable()
         {
             StartCoroutine(LifeRoutine());
@@ -32,7 +55,8 @@ namespace BsseCode.Weapons.Bullet
 
         private void Deactivate()
         {
-            _poolComponent?.ReturnToPool(this);
+            _poolComponent.PoolComponent?.ReturnToPool(this);
+            Debug.Log("Deactivated");
         }
     }
 }

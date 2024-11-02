@@ -377,7 +377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &533984097
 Transform:
   m_ObjectHideFlags: 0
@@ -8561,7 +8561,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 221638638446595341, guid: d8680ed075fdc2247849eecd801159e3, type: 3}
       propertyPath: _monoInstallers.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 221638638446595341, guid: d8680ed075fdc2247849eecd801159e3, type: 3}
       propertyPath: _monoInstallers.Array.data[1]
@@ -8574,7 +8574,7 @@ PrefabInstance:
     - target: {fileID: 221638638446595341, guid: d8680ed075fdc2247849eecd801159e3, type: 3}
       propertyPath: _monoInstallers.Array.data[3]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1277061332}
     - target: {fileID: 482970943309235126, guid: d8680ed075fdc2247849eecd801159e3, type: 3}
       propertyPath: m_Name
       value: SceneContext
@@ -8629,6 +8629,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 482970943309235126, guid: d8680ed075fdc2247849eecd801159e3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1277061328}
+    - targetCorrespondingSourceObject: {fileID: 482970943309235126, guid: d8680ed075fdc2247849eecd801159e3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1277061332}
   m_SourcePrefab: {fileID: 100100000, guid: d8680ed075fdc2247849eecd801159e3, type: 3}
 --- !u!1 &675129569
 GameObject:
@@ -8741,9 +8744,9 @@ Transform:
   m_GameObject: {fileID: 795674509}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.1, y: -2.92, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 7.189, y: -3.277, z: 0}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8810,6 +8813,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9a41c02c564b7794c12a38bd298eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1277061332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277061323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e77f6926754fba923dbdfd61cc6d52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolBulletPrefab: {fileID: 3794947845382733442, guid: 98e7071c58e6d584b99625e081c118df, type: 3}
 --- !u!1 &1503241107
 GameObject:
   m_ObjectHideFlags: 0

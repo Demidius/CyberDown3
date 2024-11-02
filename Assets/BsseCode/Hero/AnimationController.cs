@@ -11,7 +11,7 @@ namespace BsseCode.Hero
         
             private void Update()
             {
-                if (player.movementHeroDirection != Vector3.zero )
+                if (player.movementHeroDirection != Vector2.zero )
                 {
                     legsAnimator.SetBool(ConstansBase.Run, true );
                 }

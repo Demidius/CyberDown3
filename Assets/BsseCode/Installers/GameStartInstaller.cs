@@ -9,13 +9,14 @@ namespace BsseCode.Installers
 {
     public class GameStartInstaller : MonoInstaller
     {
-       
+      
         public override void InstallBindings()
         {
             #region Services
             Container.Bind<IInputService>().To<PcInputService>().AsSingle();
             Container.Bind<IPlayerMouseService>().To<PlayerMouseService>().AsSingle();
             
+          
            
             #endregion
 

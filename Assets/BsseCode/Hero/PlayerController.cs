@@ -1,4 +1,7 @@
+using BsseCode.Services;
+using BsseCode.Services.Factory;
 using BsseCode.Services.Input;
+using BsseCode.Weapons.Bullet;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
@@ -10,24 +13,26 @@ namespace BsseCode.Hero
         private IInputService _inputService;
         public float movementSpeed;
 
-        public Vector3 movementHeroDirection;
+        public Vector2 movementHeroDirection;
+        private readonly MoveService _moveService;
+
+        public PlayerController()
+        {
+            _moveService = new MoveService();
+        }
 
         [Inject]
         public void Construct(IInputService inputService)
         {
-            _inputService = inputService;
+           _inputService = inputService;
         }
-
+      
         private void Update()
         {
-            Vector2 movementInput = _inputService.GetMovementInput();
-            Move(movementInput);
-        }
-
-        private void Move(Vector2 direction)
-        {
-            movementHeroDirection = new Vector3(direction.x, direction.y, 0) * (movementSpeed * Time.deltaTime);
-            transform.position += movementHeroDirection;
+            Vector2 movementHeroDirection = _inputService.GetMovementInput();
+          
+            Vector3 newPosition  = _moveService.Move(movementHeroDirection, movementSpeed, this.transform.position);
+            transform.position = newPosition;
         }
     }
 }
