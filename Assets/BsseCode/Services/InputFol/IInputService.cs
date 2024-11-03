@@ -1,8 +1,7 @@
 using System;
 using UnityEngine;
 
-
-namespace BsseCode.Services.Input
+namespace BsseCode.Services.InputFol
 {
     public interface IInputService : IService
     {

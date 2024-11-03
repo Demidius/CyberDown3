@@ -1,5 +1,5 @@
 using System;
-using BsseCode.Services.Input;
+using BsseCode.Services.InputFol;
 using BsseCode.Weapons.Bullet;
 using UnityEngine;
 using Zenject;

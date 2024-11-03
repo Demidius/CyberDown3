@@ -1,7 +1,9 @@
 using System.Collections;
 using BsseCode.Hero;
 using BsseCode.Services;
+using BsseCode.Services.TimeProvider;
 using UnityEngine;
+using Zenject;
 
 namespace BsseCode.Weapons.Bullet
 {
@@ -11,29 +13,32 @@ namespace BsseCode.Weapons.Bullet
 
         private IPoolBullet _poolComponent;
         private float _speed;
-        private readonly MoveService _moveService;
+        private MoveService _moveService;
         private Vector2 _direction;
-
-        public Bullet()
+        private ITimeService _timeService;
+        
+        [Inject]
+        public void Construct(ITimeService timeService, MoveService moveService)
         {
-            _moveService = new MoveService();
+            _timeService = timeService;
+            _moveService = moveService;
         }
 
         public void SetParameters(float speed, Vector2 direction, IPoolBullet poolBullet)
         {
             _poolComponent = poolBullet;
             _speed = speed;
-            _direction = direction;
+            _direction =  direction.normalized;
+            
+            float angle = Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
         }
 
         private void Update()
         {
-            Vector3 newPosition = _moveService.Move( _direction , _speed, this.transform.position );
+            Vector3 newPosition = _moveService.Move(_direction, _speed, this.transform.position );
             transform.position = newPosition;
         }
-        
-        
-        
         
         
         

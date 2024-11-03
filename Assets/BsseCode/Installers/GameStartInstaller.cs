@@ -1,6 +1,6 @@
 using BsseCode.GameStateMachineFolder;
 using BsseCode.Services.Factory;
-using BsseCode.Services.Input;
+using BsseCode.Services.InputFol;
 using BsseCode.Services.PlayerMouseService;
 using UnityEngine;
 using Zenject;

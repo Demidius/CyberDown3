@@ -1,9 +1,7 @@
 using BsseCode.Services;
-using BsseCode.Services.Factory;
-using BsseCode.Services.Input;
-using BsseCode.Weapons.Bullet;
+using BsseCode.Services.InputFol;
+using BsseCode.Services.TimeProvider;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace BsseCode.Hero
@@ -11,25 +9,23 @@ namespace BsseCode.Hero
     public class PlayerController : MonoBehaviour
     {
         private IInputService _inputService;
+        private ITimeService _timeService;
+        private MoveService _moveService;
+
         public float movementSpeed;
-
         public Vector2 movementHeroDirection;
-        private readonly MoveService _moveService;
-
-        public PlayerController()
-        {
-            _moveService = new MoveService();
-        }
 
         [Inject]
-        public void Construct(IInputService inputService)
+        public void Construct(IInputService inputService, ITimeService timeService, MoveService moveService)
         {
-           _inputService = inputService;
+            _inputService = inputService;
+            _timeService = timeService;
+            _moveService = moveService;
         }
-      
+
         private void Update()
         {
-            Vector2 movementHeroDirection = _inputService.GetMovementInput();
+            movementHeroDirection = _inputService.GetMovementInput();
           
             Vector3 newPosition  = _moveService.Move(movementHeroDirection, movementSpeed, this.transform.position);
             transform.position = newPosition;

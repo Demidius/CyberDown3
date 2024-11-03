@@ -2,7 +2,7 @@ using System;
 using BsseCode.Constants;
 using UnityEngine;
 
-namespace BsseCode.Services.Input
+namespace BsseCode.Services.InputFol
 {
     public class PcInputService : IInputService
     {
