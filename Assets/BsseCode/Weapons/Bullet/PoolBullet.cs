@@ -1,7 +1,5 @@
-using System;
 using BsseCode.Services.Factory;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace BsseCode.Weapons.Bullet

@@ -15,12 +15,12 @@ namespace BsseCode.Weapons.Bullet
         private float _speed;
         private MoveService _moveService;
         private Vector2 _direction;
-        private ITimeService _timeService;
+       
         
         [Inject]
-        public void Construct(ITimeService timeService, MoveService moveService)
+        public void Construct(MoveService moveService)
         {
-            _timeService = timeService;
+            
             _moveService = moveService;
         }
 
@@ -61,7 +61,7 @@ namespace BsseCode.Weapons.Bullet
         private void Deactivate()
         {
             _poolComponent.PoolComponent?.ReturnToPool(this);
-            Debug.Log("Deactivated");
+            
         }
     }
 }

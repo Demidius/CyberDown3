@@ -8,11 +8,10 @@ namespace BsseCode.Installers
 {
     public class FactoryPlayerInstaller : MonoInstaller
     {
-        [SerializeField] private GameObject _playerPrefab; // Префаб игрока
+        [SerializeField] private GameObject _playerPrefab;
 
         public override void InstallBindings()
         {
-            // Привязываем фабрику игрока, передавая префаб
             Container.Bind<PlayerFactory>()
                 .AsSingle()
                 .WithArguments(_playerPrefab);  
@@ -20,7 +19,7 @@ namespace BsseCode.Installers
             
             Container.Bind<IFactoryComponent>()
                 .To<FactoryComponent>()
-                .AsSingle();
+                .AsTransient();
         }
     }
 }

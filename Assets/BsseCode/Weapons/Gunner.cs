@@ -38,7 +38,6 @@ namespace BsseCode.Weapons
             var bullet = _poolBullet.GetBullet();
             bullet.transform.position = _bulletSpawnPoint.transform.position;
             bullet.SetParameters(_bulletSpeed, direction ,_poolBullet);
-            Debug.Log(direction);
         }
     }
 }
