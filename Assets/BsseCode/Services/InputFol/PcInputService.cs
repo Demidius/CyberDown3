@@ -7,6 +7,7 @@ namespace BsseCode.Services.InputFol
     public class PcInputService : IInputService
     {
         public event Action ShootType1;
+        public event Action ToggleTimeEvent;
         
         public Vector2 GetMovementInput()
         {
@@ -20,8 +21,15 @@ namespace BsseCode.Services.InputFol
         {
             if (UnityEngine.Input.GetKeyDown(KeyCode.Mouse0))
             {
-                Debug.Log("Piu!");
                 ShootType1?.Invoke();
+            }
+        }
+        
+        public void ToggleTimeScaleInput()
+        {
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Space))
+            {
+                ToggleTimeEvent?.Invoke();
             }
         }
         

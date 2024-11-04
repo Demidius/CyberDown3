@@ -1,4 +1,5 @@
 using BsseCode.Services.InputFol;
+using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 
@@ -17,18 +18,25 @@ namespace BsseCode.Services.TimeProvider
             _timeService = timeService;
         }
 
+        private void Start()
+        {
+            _inputService.ToggleTimeEvent += ToggleTimeScale;
+        }
+        
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                ToggleTimeScale();
-            }
+            _inputService.ToggleTimeScaleInput();
         }
 
         private void ToggleTimeScale()
         {
             _timeService.TimeScale = _isSlowMotion ? 1f : 0.2f;
             _isSlowMotion = !_isSlowMotion;
+        }
+
+        private void OnDestroy()
+        {
+            _inputService.ToggleTimeEvent -= ToggleTimeScale;
         }
     }
 }

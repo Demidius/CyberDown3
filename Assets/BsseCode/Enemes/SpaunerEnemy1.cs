@@ -26,7 +26,6 @@ namespace BsseCode.Enemes
         private IPoolEnemy1 _poolEnemy1;
         private float _timer = 0f;
         private ITimeService _timeService;
-      //  private Player _player;
         private MoveService _moveService;
         private PlayerFactory _playerFactory;
 
@@ -55,7 +54,6 @@ namespace BsseCode.Enemes
                 if (_timer >= spawnInterval)
                 {
                     SpawnObjectInCollider();
-                    Debug.Log("Spawning objects");
                     _timer = 0f;
                 }
 
@@ -82,35 +80,32 @@ namespace BsseCode.Enemes
             if (spawnAreas.Count == 0) return;
 
             Vector3 randomPosition;
-           
-                Debug.Log("Spawning object");
+               
                 Collider2D selectedCollider;
                 do
                 {
-                    Debug.Log("1");
                     selectedCollider = spawnAreas[Random.Range(0, spawnAreas.Count)];
                     randomPosition = GetRandomPointInCollider(selectedCollider);
                 } while (Vector3.Distance(randomPosition, _playerFactory._playerInstance.transform.position) < minDistansForEnemy);
 
                 var enemy = _poolEnemy1.GetEnemy();
-                Debug.Log("2");
                 enemy.transform.position = randomPosition;
                 enemy.SetParameters(_speedEnemy, _playerFactory._playerInstance, _poolEnemy1, _moveService);
-                Debug.Log("Spawning objects");
+               
             
         }
 
         private Vector3 GetRandomPointInCollider(Collider2D collider)
         {
             Vector3 point;
-            int maxAttempts = 10; // Ограничиваем количество попыток
+            int maxAttempts = 10; 
 
             for (int i = 0; i < maxAttempts; i++)
             {
                 point = new Vector3(
                     Random.Range(collider.bounds.min.x, collider.bounds.max.x),
                     Random.Range(collider.bounds.min.y, collider.bounds.max.y),
-                    0 // Если работаешь в 2D, z=0
+                    0 
                 );
 
                 if (collider.bounds.Contains(point))
@@ -118,8 +113,6 @@ namespace BsseCode.Enemes
                     return point;
                 }
             }
-
-            // Если не удалось найти подходящую точку, возвращаем центр коллайдера
             return collider.bounds.center;
         }
       

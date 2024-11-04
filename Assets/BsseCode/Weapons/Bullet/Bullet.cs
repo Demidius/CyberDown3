@@ -58,7 +58,7 @@ namespace BsseCode.Weapons.Bullet
             Deactivate();
         }
 
-        private void Deactivate()
+        public void Deactivate()
         {
             _poolComponent.PoolComponent?.ReturnToPool(this);
             

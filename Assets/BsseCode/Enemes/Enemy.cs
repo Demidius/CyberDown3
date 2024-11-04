@@ -23,7 +23,8 @@ namespace BsseCode.Enemes
             _poolEnemy1 = poolEnemy1;
             _speed = speed;
             _player = player;
-            Debug.Log("3");
+            
+           
         }
 
         private void Update()
@@ -32,6 +33,9 @@ namespace BsseCode.Enemes
             {
                 Direction();
             }
+            
+            float angle = Mathf.Atan2(_moveDirection.y, _moveDirection.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
         }
 
         private void Direction()
@@ -43,11 +47,13 @@ namespace BsseCode.Enemes
         }
 
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.GetComponent<Bullet>() != null)
+            if (other.TryGetComponent<Bullet>(out Bullet bullet))
+            {
+                bullet.Deactivate();
                 Deactivate();
-            Debug.Log("Deactivated");
+            }
         }
 
 
