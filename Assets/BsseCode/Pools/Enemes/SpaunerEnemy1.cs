@@ -1,21 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using BsseCode.Hero;
 using BsseCode.Services;
 using BsseCode.Services.Factory;
 using BsseCode.Services.TimeProvider;
 using UnityEngine;
 using Zenject;
 
-
-namespace BsseCode.Enemes
+namespace BsseCode.Pools.Enemes
 {
     public class SpaunerEnemy1 : MonoBehaviour
     {
-        //[SerializeField] private Transform _bulletSpawnPoint;
-
-        //private float _enemySpeed = 10;
-
+        
         [SerializeField] private List<Collider2D> spawnAreas;
         [SerializeField] private float spawnInterval = 2f;
         [SerializeField] private float minDistansForEnemy;

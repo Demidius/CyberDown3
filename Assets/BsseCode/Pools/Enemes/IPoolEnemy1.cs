@@ -1,6 +1,6 @@
-using BsseCode.Weapons.Bullet;
+using BsseCode.Pools.Weapons.Bullet;
 
-namespace BsseCode.Enemes
+namespace BsseCode.Pools.Enemes
 {
     public interface IPoolEnemy1
     {

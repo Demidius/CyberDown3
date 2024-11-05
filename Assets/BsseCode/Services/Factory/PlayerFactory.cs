@@ -28,7 +28,7 @@ namespace BsseCode.Services.Factory
         
         public Player Create(Vector2 position)
         {
-            _playerInstance = _container.InstantiatePrefabForComponent<Player>(_playerPrefab, position, Quaternion.identity, null);
+            _playerInstance = _container.InstantiatePrefabForComponent<Player>(_playerPrefab, position, Quaternion.identity, null  );
             _virtualCamera.Follow = _playerInstance.transform;
             return _playerInstance;
             

@@ -1,11 +1,8 @@
-
-using BsseCode.Constants;
 using BsseCode.Services.TimeProvider;
 using UnityEngine;
 using Zenject;
 
-
-namespace BsseCode.Hero
+namespace BsseCode.Pools.Enemes
 {
     public class EnemyAnimationController : MonoBehaviour
     {

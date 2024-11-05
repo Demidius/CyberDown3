@@ -9,7 +9,6 @@ namespace BsseCode.Hero
     public class PlayerController : MonoBehaviour
     {
         private IInputService _inputService;
-        private ITimeService _timeService;
         private MoveService _moveService;
 
         public float movementSpeed;
@@ -19,7 +18,6 @@ namespace BsseCode.Hero
         public void Construct(IInputService inputService, ITimeService timeService, MoveService moveService)
         {
             _inputService = inputService;
-            _timeService = timeService;
             _moveService = moveService;
         }
 

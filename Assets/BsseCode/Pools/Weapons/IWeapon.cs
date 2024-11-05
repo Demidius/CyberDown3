@@ -1,4 +1,4 @@
-namespace BsseCode.Weapons
+namespace BsseCode.Pools.Weapons
 {
     public interface IWeapon
     {

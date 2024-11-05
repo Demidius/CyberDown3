@@ -1,17 +1,16 @@
 using System.Collections;
-using BsseCode.Hero;
+using BsseCode.Pools.Pools;
 using BsseCode.Services;
-using BsseCode.Services.TimeProvider;
 using UnityEngine;
 using Zenject;
 
-namespace BsseCode.Weapons.Bullet
+namespace BsseCode.Pools.Weapons.Bullet
 {
-    public class Bullet : MonoBehaviour, IBullet
+    public class Bullet : MonoBehaviour, IBullet, IpoolElement
     {
         [SerializeField] private float lifetime = 2f;
 
-        private IPoolBullet _poolComponent;
+        private IPoolsBase _poolComponent;
         private float _speed;
         private MoveService _moveService;
         private Vector2 _direction;
@@ -24,7 +23,7 @@ namespace BsseCode.Weapons.Bullet
             _moveService = moveService;
         }
 
-        public void SetParameters(float speed, Vector2 direction, IPoolBullet poolBullet)
+        public void SetParameters(float speed, Vector2 direction, IPoolsBase poolBullet)
         {
             _poolComponent = poolBullet;
             _speed = speed;
@@ -60,7 +59,7 @@ namespace BsseCode.Weapons.Bullet
 
         public void Deactivate()
         {
-            _poolComponent.PoolComponent?.ReturnToPool(this);
+            _poolComponent.BulletPoolComponent?.ReturnToPool(this);
             
         }
     }

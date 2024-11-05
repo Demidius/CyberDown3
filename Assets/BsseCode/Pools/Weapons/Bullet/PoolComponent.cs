@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using BsseCode.Services.Factory;
 using UnityEngine;
 
-namespace BsseCode.Weapons.Bullet
+namespace BsseCode.Pools.Weapons.Bullet
 {
     public class PoolComponent<T> where T : Component
     {

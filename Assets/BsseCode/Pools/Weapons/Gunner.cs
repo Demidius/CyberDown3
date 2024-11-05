@@ -1,22 +1,22 @@
-using System;
+using BsseCode.Pools.Pools;
+using BsseCode.Pools.Weapons.Bullet;
 using BsseCode.Services.InputFol;
-using BsseCode.Weapons.Bullet;
 using UnityEngine;
 using Zenject;
 
-namespace BsseCode.Weapons
+namespace BsseCode.Pools.Weapons
 {
     public class Gunner : MonoBehaviour, IWeapon
     {
         [SerializeField] private Transform _bulletSpawnPoint;
 
         private float _bulletSpeed = 10;
-        private IPoolBullet _poolBullet;
+        private IPoolsBase _poolBullet;
         private Vector2 direction;
         private IInputService _inputService;
 
         [Inject]
-        public void Construct(IPoolBullet poolBullet, IInputService inputService)
+        public void Construct(IPoolsBase poolBullet, IInputService inputService)
         {
             _poolBullet = poolBullet;
             _inputService = inputService;
@@ -35,7 +35,7 @@ namespace BsseCode.Weapons
 
         private void Shoot()
         {
-            var bullet = _poolBullet.GetBullet();
+            var bullet = _poolBullet.BulletPoolComponent.GetElement();
             bullet.transform.position = _bulletSpawnPoint.transform.position;
             bullet.SetParameters(_bulletSpeed, direction ,_poolBullet);
         }

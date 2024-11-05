@@ -1,7 +1,7 @@
 using BsseCode.Hero;
 using BsseCode.Services;
 
-namespace BsseCode.Enemes
+namespace BsseCode.Pools.Enemes
 {
     public interface IEnemy
     {

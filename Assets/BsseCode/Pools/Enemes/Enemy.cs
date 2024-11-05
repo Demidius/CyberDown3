@@ -1,11 +1,9 @@
-using System;
 using BsseCode.Hero;
+using BsseCode.Pools.Weapons.Bullet;
 using BsseCode.Services;
-using BsseCode.Weapons.Bullet;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace BsseCode.Enemes
+namespace BsseCode.Pools.Enemes
 {
     public class Enemy : MonoBehaviour, IEnemy
     {

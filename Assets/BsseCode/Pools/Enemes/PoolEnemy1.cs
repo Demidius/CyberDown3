@@ -1,9 +1,9 @@
+using BsseCode.Pools.Weapons.Bullet;
 using BsseCode.Services.Factory;
-using BsseCode.Weapons.Bullet;
 using UnityEngine;
 using Zenject;
 
-namespace BsseCode.Enemes
+namespace BsseCode.Pools.Enemes
 {
     public class PoolEnemy1 : MonoBehaviour, IPoolEnemy1
     {
