@@ -27,7 +27,7 @@ namespace BsseCode.Services.TimeProvider
         
         private void Update()
         {
-            _inputService.ToggleTimeScaleInput();
+          _inputService.ToggleTimeScaleInput();
         }
 
         private void ToggleTimeScale()

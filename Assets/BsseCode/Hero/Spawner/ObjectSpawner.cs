@@ -1,9 +1,7 @@
-using BsseCode.Services.Factory;
 using UnityEngine;
 using Zenject;
-using Zenject.SpaceFighter;
 
-namespace BsseCode.Spawner
+namespace BsseCode.Hero.Spawner
 {
     public class ObjectSpawner : MonoBehaviour
     {

@@ -1,7 +1,6 @@
-using BsseCode.GameStateMachineFolder.States;
-using UnityEngine;
+using BsseCode.GameStateMachine.States;
 
-namespace BsseCode.GameStateMachineFolder
+namespace BsseCode.GameStateMachine
 {
     public class GameStateMachine
     {

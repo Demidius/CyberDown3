@@ -1,6 +1,6 @@
-namespace BsseCode.Services.TimerLevel
+namespace BsseCode.Mechanics.TimerLevel
 {
-    public interface ITimerWrorld
+    public interface ITimerLevel
     {
         public float CurrentTimerValue { get; set; }
         public string CurrentTimeOnString { get; set; }

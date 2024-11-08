@@ -3,12 +3,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace BsseCode.Services.TimerLevel
+namespace BsseCode.Mechanics.TimerLevel
 
     {
 
 
-        public class TimerWrorld : MonoBehaviour, ITimerWrorld
+        public class TimerLevel : MonoBehaviour, ITimerLevel
         {
             [SerializeField] private Text timerText;
             

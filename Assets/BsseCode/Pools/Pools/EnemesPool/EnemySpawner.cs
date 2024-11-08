@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using BsseCode.Hero.Spawner;
+using BsseCode.Mechanics.BulletCounter;
 using BsseCode.Pools.Pools.ExplosionPool;
 using BsseCode.Services;
 using BsseCode.Services.Coroutines;
@@ -28,10 +30,12 @@ namespace BsseCode.Pools.Pools.EnemesPool
         private PlayerFactory _playerFactory;
         private IExplosionSpawner _explosionSpawner;
         private ICoroutineService _coroutineService;
+        private IBulletCounter _bulletCounter;
 
         [Inject]
-        public void Construct(IPoolsBase poolBase, PlayerFactory playerFactory, ITimeService timeService, MoveService moveService, ICoroutineService coroutineService)
+        public void Construct(IPoolsBase poolBase, PlayerFactory playerFactory, ITimeService timeService, MoveService moveService, ICoroutineService coroutineService, IBulletCounter bulletCounter)
         {
+            _bulletCounter = bulletCounter;
             _coroutineService = coroutineService;
             _playerFactory = playerFactory;
             _moveService = moveService;
@@ -91,7 +95,7 @@ namespace BsseCode.Pools.Pools.EnemesPool
 
                 var enemy = _poolBase.EnemyPoolComponent.GetElement();
                 enemy.transform.position = randomPosition;
-                enemy.SetParameters(_speedEnemy, _playerFactory.Player, _poolBase, _moveService, _coroutineService);
+                enemy.SetParameters(_speedEnemy, _playerFactory.Player, _poolBase, _moveService, _coroutineService, _bulletCounter);
                
             
         }

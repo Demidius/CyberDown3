@@ -1,4 +1,4 @@
-namespace BsseCode.GameStateMachineFolder.States
+namespace BsseCode.GameStateMachine.States
 {
     public interface IGameState
     {

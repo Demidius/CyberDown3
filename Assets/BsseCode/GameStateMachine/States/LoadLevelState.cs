@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace BsseCode.GameStateMachineFolder.States
+namespace BsseCode.GameStateMachine.States
 {
     public class LoadLevelState : IGameState
     {

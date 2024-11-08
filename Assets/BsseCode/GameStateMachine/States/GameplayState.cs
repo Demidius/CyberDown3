@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BsseCode.GameStateMachineFolder.States
+namespace BsseCode.GameStateMachine.States
 {
     public class GameplayState : IGameState
     {

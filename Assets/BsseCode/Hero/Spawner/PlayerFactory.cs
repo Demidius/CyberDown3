@@ -1,9 +1,8 @@
-using BsseCode.Hero;
 using Cinemachine;
-using Zenject;
 using UnityEngine;
+using Zenject;
 
-namespace BsseCode.Services.Factory
+namespace BsseCode.Hero.Spawner
 {
     public class PlayerFactory
     {

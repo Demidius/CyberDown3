@@ -1,7 +1,7 @@
 using BsseCode.Constants;
 using UnityEngine;
 
-namespace BsseCode.GameStateMachineFolder.States
+namespace BsseCode.GameStateMachine.States
 {
     public class BootstrapState : IGameState
     {

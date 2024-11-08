@@ -1,15 +1,14 @@
 using UnityEngine;
 using Zenject;
-using BsseCode.GameStateMachineFolder;
 
 namespace BsseCode
 {
     public class GameManager : MonoBehaviour
     {
-        private GameStateMachine _gameStateMachine;
+        private GameStateMachine.GameStateMachine _gameStateMachine;
 
         [Inject]
-        public void Construct(GameStateMachine gameStateMachine)
+        public void Construct(GameStateMachine.GameStateMachine gameStateMachine)
         {
             _gameStateMachine = gameStateMachine;
         }

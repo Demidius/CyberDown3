@@ -1,5 +1,6 @@
 using System.Collections;
 using BsseCode.Hero;
+using BsseCode.Mechanics.BulletCounter;
 using BsseCode.Pools.Pools.BulletPool;
 using BsseCode.Pools.Pools.ExplosionPool;
 using BsseCode.Services;
@@ -21,10 +22,12 @@ namespace BsseCode.Pools.Pools.EnemesPool
         private MoveService _moveService;
         private Vector2 _moveDirection;
         private ICoroutineService _coroutineService;
+        private IBulletCounter _bulletCounter;
 
 
-        public void SetParameters(float speed, Player player, IPoolsBase poolBase, MoveService moveService, ICoroutineService coroutineService)
+        public void SetParameters(float speed, Player player, IPoolsBase poolBase, MoveService moveService, ICoroutineService coroutineService, IBulletCounter bulletCounter)
         {
+            _bulletCounter = bulletCounter;
             _coroutineService = coroutineService;
             _moveService = moveService;
             _poolsBase = poolBase;
@@ -95,7 +98,7 @@ namespace BsseCode.Pools.Pools.EnemesPool
         {
             var element = _poolsBase.AmmoLootComponent.GetElement();
             element.transform.position = this.transform.position;
-            element.SetParameters(_poolsBase, _coroutineService);
+            element.SetParameters(_poolsBase, _coroutineService, _bulletCounter);
         }
     }
 }
