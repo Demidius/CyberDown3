@@ -19,15 +19,15 @@ namespace BsseCode.Pools.Pools.BulletPool
 
 
         [Inject]
-        public void Construct(MoveService moveService)
-        {
-            _moveService = moveService;
-        }
-
-        public void SetParameters(float speed, Vector2 direction, IPoolsBase poolBullet, ICoroutineService coroutineService)
+        public void Construct(MoveService moveService, IPoolsBase poolBullet, ICoroutineService coroutineService)
         {
             _coroutineService = coroutineService;
+            _moveService = moveService;
             _poolComponent = poolBullet;
+        }
+
+        public void SetParameters(float speed, Vector2 direction)
+        {
             _speed = speed;
             _direction =  direction.normalized;
             

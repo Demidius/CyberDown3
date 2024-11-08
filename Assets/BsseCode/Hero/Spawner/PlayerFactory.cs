@@ -4,33 +4,32 @@ using Zenject;
 
 namespace BsseCode.Hero.Spawner
 {
-    public class PlayerFactory
+    public class PlayerFactory : MonoBehaviour
     {
-        private readonly DiContainer _container;
-        private readonly GameObject _playerPrefab;
+        [SerializeField] private GameObject playerPrefab;
+        
         private Camera _mainCamera;
         private CinemachineVirtualCamera _virtualCamera;
 
-        public Player Player {get; private set;}
+        public Player Player { get; private set; }
+
         
-        public PlayerFactory(DiContainer container, GameObject playerPrefab)
-        {
-            _container = container;
-            _playerPrefab = playerPrefab;
-        }
+        [Inject]
+        private DiContainer _container;
 
         [Inject]
         public void Construct(CinemachineVirtualCamera virtualCamera)
         {
             _virtualCamera = virtualCamera;
+            Create(Vector2.zero); 
         }
-        
+
         public Player Create(Vector2 position)
         {
-            Player = _container.InstantiatePrefabForComponent<Player>(_playerPrefab, position, Quaternion.identity, null  );
+            Player = _container.InstantiatePrefabForComponent<Player>(playerPrefab, position, Quaternion.identity,
+                null);
             _virtualCamera.Follow = Player.transform;
             return Player;
-            
         }
     }
 }

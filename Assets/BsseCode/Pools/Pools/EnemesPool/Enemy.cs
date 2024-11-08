@@ -1,5 +1,6 @@
 using System.Collections;
 using BsseCode.Hero;
+using BsseCode.Hero.Spawner;
 using BsseCode.Mechanics.BulletCounter;
 using BsseCode.Pools.Pools.BulletPool;
 using BsseCode.Pools.Pools.ExplosionPool;
@@ -7,6 +8,7 @@ using BsseCode.Services;
 using BsseCode.Services.Coroutines;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Zenject;
 
 namespace BsseCode.Pools.Pools.EnemesPool
 {
@@ -23,18 +25,26 @@ namespace BsseCode.Pools.Pools.EnemesPool
         private Vector2 _moveDirection;
         private ICoroutineService _coroutineService;
         private IBulletCounter _bulletCounter;
+        private PlayerFactory _playerFactory;
 
 
-        public void SetParameters(float speed, Player player, IPoolsBase poolBase, MoveService moveService, ICoroutineService coroutineService, IBulletCounter bulletCounter)
+        [Inject]
+        public void Construct(MoveService moveService,  PlayerFactory playerFactory, IPoolsBase poolBase, ICoroutineService coroutineService, IBulletCounter bulletCounter)
         {
             _bulletCounter = bulletCounter;
             _coroutineService = coroutineService;
             _moveService = moveService;
             _poolsBase = poolBase;
-            _speed = speed;
-            _player = player;
+            _playerFactory = playerFactory;
         }
 
+        public void SetParameters(float speed)
+        {
+            _speed = speed;
+            _player = _playerFactory.Player;
+        }
+
+        
         private void Update()
         {
             Direction();

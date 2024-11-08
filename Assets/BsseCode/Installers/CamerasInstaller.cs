@@ -9,8 +9,11 @@ namespace BsseCode.Installers
     {
         public override void InstallBindings()
         {
-            CinemachineVirtualCamera virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
+           
             
+            #region Camera
+            CinemachineVirtualCamera virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
+
             if (virtualCamera != null)
             {
                 Container.Bind<CinemachineVirtualCamera>().FromInstance(virtualCamera).AsSingle();
@@ -19,9 +22,9 @@ namespace BsseCode.Installers
             {
                 Debug.LogError("Cinemachine Virtual Camera not found in the scene.");
             }
-            
+
             Camera Camera = FindObjectOfType<Camera>();
-            
+
             if (Camera != null)
             {
                 Container.Bind<Camera>().FromInstance(Camera).AsSingle();
@@ -30,8 +33,7 @@ namespace BsseCode.Installers
             {
                 Debug.LogError("Camera not found in the scene.");
             }
-            
-            
+            #endregion
             
         }
     }

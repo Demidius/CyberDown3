@@ -16,14 +16,13 @@ namespace BsseCode.Pools.Pools.BulletPool
         private IPoolsBase _poolBullet;
         private Vector2 _direction;
         private IInputService _inputService;
-        private ICoroutineService _coroutineService;
+       
         private IBulletCounter _bulletCounter;
 
         [Inject]
-        public void Construct(IPoolsBase poolBullet, IInputService inputService, ICoroutineService coroutineService, IBulletCounter bulletCounter)
+        public void Construct(IPoolsBase poolBullet, IInputService inputService, IBulletCounter bulletCounter)
         {
             _bulletCounter = bulletCounter;
-            _coroutineService = coroutineService;
             _poolBullet = poolBullet;
             _inputService = inputService;
         }
@@ -42,17 +41,15 @@ namespace BsseCode.Pools.Pools.BulletPool
         {
             if (_bulletCounter.BulletCount > 0)
             {
-            var bullet = _poolBullet.BulletPoolComponent.GetElement();
-            bullet.transform.position = _bulletSpawnPoint.transform.position;
-            bullet.SetParameters(_bulletSpeed, _direction ,_poolBullet, _coroutineService);
-            _bulletCounter.SubtractBullet();
-            Debug.Log("Bullet Count: " + _bulletCounter.BulletCount);
+                var bullet = _poolBullet.BulletPoolComponent.GetElement();
+                bullet.transform.position = _bulletSpawnPoint.transform.position;
+                bullet.SetParameters(_bulletSpeed, _direction);
+                _bulletCounter.SubtractBullet();
             }
             else
             {
                 Debug.Log("Gun is empty");
             }
-            
         }
     }
 }

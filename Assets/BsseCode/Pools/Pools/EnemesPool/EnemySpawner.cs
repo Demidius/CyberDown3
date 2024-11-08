@@ -26,19 +26,15 @@ namespace BsseCode.Pools.Pools.EnemesPool
         private IPoolsBase _poolBase;
         private float _timer = 0f;
         private ITimeService _timeService;
-        private MoveService _moveService;
+        
         private PlayerFactory _playerFactory;
         private IExplosionSpawner _explosionSpawner;
-        private ICoroutineService _coroutineService;
-        private IBulletCounter _bulletCounter;
+       
 
         [Inject]
-        public void Construct(IPoolsBase poolBase, PlayerFactory playerFactory, ITimeService timeService, MoveService moveService, ICoroutineService coroutineService, IBulletCounter bulletCounter)
+        public void Construct(IPoolsBase poolBase, ITimeService timeService, PlayerFactory playerFactory)
         {
-            _bulletCounter = bulletCounter;
-            _coroutineService = coroutineService;
             _playerFactory = playerFactory;
-            _moveService = moveService;
             _timeService = timeService;
             _poolBase = poolBase;
         }
@@ -95,7 +91,7 @@ namespace BsseCode.Pools.Pools.EnemesPool
 
                 var enemy = _poolBase.EnemyPoolComponent.GetElement();
                 enemy.transform.position = randomPosition;
-                enemy.SetParameters(_speedEnemy, _playerFactory.Player, _poolBase, _moveService, _coroutineService, _bulletCounter);
+                enemy.SetParameters(_speedEnemy);
                
             
         }
