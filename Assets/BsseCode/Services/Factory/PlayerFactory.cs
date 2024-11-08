@@ -12,7 +12,7 @@ namespace BsseCode.Services.Factory
         private Camera _mainCamera;
         private CinemachineVirtualCamera _virtualCamera;
 
-        public Player _playerInstance {get; private set;}
+        public Player Player {get; private set;}
         
         public PlayerFactory(DiContainer container, GameObject playerPrefab)
         {
@@ -28,9 +28,9 @@ namespace BsseCode.Services.Factory
         
         public Player Create(Vector2 position)
         {
-            _playerInstance = _container.InstantiatePrefabForComponent<Player>(_playerPrefab, position, Quaternion.identity, null  );
-            _virtualCamera.Follow = _playerInstance.transform;
-            return _playerInstance;
+            Player = _container.InstantiatePrefabForComponent<Player>(_playerPrefab, position, Quaternion.identity, null  );
+            _virtualCamera.Follow = Player.transform;
+            return Player;
             
         }
     }

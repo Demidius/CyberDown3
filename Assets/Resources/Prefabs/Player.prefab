@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9929b21be54d8894957b59a02dfec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShootStarter: {fileID: 2913165146433138357}
 --- !u!1 &2913165146433138357
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,6 +444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1171712324968820310}
   - component: {fileID: 7158409751350257365}
+  - component: {fileID: 5103764321498788922}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -500,3 +502,15 @@ CircleCollider2D:
   m_Offset: {x: 0.031739682, y: -0.050783575}
   serializedVersion: 2
   m_Radius: 0.16038534
+--- !u!114 &5103764321498788922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8592532727851719200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4517f3f41cf7bf047bbb8c5b646f6bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

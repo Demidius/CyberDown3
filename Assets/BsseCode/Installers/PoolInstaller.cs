@@ -1,6 +1,7 @@
-using BsseCode.Pools.Enemes;
 using BsseCode.Pools.Pools;
-using BsseCode.Pools.Weapons.Bullet;
+using BsseCode.Pools.Pools.BulletPool;
+using BsseCode.Pools.Pools.EnemesPool;
+using BsseCode.Pools.Pools.ExplosionPool;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
@@ -9,7 +10,6 @@ namespace BsseCode.Installers
 {
     public class PoolInstaller : MonoInstaller
     {
-        [SerializeField] private GameObject poolEnemy1Prefab; 
         [SerializeField] private GameObject poolsBasePrefab; 
 
         public override void InstallBindings()
@@ -18,11 +18,6 @@ namespace BsseCode.Installers
             
             Container.Bind<PoolComponent<Enemy>>()
                 .AsTransient();
-                
-            Container.Bind<IPoolEnemy1>()
-                .To<PoolEnemy1>()
-                .FromComponentInNewPrefab(poolEnemy1Prefab)
-                .AsSingle();
             
             #endregion
             
@@ -37,8 +32,10 @@ namespace BsseCode.Installers
                 .AsSingle();
             
            
-            #endregion
+            #endregion 
             
+            
+          
            
             Debug.Log("Pools installed");
         }

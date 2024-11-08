@@ -9,7 +9,7 @@ namespace BsseCode.Services.TimeProvider
 
         private float _timeScale;
 
-        public event Action ChangeTimeScale;
+        public event Action <float> ChangeTimeScale;
 
         public TimeService() =>
             _timeScale = TimeFactor;
@@ -21,7 +21,7 @@ namespace BsseCode.Services.TimeProvider
             set
             {
                 _timeScale = Mathf.Clamp(value, 0, TimeFactor);
-                ChangeTimeScale?.Invoke();
+                ChangeTimeScale?.Invoke(value);
             }
         }
 

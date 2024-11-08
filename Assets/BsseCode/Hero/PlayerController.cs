@@ -8,6 +8,7 @@ namespace BsseCode.Hero
 {
     public class PlayerController : MonoBehaviour
     {
+       
         private IInputService _inputService;
         private MoveService _moveService;
 

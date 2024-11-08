@@ -25,8 +25,8 @@ namespace BsseCode.Services.PlayerMouseService
             
             
             Vector2 direction = new Vector2(
-                mouseWorldPosition.x - _playerFactory._playerInstance.transform.position.x,
-                mouseWorldPosition.y - _playerFactory._playerInstance.transform.position.y
+                mouseWorldPosition.x - _playerFactory.Player.transform.position.x,
+                mouseWorldPosition.y - _playerFactory.Player.transform.position.y
             );
             
             return direction;

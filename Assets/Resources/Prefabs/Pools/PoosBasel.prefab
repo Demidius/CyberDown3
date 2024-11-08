@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3794947845382733442
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2211512457467332678}
+  - component: {fileID: 7220504652322029044}
+  m_Layer: 0
+  m_Name: PoosBasel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2211512457467332678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3794947845382733442}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7220504652322029044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3794947845382733442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c50d4a51ae5c04792bd642ae94b788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 352926213396601502, guid: 8b9f47b8b655e7546b39f04724deeb76, type: 3}
+  enemyPrefab: {fileID: 2973510392974583102, guid: fcdf9f8c9f9b139459239ca2efda147c, type: 3}
+  shootFirePrefab: {fileID: 6573207765868336692, guid: e3dae689438204949a5d5ebd8c0948ba, type: 3}
+  explosionPrefab: {fileID: 5254771440018104194, guid: c52c45bfa93ca5440a6df72204f49697, type: 3}
+  explosionResiduePrefab: {fileID: 2157082309627172051, guid: 58cd00765ab2e4f4ea55d165a176fe1e, type: 3}
+  ammoLootPrefab: {fileID: 4405881369649786205, guid: e96c18d05a9bc824ca498ffae75d8802, type: 3}
+  baseSize: 10
