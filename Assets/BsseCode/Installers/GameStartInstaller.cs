@@ -1,5 +1,6 @@
 using BsseCode.Hero.Spawner;
 using BsseCode.Mechanics.BulletCounter;
+using BsseCode.Mechanics.GameResults;
 using BsseCode.Mechanics.TimerLevel;
 using BsseCode.Pools.Pools;
 using BsseCode.Pools.Pools.EnemesPool;
@@ -35,6 +36,7 @@ namespace BsseCode.Installers
 
             Container.Bind<IBulletCounter>().To<BulletCounter>().FromComponentInHierarchy().AsSingle();
             Container.Bind<ITimerLevel>().To<TimerLevel>().AsSingle();
+            Container.Bind<ResultsManager>().FromComponentInHierarchy().AsSingle();
 
             #endregion
 
