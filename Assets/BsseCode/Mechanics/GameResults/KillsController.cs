@@ -1,17 +1,18 @@
 using UnityEngine;
 using Zenject;
+using System;
 
 namespace BsseCode.Mechanics.GameResults
 {
-
-    public class GameController : MonoBehaviour
+    public class KillsController : MonoBehaviour
     {
-        [Inject]
-        private ResultsManager _resultsManager;
+        [Inject] private ResultsManager _resultsManager;
 
-        private int _kills = 0;
+        public int Kills { get; private set; } = 0;
         private float _survivalTime = 0f;
         private bool _isGameActive = true;
+
+        public event Action ChangeKills;
 
         void Update()
         {
@@ -23,16 +24,16 @@ namespace BsseCode.Mechanics.GameResults
 
         public void OnEnemyKilled()
         {
-            _kills++;
+            Kills++;
+            ChangeKills?.Invoke();
         }
 
         public void EndGame()
         {
             _isGameActive = false;
-            GameResult result = new GameResult(_kills, _survivalTime);
+            GameResult result = new GameResult(Kills, _survivalTime);
             _resultsManager.AddResult(result);
             // Перейти в меню или выполнить другие действия
         }
     }
-
 }

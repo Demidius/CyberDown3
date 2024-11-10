@@ -1,10 +1,6 @@
-using BsseCode.Pools.Pools;
-using BsseCode.Services;
+using BsseCode.Mechanics.GameResults;
 using BsseCode.Services.Coroutines;
-using BsseCode.Services.InputFol;
-using BsseCode.Services.PlayerMouseService;
 using BsseCode.Services.RandomNumder;
-using BsseCode.Services.TimeProvider;
 using BsseCode.StateMachines.GameStateMachine;
 using BsseCode.StateMachines.GameStateMachine.States;
 using UnityEngine;
@@ -14,9 +10,9 @@ namespace BsseCode.Installers
 {
     public class ProjectInstallers : MonoInstaller
     {
+        public GameObject resultsManagerPrefab;
        public override void InstallBindings()
         {
-           
 
             #region StateMachine
 
@@ -39,7 +35,7 @@ namespace BsseCode.Installers
 
             #endregion
 
-           
+            Container.Bind<ResultsManager>().FromComponentInNewPrefab(resultsManagerPrefab).AsSingle().NonLazy();           
         }
     }
 }

@@ -10,8 +10,8 @@ namespace BsseCode.Mechanics.GameResults
 
         public void SetResult(GameResult result)
         {
-            killsText.text = $"Kills: {result.kills}";
-            survivalTimeText.text = $"Time: {FormatTime(result.survivalTime)}";
+            killsText.text = $"{result.kills}";
+            survivalTimeText.text = $"{FormatTime(result.survivalTime)}";
         }
 
         private string FormatTime(float time)

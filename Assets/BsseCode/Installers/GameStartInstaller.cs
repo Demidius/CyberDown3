@@ -29,6 +29,7 @@ namespace BsseCode.Installers
             Container.Bind<IPlayerMouseService>().To<PlayerMouseService>().AsSingle();
             Container.Bind<ITimeService>().To<TimeService>().AsSingle();
             Container.Bind<MoveService>().AsSingle();
+            Container.Bind<KillsController>().FromComponentInHierarchy().AsSingle();
 
             #endregion
 
@@ -36,7 +37,7 @@ namespace BsseCode.Installers
 
             Container.Bind<IBulletCounter>().To<BulletCounter>().FromComponentInHierarchy().AsSingle();
             Container.Bind<ITimerLevel>().To<TimerLevel>().AsSingle();
-            Container.Bind<ResultsManager>().FromComponentInHierarchy().AsSingle();
+            //Container.Bind<ResultsManager>().FromComponentInHierarchy().AsSingle();
 
             #endregion
 

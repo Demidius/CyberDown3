@@ -22,12 +22,14 @@ namespace BsseCode.Mechanics.GameResults
         void DisplayResults()
         {
             List<GameResult> results = _resultsManager.Results;
+            Debug.Log(results.Count);
 
             foreach (GameResult result in results)
             {
                 GameObject entry = Instantiate(resultEntryPrefab, contentParent);
                 ResultEntryUI entryUI = entry.GetComponent<ResultEntryUI>();
                 entryUI.SetResult(result);
+                Debug.Log(result);
             }
         }
     }

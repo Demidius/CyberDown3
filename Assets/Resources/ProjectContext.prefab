@@ -106,4 +106,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a996c648ad412b9628c70c49b1cf07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolsBasePrefab: {fileID: 3794947845382733442, guid: 98e7071c58e6d584b99625e081c118df, type: 3}
+  resultsManagerPrefab: {fileID: 3118820539555204910, guid: b7f2d6d6a8b31534f9645acfcbd37e73, type: 3}

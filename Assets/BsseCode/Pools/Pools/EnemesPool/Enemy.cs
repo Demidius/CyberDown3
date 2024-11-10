@@ -2,6 +2,7 @@ using System.Collections;
 using BsseCode.Hero;
 using BsseCode.Hero.Spawner;
 using BsseCode.Mechanics.BulletCounter;
+using BsseCode.Mechanics.GameResults;
 using BsseCode.Pools.Pools.BulletPool;
 using BsseCode.Pools.Pools.ExplosionPool;
 using BsseCode.Services;
@@ -23,12 +24,14 @@ namespace BsseCode.Pools.Pools.EnemesPool
         private Vector2 _moveDirection;
         private ICoroutineService _coroutineService;
         private PlayerFactory _playerFactory;
+        private KillsController _killsController;
 
 
         [Inject]
-        public void Construct(MoveService moveService,  PlayerFactory playerFactory, IPoolsBase poolBase, ICoroutineService coroutineService)
+        public void Construct(MoveService moveService,  PlayerFactory playerFactory, IPoolsBase poolBase, ICoroutineService coroutineService, KillsController killsController)
         {
-           
+            _killsController = killsController;
+
             _coroutineService = coroutineService;
             _moveService = moveService;
             _poolsBase = poolBase;
@@ -74,6 +77,7 @@ namespace BsseCode.Pools.Pools.EnemesPool
         {
             if (other.TryGetComponent<Bullet>(out Bullet bullet))
             {
+                _killsController.OnEnemyKilled();
                 bullet.Deactivate();
                 Deactivate();
             }
