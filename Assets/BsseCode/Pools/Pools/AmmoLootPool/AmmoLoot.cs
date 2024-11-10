@@ -21,10 +21,8 @@ namespace BsseCode.Pools.Pools.AmmoLootPool
         private Coroutine _coroutineLifeRoutine;
         private IBulletCounter _bulletCounter;
 
-            
-        
-        public void SetParameters(IPoolsBase poolBullet, ICoroutineService coroutineService,
-            IBulletCounter bulletCounter)
+        [Inject]
+        public void Construct(IPoolsBase poolBullet, ICoroutineService coroutineService, IBulletCounter bulletCounter)
         {
             _bulletCounter = bulletCounter;
             _coroutineService = coroutineService;

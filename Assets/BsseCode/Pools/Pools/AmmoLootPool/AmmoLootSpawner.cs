@@ -8,27 +8,24 @@ namespace BsseCode.Pools.Pools.AmmoLootPool
     public class AmmoLootSpawner : MonoBehaviour
     {
         private Transform _bulletSpawnPoint;
-        
+
         private IPoolsBase _poolBullet;
+
         
-        private ICoroutineService _coroutineService;
-        private IBulletCounter _bulletCounter;
 
         [Inject]
-        public void Construct(IPoolsBase poolBullet,  ICoroutineService coroutineService, IBulletCounter bulletCounter)
+        public void Construct(IPoolsBase poolBullet)
         {
-            _bulletCounter = bulletCounter;
-            _coroutineService = coroutineService;
+            
             _poolBullet = poolBullet;
-          
+
         }
 
-        
+
         private void Spawn()
         {
             var bullet = _poolBullet.AmmoLootComponent.GetElement();
             bullet.transform.position = _bulletSpawnPoint.transform.position;
-            bullet.SetParameters(_poolBullet, _coroutineService, _bulletCounter);
         }
     }
 }

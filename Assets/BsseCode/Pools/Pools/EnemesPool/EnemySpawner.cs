@@ -1,11 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using BsseCode.Constants;
 using BsseCode.Hero.Spawner;
-using BsseCode.Mechanics.BulletCounter;
 using BsseCode.Pools.Pools.ExplosionPool;
-using BsseCode.Services;
-using BsseCode.Services.Coroutines;
-using BsseCode.Services.Factory;
 using BsseCode.Services.TimeProvider;
 using UnityEngine;
 using Zenject;
@@ -14,22 +11,20 @@ namespace BsseCode.Pools.Pools.EnemesPool
 {
     public class EnemySpawner : MonoBehaviour
     {
-        
         [SerializeField] private List<Collider2D> spawnAreas;
         [SerializeField] private float spawnInterval = 2f;
         [SerializeField] private float minDistansForEnemy;
-        [SerializeField] private float _speedEnemy = 1;
-      
 
 
+        private float _speedEnemy = Const.SpeedEnemy;
         private Collider2D _randomCollider;
         private IPoolsBase _poolBase;
         private float _timer = 0f;
         private ITimeService _timeService;
-        
+
         private PlayerFactory _playerFactory;
         private IExplosionSpawner _explosionSpawner;
-       
+
 
         [Inject]
         public void Construct(IPoolsBase poolBase, ITimeService timeService, PlayerFactory playerFactory)
@@ -43,7 +38,6 @@ namespace BsseCode.Pools.Pools.EnemesPool
         {
             StartCoroutine(SpawnObjects());
             StartCoroutine(ReduceSpawnIntervalOverTime());
-            
         }
 
         private IEnumerator SpawnObjects()
@@ -81,32 +75,30 @@ namespace BsseCode.Pools.Pools.EnemesPool
             if (spawnAreas.Count == 0) return;
 
             Vector3 randomPosition;
-               
-                Collider2D selectedCollider;
-                do
-                {
-                    selectedCollider = spawnAreas[Random.Range(0, spawnAreas.Count)];
-                    randomPosition = GetRandomPointInCollider(selectedCollider);
-                } while (Vector3.Distance(randomPosition, _playerFactory.Player.transform.position) < minDistansForEnemy);
 
-                var enemy = _poolBase.EnemyPoolComponent.GetElement();
-                enemy.transform.position = randomPosition;
-                enemy.SetParameters(_speedEnemy);
-               
-            
+            Collider2D selectedCollider;
+            do
+            {
+                selectedCollider = spawnAreas[Random.Range(0, spawnAreas.Count)];
+                randomPosition = GetRandomPointInCollider(selectedCollider);
+            } while (Vector3.Distance(randomPosition, _playerFactory.Player.transform.position) < minDistansForEnemy);
+
+            var enemy = _poolBase.EnemyPoolComponent.GetElement();
+            enemy.transform.position = randomPosition;
+            enemy.SetParameters(_speedEnemy);
         }
 
         private Vector3 GetRandomPointInCollider(Collider2D collider)
         {
             Vector3 point;
-            int maxAttempts = 10; 
+            int maxAttempts = 10;
 
             for (int i = 0; i < maxAttempts; i++)
             {
                 point = new Vector3(
                     Random.Range(collider.bounds.min.x, collider.bounds.max.x),
                     Random.Range(collider.bounds.min.y, collider.bounds.max.y),
-                    0 
+                    0
                 );
 
                 if (collider.bounds.Contains(point))
@@ -114,8 +106,8 @@ namespace BsseCode.Pools.Pools.EnemesPool
                     return point;
                 }
             }
+
             return collider.bounds.center;
         }
-      
     }
 }

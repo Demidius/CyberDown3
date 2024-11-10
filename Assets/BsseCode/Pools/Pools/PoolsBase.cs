@@ -41,15 +41,27 @@ namespace BsseCode.Pools.Pools
 
         private void Start()
         {
-            BulletPoolComponent = new PoolComponent<Bullet>(bulletPrefab, baseSize, this.transform, _factoryComponent);
-            EnemyPoolComponent = new PoolComponent<Enemy>(enemyPrefab, baseSize, this.transform, _factoryComponent);
-            ShootFirePoolComponent = new PoolComponent<ShootFire>(shootFirePrefab, baseSize, this.transform, _factoryComponent);
-            ExplosionComponent = new PoolComponent<Explosion>(explosionPrefab, baseSize, this.transform, _factoryComponent);
-            ExplosionResidueComponent = new PoolComponent<ExplosionResidue>(explosionResiduePrefab, baseSize, this.transform, _factoryComponent);
-            AmmoLootComponent = new PoolComponent<AmmoLoot>(ammoLootPrefab, baseSize, this.transform, _factoryComponent);
+            BulletPoolComponent = InitializePoolComponent(bulletPrefab, baseSize);
+            EnemyPoolComponent = InitializePoolComponent(enemyPrefab, baseSize);
+            ShootFirePoolComponent = InitializePoolComponent(shootFirePrefab, baseSize);
+            ExplosionComponent = InitializePoolComponent(explosionPrefab, baseSize);
+            ExplosionResidueComponent = InitializePoolComponent(explosionResiduePrefab, baseSize);
+            AmmoLootComponent = InitializePoolComponent(ammoLootPrefab, baseSize);
+        }
+        private PoolComponent<T> InitializePoolComponent<T>(T prefab, int size) where T : MonoBehaviour
+        {
+            return new PoolComponent<T>(prefab, size, this.transform, _factoryComponent);
         }
         
-    
+        // private void OnDestroy()
+        // {
+        //     BulletPoolComponent?.Clear();
+        //     EnemyPoolComponent?.Clear();
+        //     ShootFirePoolComponent?.Clear();
+        //     ExplosionComponent?.Clear();
+        //     ExplosionResidueComponent?.Clear();
+        //     AmmoLootComponent?.Clear();
+        // }
 
     }
 }

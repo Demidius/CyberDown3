@@ -1,3 +1,4 @@
+using BsseCode.StateMachines.GameStateMachine.States;
 using Cinemachine;
 using UnityEngine;
 using Zenject;
@@ -17,9 +18,12 @@ namespace BsseCode.Hero.Spawner
         [Inject]
         private DiContainer _container;
 
+        private GameplayState _gameplayState;
+
         [Inject]
-        public void Construct(CinemachineVirtualCamera virtualCamera)
+        public void Construct(CinemachineVirtualCamera virtualCamera, GameplayState gameplayState)
         {
+            _gameplayState = gameplayState;
             _virtualCamera = virtualCamera;
             Create(Vector2.zero); 
         }

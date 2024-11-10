@@ -1,12 +1,14 @@
 using UnityEngine;
+using Zenject;
 
 namespace BsseCode.Pools.Pools.ExplosionResiduePool
 {
     public class ExplosionResidue : MonoBehaviour, IPoolsElement
     {
         private IPoolsBase _poolsBase;
-
-        public void SetParameters(IPoolsBase poolsBase)
+        
+        [Inject]
+        public void Construct(IPoolsBase poolsBase)
         {
             _poolsBase = poolsBase;
         }

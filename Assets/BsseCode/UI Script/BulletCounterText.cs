@@ -20,6 +20,7 @@ namespace BsseCode.UI_Script
         private void Start()
         {
             _bulletCounterText = GetComponent<Text>();
+            UpdateText();
             _bulletCounter.OnBulletCountChanged += UpdateText;
         }
 

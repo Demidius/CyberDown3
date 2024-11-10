@@ -32,7 +32,7 @@ namespace BsseCode.Services.TimeProvider
 
         private void ToggleTimeScale()
         {
-            _timeService.TimeScale = _isSlowMotion ? 1f : Constans.SlowTimeModificator;
+            _timeService.TimeScale = _isSlowMotion ? 1f : Constants.Const.SlowTimeModificator;
             _isSlowMotion = !_isSlowMotion;
         }
 

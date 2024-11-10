@@ -12,8 +12,8 @@ namespace BsseCode.Services.InputFol
         public Vector2 GetMovementInput()
         {
             // Получаем ввод с клавиш WASD или стрелок
-            float horizontal = UnityEngine.Input.GetAxis(Constans.Horizontal);
-            float vertical = UnityEngine.Input.GetAxis(Constans.Vertical);
+            float horizontal = UnityEngine.Input.GetAxis(Constants.Const.Horizontal);
+            float vertical = UnityEngine.Input.GetAxis(Constants.Const.Vertical);
             return new Vector2(horizontal, vertical);
         }
 

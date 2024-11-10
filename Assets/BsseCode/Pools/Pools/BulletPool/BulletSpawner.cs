@@ -1,14 +1,11 @@
-using BsseCode.Mechanics;
 using BsseCode.Mechanics.BulletCounter;
-using BsseCode.Pools.Weapons;
-using BsseCode.Services.Coroutines;
 using BsseCode.Services.InputFol;
 using UnityEngine;
 using Zenject;
 
 namespace BsseCode.Pools.Pools.BulletPool
 {
-    public class BulletSpawner : MonoBehaviour, IWeapon
+    public class BulletSpawner : MonoBehaviour
     {
         [SerializeField] private Transform _bulletSpawnPoint;
 

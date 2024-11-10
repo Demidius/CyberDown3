@@ -23,11 +23,11 @@ namespace BsseCode.Animations
             {
                 if (player.movementHeroDirection != Vector2.zero )
                 {
-                    legsAnimator.SetBool(Constans.Run, true );
+                    legsAnimator.SetBool(Constants.Const.Run, true );
                 }
                 else
                 {
-                    legsAnimator.SetBool(Constans.Run, false );
+                    legsAnimator.SetBool(Constants.Const.Run, false );
                 }
                 
                 

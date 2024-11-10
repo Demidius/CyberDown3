@@ -7,7 +7,6 @@ using BsseCode.Pools.Pools.ExplosionPool;
 using BsseCode.Services;
 using BsseCode.Services.Coroutines;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace BsseCode.Pools.Pools.EnemesPool
@@ -20,18 +19,16 @@ namespace BsseCode.Pools.Pools.EnemesPool
         private float _speed;
 
         private Player _player;
-
         private MoveService _moveService;
         private Vector2 _moveDirection;
         private ICoroutineService _coroutineService;
-        private IBulletCounter _bulletCounter;
         private PlayerFactory _playerFactory;
 
 
         [Inject]
-        public void Construct(MoveService moveService,  PlayerFactory playerFactory, IPoolsBase poolBase, ICoroutineService coroutineService, IBulletCounter bulletCounter)
+        public void Construct(MoveService moveService,  PlayerFactory playerFactory, IPoolsBase poolBase, ICoroutineService coroutineService)
         {
-            _bulletCounter = bulletCounter;
+           
             _coroutineService = coroutineService;
             _moveService = moveService;
             _poolsBase = poolBase;
@@ -95,20 +92,17 @@ namespace BsseCode.Pools.Pools.EnemesPool
         {
             var element = _poolsBase.ExplosionResidueComponent.GetElement();
             element.transform.position = this.transform.position;
-            element.SetParameters(_poolsBase);
         }
 
         private void CreateExplosion()
         {
             var element = _poolsBase.ExplosionComponent.GetElement();
             element.transform.position = this.transform.position;
-            element.SetParameters(_poolsBase);
         } 
         private void CreateAmmoLoot()
         {
             var element = _poolsBase.AmmoLootComponent.GetElement();
             element.transform.position = this.transform.position;
-            element.SetParameters(_poolsBase, _coroutineService, _bulletCounter);
         }
     }
 }

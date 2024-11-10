@@ -1,6 +1,8 @@
 using System;
 using BsseCode.Constants;
+using BsseCode.Services.RandomNumder;
 using UnityEngine;
+using Zenject;
 
 namespace BsseCode.Mechanics.BulletCounter
 {
@@ -9,14 +11,17 @@ namespace BsseCode.Mechanics.BulletCounter
         public int BulletCount { get; private set; }
         public event Action OnBulletCountChanged;
 
+        [Inject]
+        private IRandomizerService _randomizerService;
+        
         private void Start()
         {
-            BulletCount = Constans.StartCountBullet;
+            BulletCount = Constants.Const.StartCountBullet;
         }
 
         public void AddBullet()
         {
-            BulletCount ++;
+            BulletCount += _randomizerService.GetRandomValue(1,3);
             OnBulletCountChanged?.Invoke();
         }
 

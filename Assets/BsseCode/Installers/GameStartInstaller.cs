@@ -1,3 +1,4 @@
+using BsseCode.Hero.Spawner;
 using BsseCode.Mechanics.BulletCounter;
 using BsseCode.Mechanics.TimerLevel;
 using BsseCode.Pools.Pools;
@@ -17,29 +18,16 @@ namespace BsseCode.Installers
 {
     public class GameStartInstaller : MonoInstaller
     {
-       
+        [SerializeField] private GameObject poolsBasePrefab;
 
         public override void InstallBindings()
         {
             #region Services
+
             Container.Bind<IInputService>().To<PcInputService>().AsSingle();
             Container.Bind<IPlayerMouseService>().To<PlayerMouseService>().AsSingle();
             Container.Bind<ITimeService>().To<TimeService>().AsSingle();
-            Container.Bind<MoveService>().AsTransient();
-            #endregion
-
-            #region StateMachine
-
-            Container.Bind<GameStateMachine.GameStateMachine>().AsSingle().NonLazy();
-
-            #endregion
-            
-            #region Coroutine
-
-            var coroutineRunner = new GameObject("CoroutineRunner").AddComponent<CoroutineRunner>();
-            DontDestroyOnLoad(coroutineRunner);
-            Container.Bind<CoroutineRunner>().FromInstance(coroutineRunner).AsSingle();
-            Container.Bind<ICoroutineService>().To<CoroutineService>().AsSingle();
+            Container.Bind<MoveService>().AsSingle();
 
             #endregion
 
@@ -47,20 +35,21 @@ namespace BsseCode.Installers
 
             Container.Bind<IBulletCounter>().To<BulletCounter>().FromComponentInHierarchy().AsSingle();
             Container.Bind<ITimerLevel>().To<TimerLevel>().AsSingle();
-           // Container.Bind<IFactoryComponent>().To<FactoryComponent>().AsSingle();
 
             #endregion
 
-            
 
+            #region Camera
 
-           // Container.Bind<PlayerFactoryInstaller>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<Camera>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<CinemachineVirtualCamera>().FromComponentInHierarchy().AsSingle();
 
-         //   Container.Bind<IFactoryComponent>().To<FactoryComponent>().AsSingle();
+            #endregion
 
-        
-            
-            
+            Container.Bind<PlayerFactory>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<IFactoryComponent>().To<FactoryComponent>().AsSingle();
+
+            Container.Bind<IPoolsBase>().To<PoolsBase>().FromComponentInNewPrefab(poolsBasePrefab).AsSingle();
         }
     }
 }

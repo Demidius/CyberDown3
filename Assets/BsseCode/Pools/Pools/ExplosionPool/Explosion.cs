@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 namespace BsseCode.Pools.Pools.ExplosionPool
 {
@@ -6,7 +7,8 @@ namespace BsseCode.Pools.Pools.ExplosionPool
     {
         private IPoolsBase _poolsBase;
 
-        public void SetParameters(IPoolsBase poolsBase)
+        [Inject]
+        public void Construct(IPoolsBase poolsBase)
         {
             _poolsBase = poolsBase;
         }

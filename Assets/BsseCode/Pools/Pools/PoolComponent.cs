@@ -53,5 +53,18 @@ namespace BsseCode.Pools.Pools
             obj.gameObject.SetActive(true);
             return obj;
         }
+ 
+        // public void Clear()
+        // {
+        //     while (pool.Count > 0)
+        //     {
+        //         var obj = pool.Dequeue();
+        //         if (obj != null)
+        //         {
+        //             obj.gameObject.SetActive(false);
+        //             Object.Destroy(obj.gameObject);  
+        //         }
+        //     }
+        // }
     }
 }
