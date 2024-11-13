@@ -1,11 +1,9 @@
-using BsseCode.Hero.Spawner;
+using BsseCode.Caracters.Hero;
 using BsseCode.Mechanics.BulletCounter;
 using BsseCode.Mechanics.GameResults;
 using BsseCode.Mechanics.TimerLevel;
 using BsseCode.Pools.Pools;
-using BsseCode.Pools.Pools.EnemesPool;
 using BsseCode.Services;
-using BsseCode.Services.Coroutines;
 using BsseCode.Services.Factory;
 using BsseCode.Services.InputFol;
 using BsseCode.Services.PlayerMouseService;
@@ -13,14 +11,15 @@ using BsseCode.Services.TimeProvider;
 using Cinemachine;
 using UnityEngine;
 using Zenject;
-using Zenject.SpaceFighter;
+
 
 namespace BsseCode.Installers
 {
     public class GameStartInstaller : MonoInstaller
     {
         [SerializeField] private GameObject poolsBasePrefab;
-
+        [SerializeField] private GameObject playerPrefab;
+        
         public override void InstallBindings()
         {
             #region Services
@@ -37,6 +36,8 @@ namespace BsseCode.Installers
 
             Container.Bind<IBulletCounter>().To<BulletCounter>().FromComponentInHierarchy().AsSingle();
             Container.Bind<ITimerLevel>().To<TimerLevel>().AsSingle();
+          //  Container.Bind<SpawnZonaController>().FromComponentInHierarchy().AsSingle();
+            
             //Container.Bind<ResultsManager>().FromComponentInHierarchy().AsSingle();
 
             #endregion
@@ -49,10 +50,15 @@ namespace BsseCode.Installers
 
             #endregion
 
-            Container.Bind<PlayerFactory>().FromComponentInHierarchy().AsSingle();
+            // Container.Bind<PlayerFactory>().FromComponentInHierarchy().AsSingle();
             Container.Bind<IFactoryComponent>().To<FactoryComponent>().AsSingle();
 
             Container.Bind<IPoolsBase>().To<PoolsBase>().FromComponentInNewPrefab(poolsBasePrefab).AsSingle();
+            
+            Container.Bind<Player>().FromComponentInNewPrefab(playerPrefab).AsSingle();
+            
+              
+            
         }
     }
 }

@@ -11,7 +11,7 @@ namespace BsseCode.Constants
         public const string Horizontal = "Horizontal";
         public const string Vertical = "Vertical";
         
-        public const float SpeedEnemy = 2.5f;
+        public const float SpeedEnemy = 3.5f;
         public const float SpeedPlayer = 4f;
         
         public const float SlowTimeModificator = 0.2f;

@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Runtime.InteropServices;
-using BsseCode.Hero;
 using BsseCode.Mechanics.BulletCounter;
 using BsseCode.Services;
 using BsseCode.Services.Coroutines;
+using BsseCode.Tags;
 using UnityEngine;
 using Zenject;
 

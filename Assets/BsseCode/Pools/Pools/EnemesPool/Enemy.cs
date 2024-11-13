@@ -1,7 +1,5 @@
 using System.Collections;
-using BsseCode.Hero;
-using BsseCode.Hero.Spawner;
-using BsseCode.Mechanics.BulletCounter;
+using BsseCode.Caracters.Hero;
 using BsseCode.Mechanics.GameResults;
 using BsseCode.Pools.Pools.BulletPool;
 using BsseCode.Pools.Pools.ExplosionPool;
@@ -23,25 +21,23 @@ namespace BsseCode.Pools.Pools.EnemesPool
         private MoveService _moveService;
         private Vector2 _moveDirection;
         private ICoroutineService _coroutineService;
-        private PlayerFactory _playerFactory;
         private KillsController _killsController;
-
-
+        
         [Inject]
-        public void Construct(MoveService moveService,  PlayerFactory playerFactory, IPoolsBase poolBase, ICoroutineService coroutineService, KillsController killsController)
+        public void Construct(MoveService moveService,  Player player, IPoolsBase poolBase, ICoroutineService coroutineService, KillsController killsController)
         {
+            _player = player;
             _killsController = killsController;
 
             _coroutineService = coroutineService;
             _moveService = moveService;
             _poolsBase = poolBase;
-            _playerFactory = playerFactory;
+           
         }
 
         public void SetParameters(float speed)
         {
             _speed = speed;
-            _player = _playerFactory.Player;
         }
 
         

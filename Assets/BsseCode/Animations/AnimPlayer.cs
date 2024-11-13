@@ -1,7 +1,8 @@
+using BsseCode.Caracters.Hero.Components;
 using BsseCode.Constants;
-using BsseCode.Hero;
 using BsseCode.Services.TimeProvider;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace BsseCode.Animations
@@ -9,7 +10,7 @@ namespace BsseCode.Animations
     public class AnimPlayer : MonoBehaviour
     {
           [SerializeField]  private Animator legsAnimator;
-           [SerializeField] private PlayerController player;
+           [FormerlySerializedAs("heroMove")] [FormerlySerializedAs("heroBase")] [FormerlySerializedAs("player")] [SerializeField] private MoveHendler move;
         
            private ITimeService _timeService;
          
@@ -21,7 +22,7 @@ namespace BsseCode.Animations
            
             private void Update()
             {
-                if (player.movementHeroDirection != Vector2.zero )
+                if (move.movementHeroDirection != Vector2.zero )
                 {
                     legsAnimator.SetBool(Constants.Const.Run, true );
                 }

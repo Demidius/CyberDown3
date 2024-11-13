@@ -1,36 +1,24 @@
-using BsseCode.Hero.Spawner;
-using BsseCode.Services.Factory;
+using BsseCode.Caracters.Elements;
+using BsseCode.Caracters.Hero;
 using UnityEngine;
-
 
 namespace BsseCode.Services.PlayerMouseService
 {
     public class PlayerMouseService : IPlayerMouseService, IService
     {
         private Camera _camera;
-        private PlayerFactory _playerFactory;
+        private Player _player;
 
-       
-        public PlayerMouseService(Camera camera, PlayerFactory playerFactory)
+        public PlayerMouseService(Camera camera, Player player)
         {
+            _player = player;
             _camera = camera;
-            _playerFactory = playerFactory; 
         }
         
         public Vector2 GetDirection()
         {
-            
-            Vector3 mouseScreenPosition = new Vector3(UnityEngine.Input.mousePosition.x, UnityEngine.Input.mousePosition.y, _camera.nearClipPlane);
-            Vector3 mouseWorldPosition = _camera.ScreenToWorldPoint(mouseScreenPosition);
-
-            
-            
-            Vector2 direction = new Vector2(
-                mouseWorldPosition.x - _playerFactory.Player.transform.position.x,
-                mouseWorldPosition.y - _playerFactory.Player.transform.position.y
-            );
-            
-            return direction;
+            // Используем RotationUtils для получения направления от позиции игрока к мыши
+            return RotationUtils.GetDirectionToMouse(_player.transform.position, _camera);
         }
     }
 }

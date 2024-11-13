@@ -1,5 +1,4 @@
-using BsseCode.Hero.Spawner;
-using BsseCode.Services.Factory;
+using BsseCode.Caracters.Hero;
 using BsseCode.Services.InputFol;
 using UnityEngine;
 using Zenject;
@@ -13,12 +12,13 @@ namespace BsseCode.Pools.Pools.ShootFiresPool
         private IPoolsBase _poolBase;
         private Vector2 _direction;
         private IInputService _inputService;
-        private PlayerFactory _playerFactory;
+        private Player _player;
+
 
         [Inject]
-        public void Construct(IPoolsBase poolBullet, IInputService inputService, PlayerFactory playerFactory )
+        public void Construct(IPoolsBase poolBullet, IInputService inputService, Player player )
         {
-            _playerFactory = playerFactory;
+            _player = player;
             _poolBase = poolBullet;
             _inputService = inputService;
         }
@@ -26,7 +26,7 @@ namespace BsseCode.Pools.Pools.ShootFiresPool
         private void Start()
         {
             _inputService.ShootType1 += Shoot;
-            _spawnPoint = _playerFactory.Player.ShootStarter.transform;
+            _spawnPoint = _player.BulletSpawnPoint.transform;
         }
 
         private void Update()

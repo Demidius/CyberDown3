@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using BsseCode.Caracters.Hero;
 using BsseCode.Constants;
-using BsseCode.Hero.Spawner;
 using BsseCode.Pools.Pools.ExplosionPool;
 using BsseCode.Services.TimeProvider;
 using UnityEngine;
@@ -21,15 +21,15 @@ namespace BsseCode.Pools.Pools.EnemesPool
         private IPoolsBase _poolBase;
         private float _timer = 0f;
         private ITimeService _timeService;
-
-        private PlayerFactory _playerFactory;
         private IExplosionSpawner _explosionSpawner;
+        private Player _player;
 
 
         [Inject]
-        public void Construct(IPoolsBase poolBase, ITimeService timeService, PlayerFactory playerFactory)
+        public void Construct(IPoolsBase poolBase, ITimeService timeService, Player player)
         {
-            _playerFactory = playerFactory;
+            _player = player;
+           
             _timeService = timeService;
             _poolBase = poolBase;
         }
@@ -81,7 +81,7 @@ namespace BsseCode.Pools.Pools.EnemesPool
             {
                 selectedCollider = spawnAreas[Random.Range(0, spawnAreas.Count)];
                 randomPosition = GetRandomPointInCollider(selectedCollider);
-            } while (Vector3.Distance(randomPosition, _playerFactory.Player.transform.position) < minDistansForEnemy);
+            } while (Vector3.Distance(randomPosition, _player.transform.position) < minDistansForEnemy);
 
             var enemy = _poolBase.EnemyPoolComponent.GetElement();
             enemy.transform.position = randomPosition;
