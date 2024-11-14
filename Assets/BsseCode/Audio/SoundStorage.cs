@@ -8,6 +8,8 @@ namespace BsseCode.Audio
     {
         public AudioClip backgroundMusic;
         public AudioClip ShootGun;
+        [FormerlySerializedAs("Speps")] public AudioClip Steps;
+        
         public AudioClip[] soundEffects;
         [FormerlySerializedAs("tepsHero")] [FormerlySerializedAs("StepsHero")] public AudioClip stepsHero;
         

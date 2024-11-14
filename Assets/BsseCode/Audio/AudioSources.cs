@@ -27,13 +27,7 @@ namespace BsseCode.Audio
         {
             this.audioSource = audioSource;
         }
-
-        // private void Update()
-        // {
-        //     if (audioSource != null)
-        //         audioSource.pitch = Mathf.Clamp(_timeService.TimeScale, 0.8f, 1f);
-        // }
-
+      
         protected AudioSource AudioSource()
         {
             if (audioSource == null)

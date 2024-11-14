@@ -6,8 +6,8 @@ namespace BsseCode.Audio
 {
     public class SoundsExplorer : ISoundsExplorer
     {
-
         private readonly ICoroutineService _coroutineService;
+        private Coroutine _activeCoroutine;
 
         public SoundsExplorer(ICoroutineService coroutineService)
         {
@@ -60,37 +60,50 @@ namespace BsseCode.Audio
         }
 
         // Воспроизведение звука повторно, пока выполняется условие
-        public void PlaySoundWhile(AudioClip clip, AudioSource audioSource, System.Func<bool> condition)
+        public void PlaySoundWhile(AudioClip clip, AudioSource audioSource, bool condition)
         {
-            if (clip == null || audioSource == null || condition == null) return;
-
-            _coroutineService.StartCoroutine(PlaySoundRepeatedly(clip, audioSource, condition));
+            
+            
+            if (clip == null || audioSource == null) return;
+            
+            if (condition)
+            {
+                _activeCoroutine =
+                    _coroutineService.StartCoroutine(PlaySoundRepeatedly(clip, audioSource));
+            }
+            else
+            {
+                if (_activeCoroutine != null)
+                {
+                    _coroutineService.StopCoroutine(_activeCoroutine);
+                    _activeCoroutine = null;
+                }
+            }
+            
         }
 
         // Короутина для повторного воспроизведения звука при выполнении условия
-        private IEnumerator PlaySoundRepeatedly(AudioClip clip, AudioSource audioSource, System.Func<bool> condition)
+        private IEnumerator PlaySoundRepeatedly(AudioClip clip, AudioSource audioSource)
         {
-            while (condition())
+            while (true)
             {
                 audioSource.clip = clip;
                 audioSource.Play();
-
-                // Ждем завершения текущего клипа перед повтором
                 yield return new WaitForSeconds(clip.length);
             }
-
         }
     }
 
 
     public interface ISoundsExplorer
     {
-        public void PlayRandomSoundFrom(AudioClip[] clips, AudioSource audioSource, 
-            float volume = 1.0f, 
-            float pitchMin = 1.0f, 
+        public void PlayRandomSoundFrom(AudioClip[] clips, AudioSource audioSource,
+            float volume = 1.0f,
+            float pitchMin = 1.0f,
             float pitchMax = 1.0f);
+
         public void PlaySoundFrom(AudioClip clipName, AudioSource audioSource);
         public void PlayClipsInSequence(AudioClip[] clipName, AudioSource audioSource);
-        public void PlaySoundWhile(AudioClip clip, AudioSource audioSource, System.Func<bool> condition);
+        public void PlaySoundWhile(AudioClip clip, AudioSource audioSource, bool condition);
     }
 }

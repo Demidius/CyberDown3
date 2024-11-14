@@ -12,7 +12,9 @@ namespace BsseCode.Caracters.Hero
         public BulletSpawnPoint BulletSpawnPoint { get; private set; }
         public CharacterStateMachine StateMachine { get; private set; }
         public CollisionHandler CollisionHandler { get; private set; }
+        public MoveHendler MoveHendler { get; private set; }
         public BodyHero BodyHero { get; private set; }
+        public LegsHero LegsHero { get; private set; }
 
         private CinemachineVirtualCamera _virtualCamera;
 
@@ -29,7 +31,8 @@ namespace BsseCode.Caracters.Hero
             StateMachine.ChangeState(new IdleState());
             CollisionHandler = GetComponentInChildren<CollisionHandler>();
             BodyHero = GetComponentInChildren<BodyHero>();
-            BulletSpawnPoint = GetComponentInChildren<BulletSpawnPoint>();
+            MoveHendler = GetComponentInChildren<MoveHendler>();
+            LegsHero = GetComponentInChildren<LegsHero>();
         }
     }
 }
