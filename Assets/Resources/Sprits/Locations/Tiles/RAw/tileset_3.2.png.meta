@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b2aed5fce4824e24890bc8704a4f3b5b
+guid: 06d35cfee1cc80947b0b519f783bc607
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tileset_Unity_1.2_0
+      name: tileset_3.2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f36b7cb077ff254b8049d75e593d812
-      internalID: -257176176
+      spriteID: 85206af98c7e42045a710aec0b5a146f
+      internalID: 935556193
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset_Unity_1.2_1
+      name: tileset_3.2_1
       rect:
         serializedVersion: 2
         x: 32
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b70525f93b5fbf4990847a66a8906ba
-      internalID: 1016748443
+      spriteID: 349c503805fec804097660880ff73af5
+      internalID: 1413538287
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset_Unity_1.2_2
+      name: tileset_3.2_2
       rect:
         serializedVersion: 2
         x: 64
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e4c9af1361af6d4daaaf6443f7b9c1b
-      internalID: 1512851569
+      spriteID: 7b2cf0692346a0343b823d3c53e9560e
+      internalID: 1362226603
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset_Unity_1.2_3
+      name: tileset_3.2_3
       rect:
         serializedVersion: 2
         x: 0
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c31b4a115fb8a9449ea8355cd6f5570
-      internalID: -1952390739
+      spriteID: 8bcd8a7a63b22824cbb6922f1be94ce4
+      internalID: -946939245
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset_Unity_1.2_4
+      name: tileset_3.2_4
       rect:
         serializedVersion: 2
         x: 32
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa5c66f130a91794082bd9cdb196cb73
-      internalID: -2121104901
+      spriteID: 67bdbb9cccaa07545a9245aa60befef2
+      internalID: 215512805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset_Unity_1.2_5
+      name: tileset_3.2_5
       rect:
         serializedVersion: 2
         x: 64
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d600a18a98cc63b43a559a17c0e26933
-      internalID: 1729359435
+      spriteID: 057514e4ef5043c48b82518fe7d6e379
+      internalID: 1759156648
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset_Unity_1.2_6
+      name: tileset_3.2_6
       rect:
         serializedVersion: 2
         x: 0
@@ -250,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a15b127247ede9e4aacd3e58d591ac60
-      internalID: -173603031
+      spriteID: 9353b1ee2c88b354691e7de7db54c8d4
+      internalID: 451836596
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset_Unity_1.2_7
+      name: tileset_3.2_7
       rect:
         serializedVersion: 2
         x: 32
@@ -271,14 +271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 707446881dd84c6478c1b6f104fe8ae8
-      internalID: -1319863935
+      spriteID: b521309a91c0e914398bb5a45d35e222
+      internalID: 1195726188
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset_Unity_1.2_8
+      name: tileset_3.2_8
       rect:
         serializedVersion: 2
         x: 64
@@ -292,8 +292,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b688aa06f0f2bfa4d9019b3e43797c4c
-      internalID: -124166547
+      spriteID: 2bb7305ada8799d479add427d2c9c43c
+      internalID: -1013872047
       vertices: []
       indices: 
       edges: []
@@ -309,15 +309,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tileset_Unity_1.2_0: -257176176
-      tileset_Unity_1.2_1: 1016748443
-      tileset_Unity_1.2_2: 1512851569
-      tileset_Unity_1.2_3: -1952390739
-      tileset_Unity_1.2_4: -2121104901
-      tileset_Unity_1.2_5: 1729359435
-      tileset_Unity_1.2_6: -173603031
-      tileset_Unity_1.2_7: -1319863935
-      tileset_Unity_1.2_8: -124166547
+      tileset_3.2_0: 935556193
+      tileset_3.2_1: 1413538287
+      tileset_3.2_2: 1362226603
+      tileset_3.2_3: -946939245
+      tileset_3.2_4: 215512805
+      tileset_3.2_5: 1759156648
+      tileset_3.2_6: 451836596
+      tileset_3.2_7: 1195726188
+      tileset_3.2_8: -1013872047
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

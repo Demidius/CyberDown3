@@ -33,6 +33,7 @@ namespace BsseCode.Caracters.Hero
             BodyHero = GetComponentInChildren<BodyHero>();
             MoveHendler = GetComponentInChildren<MoveHendler>();
             LegsHero = GetComponentInChildren<LegsHero>();
+            BulletSpawnPoint = GetComponentInChildren<BulletSpawnPoint>();
         }
     }
 }

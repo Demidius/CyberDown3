@@ -9,30 +9,30 @@ namespace BsseCode.Animations
 {
     public class AnimPlayer : MonoBehaviour
     {
-          [SerializeField]  private Animator legsAnimator;
-           [FormerlySerializedAs("heroMove")] [FormerlySerializedAs("heroBase")] [FormerlySerializedAs("player")] [SerializeField] private MoveHendler move;
-        
-           private ITimeService _timeService;
-         
-           [Inject]
-           public void Construct(ITimeService timeService)
-           {
-               _timeService = timeService;
-           }
-           
-            private void Update()
+        [SerializeField] private Animator legsAnimator;
+        [SerializeField] private MoveHendler move;
+
+        private ITimeService _timeService;
+
+        [Inject]
+        public void Construct(ITimeService timeService)
+        {
+            _timeService = timeService;
+        }
+
+        private void Update()
+        {
+            if (move.movementHeroDirection != Vector2.zero)
             {
-                if (move.movementHeroDirection != Vector2.zero )
-                {
-                    legsAnimator.SetBool(Constants.Const.Run, true );
-                }
-                else
-                {
-                    legsAnimator.SetBool(Constants.Const.Run, false );
-                }
-                
-                
-                legsAnimator.speed = _timeService.TimeScale;
+                legsAnimator.SetBool(Constants.Const.Run, true);
             }
+            else
+            {
+                legsAnimator.SetBool(Constants.Const.Run, false);
+            }
+
+
+            legsAnimator.speed = Mathf.Clamp(_timeService.TimeScale, 0.6f, 1.0f);
+        }
     }
 }

@@ -26,7 +26,7 @@ namespace BsseCode.Installers
 
             Container.Bind<IInputService>().To<PcInputService>().AsSingle();
             Container.Bind<IPlayerMouseService>().To<PlayerMouseService>().AsSingle();
-            Container.Bind<ITimeService>().To<TimeService>().AsSingle();
+           
             Container.Bind<MoveService>().AsSingle();
             Container.Bind<KillsController>().FromComponentInHierarchy().AsSingle();
 

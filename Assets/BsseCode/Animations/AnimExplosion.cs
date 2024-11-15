@@ -19,7 +19,7 @@ namespace BsseCode.Animations
            
         private void Update()
         {
-            _animator.speed = _timeService.TimeScale;
+            _animator.speed = Mathf.Clamp(_timeService.TimeScale, 0.3f, 1.0f);
         }
     }
 }

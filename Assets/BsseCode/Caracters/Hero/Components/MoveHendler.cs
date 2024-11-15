@@ -14,9 +14,9 @@ namespace BsseCode.Caracters.Hero.Components
         private IInputService _inputService;
         private MoveService _moveService;
         private float _movementSpeed;
-        private bool _isMoving;
+        public bool isMoving { get; private set; }
 
-        public event Action<bool> OnMoving;
+        public event Action OnMoving;
 
         [Inject]
         public void Construct(IInputService inputService, MoveService moveService)
@@ -45,18 +45,18 @@ namespace BsseCode.Caracters.Hero.Components
         {
             movementHeroDirection = _inputService.GetMovementInput();
 
-            IsMoving();
+            MovingAction();
         }
 
-        private void IsMoving()
+        private void MovingAction()
         {
             bool isCurrentlyMoving = movementHeroDirection.sqrMagnitude > 0.5f;
 
             // Проверка, чтобы событие вызывалось только при изменении состояния движения
-            if (isCurrentlyMoving != _isMoving)
+            if (isCurrentlyMoving != isMoving)
             {
-                OnMoving?.Invoke(isCurrentlyMoving);
-                _isMoving = isCurrentlyMoving;
+                isMoving = isCurrentlyMoving;
+                OnMoving?.Invoke();
             }
         }
     }

@@ -13,7 +13,7 @@ namespace BsseCode.Audio
 
         protected ISoundsExplorer SoundsExplorer;
         protected SoundStorage SoundStorage;
-        private ITimeService _timeService;
+        protected ITimeService _timeService;
 
         [Inject]
         public void Construct(ISoundsExplorer soundsExplorer, SoundStorage soundStorage, ITimeService timeService)
@@ -22,6 +22,8 @@ namespace BsseCode.Audio
             SoundStorage = soundStorage;
             SoundsExplorer = soundsExplorer;
         }
+        
+        
 
         protected void SetAudioSource(AudioSource audioSource)
         {

@@ -1,5 +1,6 @@
 using System.Collections;
 using BsseCode.Services.Coroutines;
+using BsseCode.Services.TimeProvider;
 using UnityEngine;
 
 namespace BsseCode.Audio
@@ -7,12 +8,16 @@ namespace BsseCode.Audio
     public class SoundsExplorer : ISoundsExplorer
     {
         private readonly ICoroutineService _coroutineService;
+        private readonly ITimeService _timeService;
         private Coroutine _activeCoroutine;
 
-        public SoundsExplorer(ICoroutineService coroutineService)
+        public SoundsExplorer(ICoroutineService coroutineService, ITimeService timeService)
         {
             _coroutineService = coroutineService;
+            _timeService = timeService;
         }
+
+        private float TineScaleForAudio() => Mathf.Clamp(_timeService.TimeScale, 0.6f, 1.0f);
 
         // Воспроизведение случайного звука из массива
         public void PlayRandomSoundFrom(AudioClip[] clips, AudioSource audioSource,
@@ -24,17 +29,18 @@ namespace BsseCode.Audio
 
             AudioClip selectedClip = clips[Random.Range(0, clips.Length)];
             audioSource.volume = volume;
-            audioSource.pitch = pitchMin != pitchMax ? Random.Range(pitchMin, pitchMax) : pitchMin;
-            audioSource.PlayOneShot(selectedClip);
-            audioSource.pitch = 1.0f;
-        }
 
+            float basePitch = pitchMin != pitchMax ? Random.Range(pitchMin, pitchMax) : pitchMin;
+            audioSource.pitch = basePitch * TineScaleForAudio();
+            audioSource.PlayOneShot(selectedClip);
+        }
 
         // Воспроизведение конкретного звука
         public void PlaySoundFrom(AudioClip clip, AudioSource audioSource)
         {
             if (clip == null || audioSource == null) return;
 
+            audioSource.pitch = TineScaleForAudio();
             audioSource.PlayOneShot(clip);
         }
 
@@ -51,24 +57,23 @@ namespace BsseCode.Audio
         {
             foreach (var clip in clips)
             {
+                audioSource.pitch = TineScaleForAudio();
                 audioSource.clip = clip;
                 audioSource.Play();
 
-                // Ждём, пока текущий клип завершится
-                yield return new WaitForSeconds(clip.length);
+                // Ждём, пока текущий клип завершится с учётом изменённого pitch
+                yield return new WaitForSeconds(clip.length / audioSource.pitch);
             }
         }
 
         // Воспроизведение звука повторно, пока выполняется условие
         public void PlaySoundWhile(AudioClip clip, AudioSource audioSource, bool condition)
         {
-            
-            
             if (clip == null || audioSource == null) return;
-            
+
             if (condition)
             {
-                _activeCoroutine =
+                _activeCoroutine = 
                     _coroutineService.StartCoroutine(PlaySoundRepeatedly(clip, audioSource));
             }
             else
@@ -79,7 +84,6 @@ namespace BsseCode.Audio
                     _activeCoroutine = null;
                 }
             }
-            
         }
 
         // Короутина для повторного воспроизведения звука при выполнении условия
@@ -87,23 +91,25 @@ namespace BsseCode.Audio
         {
             while (true)
             {
+                audioSource.pitch = TineScaleForAudio();
                 audioSource.clip = clip;
                 audioSource.Play();
-                yield return new WaitForSeconds(clip.length);
+
+                // Ждём завершения текущего клипа с учётом pitch
+                yield return new WaitForSeconds(clip.length / audioSource.pitch);
             }
         }
     }
 
-
     public interface ISoundsExplorer
     {
-        public void PlayRandomSoundFrom(AudioClip[] clips, AudioSource audioSource,
+        void PlayRandomSoundFrom(AudioClip[] clips, AudioSource audioSource,
             float volume = 1.0f,
             float pitchMin = 1.0f,
             float pitchMax = 1.0f);
 
-        public void PlaySoundFrom(AudioClip clipName, AudioSource audioSource);
-        public void PlayClipsInSequence(AudioClip[] clipName, AudioSource audioSource);
-        public void PlaySoundWhile(AudioClip clip, AudioSource audioSource, bool condition);
+        void PlaySoundFrom(AudioClip clip, AudioSource audioSource);
+        void PlayClipsInSequence(AudioClip[] clips, AudioSource audioSource);
+        void PlaySoundWhile(AudioClip clip, AudioSource audioSource, bool condition);
     }
 }

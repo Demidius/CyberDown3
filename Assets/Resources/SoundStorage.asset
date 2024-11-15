@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundMusic: {fileID: 8300000, guid: debc39efe7b472444aa956f43764508b, type: 3}
   ShootGun: {fileID: 8300000, guid: 842dbcbe4f687284a900c24476de83eb, type: 3}
+  Steps: {fileID: 8300000, guid: c307812f39ef39946bb6187a27bb58e3, type: 3}
   soundEffects: []
+  stepsHero: {fileID: 8300000, guid: 3615b7a64abc1f6438dbe2f540192925, type: 3}

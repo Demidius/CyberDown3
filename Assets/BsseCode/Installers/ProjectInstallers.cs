@@ -2,6 +2,7 @@ using BsseCode.Audio;
 using BsseCode.Mechanics.GameResults;
 using BsseCode.Services.Coroutines;
 using BsseCode.Services.RandomNumder;
+using BsseCode.Services.TimeProvider;
 using BsseCode.StateMachines.GameStateMachine;
 using BsseCode.StateMachines.GameStateMachine.States;
 using UnityEngine;
@@ -27,7 +28,7 @@ namespace BsseCode.Installers
             Container.Bind<GameOverState>().AsSingle();
 
             #endregion
-
+            Container.Bind<ITimeService>().To<TimeService>().AsSingle();
             #region Coroutine
 
             var coroutineRunner = new GameObject("CoroutineRunner").AddComponent<CoroutineRunner>();
