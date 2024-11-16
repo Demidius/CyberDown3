@@ -3613,6 +3613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolsBasePrefab: {fileID: 3794947845382733442, guid: 98e7071c58e6d584b99625e081c118df, type: 3}
+  poolBasePrefab: {fileID: 2675953444711161925, guid: d2f5d6886bbd1cd43831723eb14d2790, type: 3}
   playerPrefab: {fileID: 404093767089904752, guid: 83e5d73ca5d34c542bd2ef871ff947c5, type: 3}
 --- !u!114 &444243858
 MonoBehaviour:

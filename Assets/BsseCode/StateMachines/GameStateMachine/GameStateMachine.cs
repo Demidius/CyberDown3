@@ -15,7 +15,6 @@ namespace BsseCode.StateMachines.GameStateMachine
 
         public void Start()
         {
-            // Запускаем машину состояний с BootstrapState
             SetState(new BootstrapState(this));
         }
     }

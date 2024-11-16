@@ -15,18 +15,16 @@ namespace BsseCode.StateMachines.GameStateMachine.States
         public void Enter()
         {
             Debug.Log("Главное меню: ожидание выбора игрока");
-            // Логика для отображения главного меню, например, ожидание нажатия кнопки "Начать игру"
         }
 
         public void StartGame()
         {
-            // Переход к загрузке уровня
             _gameStateMachine.SetState(new LoadLevelState(_gameStateMachine, Const.Game));
         }
 
         public void Exit()
         {
-            // Очистка данных, если необходимо
+           
         }
     }
 }

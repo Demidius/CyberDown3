@@ -10,16 +10,15 @@ namespace BsseCode.Pools.Pools.BulletPool
     {
         [SerializeField] private float lifetime = 2f;
 
-        private IPoolsBase _poolComponent;
+        private IPoolController _poolComponent;
         private float _speed;
         private MoveService _moveService;
         private Vector2 _direction;
         private ICoroutineService _coroutineService;
         private Coroutine _coroutineLifeRoutine;
 
-
         [Inject]
-        public void Construct(MoveService moveService, IPoolsBase poolBullet, ICoroutineService coroutineService)
+        public void Construct(MoveService moveService, IPoolController poolBullet, ICoroutineService coroutineService)
         {
             _coroutineService = coroutineService;
             _moveService = moveService;
@@ -29,8 +28,8 @@ namespace BsseCode.Pools.Pools.BulletPool
         public void SetParameters(float speed, Vector2 direction)
         {
             _speed = speed;
-            _direction =  direction.normalized;
-            
+            _direction = direction.normalized;
+
             SetRotationBasedOnDirection();
             StartLifeRoutine();
         }
@@ -48,7 +47,7 @@ namespace BsseCode.Pools.Pools.BulletPool
 
         private void MoveBullet()
         {
-            Vector3 newPosition = _moveService.Move(_direction, _speed, this.transform.position );
+            Vector3 newPosition = _moveService.Move(_direction, _speed, transform.position);
             transform.position = newPosition;
         }
 
@@ -59,6 +58,7 @@ namespace BsseCode.Pools.Pools.BulletPool
 
         private void StartLifeRoutine()
         {
+            StopLifeRoutine(); // Остановить корутину, если она уже запущена
             _coroutineLifeRoutine = _coroutineService.StartCoroutine(LifeRoutine());
         }
 
@@ -79,8 +79,15 @@ namespace BsseCode.Pools.Pools.BulletPool
 
         public void Deactivate()
         {
-            _poolComponent.BulletPoolComponent?.ReturnToPool(this);
-            
+            var bulletPool = _poolComponent.GetPool<Bullet>("BulletPool");
+            if (bulletPool != null)
+            {
+                bulletPool.ReturnToPool(this);
+            }
+            else
+            {
+                Debug.LogWarning("Bullet pool is not found.");
+            }
         }
     }
 }

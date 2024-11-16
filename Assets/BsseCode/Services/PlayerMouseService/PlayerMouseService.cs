@@ -17,7 +17,6 @@ namespace BsseCode.Services.PlayerMouseService
         
         public Vector2 GetDirection()
         {
-            // Используем RotationUtils для получения направления от позиции игрока к мыши
             return RotationUtils.GetDirectionToMouse(_player.transform.position, _camera);
         }
     }

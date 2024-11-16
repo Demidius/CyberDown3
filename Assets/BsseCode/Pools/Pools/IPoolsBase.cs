@@ -9,7 +9,7 @@ namespace BsseCode.Pools.Pools
 {
     public interface IPoolsBase
     { 
-        PoolComponent<Bullet> BulletPoolComponent { get; set; }
+      //  PoolComponent<Bullet> BulletPoolComponent { get; set; }
         public PoolComponent<Enemy> EnemyPoolComponent { get;  set; }
         public PoolComponent<ShootFire> ShootFirePoolComponent { get;  set; }
         

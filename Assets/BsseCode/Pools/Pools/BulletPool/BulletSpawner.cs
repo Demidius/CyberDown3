@@ -10,17 +10,17 @@ namespace BsseCode.Pools.Pools.BulletPool
         [SerializeField] private Transform _bulletSpawnPoint;
 
         private readonly float _bulletSpeed = 10;
-        private IPoolsBase _poolBullet;
+        private IPoolController _poolBullet;
         private Vector2 _direction;
         private IInputService _inputService;
        
         private IBulletCounter _bulletCounter;
 
         [Inject]
-        public void Construct(IPoolsBase poolBullet, IInputService inputService, IBulletCounter bulletCounter)
+        public void Construct(IPoolController poolController, IInputService inputService, IBulletCounter bulletCounter)
         {
             _bulletCounter = bulletCounter;
-            _poolBullet = poolBullet;
+            _poolBullet = poolController;
             _inputService = inputService;
         }
 
@@ -38,10 +38,21 @@ namespace BsseCode.Pools.Pools.BulletPool
         {
             if (_bulletCounter.BulletCount > 0)
             {
-                var bullet = _poolBullet.BulletPoolComponent.GetElement();
-                bullet.transform.position = _bulletSpawnPoint.transform.position;
-                bullet.SetParameters(_bulletSpeed, _direction);
-                _bulletCounter.SubtractBullet();
+                // Получаем пул через метод GetPool
+                var bulletPool = _poolBullet.GetPool<Bullet>("BulletPool"); 
+
+                if (bulletPool != null)
+                {
+                    // Извлекаем пулю из пула
+                    var bullet = bulletPool.GetElement();
+                    bullet.transform.position = _bulletSpawnPoint.position;
+                    bullet.SetParameters(_bulletSpeed, _direction);
+                    _bulletCounter.SubtractBullet();
+                }
+                else
+                {
+                    Debug.LogError("Bullet pool not found!");
+                }
             }
             else
             {

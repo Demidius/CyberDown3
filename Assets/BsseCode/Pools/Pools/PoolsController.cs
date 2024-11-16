@@ -11,10 +11,10 @@ using Zenject;
 
 namespace BsseCode.Pools.Pools
 {
-    public class PoolsBase : MonoBehaviour, IPoolsBase
+    public class PoolsController : MonoBehaviour, IPoolsBase
     {
 
-        [SerializeField] private Bullet bulletPrefab;
+       // [SerializeField] private Bullet bulletPrefab;
         [SerializeField] private Enemy enemyPrefab;
         [SerializeField] private ShootFire shootFirePrefab;
         [SerializeField] private Explosion explosionPrefab;
@@ -23,7 +23,7 @@ namespace BsseCode.Pools.Pools
         
         [SerializeField] private int baseSize = 10;
 
-        public PoolComponent<Bullet> BulletPoolComponent { get; set; }
+     //   public PoolComponent<Bullet> BulletPoolComponent { get; set; }
         public PoolComponent<Enemy> EnemyPoolComponent { get;  set; }
         public PoolComponent<ShootFire> ShootFirePoolComponent { get;  set; }
         public PoolComponent<Explosion> ExplosionComponent { get;  set; }
@@ -41,7 +41,7 @@ namespace BsseCode.Pools.Pools
 
         private void Start()
         {
-            BulletPoolComponent = InitializePoolComponent(bulletPrefab, baseSize);
+     //       BulletPoolComponent = InitializePoolComponent(bulletPrefab, baseSize);
             EnemyPoolComponent = InitializePoolComponent(enemyPrefab, baseSize);
             ShootFirePoolComponent = InitializePoolComponent(shootFirePrefab, baseSize);
             ExplosionComponent = InitializePoolComponent(explosionPrefab, baseSize);

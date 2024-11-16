@@ -20,12 +20,10 @@ namespace BsseCode.StateMachines.GameStateMachine.States
 
         public void StartMenu()
         {
-            // Переход к загрузке уровня
             _gameStateMachine.SetState(new LoadLevelState(_gameStateMachine, Const.Menu));
         }
         public void EndGame()
         {
-            // Завершение игры, переход к GameOverState
             _gameStateMachine.SetState(new GameOverState(_gameStateMachine));
         }
     }
