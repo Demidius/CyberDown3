@@ -117,7 +117,6 @@ GameObject:
   - component: {fileID: 4523540356751944767}
   - component: {fileID: 6275451067027568444}
   - component: {fileID: 1997144434694063362}
-  - component: {fileID: 880815527199172568}
   - component: {fileID: 9192550097228324437}
   m_Layer: 0
   m_Name: Player
@@ -142,6 +141,7 @@ Transform:
   - {fileID: 7248139430461912941}
   - {fileID: 2741291477311587344}
   - {fileID: 1171712324968820310}
+  - {fileID: 2567969008700488243}
   - {fileID: 8785886819866906361}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -185,20 +185,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementHeroDirection: {x: 0, y: 0}
---- !u!114 &880815527199172568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 404093767089904752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a0dedf987e49459b64eb391b179b1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  legsAnimator: {fileID: 2432284368151515132}
-  move: {fileID: 1997144434694063362}
 --- !u!114 &9192550097228324437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +195,50 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c9929b21be54d8894957b59a02dfec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &2762718058034439767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2567969008700488243}
+  - component: {fileID: 3749421308369154388}
+  m_Layer: 0
+  m_Name: HeroAnimationController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2567969008700488243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2762718058034439767}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4523540356751944767}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3749421308369154388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2762718058034439767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be36ce35139453c944743b27d6b774a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2913165146433138357
@@ -457,7 +487,7 @@ GameObject:
   - component: {fileID: 5648463651275872036}
   - component: {fileID: 3317472174512788940}
   m_Layer: 0
-  m_Name: AudioSourcePlayer
+  m_Name: HeroSoundController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

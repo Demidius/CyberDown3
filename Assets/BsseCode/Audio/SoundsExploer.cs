@@ -73,7 +73,7 @@ namespace BsseCode.Audio
 
             if (condition)
             {
-                _activeCoroutine = 
+                _activeCoroutine =
                     _coroutineService.StartCoroutine(PlaySoundRepeatedly(clip, audioSource));
             }
             else
@@ -99,6 +99,65 @@ namespace BsseCode.Audio
                 yield return new WaitForSeconds(clip.length / audioSource.pitch);
             }
         }
+
+        public void PlayRandomSoundWhile(AudioClip[] clips, AudioSource audioSource, bool condition,
+            float pitchMin = 1.0f,
+            float pitchMax = 1.0f)
+        {
+            if (clips == null || clips.Length == 0 || audioSource == null)
+            {
+                Debug.LogWarning("Некорректные параметры: массив клипов пустой или AudioSource не задан.");
+                return;
+            }
+
+            if (!audioSource.gameObject.activeInHierarchy || !audioSource.enabled)
+            {
+                Debug.LogWarning("AudioSource не активен или отключён.");
+                return;
+            }
+
+            float basePitch = pitchMin != pitchMax ? Random.Range(pitchMin, pitchMax) : pitchMin;
+
+            if (condition)
+            {
+                if (_activeCoroutine == null)
+                {
+                    _activeCoroutine =
+                        _coroutineService.StartCoroutine(PlayRandomSoundRepeatedly(clips, audioSource, basePitch));
+                }
+            }
+            else
+            {
+                if (_activeCoroutine != null)
+                {
+                    _coroutineService.StopCoroutine(_activeCoroutine);
+                    _activeCoroutine = null;
+                }
+            }
+        }
+        private IEnumerator PlayRandomSoundRepeatedly(AudioClip[] clips, AudioSource audioSource, float basePitch)
+        {
+            while (true)
+            {
+                // Проверяем, что AudioSource активен и включён
+                if (audioSource == null || !audioSource.gameObject.activeInHierarchy || !audioSource.enabled)
+                {
+                    Debug.LogWarning("AudioSource неактивен или отключён. Завершаем воспроизведение.");
+                    yield break; // Завершаем корутину, если AudioSource недоступен
+                }
+
+                // Выбираем случайный клип и воспроизводим
+                AudioClip selectedClip = clips[Random.Range(0, clips.Length)];
+                audioSource.pitch = TineScaleForAudio() * basePitch;
+                audioSource.clip = selectedClip;
+                audioSource.Play();
+
+                // Ждём завершения текущего клипа с учётом pitch
+                yield return new WaitForSeconds(selectedClip.length / audioSource.pitch);
+            }
+        }
+
+       
     }
 
     public interface ISoundsExplorer
@@ -111,5 +170,9 @@ namespace BsseCode.Audio
         void PlaySoundFrom(AudioClip clip, AudioSource audioSource);
         void PlayClipsInSequence(AudioClip[] clips, AudioSource audioSource);
         void PlaySoundWhile(AudioClip clip, AudioSource audioSource, bool condition);
+
+        public void PlayRandomSoundWhile(AudioClip[] clips, AudioSource audioSource, bool condition,
+            float pitchMin = 1.0f,
+            float pitchMax = 1.0f);
     }
 }

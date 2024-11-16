@@ -1,12 +1,13 @@
 using BsseCode.Services.TimeProvider;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace BsseCode.Animations
 {
     public class AnimShootFire : MonoBehaviour
     {
-        [SerializeField]  private Animator _shootAnimator;
+        [SerializeField]  private Animator shootAnimator;
        
         private ITimeService _timeService;
          
@@ -18,7 +19,7 @@ namespace BsseCode.Animations
            
         private void Update()
         {
-            _shootAnimator.speed = _timeService.TimeScale * 4f;
+            shootAnimator.speed = _timeService.TimeScale * 4f;
         }
     }
 }

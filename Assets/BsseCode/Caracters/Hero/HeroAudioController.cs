@@ -6,12 +6,12 @@ using Zenject;
 
 namespace BsseCode.Caracters.Hero
 {
-    public class ActionController : AudioSources
+    public class HeroAudioController : AudioSources
     {
         private IInputService _inputService;
         private Player _player;
         private bool isGo;
-        
+      
 
         [Inject]
         public void Construct(IInputService inputService, Player player)
@@ -27,8 +27,7 @@ namespace BsseCode.Caracters.Hero
 
         private void PlayStep()
         {
-            isGo  = _player.MoveHendler.isMoving;
-            SoundsExplorer.PlaySoundWhile(SoundStorage.Steps, AudioSource(), isGo);
+            SoundsExplorer.PlayRandomSoundWhile(SoundStorage.Steps1, AudioSource(), _player.MoveHendler.isMoving, pitchMin:  1.3f, pitchMax: 1.6f);
         }
 
         private void OnSlow()
@@ -36,18 +35,13 @@ namespace BsseCode.Caracters.Hero
             
         }
 
-        // private void Update()
-        // {
-        //     AudioSource().pitch = Mathf.Clamp(_timeService.TimeScale, 0.9f, 1.0f);
-        //     // AudioSource().time = Mathf.Clamp(_timeService.TimeScale, 0.7f, 1.0f);
-        //     
-        // }
-
         private void Start()
         {
             _inputService.ShootType1 += PlayShoot;
             _player.MoveHendler.OnMoving += PlayStep;
             _inputService.ToggleTimeEvent += OnSlow;
+            
+            
         }
 
         private void OnDestroy()
@@ -56,5 +50,7 @@ namespace BsseCode.Caracters.Hero
             _player.MoveHendler.OnMoving -= PlayStep;
             _inputService.ToggleTimeEvent -= OnSlow;
         }
+        
+       
     }
 }

@@ -43,7 +43,7 @@ namespace BsseCode.Installers
             
             #region Sound
             
-            Container.Bind<ISoundsExplorer>().To<SoundsExplorer>().AsSingle();
+            Container.Bind<ISoundsExplorer>().To<SoundsExplorer>().AsTransient();
           
             var soundStorage = Resources.Load<SoundStorage>("SoundStorage");
         
