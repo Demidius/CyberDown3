@@ -10,20 +10,15 @@ namespace BsseCode.Audio
     {
         [SerializeField] private AudioSource audioSource;
 
-
         protected ISoundsExplorer SoundsExplorer;
         protected SoundStorage SoundStorage;
-        protected ITimeService _timeService;
-
+       
         [Inject]
-        public void Construct(ISoundsExplorer soundsExplorer, SoundStorage soundStorage, ITimeService timeService)
+        public void Construct(ISoundsExplorer soundsExplorer, SoundStorage soundStorage)
         {
-            _timeService = timeService;
             SoundStorage = soundStorage;
             SoundsExplorer = soundsExplorer;
         }
-        
-        
 
         protected void SetAudioSource(AudioSource audioSource)
         {
@@ -40,8 +35,6 @@ namespace BsseCode.Audio
                     Debug.LogWarning("AudioSource не найден на объекте!");
                 }
             }
-
-
             return audioSource;
         }
     }

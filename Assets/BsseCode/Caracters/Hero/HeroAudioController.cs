@@ -30,25 +30,16 @@ namespace BsseCode.Caracters.Hero
             SoundsExplorer.PlayRandomSoundWhile(SoundStorage.Steps1, AudioSource(), _player.MoveHendler.isMoving, pitchMin:  1.3f, pitchMax: 1.6f);
         }
 
-        private void OnSlow()
-        {
-            
-        }
-
         private void Start()
         {
             _inputService.ShootType1 += PlayShoot;
             _player.MoveHendler.OnMoving += PlayStep;
-            _inputService.ToggleTimeEvent += OnSlow;
-            
-            
         }
 
         private void OnDestroy()
         {
             _inputService.ShootType1 -= PlayShoot;
             _player.MoveHendler.OnMoving -= PlayStep;
-            _inputService.ToggleTimeEvent -= OnSlow;
         }
         
        

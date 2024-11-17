@@ -139,20 +139,17 @@ namespace BsseCode.Audio
         {
             while (true)
             {
-                // Проверяем, что AudioSource активен и включён
                 if (audioSource == null || !audioSource.gameObject.activeInHierarchy || !audioSource.enabled)
                 {
                     Debug.LogWarning("AudioSource неактивен или отключён. Завершаем воспроизведение.");
-                    yield break; // Завершаем корутину, если AudioSource недоступен
+                    yield break;
                 }
-
-                // Выбираем случайный клип и воспроизводим
+               
                 AudioClip selectedClip = clips[Random.Range(0, clips.Length)];
                 audioSource.pitch = TineScaleForAudio() * basePitch;
                 audioSource.clip = selectedClip;
                 audioSource.Play();
-
-                // Ждём завершения текущего клипа с учётом pitch
+                
                 yield return new WaitForSeconds(selectedClip.length / audioSource.pitch);
             }
         }
