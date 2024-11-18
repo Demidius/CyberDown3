@@ -1,9 +1,8 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace BsseCode.Audio
+namespace BsseCode.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "SoundStorage", menuName = "Audio/Sound Storage")]
+    [CreateAssetMenu(fileName = "SoundStorage", menuName = "ScriptableObjects/MyData")]
     public class SoundStorage: ScriptableObject
     {
         public AudioClip backgroundMusic;
