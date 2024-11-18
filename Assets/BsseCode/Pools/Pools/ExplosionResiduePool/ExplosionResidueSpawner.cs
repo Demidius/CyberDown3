@@ -7,17 +7,17 @@ namespace BsseCode.Pools.Pools.ExplosionResiduePool
     {
 
         private Transform _spawnPoint;
-        private IPoolsBase _poolBase;
+        private IPoolController _poolBase;
 
         [Inject]
-        public void Construct(IPoolsBase poolBullet)
+        public void Construct(IPoolController poolBullet)
         {
             _poolBase = poolBullet;
         }
 
         public void Spawn(Vector2 position)
         {
-            var element = _poolBase.ExplosionComponent.GetElement();
+            var element = _poolBase.GetPool<ExplosionResidue>().GetElement();;
             element.transform.position = position;
         }
     }

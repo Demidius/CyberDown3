@@ -79,7 +79,7 @@ namespace BsseCode.Pools.Pools.BulletPool
 
         public void Deactivate()
         {
-            var bulletPool = _poolComponent.GetPool<Bullet>("BulletPool");
+            var bulletPool = _poolComponent.GetPool<Bullet>();
             if (bulletPool != null)
             {
                 bulletPool.ReturnToPool(this);

@@ -1,5 +1,6 @@
 using System;
 using BsseCode.Audio;
+using BsseCode.ScriptableObjects;
 using BsseCode.Services.TimeProvider;
 using UnityEngine;
 using UnityEngine.Serialization;

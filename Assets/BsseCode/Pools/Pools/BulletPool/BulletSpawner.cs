@@ -39,7 +39,7 @@ namespace BsseCode.Pools.Pools.BulletPool
             if (_bulletCounter.BulletCount > 0)
             {
                 // Получаем пул через метод GetPool
-                var bulletPool = _poolBullet.GetPool<Bullet>("BulletPool"); 
+                var bulletPool = _poolBullet.GetPool<Bullet>();
 
                 if (bulletPool != null)
                 {

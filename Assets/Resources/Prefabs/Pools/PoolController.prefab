@@ -44,7 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1db044e23ac04f1ca2e5448b440677cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolDataList:
-  - PoolName: BulletPool
-    Prefab: {fileID: 352926213396601502, guid: 8b9f47b8b655e7546b39f04724deeb76, type: 3}
-  baseSize: 10
+  poolsConfig: {fileID: 11400000, guid: b41e15ac0a4771d469bf98a67b922dc2, type: 2}
+  defaultPoolSize: 10

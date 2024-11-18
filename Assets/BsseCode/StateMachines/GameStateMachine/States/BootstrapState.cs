@@ -17,6 +17,7 @@ namespace BsseCode.StateMachines.GameStateMachine.States
             Debug.Log("Bootstrap: Инициализация игры");
 
            _gameStateMachine.SetState(new LoadLevelState(_gameStateMachine, Const.Menu));
+           
         }
 
         public void Exit()

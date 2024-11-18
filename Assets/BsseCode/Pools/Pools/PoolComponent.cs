@@ -15,11 +15,11 @@ namespace BsseCode.Pools.Pools
 
         private int poolCount;
 
-        public PoolComponent(T prefab, int count, Transform container, IFactoryComponent factoryComponent)
+        public PoolComponent(T prefab, int count,  IFactoryComponent factoryComponent)
         {
             _factoryComponent = factoryComponent;
             PrefabObject = prefab;
-            Container = container;
+            // Container = container;
             poolCount = count;
             Instantiate(poolCount);
         }
@@ -54,17 +54,5 @@ namespace BsseCode.Pools.Pools
             return obj;
         }
  
-        // public void Clear()
-        // {
-        //     while (pool.Count > 0)
-        //     {
-        //         var obj = pool.Dequeue();
-        //         if (obj != null)
-        //         {
-        //             obj.gameObject.SetActive(false);
-        //             Object.Destroy(obj.gameObject);  
-        //         }
-        //     }
-        // }
     }
 }

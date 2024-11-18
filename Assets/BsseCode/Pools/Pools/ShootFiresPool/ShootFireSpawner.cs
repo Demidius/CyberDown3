@@ -9,14 +9,14 @@ namespace BsseCode.Pools.Pools.ShootFiresPool
     {
         private Transform _spawnPoint;
         
-        private IPoolsBase _poolBase;
+        private IPoolController _poolBase;
         private Vector2 _direction;
         private IInputService _inputService;
         private Player _player;
 
 
         [Inject]
-        public void Construct(IPoolsBase poolBullet, IInputService inputService, Player player )
+        public void Construct(IPoolController poolBullet, IInputService inputService, Player player )
         {
             _player = player;
             _poolBase = poolBullet;
@@ -37,10 +37,10 @@ namespace BsseCode.Pools.Pools.ShootFiresPool
 
         private void Shoot()
         {
-            var element = _poolBase.ShootFirePoolComponent.GetElement();
+            var element = _poolBase.GetPool<ShootFire>().GetElement();;
             element.transform.position = _spawnPoint.transform.position;
             element.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg);
-            element.SetParameters(_poolBase);
+           // element.SetParameters(_poolBase);
         }
     }
 }

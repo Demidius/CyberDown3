@@ -1,27 +1,23 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
+using BsseCode.ScriptableObjects;
 using BsseCode.Services.Factory;
 using UnityEngine;
 using Zenject;
 
 namespace BsseCode.Pools.Pools
 {
-    public class PoolController : IPoolController
+    public class PoolController : MonoBehaviour, IPoolController
     {
-        [System.Serializable]
-        private struct PoolData
-        {
-            public string PoolName;
-            public MonoBehaviour Prefab;
-        }
+        [SerializeField] private PoolsScriptableObject poolsConfig;
+        [SerializeField] private int defaultPoolSize = 10;
 
-        [SerializeField] private List<PoolData> poolDataList;
-        [SerializeField] private int baseSize = 10;
 
         private IFactoryComponent _factoryComponent;
-        private Dictionary<Type, object> _pools;
+        private Dictionary<Type, object> poolRegistry;
 
-        [Inject] // в бутстрапе прокинуть через конструктор все ссылки. через [SerializeField] или скипт обж. Прокинуть префабы.
+        [Inject] 
         public void Construct(IFactoryComponent factoryComponent)
         {
             _factoryComponent = factoryComponent;
@@ -29,41 +25,52 @@ namespace BsseCode.Pools.Pools
 
         private void Awake()
         {
-            _pools = new Dictionary<Type, object>();
+            poolRegistry = new Dictionary<Type, object>();
+            RegisterPoolsFromConfig();
         }
 
         public void RegisterPool<T>(T prefab, int size) where T : MonoBehaviour
         {
             var type = typeof(T);
-            Debug.Log($"Registering pool: {type}, Type: {typeof(T)}");
-            if (_pools.ContainsKey(type))
+            if (poolRegistry.ContainsKey(type))
             {
-                Debug.LogWarning($"Pool with name {type} is already registered.");
+                Debug.LogWarning($"Pool for type {type.Name} is already registered.");
                 return;
             }
 
-            var pool = new PoolComponent<T>(prefab, size, this.transform, _factoryComponent);
-            _pools[type] = pool;
+            var pool = new PoolComponent<T>(prefab, size, _factoryComponent);
+            poolRegistry.Add(type, pool);
         }
 
 
-        public PoolComponent<T> GetPool<T>(string poolName) where T : MonoBehaviour
+        public PoolComponent<T> GetPool<T>() where T : MonoBehaviour
         {
-            if (_pools.TryGetValue(poolName, out var pool))
+            var type = typeof(T);
+            if (poolRegistry.TryGetValue(type, out var pool))
             {
                 if (pool is PoolComponent<T> typedPool)
                 {
-                    Debug.Log($"Pool with name {poolName} found, Type: {typedPool.GetType()}");
                     return typedPool;
                 }
-                Debug.LogError($"Pool with name {poolName} found, but it has a different type: {pool.GetType()}");
                 return null;
             }
-
-            Debug.LogError($"Pool with name {poolName} not found.");
             return null;
         }
-            
-        
+
+        private void RegisterPoolsFromConfig()
+        {
+            foreach (var poolConfig in poolsConfig.PoolPrefabs)
+            {
+                if (poolConfig.Prefab is MonoBehaviour monoBehaviourPrefab)
+                {
+                    RegisterPool(monoBehaviourPrefab, defaultPoolSize);
+                }
+                else
+                {
+                    Debug.LogWarning($"Invalid prefab in PoolPrefabs: {poolConfig.Description ?? "No Description"}");
+                }
+            }
+        }
     }
 }
+

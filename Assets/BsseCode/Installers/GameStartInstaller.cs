@@ -54,7 +54,7 @@ namespace BsseCode.Installers
             // Container.Bind<PlayerFactory>().FromComponentInHierarchy().AsSingle();
             Container.Bind<IFactoryComponent>().To<FactoryComponent>().AsSingle();
 
-            Container.Bind<IPoolsBase>().To<PoolsController>().FromComponentInNewPrefab(poolsBasePrefab).AsSingle();
+                //  Container.Bind<IPoolsBase>().To<PoolsRegistration>().FromComponentInNewPrefab(poolsBasePrefab).AsSingle();
             Container.Bind<IPoolController>().To<PoolController>().FromComponentInNewPrefab(poolBasePrefab).AsSingle();
             
             Container.Bind<Player>().FromComponentInNewPrefab(playerPrefab).AsSingle();
