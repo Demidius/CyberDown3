@@ -13,20 +13,21 @@ namespace BsseCode.Pools.Pools.AmmoLootPool
     [RequireComponent(typeof(Collider2D))]
     public class AmmoLoot : MonoBehaviour, IPoolsElement
     {
-        private IPoolsBase _poolComponent;
+       
         private float _speed;
         private MoveService _moveService;
 
-        private ICoroutineService _coroutineService;
-        private Coroutine _coroutineLifeRoutine;
+        
+      //  private Coroutine _coroutineLifeRoutine;
         private IBulletCounter _bulletCounter;
+        private IPoolController _poolController;
 
         [Inject]
-        public void Construct(IPoolsBase poolBullet, ICoroutineService coroutineService, IBulletCounter bulletCounter)
+        public void Construct(IPoolController poolController, IBulletCounter bulletCounter)
         {
+            _poolController = poolController;
             _bulletCounter = bulletCounter;
-            _coroutineService = coroutineService;
-            _poolComponent = poolBullet;
+           
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -41,7 +42,7 @@ namespace BsseCode.Pools.Pools.AmmoLootPool
 
         public void Deactivate()
         {
-            _poolComponent.AmmoLootComponent?.ReturnToPool(this);
+            _poolController.GetPrefabForType<AmmoLoot>() ReturnToPool(this);
         }
     }
 }

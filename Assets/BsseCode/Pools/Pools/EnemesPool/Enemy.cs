@@ -1,8 +1,10 @@
 using System.Collections;
 using BsseCode.Caracters.Hero;
 using BsseCode.Mechanics.GameResults;
+using BsseCode.Pools.Pools.AmmoLootPool;
 using BsseCode.Pools.Pools.BulletPool;
 using BsseCode.Pools.Pools.ExplosionPool;
+using BsseCode.Pools.Pools.ExplosionResiduePool;
 using BsseCode.Services;
 using BsseCode.Services.Coroutines;
 using UnityEngine;
@@ -14,7 +16,7 @@ namespace BsseCode.Pools.Pools.EnemesPool
     {
         private ExplosionSpawner _explosionSpawner;
 
-        private IPoolsBase _poolsBase;
+        private IPoolController _poolController;
         private float _speed;
 
         private Player _player;
@@ -24,14 +26,14 @@ namespace BsseCode.Pools.Pools.EnemesPool
         private KillsController _killsController;
         
         [Inject]
-        public void Construct(MoveService moveService,  Player player, IPoolsBase poolBase, ICoroutineService coroutineService, KillsController killsController)
+        public void Construct(MoveService moveService,  Player player,IPoolController poolController, ICoroutineService coroutineService, KillsController killsController)
         {
             _player = player;
             _killsController = killsController;
 
             _coroutineService = coroutineService;
             _moveService = moveService;
-            _poolsBase = poolBase;
+            _poolController = poolController;
            
         }
 
@@ -50,8 +52,8 @@ namespace BsseCode.Pools.Pools.EnemesPool
         public void Deactivate()
         {
             _coroutineService.StartCoroutine(PostMortemEventHandler());
-
-            _poolsBase.EnemyPoolComponent?.ReturnToPool(this);
+           
+            _poolController.GetPool<Enemy>().ReturnToPool(this);
         }
 
         private void Rotation()
@@ -90,18 +92,18 @@ namespace BsseCode.Pools.Pools.EnemesPool
 
         private void CreateExplosionResidue()
         {
-            var element = _poolsBase.ExplosionResidueComponent.GetElement();
+            var element = _poolController.GetPool<ExplosionResidue>().GetElement();;
             element.transform.position = this.transform.position;
         }
 
         private void CreateExplosion()
         {
-            var element = _poolsBase.ExplosionComponent.GetElement();
+            var element =  _poolController.GetPool<Explosion>().GetElement();
             element.transform.position = this.transform.position;
         } 
         private void CreateAmmoLoot()
         {
-            var element = _poolsBase.AmmoLootComponent.GetElement();
+            var element = _poolController.GetPool<AmmoLoot>().GetElement();
             element.transform.position = this.transform.position;
         }
     }

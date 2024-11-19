@@ -10,7 +10,7 @@ namespace BsseCode.Pools.Pools.BulletPool
         [SerializeField] private Transform _bulletSpawnPoint;
 
         private readonly float _bulletSpeed = 10;
-        private IPoolController _poolBullet;
+        private IPoolController _poolController;
         private Vector2 _direction;
         private IInputService _inputService;
        
@@ -20,7 +20,7 @@ namespace BsseCode.Pools.Pools.BulletPool
         public void Construct(IPoolController poolController, IInputService inputService, IBulletCounter bulletCounter)
         {
             _bulletCounter = bulletCounter;
-            _poolBullet = poolController;
+            _poolController = poolController;
             _inputService = inputService;
         }
 
@@ -39,7 +39,7 @@ namespace BsseCode.Pools.Pools.BulletPool
             if (_bulletCounter.BulletCount > 0)
             {
                 // Получаем пул через метод GetPool
-                var bulletPool = _poolBullet.GetPool<Bullet>();
+                var bulletPool = _poolController.GetPool<Bullet>();
 
                 if (bulletPool != null)
                 {

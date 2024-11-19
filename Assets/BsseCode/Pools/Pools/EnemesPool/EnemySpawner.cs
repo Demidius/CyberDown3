@@ -18,7 +18,7 @@ namespace BsseCode.Pools.Pools.EnemesPool
 
         private float _speedEnemy = Const.SpeedEnemy;
         private Collider2D _randomCollider;
-        private IPoolController _poolBase;
+        private IPoolController _poolController;
         private float _timer = 0f;
         private ITimeService _timeService;
         private IExplosionSpawner _explosionSpawner;
@@ -26,12 +26,11 @@ namespace BsseCode.Pools.Pools.EnemesPool
 
 
         [Inject]
-        public void Construct(IPoolController poolBase, ITimeService timeService, Player player)
+        public void Construct(IPoolController poolController, ITimeService timeService, Player player)
         {
             _player = player;
-           
             _timeService = timeService;
-            _poolBase = poolBase;
+            _poolController = poolController;
         }
 
         private void Start()
@@ -83,7 +82,7 @@ namespace BsseCode.Pools.Pools.EnemesPool
                 randomPosition = GetRandomPointInCollider(selectedCollider);
             } while (Vector3.Distance(randomPosition, _player.transform.position) < minDistansForEnemy);
 
-            var enemy = _poolBase.GetPool<Enemy>().GetElement();;
+            var enemy = _poolController.GetPool<Enemy>().GetElement();;
             enemy.transform.position = randomPosition;
             enemy.SetParameters(_speedEnemy);
         }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace BsseCode.ScriptableObjects
 {
@@ -10,22 +11,23 @@ namespace BsseCode.ScriptableObjects
         public class PoolPrefabConfig
         {
             [Tooltip("Prefab for the pool.")]
-            public MonoBehaviour Prefab;
+            public GameObject Prefab;
 
             [Tooltip("Optional description for the prefab.")]
             public string Description;
         }
 
-        [Tooltip("List of prefabs for pooling.")]
-        public List<PoolPrefabConfig> PoolPrefabs = new List<PoolPrefabConfig>();
+
+        [FormerlySerializedAs("PoolPrefabs")] [Tooltip("List of prefabs for pooling.")]
+        public List<PoolPrefabConfig> ListOfPrefabs = new ();
 
         private void OnValidate()
         {
-            foreach (var config in PoolPrefabs)
+            foreach (var config in ListOfPrefabs)
             {
-                if (config.Prefab == null)
+                if (config.Prefab == null || !config.Prefab)
                 {
-                    Debug.LogWarning($"A prefab in PoolPrefabs is not assigned. Description: {config.Description}");
+                    Debug.LogWarning($"A prefab in PoolPrefabs is not assigned or missing. Description: {config.Description ?? "No Description"}");
                 }
             }
         }

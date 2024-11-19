@@ -1,5 +1,6 @@
 using BsseCode.Caracters.Hero;
 using BsseCode.Services.InputFol;
+using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 
@@ -9,17 +10,17 @@ namespace BsseCode.Pools.Pools.ShootFiresPool
     {
         private Transform _spawnPoint;
         
-        private IPoolController _poolBase;
+        private IPoolController _poolController;
         private Vector2 _direction;
         private IInputService _inputService;
         private Player _player;
 
 
         [Inject]
-        public void Construct(IPoolController poolBullet, IInputService inputService, Player player )
+        public void Construct(IPoolController poolController, IInputService inputService, Player player )
         {
             _player = player;
-            _poolBase = poolBullet;
+            _poolController = poolController;
             _inputService = inputService;
         }
 
@@ -37,7 +38,8 @@ namespace BsseCode.Pools.Pools.ShootFiresPool
 
         private void Shoot()
         {
-            var element = _poolBase.GetPool<ShootFire>().GetElement();;
+            var element = _poolController.GetPrefabForType<ShootFire>().GameObject()
+                .GetElement();;
             element.transform.position = _spawnPoint.transform.position;
             element.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg);
            // element.SetParameters(_poolBase);

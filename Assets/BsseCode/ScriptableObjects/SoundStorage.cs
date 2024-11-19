@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace BsseCode.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "SoundStorage", menuName = "ScriptableObjects/MyData")]
+    [CreateAssetMenu(fileName = "SoundStorage", menuName = "ScriptableObjects/SoundStorage")]
     public class SoundStorage: ScriptableObject
     {
         public AudioClip backgroundMusic;

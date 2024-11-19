@@ -5,17 +5,17 @@ namespace BsseCode.Pools.Pools.ExplosionResiduePool
 {
     public class ExplosionResidue : MonoBehaviour, IPoolsElement
     {
-        private IPoolsBase _poolsBase;
-        
+        private IPoolController _poolController;
+
         [Inject]
-        public void Construct(IPoolsBase poolsBase)
+        public void Construct(IPoolController poolController)
         {
-            _poolsBase = poolsBase;
+            _poolController = poolController;
         }
 
         public void Deactivate()
         {
-            _poolsBase.ExplosionResidueComponent?.ReturnToPool(this);
+            _poolController.GetPool<ExplosionResidue>().ReturnToPool(this);
         }
     }
 }

@@ -1,19 +1,22 @@
 using UnityEngine;
+using Zenject;
 
 namespace BsseCode.Pools.Pools.ShootFiresPool
 {
     public class ShootFire : MonoBehaviour, IPoolsElement
     {
-        private IPoolsBase _poolsBase;
-       
-        public void SetParameters(IPoolsBase poolsBase)
+        
+        private IPoolController _poolController;
+
+        [Inject]
+        public void Construct(IPoolController poolController)
         {
-            _poolsBase = poolsBase;
+            _poolController = poolController;
         }
         
         public void Deactivate()
         {
-            _poolsBase.ShootFirePoolComponent?.ReturnToPool(this);
+            _poolController.GetPool<ShootFire>().ReturnToPool(this);
         }
     }
 }

@@ -17,8 +17,7 @@ namespace BsseCode.Installers
 {
     public class GameStartInstaller : MonoInstaller
     {
-        [SerializeField] private GameObject poolsBasePrefab;
-        [SerializeField] private GameObject poolBasePrefab;
+       // [SerializeField] private GameObject poolBasePrefab;
         [SerializeField] private GameObject playerPrefab;
         
         public override void InstallBindings()
@@ -55,7 +54,7 @@ namespace BsseCode.Installers
             Container.Bind<IFactoryComponent>().To<FactoryComponent>().AsSingle();
 
                 //  Container.Bind<IPoolsBase>().To<PoolsRegistration>().FromComponentInNewPrefab(poolsBasePrefab).AsSingle();
-            Container.Bind<IPoolController>().To<PoolController>().FromComponentInNewPrefab(poolBasePrefab).AsSingle();
+            Container.Bind<IPoolController>().To<PoolController>().FromComponentsInHierarchy().AsSingle();
             
             Container.Bind<Player>().FromComponentInNewPrefab(playerPrefab).AsSingle();
             
