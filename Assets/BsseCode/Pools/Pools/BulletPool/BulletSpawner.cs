@@ -10,7 +10,6 @@ namespace BsseCode.Pools.Pools.BulletPool
         [SerializeField] private Transform _bulletSpawnPoint;
 
         private readonly float _bulletSpeed = 10;
-        private IPoolsBase _poolBullet;
         private Vector2 _direction;
         private IInputService _inputService;
        

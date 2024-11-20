@@ -16028,7 +16028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa59f3fe96c54142a347abd712e4c37d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PoolPrefabScObj: {fileID: 11400000, guid: 91f55e953cdd4ad409faacec67663ace, type: 2}
+  poolPrefabScObj: {fileID: 11400000, guid: 91f55e953cdd4ad409faacec67663ace, type: 2}
   startPoolSize: 5
 --- !u!1001 &987891296
 PrefabInstance:
