@@ -19,6 +19,8 @@ namespace BsseCode.Installers
     {
         [SerializeField] private GameObject poolsBasePrefab;
         [SerializeField] private GameObject playerPrefab;
+        // [SerializeField] private GameObject PoolController;
+        
         
         public override void InstallBindings()
         {
@@ -52,10 +54,11 @@ namespace BsseCode.Installers
 
             // Container.Bind<PlayerFactory>().FromComponentInHierarchy().AsSingle();
             Container.Bind<IFactoryComponent>().To<FactoryComponent>().AsSingle();
-
-            Container.Bind<IPoolsBase>().To<PoolsBase>().FromComponentInNewPrefab(poolsBasePrefab).AsSingle();
             
             Container.Bind<Player>().FromComponentInNewPrefab(playerPrefab).AsSingle();
+            
+            Container.Bind<IPoolController>().To<PoolController>().FromComponentInHierarchy().AsSingle();
+            
             
               
             

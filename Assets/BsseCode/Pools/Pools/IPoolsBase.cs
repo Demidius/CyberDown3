@@ -9,12 +9,12 @@ namespace BsseCode.Pools.Pools
 {
     public interface IPoolsBase
     { 
-        PoolComponent<Bullet> BulletPoolComponent { get; set; }
-        public PoolComponent<Enemy> EnemyPoolComponent { get;  set; }
-        public PoolComponent<ShootFire> ShootFirePoolComponent { get;  set; }
-        
-        public PoolComponent<Explosion> ExplosionComponent { get;  set; }
-        public PoolComponent<ExplosionResidue> ExplosionResidueComponent { get;  set; }
-        public PoolComponent<AmmoLoot> AmmoLootComponent { get;  set; }
+      //  PoolComponent<Bullet> BulletPoolComponent { get; set; }
+        // public PoolComponent<Enemy> EnemyPoolComponent { get;  set; }
+        // public PoolComponent<ShootFire> ShootFirePoolComponent { get;  set; }
+        //
+        // public PoolComponent<Explosion> ExplosionComponent { get;  set; }
+        // public PoolComponent<ExplosionResidue> ExplosionResidueComponent { get;  set; }
+        // public PoolComponent<AmmoLoot> AmmoLootComponent { get;  set; }
     }
 }

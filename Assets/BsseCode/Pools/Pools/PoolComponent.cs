@@ -67,4 +67,8 @@ namespace BsseCode.Pools.Pools
         //     }
         // }
     }
+
+    public interface IPoolComponent
+    {
+    }
 }

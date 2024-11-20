@@ -5,17 +5,19 @@ namespace BsseCode.Pools.Pools.ExplosionPool
 {
     public class Explosion : MonoBehaviour, IPoolsElement
     {
-        private IPoolsBase _poolsBase;
+        private IPoolController _poolController;
+
 
         [Inject]
-        public void Construct(IPoolsBase poolsBase)
+        public void Construct(IPoolController poolController)
         {
-            _poolsBase = poolsBase;
+            _poolController = poolController;
         }
+
 
         public void Deactivate()
         {
-            _poolsBase.ExplosionComponent?.ReturnToPool(this);
+            _poolController.ReturnToPool(this);
         }
     }
 

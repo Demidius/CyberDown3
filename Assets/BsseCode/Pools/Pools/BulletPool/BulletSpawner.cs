@@ -15,12 +15,13 @@ namespace BsseCode.Pools.Pools.BulletPool
         private IInputService _inputService;
        
         private IBulletCounter _bulletCounter;
+        private IPoolController _poolController;
 
         [Inject]
-        public void Construct(IPoolsBase poolBullet, IInputService inputService, IBulletCounter bulletCounter)
+        public void Construct(IPoolController poolController , IInputService inputService, IBulletCounter bulletCounter)
         {
+            _poolController = poolController;
             _bulletCounter = bulletCounter;
-            _poolBullet = poolBullet;
             _inputService = inputService;
         }
 
@@ -38,7 +39,7 @@ namespace BsseCode.Pools.Pools.BulletPool
         {
             if (_bulletCounter.BulletCount > 0)
             {
-                var bullet = _poolBullet.BulletPoolComponent.GetElement();
+                var bullet = _poolController.GetPool<Bullet>().GetElement();
                 bullet.transform.position = _bulletSpawnPoint.transform.position;
                 bullet.SetParameters(_bulletSpeed, _direction);
                 _bulletCounter.SubtractBullet();

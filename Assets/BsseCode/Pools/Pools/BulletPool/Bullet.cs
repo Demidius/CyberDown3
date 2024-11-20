@@ -10,20 +10,23 @@ namespace BsseCode.Pools.Pools.BulletPool
     {
         [SerializeField] private float lifetime = 2f;
 
-        private IPoolsBase _poolComponent;
+        
         private float _speed;
         private MoveService _moveService;
         private Vector2 _direction;
         private ICoroutineService _coroutineService;
         private Coroutine _coroutineLifeRoutine;
+        private IPoolController _poolController;
 
 
         [Inject]
-        public void Construct(MoveService moveService, IPoolsBase poolBullet, ICoroutineService coroutineService)
+        public void Construct(MoveService moveService, IPoolController poolController , ICoroutineService coroutineService)
         {
+            _poolController = poolController;
+
             _coroutineService = coroutineService;
             _moveService = moveService;
-            _poolComponent = poolBullet;
+            ;
         }
 
         public void SetParameters(float speed, Vector2 direction)
@@ -79,8 +82,7 @@ namespace BsseCode.Pools.Pools.BulletPool
 
         public void Deactivate()
         {
-            _poolComponent.BulletPoolComponent?.ReturnToPool(this);
-            
+            _poolController.ReturnToPool(this);
         }
     }
 }
