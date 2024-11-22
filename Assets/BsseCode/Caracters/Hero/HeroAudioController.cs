@@ -1,5 +1,6 @@
 using System;
 using BsseCode.Audio;
+using BsseCode.Pools.Pools;
 using BsseCode.Services.InputFol;
 using UnityEngine;
 using Zenject;
@@ -11,34 +12,30 @@ namespace BsseCode.Caracters.Hero
         private IInputService _inputService;
         private Player _player;
         private bool isGo;
-      
+        private IPoolController _poolController;
+
 
         [Inject]
-        public void Construct(IInputService inputService, Player player)
+        public void Construct(IInputService inputService, Player player, IPoolController poolController)
         {
+            _poolController = poolController;
             _player = player;
-            _inputService = inputService;
         }
-
-        private void PlayShoot()
-        {
-            SoundsExplorer.PlaySoundFrom(SoundStorage.ShootGun, AudioSource());
-        }
-
+     
         private void PlayStep()
         {
-            SoundsExplorer.PlayRandomSoundWhile(SoundStorage.Steps1, AudioSource(), _player.MoveHendler.isMoving, pitchMin:  1.3f, pitchMax: 1.6f);
+            var SourceAudio = _poolController.GetPool<SoursSound>().GetElement().GetComponent<AudioSource>();
+            SourceAudio.transform.position = _player.transform.position;
+            SoundsExplorer.PlayRandomSoundWhile(SoundStorage.Steps1, SourceAudio, _player.MoveHendler.isMoving, pitchMin:  1.3f, pitchMax: 1.6f);
         }
 
         private void Start()
         {
-            _inputService.ShootType1 += PlayShoot;
             _player.MoveHendler.OnMoving += PlayStep;
         }
 
         private void OnDestroy()
         {
-            _inputService.ShootType1 -= PlayShoot;
             _player.MoveHendler.OnMoving -= PlayStep;
         }
         
