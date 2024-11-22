@@ -106,4 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a996c648ad412b9628c70c49b1cf07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BulletCounter: {fileID: 2147024819052534225, guid: 50941b227a488a54d8295eee949d6e48, type: 3}
+  poolController: {fileID: 8143043796607201574, guid: 012b120298938ff49b5b69a3a48c650f, type: 3}
   resultsManagerPrefab: {fileID: 3118820539555204910, guid: b7f2d6d6a8b31534f9645acfcbd37e73, type: 3}
+  playerPrefab: {fileID: 404093767089904752, guid: 83e5d73ca5d34c542bd2ef871ff947c5, type: 3}

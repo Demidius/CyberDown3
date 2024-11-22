@@ -17,7 +17,7 @@ namespace BsseCode.Installers
 {
     public class GameStartInstaller : MonoInstaller
     {
-        [SerializeField] private GameObject poolsBasePrefab;
+      //  [SerializeField] private GameObject poolsBasePrefab;
         [SerializeField] private GameObject playerPrefab;
         // [SerializeField] private GameObject PoolController;
         

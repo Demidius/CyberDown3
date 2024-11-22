@@ -13,15 +13,15 @@ namespace BsseCode.Pools.Pools.EnemesPool
         [SerializeField] private AudioSource audioSourceStaps;
 
 
-        protected ISoundsExplorer SoundsExplorer;
+//protected ISoundsExplorer SoundsExplorer;
         protected SoundStorage SoundStorage;
        
-        [Inject]
-        public void Construct(ISoundsExplorer soundsExplorer, SoundStorage soundStorage, ITimeService timeService)
-        {
-           SoundStorage = soundStorage;
-            SoundsExplorer = soundsExplorer;
-        }
+        //[Inject]
+     //   public void Construct(ISoundsExplorer soundsExplorer, SoundStorage soundStorage)
+        // {
+        //    // SoundStorage = soundStorage;
+        //    //  SoundsExplorer = soundsExplorer;
+        // }
 
         private void OnEnable()
         {
@@ -31,8 +31,8 @@ namespace BsseCode.Pools.Pools.EnemesPool
 
         private void OnDisable()
         {
-            SoundsExplorer.PlaySoundWhile(SoundStorage.Blades, audioSourceBlades, false);
-            SoundsExplorer.PlayRandomSoundWhile(SoundStorage.Steps2, audioSourceStaps, false);
+            // SoundsExplorer.PlaySoundWhile(SoundStorage.Blades, audioSourceBlades, false);
+            // SoundsExplorer.PlayRandomSoundWhile(SoundStorage.Steps2, audioSourceStaps, false);
         }
 
         private void PlayBlades()
@@ -40,7 +40,7 @@ namespace BsseCode.Pools.Pools.EnemesPool
             if (audioSourceBlades != null && !audioSourceBlades.enabled)
                 audioSourceBlades.enabled = true;
 
-            SoundsExplorer.PlaySoundWhile(SoundStorage.Blades, audioSourceBlades, true);
+          //  SoundsExplorer.PlaySoundWhile(SoundStorage.Blades, audioSourceBlades, true);
         }
 
         private void PlayStep()
@@ -48,7 +48,7 @@ namespace BsseCode.Pools.Pools.EnemesPool
             if (audioSourceStaps != null && !audioSourceStaps.enabled)
                 audioSourceStaps.enabled = true;
 
-            SoundsExplorer.PlayRandomSoundWhile(SoundStorage.Steps2, audioSourceStaps, true, pitchMin: 1.0f, pitchMax: 1.5f);
+         //   SoundsExplorer.PlayRandomSoundWhile(SoundStorage.Steps2, audioSourceStaps, true, pitchMin: 1.0f, pitchMax: 1.5f);
         }
     }
 }

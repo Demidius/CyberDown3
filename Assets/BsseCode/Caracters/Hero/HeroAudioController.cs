@@ -1,44 +1,37 @@
 using System;
 using BsseCode.Audio;
 using BsseCode.Pools.Pools;
+using BsseCode.Services.AudioService;
 using BsseCode.Services.InputFol;
 using UnityEngine;
 using Zenject;
 
 namespace BsseCode.Caracters.Hero
 {
-    public class HeroAudioController : AudioSources
+    public class HeroAudioController : MonoBehaviour
     {
-        private IInputService _inputService;
         private Player _player;
-        private bool isGo;
         private IPoolController _poolController;
-
+        private SoundStorage _soundStorage;
+        private IAudioHandler _audioHandler;
 
         [Inject]
-        public void Construct(IInputService inputService, Player player, IPoolController poolController)
+        public void Construct(
+            Player player, 
+            IPoolController poolController, 
+            SoundStorage soundStorage, 
+            IAudioHandler audioHandler)
         {
+            _audioHandler = audioHandler;
+            _soundStorage = soundStorage;
             _poolController = poolController;
             _player = player;
         }
      
         private void PlayStep()
         {
-            var SourceAudio = _poolController.GetPool<SoursSound>().GetElement().GetComponent<AudioSource>();
-            SourceAudio.transform.position = _player.transform.position;
-            SoundsExplorer.PlayRandomSoundWhile(SoundStorage.Steps1, SourceAudio, _player.MoveHendler.isMoving, pitchMin:  1.3f, pitchMax: 1.6f);
+            
+            _audioHandler.AudioPlay(_soundStorage.Steps1, _player.transform.position  , _poolController);
         }
-
-        private void Start()
-        {
-            _player.MoveHendler.OnMoving += PlayStep;
-        }
-
-        private void OnDestroy()
-        {
-            _player.MoveHendler.OnMoving -= PlayStep;
-        }
-        
-       
     }
 }

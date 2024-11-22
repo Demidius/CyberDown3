@@ -26,6 +26,7 @@ namespace BsseCode.Caracters.Hero
         {
             legsAnimator = _player.LegsHero.GetComponentInChildren<Animator>();
             _player.MoveHendler.OnMoving += Run;
+            
         }
 
 
@@ -36,7 +37,7 @@ namespace BsseCode.Caracters.Hero
         
         private void Update()
         {
-            legsAnimator.speed = Mathf.Clamp(_timeService.TimeScale, 0.6f, 1.0f);
+            legsAnimator.speed = Mathf.Clamp(_timeService.TimeScale, 0.5f, 0.8f);
         }
         private void OnDestroy()
         {

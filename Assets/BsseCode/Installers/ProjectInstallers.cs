@@ -1,5 +1,7 @@
 using BsseCode.Audio;
 using BsseCode.Mechanics.GameResults;
+using BsseCode.Pools.Pools.BulletPool;
+using BsseCode.Services.AudioService;
 using BsseCode.Services.Coroutines;
 using BsseCode.Services.RandomNumder;
 using BsseCode.Services.TimeProvider;
@@ -41,9 +43,11 @@ namespace BsseCode.Installers
 
             Container.Bind<ResultsManager>().FromComponentInNewPrefab(resultsManagerPrefab).AsSingle().NonLazy();       
             
+            
+            
             #region Sound
             
-            Container.Bind<ISoundsExplorer>().To<SoundsExplorer>().AsTransient();
+           // Container.Bind<ISoundsExplorer>().To<SoundsExplorer>().AsTransient();
           
             var soundStorage = Resources.Load<SoundStorage>("SoundStorage");
         
@@ -53,6 +57,10 @@ namespace BsseCode.Installers
             }
         
             Container.Bind<SoundStorage>().FromInstance(soundStorage).AsSingle();
+            
+            Container.Bind<OneSoundHandler>().AsTransient();
+            Container.Bind<IAudioHandler>().To<AudioHandler>().AsTransient();
+            
             #endregion
             
           

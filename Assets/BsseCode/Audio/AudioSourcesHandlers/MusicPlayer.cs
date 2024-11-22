@@ -4,7 +4,7 @@ namespace BsseCode.Audio.AudioSourcesHandlers
     {
         private void Start()
         {
-            SoundsExplorer.PlaySoundFrom(SoundStorage.backgroundMusic, AudioSource());
+            // SoundsExplorer.PlaySoundFrom(SoundStorage.backgroundMusic, AudioSource());
         }
     }
 }
