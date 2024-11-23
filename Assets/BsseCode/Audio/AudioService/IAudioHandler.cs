@@ -1,8 +1,7 @@
-
 using BsseCode.Pools.Pools;
 using UnityEngine;
 
-namespace BsseCode.Services.AudioService
+namespace BsseCode.Audio.AudioService
 {
     public interface IAudioHandler
     {

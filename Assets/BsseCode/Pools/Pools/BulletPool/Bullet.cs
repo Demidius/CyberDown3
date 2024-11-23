@@ -1,7 +1,7 @@
 using BsseCode.Audio;
+using BsseCode.Audio.AudioService;
 using BsseCode.Caracters.Hero;
 using BsseCode.Services;
-using BsseCode.Services.AudioService;
 using BsseCode.Services.Coroutines;
 using UnityEngine;
 using Zenject;
@@ -49,7 +49,7 @@ namespace BsseCode.Pools.Pools.BulletPool
             _direction = direction.normalized;
 
             _bulletMover.SetRotationBasedOnDirection(_direction);
-            _audioHandler.AudioPlay(_soundStorage.ShootGun, this.transform.position ,_poolController);
+            _audioHandler.AudioPlay(_soundStorage.ShootGun, this.transform.position, _poolController);
         }
 
         private void Update() => _bulletMover.Move(_direction, _speed);

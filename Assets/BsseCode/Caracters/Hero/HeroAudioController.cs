@@ -1,7 +1,7 @@
 using System;
 using BsseCode.Audio;
+using BsseCode.Audio.AudioService;
 using BsseCode.Pools.Pools;
-using BsseCode.Services.AudioService;
 using BsseCode.Services.InputFol;
 using UnityEngine;
 using Zenject;
@@ -31,7 +31,7 @@ namespace BsseCode.Caracters.Hero
         private void PlayStep()
         {
             
-            _audioHandler.AudioPlay(_soundStorage.Steps1, _player.transform.position  , _poolController);
+            _audioHandler.AudioPlay(_soundStorage.Steps1, _player.transform.position, _poolController);
         }
     }
 }
