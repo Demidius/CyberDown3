@@ -16,6 +16,6 @@ namespace BsseCode.Constants
         
         public const float SlowTimeModificator = 0.2f;
 
-        public const int StartCountBullet = 10;
+        public const int StartCountBullet = 1000;
     }
 }

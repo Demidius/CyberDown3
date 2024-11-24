@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{a0caaab9-de4f-4a3c-90ac-30e1b8d0af70}">
+		<property name="assetPath">
+			<value>BLASTER SHOOT.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.2013832199546486</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b8d0625d-8de1-4e41-a89a-da19320335a6}</destination>
+		</relationship>
+	</object>
+</objects>

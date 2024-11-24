@@ -1,5 +1,5 @@
 using BsseCode.Audio;
-using BsseCode.Audio.AudioService;
+
 using BsseCode.Mechanics.GameResults;
 using BsseCode.Pools.Pools.BulletPool;
 using BsseCode.Services.Coroutines;
@@ -49,17 +49,14 @@ namespace BsseCode.Installers
             
            // Container.Bind<ISoundsExplorer>().To<SoundsExplorer>().AsTransient();
           
-            var soundStorage = Resources.Load<SoundStorage>("SoundStorage");
+            // var soundStorage = Resources.Load<SoundStorage>("SoundStorage");
         
-            if (soundStorage == null)
-            {
-                Debug.LogError("SoundStorage.asset не найден в папке Resources!");
-            }
+            // if (soundStorage == null)
+            // {
+            //     Debug.LogError("SoundStorage.asset не найден в папке Resources!");
+            // }
         
-            Container.Bind<SoundStorage>().FromInstance(soundStorage).AsSingle();
-            
-            Container.Bind<OneSoundHandler>().AsTransient();
-            Container.Bind<IAudioHandler>().To<AudioHandler>().AsTransient();
+           
             
             #endregion
             

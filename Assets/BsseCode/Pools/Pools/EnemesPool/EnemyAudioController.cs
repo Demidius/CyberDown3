@@ -13,16 +13,6 @@ namespace BsseCode.Pools.Pools.EnemesPool
         [SerializeField] private AudioSource audioSourceStaps;
 
 
-//protected ISoundsExplorer SoundsExplorer;
-        protected SoundStorage SoundStorage;
-       
-        //[Inject]
-     //   public void Construct(ISoundsExplorer soundsExplorer, SoundStorage soundStorage)
-        // {
-        //    // SoundStorage = soundStorage;
-        //    //  SoundsExplorer = soundsExplorer;
-        // }
-
         private void OnEnable()
         {
             PlayStep();
