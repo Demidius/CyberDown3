@@ -3,6 +3,7 @@ using System.Collections;
 using BsseCode.Services.Coroutines;
 using BsseCode.Services.TimeProvider;
 using UnityEngine;
+using UnityEngine.Audio;
 using Zenject;
 
 namespace BsseCode.Pools.Pools.SourceSours
@@ -35,7 +36,7 @@ namespace BsseCode.Pools.Pools.SourceSours
             _poolController.ReturnToPool(this);
         }
 
-        public IEnumerator AudioReturnRoutine(AudioClip audioClip, Coroutine activeCoroutine)
+        public IEnumerator AudioReturnRoutine(AudioClip audioClip, AudioMixerGroup mixerGroup, Coroutine activeCoroutine)
         {
             if (audioClip == null)
             {
@@ -56,6 +57,7 @@ namespace BsseCode.Pools.Pools.SourceSours
             }
 
             source.clip = audioClip;
+            source.outputAudioMixerGroup = mixerGroup;
             _activeCoroutine = activeCoroutine;
             source.Play();
 

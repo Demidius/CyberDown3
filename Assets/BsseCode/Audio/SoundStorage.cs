@@ -1,19 +1,36 @@
+using BsseCode.Services.ColorHeaders;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.Audio;
 
 namespace BsseCode.Audio
 {
     [CreateAssetMenu(fileName = "SoundStorage", menuName = "Audio/Sound Storage")]
     public class SoundStorage: ScriptableObject
     {
-        public AudioClip backgroundMusic;
-        public AudioClip ShootGun;
-        public AudioClip Step;
-        public AudioClip Blades;
         
-        public AudioClip[] Steps1;
-        public AudioClip[] Steps2;
-         public AudioClip stepsHero;
+        [ColoredHeader("Фоновая музыка", NamedColor.Orange, 15)]
+        [Header("Музыка первого уровня")]
+        public AudioClip backgroundMusic;
+        public AudioMixerGroup backgroundMixer;
+        
+        
+        [ColoredHeader("Звуки Персонажа", NamedColor.Orange, 15)] 
+        [Header("Эффекты оружия")]
+        public AudioClip shootGun; 
+        public AudioMixerGroup shootMixer; 
+
+        [Header("Шаги персонажа")]
+        public AudioClip[] stepsHero;
+        public AudioMixerGroup stepsHeroMixer;
+
+        
+        [ColoredHeader("Звуки Врагов", NamedColor.Orange, 15)] 
+        
+        [Header("Эффекты лезвий Робо-паука")]
+        public AudioClip blades; 
+        public AudioMixerGroup bladesMixer;
+        
+        
         
     }
 }

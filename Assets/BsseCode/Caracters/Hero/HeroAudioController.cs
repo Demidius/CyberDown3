@@ -31,7 +31,7 @@ namespace BsseCode.Caracters.Hero
         private void PlayStep()
         {
             
-            _audioHandler.AudioPlay(_soundStorage.Steps1, _player.transform.position, _poolController);
+            _audioHandler.AudioPlay(_soundStorage.stepsHero, _soundStorage.stepsHeroMixer, _player.transform.position, _poolController);
         }
     }
 }

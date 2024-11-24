@@ -12,7 +12,6 @@ namespace BsseCode.Audio.AudioService
     
         private Coroutine _activeCoroutine;
         private SourceSound _poolAudioEl;
-        private IPoolController _poolController;
         private ICoroutineService _coroutineService;
         
     
@@ -25,7 +24,7 @@ namespace BsseCode.Audio.AudioService
         }
   
 
-        public void AudioPlay(AudioClip clip, Vector3 position, IPoolController poolController)
+        public void AudioPlay(AudioClip clip,  AudioMixerGroup mixerGroup, Vector3 position, IPoolController poolController)
         {
             if (clip == null) 
             {
@@ -33,10 +32,10 @@ namespace BsseCode.Audio.AudioService
                 return;
             }
             BaseRegistration(poolController, position);
-            StartAudioReturnRoutine(clip);
+            StartAudioReturnRoutine(clip, mixerGroup);
         }
 
-        public void AudioPlay(AudioClip[] audioClips, Vector3 position, IPoolController poolController)
+        public void AudioPlay(AudioClip[] audioClips, AudioMixerGroup mixerGroup, Vector3 position, IPoolController poolController)
         {
             if (audioClips == null || audioClips.Length == 0)
             {
@@ -44,7 +43,7 @@ namespace BsseCode.Audio.AudioService
                 return;
             }
             BaseRegistration(poolController, position);
-            StartAudioReturnRoutine(audioClips);
+            StartAudioReturnRoutine(audioClips, mixerGroup);
         }
 
         private AudioClip RandomClipReg(AudioClip[] audioClips)
@@ -54,8 +53,7 @@ namespace BsseCode.Audio.AudioService
 
         private void BaseRegistration(IPoolController poolController, Vector3 position)
         {
-            _poolController = poolController;
-            GetAudioElementFromPool();
+            GetAudioElementFromPool(poolController);
             if (_poolAudioEl == null)
             {
                 Debug.LogError("poolAudioEl is null. Check the pool or configuration.");
@@ -64,23 +62,24 @@ namespace BsseCode.Audio.AudioService
             _poolAudioEl.transform.position = position;
         }
 
-        private void GetAudioElementFromPool()
+        private void GetAudioElementFromPool(IPoolController poolController)
         {
-            _poolAudioEl = _poolController?.GetPool<SourceSound>()?.GetElement();
+            _poolAudioEl = poolController?.GetPool<SourceSound>()?.GetElement();
             if (_poolAudioEl == null)
             {
                 Debug.LogError("SourceSound is null. Check the pool or configuration.");
             }
         }
 
-        private void StartAudioReturnRoutine(AudioClip audioClip)
+        private void StartAudioReturnRoutine(AudioClip audioClip, AudioMixerGroup mixerGroup)
         {
-            _activeCoroutine = _coroutineService?.StartCoroutine(_poolAudioEl.AudioReturnRoutine(audioClip, _activeCoroutine));
+            _activeCoroutine = _coroutineService?.StartCoroutine(_poolAudioEl.AudioReturnRoutine(audioClip, mixerGroup, _activeCoroutine));
         }
 
-        private void StartAudioReturnRoutine(AudioClip[] audioClips)
+        private void StartAudioReturnRoutine(AudioClip[] audioClips, AudioMixerGroup mixerGroup)
         {
-            StartAudioReturnRoutine(RandomClipReg(audioClips));
+            _activeCoroutine = _coroutineService?.StartCoroutine(_poolAudioEl.AudioReturnRoutine(RandomClipReg(audioClips), mixerGroup, _activeCoroutine));
+            
         }
     }
 }

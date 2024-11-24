@@ -31,7 +31,7 @@ namespace BsseCode.Audio.AudioSourcesHandlers
         }
         private void Start()
         {
-           _audioHandler.AudioPlay(_soundStorage.backgroundMusic, _player.transform.position, _poolController);
+           _audioHandler.AudioPlay(_soundStorage.backgroundMusic, _soundStorage.backgroundMixer, _player.transform.position, _poolController);
         }
     }
 }
