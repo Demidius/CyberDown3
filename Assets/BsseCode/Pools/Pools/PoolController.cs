@@ -15,7 +15,7 @@ namespace BsseCode.Pools.Pools
     public class PoolController : MonoBehaviour, IPoolController
     {
         [SerializeField] private PoolPrefabScObj poolPrefabScObj;
-        [SerializeField] private int startPoolSize = 5;
+         private int startPoolSize = 25;
 
         private Dictionary<Type, object> _poolsDictionary;
         private IFactoryComponent _factoryComponent;

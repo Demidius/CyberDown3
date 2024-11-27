@@ -31,6 +31,9 @@
 		<relationship name="timeline">
 			<destination>{09053a5c-b171-4ea9-9b3f-f58c40588144}</destination>
 		</relationship>
+		<relationship name="banks">
+			<destination>{522d0faa-0290-409d-806e-16987cd47ec6}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixer" id="{084c4815-c24a-4f19-8c25-4510c97b16e6}">
 		<relationship name="masterBus">
@@ -69,6 +72,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{aa6c8f2b-8983-4f9c-9894-657932d5fdaa}">
+		<property name="volume">
+			<value>8</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{c1918efb-2e35-4769-a09a-57372a884126}</destination>
 		</relationship>
@@ -97,6 +103,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{f50b0f9d-4da5-4edf-a7d9-1d68bcacdb5f}">
+		<property name="volume">
+			<value>5.5</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -112,6 +121,8 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{c1918efb-2e35-4769-a09a-57372a884126}">
 		<relationship name="effects">
+			<destination>{472d5bd9-d88e-4934-b27b-9e0fdd5ca80d}</destination>
+			<destination>{86651551-bc2f-4ca1-887f-e9df48ebe843}</destination>
 			<destination>{e60a713f-c714-4623-8438-ff0fe4e89eef}</destination>
 			<destination>{ae46af29-7d67-45d2-9a7e-215a0b40f128}</destination>
 			<destination>{a6e2a7c7-beb4-4a30-9784-0fffbc993c07}</destination>
@@ -166,6 +177,16 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{6a729c01-0a74-4c2b-be58-9e7682cc363d}" />
+	<object class="GainEffect" id="{472d5bd9-d88e-4934-b27b-9e0fdd5ca80d}">
+		<property name="gain">
+			<value>10</value>
+		</property>
+	</object>
+	<object class="GainEffect" id="{86651551-bc2f-4ca1-887f-e9df48ebe843}">
+		<property name="gain">
+			<value>10</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{e60a713f-c714-4623-8438-ff0fe4e89eef}" />
 	<object class="MultibandEqEffect" id="{ae46af29-7d67-45d2-9a7e-215a0b40f128}">
 		<property name="filterTypeA">

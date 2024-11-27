@@ -5,7 +5,7 @@
 			<value>SAW SPINNING</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{8cd1a7c0-75ad-40d1-bab3-f58ac879af9b}</destination>
@@ -30,6 +30,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{e9a6df6c-a2ca-4d0c-bbbb-7880d920285e}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{522d0faa-0290-409d-806e-16987cd47ec6}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{171c8c97-fbaf-4c52-817d-6b6396d81424}">
@@ -72,9 +75,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{331dd994-b3d5-43dc-86cf-197c3552db2c}">
-		<property name="volume">
-			<value>-2.5</value>
-		</property>
 		<relationship name="effectChain">
 			<destination>{8c9abe52-85de-4929-ab6b-36cd0de2314d}</destination>
 		</relationship>
@@ -100,9 +100,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{5855ec03-9a96-4b2e-afde-e2c47d0fbae2}">
-		<property name="volume">
-			<value>-5.5</value>
-		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -132,6 +129,7 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{8c9abe52-85de-4929-ab6b-36cd0de2314d}">
 		<relationship name="effects">
+			<destination>{c3157a10-e00b-4acf-8cb3-c9538e62c0a7}</destination>
 			<destination>{fd7e287a-52d5-41e5-ba54-01281bad6b32}</destination>
 			<destination>{99dd9895-bc20-4ecd-bbf5-0efa273cfa79}</destination>
 		</relationship>
@@ -144,10 +142,30 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{228e532e-5715-4fe3-a290-63d7e3af5e90}" />
+	<object class="SpatialiserEffect" id="{c3157a10-e00b-4acf-8cb3-c9538e62c0a7}">
+		<property name="distanceRolloffType">
+			<value>1</value>
+		</property>
+		<property name="maximumDistance">
+			<value>25</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{fd7e287a-52d5-41e5-ba54-01281bad6b32}" />
 	<object class="SFXReverbEffect" id="{99dd9895-bc20-4ecd-bbf5-0efa273cfa79}">
 		<property name="decayTime">
 			<value>290</value>
+		</property>
+		<property name="density">
+			<value>41.5</value>
+		</property>
+		<property name="earlyLateMix">
+			<value>24</value>
+		</property>
+		<property name="wetLevel">
+			<value>10</value>
+		</property>
+		<property name="dryLevel">
+			<value>-32</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{75e8ed57-4ca8-46f1-881d-0b5678f578f9}" />

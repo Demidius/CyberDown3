@@ -49,13 +49,16 @@ namespace BsseCode.Pools.Pools
 
         private T GetAndActivate()
         {
-            var obj = pool.Dequeue();
-            obj.gameObject.SetActive(true);
-            return obj;
+            while (pool.Count > 0)
+            {
+                var obj = pool.Dequeue();
+                if (!obj.gameObject.activeSelf) // Проверяем, что объект не активен
+                {
+                    obj.gameObject.SetActive(true);
+                    return obj;
+                }
+            }
+            return CreateComponent(isActiveByDefault: true);
         }
-    }
-
-    public interface IPoolComponent
-    {
     }
 }

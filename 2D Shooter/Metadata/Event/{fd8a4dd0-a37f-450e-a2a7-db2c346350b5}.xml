@@ -5,7 +5,7 @@
 			<value>Tile Steps</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{dcad4018-8fed-4225-abaf-36496e8eed72}</destination>
@@ -30,6 +30,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{ede5c3f2-11f0-4d8b-a636-8c6da74007b5}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{522d0faa-0290-409d-806e-16987cd47ec6}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{21c02532-e5d0-4ca3-90ea-6a742a5cb3d9}">
@@ -69,6 +72,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{7a4daac3-614f-49cc-a954-f9e84580e2a4}">
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{368bce2e-766a-4780-9c0f-e82c03df5919}</destination>
 		</relationship>
@@ -101,6 +107,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{e30d0f78-1c27-4994-9442-5a1783165903}">
+		<property name="volume">
+			<value>6.5</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -116,6 +125,8 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{368bce2e-766a-4780-9c0f-e82c03df5919}">
 		<relationship name="effects">
+			<destination>{bd0ccbcd-0fc9-4228-b960-6e6f20dfa0ed}</destination>
+			<destination>{481da01f-9144-44ed-87a6-5dc59c74314d}</destination>
 			<destination>{dae10855-cb0d-4b75-ba52-a26f0233e85f}</destination>
 			<destination>{6493275c-23c7-425f-8d8b-7394e78b30ec}</destination>
 			<destination>{0e7bf957-3c51-4c31-b6a8-1ee701b1c040}</destination>
@@ -187,6 +198,18 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{ed12eb96-752a-4367-ba85-9175a279d050}" />
+	<object class="SpatialiserEffect" id="{bd0ccbcd-0fc9-4228-b960-6e6f20dfa0ed}">
+		<property name="distanceRolloffType">
+			<value>1</value>
+		</property>
+		<property name="overrideRange">
+			<value>true</value>
+		</property>
+		<property name="userStereoSeparation">
+			<value>74</value>
+		</property>
+	</object>
+	<object class="GainEffect" id="{481da01f-9144-44ed-87a6-5dc59c74314d}" />
 	<object class="MixerBusFader" id="{dae10855-cb0d-4b75-ba52-a26f0233e85f}" />
 	<object class="MultibandEqEffect" id="{6493275c-23c7-425f-8d8b-7394e78b30ec}">
 		<property name="filterTypeA">

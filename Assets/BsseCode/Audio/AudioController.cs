@@ -14,20 +14,17 @@ namespace BsseCode.Audio
         private FMOD.ChannelGroup _masterChannelGroup;
 
         private float _currentPitch = 1.0f; 
-        private const float MinPitch = 0.5f; 
-        private const float MaxPitch = 2.0f; 
-        private const float SmoothSpeed = 2.0f; 
+        private const float MinPitch = 0.8f; 
+        private const float MaxPitch = 1.0f; 
+        private const float SmoothSpeed = 4.0f; 
 
         [Inject]
         public void Construct(ITimeService timeService)
         {
             _timeService = timeService;
-        }
-        private void Start()
-        { 
             RuntimeManager.CoreSystem.getMasterChannelGroup(out _masterChannelGroup);
         }
-        
+    
         private void Update()
         {
             // Ограничиваем целевой pitch в пределах MinPitch и MaxPitch
@@ -42,15 +39,8 @@ namespace BsseCode.Audio
         
         public void SetPlaybackSpeed(float speed)
         {
-            if (_masterChannelGroup.hasHandle())
-            {
-                // Устанавливаем pitch на Master Channel Group
                 _masterChannelGroup.setPitch(speed);
-            }
-            else
-            {
-                Debug.LogWarning("Master ChannelGroup is not valid. Cannot set playback speed.");
-            }
+          
         }
     }
 }

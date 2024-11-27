@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4fcfa6b8fc045f2a47eabd649ab5b23, type: 3}
+  m_Name: AudioTracksDate
+  m_EditorClassIdentifier: 
+  shootTrack:
+    Guid:
+      Data1: -722199231
+      Data2: 1108135508
+      Data3: 479890827
+      Data4: 935721338
+    Path: event:/SHOOTING/BLASTER SHOOT
+  stepEvent:
+    Guid:
+      Data1: -605703209
+      Data2: 1295939844
+      Data3: 1073312703
+      Data4: -1042742683
+    Path: event:/STEPS/Sand Steps

@@ -5,7 +5,7 @@
 			<value>ROBOT EXPLOSION</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{8cd1a7c0-75ad-40d1-bab3-f58ac879af9b}</destination>
@@ -30,6 +30,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{43e38127-6003-41de-bc31-6cefd2aa6ddb}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{522d0faa-0290-409d-806e-16987cd47ec6}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{f5e7ddf9-41e2-4c76-b709-fe85f17d2f3a}">
@@ -69,6 +72,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{b7a6e5b7-296f-4c5f-998b-bc701157241c}">
+		<property name="volume">
+			<value>-8</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{137e35f2-be9c-4c58-9ae0-5f0f115aa882}</destination>
 		</relationship>
@@ -97,6 +103,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{e6251f8e-c615-4636-86a1-4192687c7318}">
+		<property name="volume">
+			<value>-10.5</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -114,6 +123,7 @@
 		<relationship name="effects">
 			<destination>{cb20ed99-f48d-44fc-9248-74d7517aa5f1}</destination>
 			<destination>{0dacf33a-2dd0-42b6-968e-ee9f14d62198}</destination>
+			<destination>{76d5beff-fc19-48e8-8cba-687dd0e84c50}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{f56ccb5d-3513-4b7d-8bd0-10f4346008c5}" />
@@ -141,15 +151,26 @@
 			<value>-10</value>
 		</property>
 	</object>
+	<object class="SpatialiserEffect" id="{76d5beff-fc19-48e8-8cba-687dd0e84c50}">
+		<property name="distanceRolloffType">
+			<value>1</value>
+		</property>
+		<property name="maximumDistance">
+			<value>95</value>
+		</property>
+		<property name="overrideRange">
+			<value>true</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{fef6f6fc-a8a6-45de-9a52-113e924bb083}">
 		<property name="position">
-			<value>1.5</value>
+			<value>0.29999999999999999</value>
 		</property>
 		<property name="value">
 			<value>1</value>
 		</property>
 		<property name="curveShape">
-			<value>0.25471893</value>
+			<value>0.272450358</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{3705f787-c475-493f-8e9f-53120eafb520}">

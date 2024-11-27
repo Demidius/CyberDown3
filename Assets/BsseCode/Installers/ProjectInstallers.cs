@@ -1,7 +1,6 @@
 using BsseCode.Audio;
-
 using BsseCode.Mechanics.GameResults;
-using BsseCode.Pools.Pools.BulletPool;
+using BsseCode.ScriptablesObjects;
 using BsseCode.Services.Coroutines;
 using BsseCode.Services.RandomNumder;
 using BsseCode.Services.TimeProvider;
@@ -9,15 +8,16 @@ using BsseCode.StateMachines.GameStateMachine;
 using BsseCode.StateMachines.GameStateMachine.States;
 using UnityEngine;
 using Zenject;
-using Zenject.SpaceFighter;
+
 
 namespace BsseCode.Installers
 {
     public class ProjectInstallers : MonoInstaller
     {
-        
+
         public GameObject resultsManagerPrefab;
-       public override void InstallBindings()
+
+        public override void InstallBindings()
         {
 
             #region StateMachine
@@ -30,7 +30,9 @@ namespace BsseCode.Installers
             Container.Bind<GameOverState>().AsSingle();
 
             #endregion
+
             Container.Bind<ITimeService>().To<TimeService>().AsSingle();
+
             #region Coroutine
 
             var coroutineRunner = new GameObject("CoroutineRunner").AddComponent<CoroutineRunner>();
@@ -41,26 +43,30 @@ namespace BsseCode.Installers
 
             #endregion
 
-            Container.Bind<ResultsManager>().FromComponentInNewPrefab(resultsManagerPrefab).AsSingle().NonLazy();       
-            
-            
-            
+            Container.Bind<ResultsManager>().FromComponentInNewPrefab(resultsManagerPrefab).AsSingle().NonLazy();
+
+
+
+
             #region Sound
-            
-           // Container.Bind<ISoundsExplorer>().To<SoundsExplorer>().AsTransient();
-          
-            // var soundStorage = Resources.Load<SoundStorage>("SoundStorage");
-        
-            // if (soundStorage == null)
-            // {
-            //     Debug.LogError("SoundStorage.asset не найден в папке Resources!");
-            // }
-        
-           
-            
-            #endregion
-            
-          
+
+            Container.Bind<IAudioExplorer>().To<AudioExplorer>().AsTransient();
+
+            var audioTracksDate = Resources.Load<AudioTracksDate>("AudioTracksDate");
+            if (audioTracksDate == null)
+            {
+                Debug.LogError("AudioTracksDate.asset не найден в папке Resources!");
+            }
+            else
+            {
+                Container.Bind<AudioTracksDate>().FromInstance(audioTracksDate).AsSingle();
+
+
+                #endregion
+
+
+            }
+
         }
     }
 }

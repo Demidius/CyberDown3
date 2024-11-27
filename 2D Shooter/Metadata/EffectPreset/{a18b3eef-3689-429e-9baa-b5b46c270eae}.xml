@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EffectPreset" id="{a18b3eef-3689-429e-9baa-b5b46c270eae}">
+		<property name="name">
+			<value>Panner 2</value>
+		</property>
+		<relationship name="folder">
+			<destination>{f0fa1831-091c-4963-be84-69f76e814e58}</destination>
+		</relationship>
+		<relationship name="effect">
+			<destination>{b93bd7ef-e72a-4bfb-943a-1ff3ed9c9d40}</destination>
+		</relationship>
+	</object>
+	<object class="PannerEffect" id="{b93bd7ef-e72a-4bfb-943a-1ff3ed9c9d40}">
+		<property name="surroundStereoSeparation">
+			<value>-27.6591167</value>
+		</property>
+	</object>
+</objects>

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8757025468038624629}
   - component: {fileID: 2421685824403079799}
   - component: {fileID: 8737040467328036931}
+  - component: {fileID: 8738067738609745263}
   m_Layer: 0
   m_Name: StoneLittle2
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8835391466295658135}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.465885, y: -19.064018, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -120,3 +121,15 @@ CircleCollider2D:
   m_Offset: {x: -0.06078291, y: -0.004675865}
   serializedVersion: 2
   m_Radius: 0.32984114
+--- !u!114 &8738067738609745263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8835391466295658135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 732101d3863743cfb28b45593c140819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

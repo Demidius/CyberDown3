@@ -1,0 +1,261 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6781187841864389589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/STEPS/Tile Steps
+  m_EditorClassIdentifier: 
+  Path: event:/STEPS/Tile Steps
+  Guid:
+    Data1: -41267760
+    Data2: 1158587263
+    Data3: 752592802
+    Data4: -1253022924
+  Banks:
+  - {fileID: -4490260625938609656}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 500
+--- !u!114 &-6087805743194225323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SHOOTING/BLASTER SHOOT
+  m_EditorClassIdentifier: 
+  Path: event:/SHOOTING/BLASTER SHOOT
+  Guid:
+    Data1: -722199231
+    Data2: 1108135508
+    Data3: 479890827
+    Data4: 935721338
+  Banks:
+  - {fileID: -4490260625938609656}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1640
+--- !u!114 &-5681438074125929393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/STEPS/Sand Steps
+  m_EditorClassIdentifier: 
+  Path: event:/STEPS/Sand Steps
+  Guid:
+    Data1: -605703209
+    Data2: 1295939844
+    Data3: 1073312703
+    Data4: -1042742683
+  Banks:
+  - {fileID: -4490260625938609656}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 460
+--- !u!114 &-4490260625938609656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: 2D Shooter/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638681663238101860
+  FileSizes:
+  - Name: Desktop
+    Value: 109312
+  Exists: 1
+--- !u!114 &-4191511201637455799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/ROBOT SOUNDS/SAW SPINNING
+  m_EditorClassIdentifier: 
+  Path: event:/ROBOT SOUNDS/SAW SPINNING
+  Guid:
+    Data1: 2085232609
+    Data2: 1163619751
+    Data3: 340622268
+    Data4: -575581264
+  Banks:
+  - {fileID: -4490260625938609656}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 401
+--- !u!114 &-3327668716579587934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/ACTIONS/ENERGY FULFILL
+  m_EditorClassIdentifier: 
+  Path: event:/ACTIONS/ENERGY FULFILL
+  Guid:
+    Data1: -1906315018
+    Data2: 1333731394
+    Data3: -2140639355
+    Data4: 1135686353
+  Banks:
+  - {fileID: -4490260625938609656}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1406
+--- !u!114 &-1248935360724376240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/ROBOT SOUNDS/ROBOT EXPLOSION
+  m_EditorClassIdentifier: 
+  Path: event:/ROBOT SOUNDS/ROBOT EXPLOSION
+  Guid:
+    Data1: 570257669
+    Data2: 1243624103
+    Data3: -707685503
+    Data4: -141407836
+  Banks:
+  - {fileID: -4490260625938609656}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2310
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 6229976477368895519}
+  - {fileID: -4490260625938609656}
+  EditorEvents:
+  - {fileID: -3327668716579587934}
+  - {fileID: -6087805743194225323}
+  - {fileID: -6781187841864389589}
+  - {fileID: -5681438074125929393}
+  - {fileID: -4191511201637455799}
+  - {fileID: -1248935360724376240}
+  - {fileID: 5221108704326274847}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: -4490260625938609656}
+  StringsBanks:
+  - {fileID: 6229976477368895519}
+  cacheTime: 638681663238120307
+  cacheVersion: 131621
+--- !u!114 &5221108704326274847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SpiderRun
+  m_EditorClassIdentifier: 
+  Path: event:/SpiderRun
+  Guid:
+    Data1: -1420634546
+    Data2: 1167789697
+    Data3: 1993159583
+    Data4: 1854687628
+  Banks:
+  - {fileID: -4490260625938609656}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &6229976477368895519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: 2D Shooter/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638681663238120307
+  FileSizes:
+  - Name: Desktop
+    Value: 1100
+  Exists: 1

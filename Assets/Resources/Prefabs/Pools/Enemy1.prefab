@@ -307,6 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 060dc329fca048b48a046d38ffb2f61a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioController: {fileID: 4710449610198593590}
 --- !u!50 &8385771881286825936
 Rigidbody2D:
   serializedVersion: 4
@@ -432,7 +433,7 @@ GameObject:
   - component: {fileID: 3767011524403486943}
   - component: {fileID: 980077083800765129}
   - component: {fileID: 5535364809007290410}
-  - component: {fileID: -9063446070879904145}
+  - component: {fileID: 8816644091099832229}
   m_Layer: 0
   m_Name: Legs
   m_TagString: Untagged
@@ -528,7 +529,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-9063446070879904145
+--- !u!114 &8816644091099832229
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -537,28 +538,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6135874766059111243}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d4b7d45761c4da4bae4948649d0a855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
+  stepEnemyEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  Event: 
-  EventPlayTrigger: 0
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+      Data1: -1420634546
+      Data2: 1167789697
+      Data3: 1993159583
+      Data4: 1854687628
+    Path: event:/SpiderRun
 --- !u!1 &6230138313140900104
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,7 +558,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4435637334427892032}
   - component: {fileID: 4710449610198593590}
-  - component: {fileID: 967890495449068428}
   m_Layer: 0
   m_Name: AudioController
   m_TagString: Untagged
@@ -604,39 +592,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc0eee5a80c04593ba85ca4df1cc7723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSourceBlades: {fileID: 0}
-  audioSourceStaps: {fileID: 0}
---- !u!114 &967890495449068428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6230138313140900104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
+  bladesEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  Event: 
-  EventPlayTrigger: 0
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+      Data1: 2085232609
+      Data2: 1163619751
+      Data3: 340622268
+      Data4: -575581264
+    Path: event:/ROBOT SOUNDS/SAW SPINNING
+  explosionSoundEvent:
+    Guid:
+      Data1: 570257669
+      Data2: 1243624103
+      Data3: -707685503
+      Data4: -141407836
+    Path: event:/ROBOT SOUNDS/ROBOT EXPLOSION
 --- !u!1 &6477674189595897170
 GameObject:
   m_ObjectHideFlags: 0

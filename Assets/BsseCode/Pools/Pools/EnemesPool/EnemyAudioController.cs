@@ -1,44 +1,72 @@
 using System;
-using BsseCode.Audio;
-using BsseCode.Services.TimeProvider;
+using FMODUnity;
 using UnityEngine;
-using UnityEngine.Serialization;
-using Zenject;
 
 namespace BsseCode.Pools.Pools.EnemesPool
 {
     public class EnemyAudioController : MonoBehaviour
     {
-        [SerializeField] private AudioSource audioSourceBlades;
-        [SerializeField] private AudioSource audioSourceStaps;
+        [EventRef] public EventReference bladesEvent;
 
+        [EventRef] public EventReference explosionSoundEvent;
 
-        private void OnEnable()
+        private FMOD.Studio.EventInstance bladesInstance;
+        private bool isBladesPlaying = false;
+
+        private void Update()
         {
-            PlayStep();
-            PlayBlades();
+            if (isBladesPlaying && bladesInstance.isValid())
+            {
+                // Обновляем позицию звука
+                bladesInstance.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position));
+            }
+        }
+        public void PlayBlades()
+        {
+            // Создаем экземпляр звука
+            bladesInstance = RuntimeManager.CreateInstance(bladesEvent);
+        
+            // Устанавливаем начальные 3D-атрибуты
+            bladesInstance.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position));
+        
+            // Запускаем звук
+            bladesInstance.start();
+        
+            // Включаем флаг для обновления позиции
+            isBladesPlaying = true;
+        }
+        
+        public void DieRuner()
+        {
+            if (bladesInstance.isValid())
+            {
+                BledesStop();
+        
+                // Дополнительный звук взрыва
+                ExplosionSound();
+            }
+        }
+        
+        private void BledesStop()
+        {
+            // Останавливаем звук
+            bladesInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        
+            // Освобождаем ресурсы
+            bladesInstance.release();
+        
+            // Выключаем флаг обновления
+            isBladesPlaying = false;
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
-            // SoundsExplorer.PlaySoundWhile(SoundStorage.Blades, audioSourceBlades, false);
-            // SoundsExplorer.PlayRandomSoundWhile(SoundStorage.Steps2, audioSourceStaps, false);
+            DieRuner();
         }
 
-        private void PlayBlades()
+        public void ExplosionSound()
         {
-            if (audioSourceBlades != null && !audioSourceBlades.enabled)
-                audioSourceBlades.enabled = true;
-
-          //  SoundsExplorer.PlaySoundWhile(SoundStorage.Blades, audioSourceBlades, true);
-        }
-
-        private void PlayStep()
-        {
-            if (audioSourceStaps != null && !audioSourceStaps.enabled)
-                audioSourceStaps.enabled = true;
-
-         //   SoundsExplorer.PlayRandomSoundWhile(SoundStorage.Steps2, audioSourceStaps, true, pitchMin: 1.0f, pitchMax: 1.5f);
+            RuntimeManager.PlayOneShot(explosionSoundEvent, transform.position);
         }
     }
 }

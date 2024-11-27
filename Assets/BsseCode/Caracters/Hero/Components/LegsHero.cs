@@ -6,7 +6,7 @@ namespace BsseCode.Caracters.Hero.Components
 {
     public class LegsHero : MonoBehaviour
     {
-        [FormerlySerializedAs("heroMove")] [FormerlySerializedAs("heroBase")] [FormerlySerializedAs("player")] [SerializeField] private MoveHendler move;
+       [SerializeField] private MoveHendler move;
 
         void Update()
         {

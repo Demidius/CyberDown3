@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EffectPreset" id="{64b76afb-1aca-4c4c-82f4-f564060ed6bf}">
+		<property name="name">
+			<value>Panner</value>
+		</property>
+		<relationship name="folder">
+			<destination>{f0fa1831-091c-4963-be84-69f76e814e58}</destination>
+		</relationship>
+		<relationship name="effect">
+			<destination>{508fd461-ad0f-4af5-8e78-bf37b7fb13a7}</destination>
+		</relationship>
+	</object>
+	<object class="PannerEffect" id="{508fd461-ad0f-4af5-8e78-bf37b7fb13a7}">
+		<property name="surroundPanDirection">
+			<value>70.4268723</value>
+		</property>
+		<property name="surroundPanExtent">
+			<value>68.4325104</value>
+		</property>
+	</object>
+</objects>

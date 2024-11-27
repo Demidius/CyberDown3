@@ -1,4 +1,6 @@
+using BsseCode.Audio;
 using BsseCode.Mechanics.BulletCounter;
+using BsseCode.ScriptablesObjects;
 using BsseCode.Services.InputFol;
 using UnityEngine;
 using Zenject;
@@ -11,14 +13,24 @@ namespace BsseCode.Pools.Pools.BulletPool
 
         private readonly float _bulletSpeed = 10;
         private Vector2 _direction;
+        
         private IInputService _inputService;
-       
         private IBulletCounter _bulletCounter;
         private IPoolController _poolController;
+        private AudioTracksDate _audioTracksDate;
+        private IAudioExplorer _audioExplorer;
+
 
         [Inject]
-        public void Construct(IPoolController poolController , IInputService inputService, IBulletCounter bulletCounter)
+        public void Construct(
+            IPoolController poolController, 
+            IInputService inputService, 
+            IBulletCounter bulletCounter,
+            AudioTracksDate audioTracksDate,
+            IAudioExplorer audioExplorer)
         {
+            _audioExplorer = audioExplorer;
+            _audioTracksDate = audioTracksDate;
             _poolController = poolController;
             _bulletCounter = bulletCounter;
             _inputService = inputService;
@@ -42,11 +54,17 @@ namespace BsseCode.Pools.Pools.BulletPool
                 bullet.transform.position = _bulletSpawnPoint.transform.position;
                 bullet.SetParameters(_bulletSpeed, _direction);
                 _bulletCounter.SubtractBullet();
+                
+                _audioExplorer.PlayOneSound(_audioTracksDate.shootTrack,_direction, _poolController);
             }
             else
             {
                 Debug.Log("Gun is empty");
             }
+            
+            
+            
+            
         }
     }
 }

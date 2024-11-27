@@ -15,6 +15,8 @@ namespace BsseCode.Pools.Pools.EnemesPool
     public class Enemy : MonoBehaviour, IPoolsElement
     {
         private ExplosionSpawner _explosionSpawner;
+        
+        [SerializeField] private EnemyAudioController audioController;
 
         private IPoolController _poolController;
         private float _speed;
@@ -40,6 +42,7 @@ namespace BsseCode.Pools.Pools.EnemesPool
         public void SetParameters(float speed)
         {
             _speed = speed;
+            // audioController.PlayBlades();
         }
 
         
@@ -76,8 +79,8 @@ namespace BsseCode.Pools.Pools.EnemesPool
             if (other.TryGetComponent<Bullet>(out Bullet bullet))
             {
                 _killsController.OnEnemyKilled();
-                bullet.Deactivate();
-                Deactivate();
+                audioController.ExplosionSound();
+               Deactivate();
             }
         }
 

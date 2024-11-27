@@ -15,6 +15,7 @@ namespace BsseCode.Caracters.Hero
         public MoveHendler MoveHendler { get; private set; }
         public BodyHero BodyHero { get; private set; }
         public LegsHero LegsHero { get; private set; }
+        public HeroAudioController HeroAudioController { get; private set; }
 
         private CinemachineVirtualCamera _virtualCamera;
 
@@ -34,6 +35,7 @@ namespace BsseCode.Caracters.Hero
             MoveHendler = GetComponentInChildren<MoveHendler>();
             LegsHero = GetComponentInChildren<LegsHero>();
             BulletSpawnPoint = GetComponentInChildren<BulletSpawnPoint>();
+            HeroAudioController = GetComponentInChildren<HeroAudioController>();
         }
     }
 }
