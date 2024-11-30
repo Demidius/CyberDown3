@@ -15,8 +15,8 @@ namespace BsseCode.Installers
 {
     public class ProjectInstallers : MonoInstaller
     {
-        [SerializeField] 
-        private Database database;
+      //  [SerializeField] 
+      //  private Database database;
         
          [SerializeField] 
         private FMODSoundService soundService;
@@ -58,21 +58,21 @@ namespace BsseCode.Installers
 
             #region Sound
 
-            Container.BindInterfacesTo<Database>().FromInstance(database).AsSingle();
+           // Container.BindInterfacesTo<Database>().FromInstance(database).AsSingle();
             
             Container.BindInterfacesTo<FMODSoundService>().FromInstance(soundService).AsSingle();
             
             
             
-            
-            var audioTracksDate = Resources.Load<AudioTracksDate>("AudioTracksDate");
-            if (audioTracksDate == null)
-            {
-                Debug.LogError("AudioTracksDate.asset не найден в папке Resources!");
-            }
-            else
-            {
-                Container.Bind<AudioTracksDate>().FromInstance(audioTracksDate).AsSingle();
+            //
+            // var audioTracksDate = Resources.Load<AudioTracksDate>("AudioTracksDate");
+            // if (audioTracksDate == null)
+            // {
+            //     Debug.LogError("AudioTracksDate.asset не найден в папке Resources!");
+            // }
+            // else
+            // {
+            //     Container.Bind<AudioTracksDate>().FromInstance(audioTracksDate).AsSingle();
 
                 
                 
@@ -88,4 +88,3 @@ namespace BsseCode.Installers
 
         }
     }
-}

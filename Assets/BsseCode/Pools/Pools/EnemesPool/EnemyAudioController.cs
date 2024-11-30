@@ -15,7 +15,7 @@ namespace BsseCode.Pools.Pools.EnemesPool
 
         private void Start()
         {
-            _enemySteps = AudioManager.Instance.CreateInstance(FMODEvents.Instance.enemyStep);
+            // _enemySteps = AudioManager.Instance.CreateInstance(FMODEvents.Instance.enemyStep);
         }
 
         private void Update()
@@ -27,7 +27,7 @@ namespace BsseCode.Pools.Pools.EnemesPool
         {
             if (!_enemySteps.isValid())
             {
-                _enemySteps = AudioManager.Instance.CreateInstance(FMODEvents.Instance.enemyStep);
+                // _enemySteps = AudioManager.Instance.CreateInstance(FMODEvents.Instance.enemyStep);
             }
 
             PLAYBACK_STATE playbackState;

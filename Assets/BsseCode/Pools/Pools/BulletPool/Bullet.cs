@@ -36,7 +36,7 @@ namespace BsseCode.Pools.Pools.BulletPool
             _speed = speed;
             _direction = direction.normalized;
             _bulletMover.SetRotationBasedOnDirection(_direction);
-            AudioManager.Instance.PlayOneShot(FMODEvents.Instance.shootSound, this.transform.position);
+            // AudioManager.Instance.PlayOneShot(FMODEvents.Instance.shootSound, this.transform.position);
         }
 
         private void Update() => 

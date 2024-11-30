@@ -23,7 +23,7 @@ namespace BsseCode.Caracters.Hero.Components
 
         private void PlayStep()
         {
-            AudioManager.Instance.PlayOneShot(FMODEvents.Instance.playersSteps, this.transform.position);
+            // AudioManager.Instance.PlayOneShot(FMODEvents.Instance.playersSteps, this.transform.position);
         }
         
         
