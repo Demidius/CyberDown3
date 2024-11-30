@@ -1,72 +1,53 @@
 using System;
+using BsseCode.Audio;
+using BsseCode.ScriptablesObjects;
+using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
+using Zenject;
+using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 namespace BsseCode.Pools.Pools.EnemesPool
 {
     public class EnemyAudioController : MonoBehaviour
     {
-        [EventRef] public EventReference bladesEvent;
+        private EventInstance _enemySteps;
 
-        [EventRef] public EventReference explosionSoundEvent;
-
-        private FMOD.Studio.EventInstance bladesInstance;
-        private bool isBladesPlaying = false;
+        private void Start()
+        {
+            _enemySteps = AudioManager.Instance.CreateInstance(FMODEvents.Instance.enemyStep);
+        }
 
         private void Update()
         {
-            if (isBladesPlaying && bladesInstance.isValid())
+            _enemySteps.set3DAttributes(RuntimeUtils.To3DAttributes(transform));
+        }
+
+        private void OnEnable()
+        {
+            if (!_enemySteps.isValid())
             {
-                // Обновляем позицию звука
-                bladesInstance.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position));
+                _enemySteps = AudioManager.Instance.CreateInstance(FMODEvents.Instance.enemyStep);
+            }
+
+            PLAYBACK_STATE playbackState;
+            _enemySteps.getPlaybackState(out playbackState);
+            if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+            {
+                _enemySteps.start();
             }
         }
-        public void PlayBlades()
+
+        private void OnDisable()
         {
-            // Создаем экземпляр звука
-            bladesInstance = RuntimeManager.CreateInstance(bladesEvent);
-        
-            // Устанавливаем начальные 3D-атрибуты
-            bladesInstance.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position));
-        
-            // Запускаем звук
-            bladesInstance.start();
-        
-            // Включаем флаг для обновления позиции
-            isBladesPlaying = true;
-        }
-        
-        public void DieRuner()
-        {
-            if (bladesInstance.isValid())
+            if (_enemySteps.isValid())
             {
-                BledesStop();
-        
-                // Дополнительный звук взрыва
-                ExplosionSound();
+                _enemySteps.stop(STOP_MODE.ALLOWFADEOUT);
+                _enemySteps.release(); 
             }
         }
         
-        private void BledesStop()
-        {
-            // Останавливаем звук
-            bladesInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        
-            // Освобождаем ресурсы
-            bladesInstance.release();
-        
-            // Выключаем флаг обновления
-            isBladesPlaying = false;
-        }
 
-        private void OnDestroy()
-        {
-            DieRuner();
-        }
-
-        public void ExplosionSound()
-        {
-            RuntimeManager.PlayOneShot(explosionSoundEvent, transform.position);
-        }
+      
     }
 }

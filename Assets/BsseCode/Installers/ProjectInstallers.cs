@@ -1,4 +1,5 @@
-using BsseCode.Audio;
+
+using BsseCode.Audio.NewSoudSystem;
 using BsseCode.Mechanics.GameResults;
 using BsseCode.ScriptablesObjects;
 using BsseCode.Services.Coroutines;
@@ -14,7 +15,14 @@ namespace BsseCode.Installers
 {
     public class ProjectInstallers : MonoInstaller
     {
-
+        [SerializeField] 
+        private Database database;
+        
+         [SerializeField] 
+        private FMODSoundService soundService;
+        
+        
+        
         public GameObject resultsManagerPrefab;
 
         public override void InstallBindings()
@@ -50,8 +58,13 @@ namespace BsseCode.Installers
 
             #region Sound
 
-            Container.Bind<IAudioExplorer>().To<AudioExplorer>().AsTransient();
-
+            Container.BindInterfacesTo<Database>().FromInstance(database).AsSingle();
+            
+            Container.BindInterfacesTo<FMODSoundService>().FromInstance(soundService).AsSingle();
+            
+            
+            
+            
             var audioTracksDate = Resources.Load<AudioTracksDate>("AudioTracksDate");
             if (audioTracksDate == null)
             {
@@ -61,9 +74,15 @@ namespace BsseCode.Installers
             {
                 Container.Bind<AudioTracksDate>().FromInstance(audioTracksDate).AsSingle();
 
+                
+                
+                
+                
+                
+                
 
                 #endregion
-
+    
 
             }
 

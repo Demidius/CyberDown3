@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{46cdcd21-a4a9-4af9-9cbe-b7e84b38945a}">
+		<property name="assetPath">
+			<value>neon_hyperdrive.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>129.67183673469387</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b8d0625d-8de1-4e41-a89a-da19320335a6}</destination>
+		</relationship>
+	</object>
+</objects>

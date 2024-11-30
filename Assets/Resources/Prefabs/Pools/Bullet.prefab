@@ -185,8 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc662fa09511aa449122ba1960991e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 10
-  shootEvent:
+  shootSound:
     Guid:
       Data1: -722199231
       Data2: 1108135508

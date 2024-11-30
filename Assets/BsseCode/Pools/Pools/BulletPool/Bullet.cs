@@ -1,3 +1,4 @@
+using BsseCode.Audio;
 using BsseCode.Pools.Pools.EnemesPool;
 using BsseCode.Services;
 using BsseCode.Services.Coroutines;
@@ -5,14 +6,13 @@ using BsseCode.Services.TimeProvider;
 using BsseCode.Tags;
 using UnityEngine;
 using Zenject;
-using FMODUnity;
+
 
 namespace BsseCode.Pools.Pools.BulletPool
 {
     public class Bullet : MonoBehaviour, IPoolsElement
     {
-       
-
+        
         private float _speed;
         private Vector2 _direction;
         private BulletMover _bulletMover;
@@ -31,16 +31,12 @@ namespace BsseCode.Pools.Pools.BulletPool
             _poolController = poolController;
             _bulletMover = new BulletMover(moveService, transform);
         }
-
-        private void Awake()
-        {
-            LoadAudioBanks();
-        }
         public void SetParameters(float speed, Vector2 direction)
         {
             _speed = speed;
             _direction = direction.normalized;
             _bulletMover.SetRotationBasedOnDirection(_direction);
+            AudioManager.Instance.PlayOneShot(FMODEvents.Instance.shootSound, this.transform.position);
         }
 
         private void Update() => 
@@ -49,12 +45,7 @@ namespace BsseCode.Pools.Pools.BulletPool
         public void Deactivate() => 
             _poolController?.ReturnToPool(this);
 
-        private void LoadAudioBanks()
-        {
-            RuntimeManager.LoadBank("Master");
-            RuntimeManager.LoadBank("Master.strings");
-        }
-        
+       
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.TryGetComponent<Enemy>(out Enemy enemy))
