@@ -1,6 +1,6 @@
 using BsseCode.Audio;
+using BsseCode.Audio.AudioSourcesHandlers;
 using BsseCode.Mechanics.GameResults;
-using BsseCode.ScriptablesObjects;
 using BsseCode.Services.Coroutines;
 using BsseCode.Services.RandomNumder;
 using BsseCode.Services.TimeProvider;
@@ -16,6 +16,7 @@ namespace BsseCode.Installers
     {
 
         public GameObject resultsManagerPrefab;
+        public AudioTracksBase AudioManagerPrefab;
 
         public override void InstallBindings()
         {
@@ -50,22 +51,23 @@ namespace BsseCode.Installers
 
             #region Sound
 
-            Container.Bind<IAudioExplorer>().To<AudioExplorer>().AsTransient();
+            // Container.Bind<IAudioExplorer>().To<AudioExplorer>().AsTransient();
+             Container.Bind<AudioTracksBase>().FromComponentInNewPrefab(AudioManagerPrefab).AsSingle();
 
-            var audioTracksDate = Resources.Load<AudioTracksDate>("AudioTracksDate");
-            if (audioTracksDate == null)
-            {
-                Debug.LogError("AudioTracksDate.asset не найден в папке Resources!");
-            }
-            else
-            {
-                Container.Bind<AudioTracksDate>().FromInstance(audioTracksDate).AsSingle();
+            // var audioTracksDate = Resources.Load<AudioTracksDate>("AudioTracksDate");
+            // if (audioTracksDate == null)
+            // {
+            //     Debug.LogError("AudioTracksDate.asset не найден в папке Resources!");
+            // }
+            // else
+            // {
+            //     Container.Bind<AudioTracksDate>().FromInstance(audioTracksDate).AsSingle();
+            // }
 
 
                 #endregion
 
-
-            }
+            
 
         }
     }

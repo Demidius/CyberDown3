@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8672509757278778839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9088024291708270937}
+  - component: {fileID: 5664458815669103617}
+  - component: {fileID: 576163077868940883}
+  - component: {fileID: 7690903287164912632}
+  m_Layer: 0
+  m_Name: MusicController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9088024291708270937
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8672509757278778839}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5664458815669103617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8672509757278778839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4fcfa6b8fc045f2a47eabd649ab5b23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootTrack:
+    Guid:
+      Data1: -722199231
+      Data2: 1108135508
+      Data3: 479890827
+      Data4: 935721338
+    Path: event:/SHOOTING/BLASTER SHOOT
+  stepEvent:
+    Guid:
+      Data1: -605703209
+      Data2: 1295939844
+      Data3: 1073312703
+      Data4: -1042742683
+    Path: event:/STEPS/Sand Steps
+  Music1:
+    Guid:
+      Data1: 1132060409
+      Data2: 1270993756
+      Data3: -1108160070
+      Data4: 548604075
+    Path: event:/Music1
+--- !u!114 &576163077868940883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8672509757278778839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22a6759b4a164398a21a0559adb611c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FMODUnityEvent: 
+--- !u!114 &7690903287164912632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8672509757278778839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c498d829694199927c65790d918157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

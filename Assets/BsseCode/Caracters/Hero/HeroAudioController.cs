@@ -3,7 +3,6 @@ using BsseCode.Audio;
 using BsseCode.Caracters.Hero.Components;
 using BsseCode.Pools.Pools;
 using BsseCode.Pools.Pools.SourceSours;
-using BsseCode.ScriptablesObjects;
 using BsseCode.Services.InputFol;
 using FMODUnity;
 using UnityEngine;
@@ -17,17 +16,13 @@ namespace BsseCode.Caracters.Hero
 
        
         private IPoolController _poolController;
-        private IAudioExplorer _audioExplorer;
-        private AudioTracksDate _audioTracksDate;
+       
+       
 
 
         [Inject]
-        public void Construct(
-            Player player, IPoolController poolController, AudioTracksDate audioTracksDate,
-            IAudioExplorer audioExplorer )
+        public void Construct(Player player, IPoolController poolController)
         {
-            _audioTracksDate = audioTracksDate;
-            _audioExplorer = audioExplorer;
             _poolController = poolController;
             _player = player;
         }
@@ -36,7 +31,7 @@ namespace BsseCode.Caracters.Hero
 
         public void PlayStep()
         {
-            _audioExplorer.PlayOneSound(_audioTracksDate.stepEvent,this._player.transform.position, _poolController);
+            // _audioExplorer.PlayOneSound(_audioTracksDate.stepEvent,this._player.transform.position, _poolController);
         }
 
        
