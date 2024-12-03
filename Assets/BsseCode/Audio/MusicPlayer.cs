@@ -1,3 +1,4 @@
+using System;
 using BsseCode.Audio.AudioSourcesHandlers;
 using BsseCode.Caracters.Hero;
 using UnityEngine;
@@ -20,10 +21,19 @@ namespace BsseCode.Audio
         }
         private void Start()
         {
-            
-            // AudioManager.Instance.InitializeSoundPool("event:/Music1", 1);
-            AudioManager.Instance.PlaySound(_audioTracksBase.Music1, useInstance: true, position: _player.transform.position);
-           // AudioManager.Instance.PlaySound("event:/Music1", useInstance: false, position: _player.transform.position );
+            AudioManager.Instance.PlaySound(_audioTracksBase.music1, useInstance: true, position: _player.transform.position);
+        }
+
+        private void OnDestroy()
+        {
+            AudioManager.Instance.StopSound(_audioTracksBase.music1);
+        }
+
+        private void OnDisable()
+        {
+            AudioManager.Instance.StopSound(_audioTracksBase.music1);
         }
     }
 }
+           // AudioManager.Instance.PlaySound("event:/Music1", useInstance: false, position: _player.transform.position );
+            // AudioManager.Instance.InitializeSoundPool("event:/Music1", 1);

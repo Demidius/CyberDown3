@@ -79,7 +79,7 @@ namespace BsseCode.Pools.Pools.EnemesPool
             if (other.TryGetComponent<Bullet>(out Bullet bullet))
             {
                 _killsController.OnEnemyKilled();
-                audioController.ExplosionSound();
+                
                Deactivate();
             }
         }
@@ -97,6 +97,7 @@ namespace BsseCode.Pools.Pools.EnemesPool
         {
             var element = _poolController.GetPool<ExplosionResidue>().GetElement();
             element.transform.position = this.transform.position;
+            audioController.ExplosionSound();
         }
 
         private void CreateExplosion()

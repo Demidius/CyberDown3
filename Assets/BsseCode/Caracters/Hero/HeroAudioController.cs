@@ -1,5 +1,6 @@
 using System;
 using BsseCode.Audio;
+using BsseCode.Audio.AudioSourcesHandlers;
 using BsseCode.Caracters.Hero.Components;
 using BsseCode.Pools.Pools;
 using BsseCode.Pools.Pools.SourceSours;
@@ -13,29 +14,18 @@ namespace BsseCode.Caracters.Hero
     public class HeroAudioController : MonoBehaviour
     {
         private Player _player;
-
-       
-        private IPoolController _poolController;
-       
-       
-
+        private AudioTracksBase _audioTracksBase;
 
         [Inject]
-        public void Construct(Player player, IPoolController poolController)
+        public void Construct(Player player, AudioTracksBase audioTracksBase )
         {
-            _poolController = poolController;
+            _audioTracksBase = audioTracksBase;
             _player = player;
         }
 
-      
-
         public void PlayStep()
         {
-            // _audioExplorer.PlayOneSound(_audioTracksDate.stepEvent,this._player.transform.position, _poolController);
+            AudioManager.Instance.PlaySound(_audioTracksBase.stepEvent, useInstance: true, position: _player.transform.position);
         }
-
-       
-
-       
     }
 }

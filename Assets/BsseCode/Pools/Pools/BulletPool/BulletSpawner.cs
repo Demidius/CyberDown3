@@ -1,4 +1,5 @@
 using BsseCode.Audio;
+using BsseCode.Audio.AudioSourcesHandlers;
 using BsseCode.Mechanics.BulletCounter;
 using BsseCode.Services.InputFol;
 using UnityEngine;
@@ -16,18 +17,18 @@ namespace BsseCode.Pools.Pools.BulletPool
         private IInputService _inputService;
         private IBulletCounter _bulletCounter;
         private IPoolController _poolController;
-        
-       
+        private AudioTracksBase _audioTracksBase;
 
 
         [Inject]
         public void Construct(
             IPoolController poolController, 
             IInputService inputService, 
-            IBulletCounter bulletCounter)
+            IBulletCounter bulletCounter,
+            AudioTracksBase audioTracksBase)
            
         {
-            
+            _audioTracksBase = audioTracksBase;
             _poolController = poolController;
             _bulletCounter = bulletCounter;
             _inputService = inputService;
@@ -51,15 +52,18 @@ namespace BsseCode.Pools.Pools.BulletPool
                 bullet.transform.position = _bulletSpawnPoint.transform.position;
                 bullet.SetParameters(_bulletSpeed, _direction);
                 _bulletCounter.SubtractBullet();
+                
+                PlaySound(bullet);
             }
             else
             {
                 Debug.Log("Gun is empty");
             }
-            
-            
-            
-            
+        }
+
+        private void PlaySound(Bullet bullet)
+        {
+            AudioManager.Instance.PlaySound(_audioTracksBase.shootTrack, useInstance: false, position: bullet.transform.position);
         }
     }
 }

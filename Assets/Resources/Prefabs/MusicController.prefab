@@ -60,13 +60,27 @@ MonoBehaviour:
       Data3: 1073312703
       Data4: -1042742683
     Path: event:/STEPS/Sand Steps
-  Music1:
+  music1:
     Guid:
       Data1: 1132060409
       Data2: 1270993756
       Data3: -1108160070
       Data4: 548604075
     Path: event:/Music1
+  spiderRun:
+    Guid:
+      Data1: -605703209
+      Data2: 1295939844
+      Data3: 1073312703
+      Data4: -1042742683
+    Path: event:/STEPS/Sand Steps
+  explosionSound:
+    Guid:
+      Data1: 570257669
+      Data2: 1243624103
+      Data3: -707685503
+      Data4: -141407836
+    Path: event:/ROBOT SOUNDS/ROBOT EXPLOSION
 --- !u!114 &576163077868940883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,7 +93,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a6759b4a164398a21a0559adb611c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FMODUnityEvent: 
 --- !u!114 &7690903287164912632
 MonoBehaviour:
   m_ObjectHideFlags: 0

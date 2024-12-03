@@ -1,18 +1,17 @@
-using System;
 using System.Collections.Generic;
 using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
-using Zenject;
 
 namespace BsseCode.Audio.AudioSourcesHandlers
 {
     public class AudioManager : MonoBehaviour
     {
         public static AudioManager Instance;
+
         private Dictionary<string, SoundPool> soundPools = new Dictionary<string, SoundPool>();
 
-        void Awake()
+        private void Awake()
         {
             if (Instance == null)
                 Instance = this;
@@ -21,29 +20,34 @@ namespace BsseCode.Audio.AudioSourcesHandlers
         }
 
         // Инициализация пула для звука
-        public void InitializeSoundPool(string soundPath, int initialCount = 5)
+        public SoundPool InitializeSoundPool(EventReference soundPath, int initialCount = 5)
         {
-            if (!soundPools.ContainsKey(soundPath))
+            if (string.IsNullOrEmpty(soundPath.Path))
             {
-               soundPools[soundPath] = new SoundPool(soundPath, initialCount);
+                Debug.LogWarning("Sound path is empty!");
+                return null;
             }
-            
-        }
- public SoundPool InitializeSoundPool(EventReference soundPath, int initialCount = 5)
-        {
+
             if (!soundPools.ContainsKey(soundPath.Path))
             {
-               return soundPools[soundPath.Path] = new SoundPool(soundPath.Path, initialCount);
+                soundPools[soundPath.Path] = new SoundPool(soundPath.Path, initialCount);
             }
+
             return soundPools[soundPath.Path];
         }
 
         // Воспроизведение звука
-        public void PlaySound(string soundPath, bool useInstance = false, float volume = 1f, Vector3? position = null)
+        public void PlaySound(EventReference soundPath, bool useInstance = false, Vector3? position = null)
         {
+            if (string.IsNullOrEmpty(soundPath.Path))
+            {
+                Debug.LogWarning("Sound path is empty!");
+                return;
+            }
+
             if (!useInstance)
             {
-                // Одиночное воспроизведение
+                // Воспроизведение одиночного звука
                 if (position.HasValue)
                     RuntimeManager.PlayOneShot(soundPath, position.Value);
                 else
@@ -51,53 +55,21 @@ namespace BsseCode.Audio.AudioSourcesHandlers
             }
             else
             {
-                // Воспроизведение через экземпляр
-                if (!soundPools.ContainsKey(soundPath))
-                    InitializeSoundPool(soundPath);
-
-                var instance = soundPools[soundPath].GetInstance();
-
-                // Устанавливаем громкость и другие параметры
-                instance.setVolume(volume);
-
-                // Если указана позиция, прикрепляем к объекту
-                if (position.HasValue)
-                    RuntimeManager.AttachInstanceToGameObject(instance, transform, GetComponent<Rigidbody>());
-
-                // Воспроизводим звук
-                instance.start();
-
-                // Возвращаем в пул после завершения
-                StartCoroutine(ReturnToPoolAfterPlay(instance, soundPath));
-            }
-        }
-        
- public void PlaySound(EventReference soundPath, bool useInstance = false, float volume = 1f, Vector3? position = null)
-        {
-            if (!useInstance)
-            {
-                // Одиночное воспроизведение
-                if (position.HasValue)
-                    RuntimeManager.PlayOneShot(soundPath, position.Value);
-                else
-                    RuntimeManager.PlayOneShot(soundPath);
-            }
-            else
-            {
-                // Воспроизведение через экземпляр
+                // Использование звукового пула
                 if (!soundPools.ContainsKey(soundPath.Path))
-                    InitializeSoundPool(soundPath.Path);
+                {
+                    Debug.LogWarning($"Sound pool for {soundPath.Path} not found. Initializing new pool.");
+                    InitializeSoundPool(soundPath);
+                }
 
                 var instance = soundPools[soundPath.Path].GetInstance();
 
-                // Устанавливаем громкость и другие параметры
-                instance.setVolume(volume);
-
-                // Если указана позиция, прикрепляем к объекту
+                // Устанавливаем 3D-атрибуты
                 if (position.HasValue)
-                    RuntimeManager.AttachInstanceToGameObject(instance, transform, GetComponent<Rigidbody>());
+                    instance.set3DAttributes(RuntimeUtils.To3DAttributes(position.Value));
+                else
+                    instance.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position));
 
-                // Воспроизводим звук
                 instance.start();
 
                 // Возвращаем в пул после завершения
@@ -105,20 +77,57 @@ namespace BsseCode.Audio.AudioSourcesHandlers
             }
         }
 
+        // Остановка звука по пути
+        public void StopSound(EventReference soundPath)
+        {
+            if (string.IsNullOrEmpty(soundPath.Path))
+            {
+                Debug.LogWarning("Sound path is empty!");
+                return;
+            }
+
+            if (soundPools.ContainsKey(soundPath.Path))
+            {
+                soundPools[soundPath.Path].StopAll();
+            }
+            else
+            {
+                Debug.LogWarning($"Sound pool for {soundPath.Path} not found.");
+            }
+        }
+
+        // Остановка всех звуков
+        public void StopAllSounds()
+        {
+            foreach (var pool in soundPools.Values)
+            {
+                pool.StopAll();
+            }
+        }
+
+        // Возвращение экземпляра в пул после завершения воспроизведения
         private System.Collections.IEnumerator ReturnToPoolAfterPlay(EventInstance instance, string soundPath)
         {
-            EventDescription eventDescription;
-            instance.getDescription(out eventDescription);
+            if (!instance.isValid())
+            {
+                Debug.LogWarning("Event instance is not valid!");
+                yield break;
+            }
 
-            int length = 0;
-            eventDescription.getLength(out length);
+            instance.getDescription(out var eventDescription);
 
-            yield return new WaitForSeconds(length / 1000f);
+            if (eventDescription.isValid())
+            {
+                eventDescription.getLength(out int length);
+                yield return new WaitForSeconds(length / 1000f);
+            }
 
             if (soundPools.ContainsKey(soundPath))
             {
                 soundPools[soundPath].ReturnInstance(instance);
             }
+
+            instance.release(); // Освобождаем ресурс
         }
     }
 }

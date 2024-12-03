@@ -24,10 +24,10 @@ namespace BsseCode.Pools.Pools.EnemesPool
         //     _poolController = poolController;
         // }
         //
-        // private void PlayStep()
-        // {
-        //     var bulletSound = _poolController.GetPool<AudioSource2>().GetElement();
-        //     bulletSound.SetParameters(stepEnemyEvent, this.transform.position);
-        // }
+        private void PlayStep()
+        {
+            // var bulletSound = _poolController.GetPool<AudioSource2>().GetElement();
+            // bulletSound.SetParameters(stepEnemyEvent, this.transform.position);
+        }
     }
 }
