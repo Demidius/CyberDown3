@@ -78,7 +78,7 @@ namespace BsseCode.Pools.Pools.EnemesPool
         {
             if (other.TryGetComponent<Bullet>(out Bullet bullet))
             {
-                _killsController.OnEnemyKilled();
+                
                 
                Deactivate();
             }
@@ -87,6 +87,9 @@ namespace BsseCode.Pools.Pools.EnemesPool
         private IEnumerator PostMortemEventHandler()
         {
             CreateExplosion();
+            audioController.ExplosionSound();
+            yield return new WaitForSeconds(0.1f);
+            _killsController.OnEnemyKilled();
             yield return new WaitForSeconds(0.5f);
             CreateExplosionResidue();
             yield return new WaitForSeconds(0.2f);
@@ -97,7 +100,6 @@ namespace BsseCode.Pools.Pools.EnemesPool
         {
             var element = _poolController.GetPool<ExplosionResidue>().GetElement();
             element.transform.position = this.transform.position;
-            audioController.ExplosionSound();
         }
 
         private void CreateExplosion()

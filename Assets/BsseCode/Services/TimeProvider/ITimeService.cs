@@ -7,5 +7,6 @@ namespace BsseCode.Services.TimeProvider
         public event Action <float> ChangeTimeScale;
         float TimeScale { get; set; }
         float DeltaTime { get; }
+        public void ResetTimeScale();
     }
 }

@@ -38,7 +38,6 @@ namespace BsseCode.Audio.AudioSourcesHandlers
             }
             else
             {
-                UnityEngine.Debug.LogWarning($"SoundPool for {soundPath} is empty. Creating a new instance.");
                 instance = RuntimeManager.CreateInstance(soundPath);
             }
 
@@ -58,7 +57,7 @@ namespace BsseCode.Audio.AudioSourcesHandlers
             }
             else
             {
-                UnityEngine.Debug.LogWarning("Attempted to return an invalid EventInstance to the pool.");
+                // UnityEngine.Debug.LogWarning("Attempted to return an invalid EventInstance to the pool.");
             }
         }
 

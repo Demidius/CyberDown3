@@ -110,7 +110,7 @@ namespace BsseCode.Audio.AudioSourcesHandlers
         {
             if (!instance.isValid())
             {
-                Debug.LogWarning("Event instance is not valid!");
+                // Debug.LogWarning("Event instance is not valid!");
                 yield break;
             }
 
@@ -128,6 +128,46 @@ namespace BsseCode.Audio.AudioSourcesHandlers
             }
 
             instance.release(); // Освобождаем ресурс
+        }
+        public EventInstance PlaySoundWithInstance(EventReference soundPath, bool useInstance = false, Vector3? position = null)
+        {
+            if (string.IsNullOrEmpty(soundPath.Path))
+            {
+                Debug.LogWarning("Sound path is empty!");
+                return default;
+            }
+
+            if (!useInstance)
+            {
+                // Воспроизведение одиночного звука
+                if (position.HasValue)
+                    RuntimeManager.PlayOneShot(soundPath, position.Value);
+                else
+                    RuntimeManager.PlayOneShot(soundPath);
+        
+                return default;
+            }
+            else
+            {
+                // Используем пул
+                if (!soundPools.ContainsKey(soundPath.Path))
+                {
+                    Debug.LogWarning($"Sound pool for {soundPath.Path} not found. Initializing new pool.");
+                    InitializeSoundPool(soundPath);
+                }
+
+                var instance = soundPools[soundPath.Path].GetInstance();
+
+                // Устанавливаем 3D-атрибуты
+                if (position.HasValue)
+                    instance.set3DAttributes(RuntimeUtils.To3DAttributes(position.Value));
+                else
+                    instance.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position));
+
+                instance.start();
+
+                return instance; // Возвращаем экземпляр
+            }
         }
     }
 }

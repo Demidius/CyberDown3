@@ -27,6 +27,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 500
+--- !u!114 &-6704387232423208292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/ROBOT SOUNDS/Explision
+  m_EditorClassIdentifier: 
+  Path: event:/ROBOT SOUNDS/Explision
+  Guid:
+    Data1: -1790318827
+    Data2: 1259571695
+    Data3: 1347509655
+    Data4: -274867186
+  Banks:
+  - {fileID: -4490260625938609656}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 1665592537083680904}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1040
 --- !u!114 &-6087805743194225323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +111,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 460
+--- !u!114 &-5591601592680260438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SpeiderRun2
+  m_EditorClassIdentifier: 
+  Path: event:/SpeiderRun2
+  Guid:
+    Data1: 864144743
+    Data2: 1278349538
+    Data3: -1498113128
+    Data4: 1572884665
+  Banks:
+  - {fileID: -4490260625938609656}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 1850299383072916713}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1631
 --- !u!114 &-5106969545647488914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,10 +178,10 @@ MonoBehaviour:
   Path: 2D Shooter/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638688484338650608
+  lastModified: 638688712436200914
   FileSizes:
   - Name: Desktop
-    Value: 3720160
+    Value: 5997024
   Exists: 1
 --- !u!114 &-4191511201637455799
 MonoBehaviour:
@@ -279,7 +335,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 2310
+  Length: 2211
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,17 +358,18 @@ MonoBehaviour:
   - {fileID: -5681438074125929393}
   - {fileID: -4191511201637455799}
   - {fileID: -1248935360724376240}
-  - {fileID: 5221108704326274847}
   - {fileID: 7859042838906308834}
+  - {fileID: -5591601592680260438}
+  - {fileID: -6704387232423208292}
   EditorParameters:
   - {fileID: -3796793255901461457}
   MasterBanks:
   - {fileID: -4490260625938609656}
   StringsBanks:
   - {fileID: 6229976477368895519}
-  cacheTime: 638688484338680946
+  cacheTime: 638688712436251112
   cacheVersion: 131621
---- !u!114 &1186892340269646433
+--- !u!114 &1665592537083680904
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -322,7 +379,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/SpiderRun/TimeController
+  m_Name: parameter:/Explision/TimeController
   m_EditorClassIdentifier: 
   Name: TimeController
   StudioPath: 
@@ -336,7 +393,7 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &5221108704326274847
+--- !u!114 &1850299383072916713
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -345,25 +402,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SpiderRun
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SpeiderRun2/TimeController
   m_EditorClassIdentifier: 
-  Path: event:/SpiderRun
-  Guid:
-    Data1: 1452523143
-    Data2: 1131948524
-    Data3: -72938846
-    Data4: -1812003900
-  Banks:
-  - {fileID: -4490260625938609656}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 1186892340269646433}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1631
+  Name: TimeController
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2653580880
+    data2: 1906607243
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &6229976477368895519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,10 +432,10 @@ MonoBehaviour:
   Path: 2D Shooter/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638688484338680946
+  lastModified: 638688712436251112
   FileSizes:
   - Name: Desktop
-    Value: 1194
+    Value: 1236
   Exists: 1
 --- !u!114 &7859042838906308834
 MonoBehaviour:
@@ -411,4 +464,4 @@ MonoBehaviour:
   - {fileID: -2557315192932793406}
   MinDistance: 1
   MaxDistance: 20
-  Length: 269244
+  Length: 442651

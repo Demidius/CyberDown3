@@ -25,7 +25,7 @@ namespace BsseCode.Caracters.Hero
 
         public void PlayStep()
         {
-            AudioManager.Instance.PlaySound(_audioTracksBase.stepEvent, useInstance: true, position: _player.transform.position);
+            AudioManager.Instance.PlaySound(_audioTracksBase.stepEvent, useInstance: false, position: _player.transform.position);
         }
     }
 }

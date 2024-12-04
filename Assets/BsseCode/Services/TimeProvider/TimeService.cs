@@ -14,6 +14,7 @@ namespace BsseCode.Services.TimeProvider
         public TimeService() =>
             _timeScale = TimeFactor;
 
+        public void ResetTimeScale() => _timeScale = TimeFactor;
         public float TimeScale
         {
             get =>

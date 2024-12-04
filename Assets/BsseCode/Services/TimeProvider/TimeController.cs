@@ -12,8 +12,6 @@ namespace BsseCode.Services.TimeProvider
         private bool _isSlowMotion;
         private IInputService _inputService;
 
-        
-
         [Inject]
         public void Construct(ITimeService timeService, IInputService inputService)
         {
@@ -23,19 +21,22 @@ namespace BsseCode.Services.TimeProvider
 
         private void Start()
         {
-            // Подписываемся на событие изменения времени
+            ResetIsSlowMotion();
             _inputService.ToggleTimeEvent += ToggleTimeScale;
+        }
+
+        public void ResetIsSlowMotion()
+        {
+            _isSlowMotion = false;
         }
 
         private void Update()
         {
-            // Проверяем ввод пользователя
             _inputService.ToggleTimeScaleInput();
         }
 
         private void ToggleTimeScale()
         {
-            // Переключаем Time.timeScale
             _timeService.TimeScale = _isSlowMotion ? 1f : Constants.Const.SlowTimeModificator;
             _isSlowMotion = !_isSlowMotion;
             
@@ -46,6 +47,7 @@ namespace BsseCode.Services.TimeProvider
         {
             // Отписываемся от события
             _inputService.ToggleTimeEvent -= ToggleTimeScale;
+            
         }
     }
 }

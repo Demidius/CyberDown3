@@ -69,11 +69,11 @@ MonoBehaviour:
     Path: event:/Music1
   spiderRun:
     Guid:
-      Data1: -605703209
-      Data2: 1295939844
-      Data3: 1073312703
-      Data4: -1042742683
-    Path: event:/STEPS/Sand Steps
+      Data1: 864144743
+      Data2: 1278349538
+      Data3: -1498113128
+      Data4: 1572884665
+    Path: event:/SpeiderRun2
   explosionSound:
     Guid:
       Data1: 570257669
