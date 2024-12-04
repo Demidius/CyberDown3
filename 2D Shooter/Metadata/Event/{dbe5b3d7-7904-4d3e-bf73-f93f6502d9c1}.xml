@@ -84,7 +84,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{aa6c8f2b-8983-4f9c-9894-657932d5fdaa}">
 		<property name="volume">
-			<value>8</value>
+			<value>10</value>
 		</property>
 		<relationship name="automators">
 			<destination>{f7df3fea-9c00-4225-8ef1-ce41d256bea7}</destination>
@@ -123,7 +123,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{f50b0f9d-4da5-4edf-a7d9-1d68bcacdb5f}">
 		<property name="volume">
-			<value>5.5</value>
+			<value>1</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
@@ -149,7 +149,7 @@
 	<object class="MixerBusEffectChain" id="{c1918efb-2e35-4769-a09a-57372a884126}">
 		<relationship name="effects">
 			<destination>{472d5bd9-d88e-4934-b27b-9e0fdd5ca80d}</destination>
-			<destination>{86651551-bc2f-4ca1-887f-e9df48ebe843}</destination>
+			<destination>{79b81dbd-16f8-4a43-bcd6-784be771f302}</destination>
 			<destination>{e60a713f-c714-4623-8438-ff0fe4e89eef}</destination>
 			<destination>{ae46af29-7d67-45d2-9a7e-215a0b40f128}</destination>
 			<destination>{a6e2a7c7-beb4-4a30-9784-0fffbc993c07}</destination>
@@ -201,6 +201,7 @@
 	<object class="MixerBusEffectChain" id="{d2cc8acd-fd93-4027-a838-fedbaf3169dc}">
 		<relationship name="effects">
 			<destination>{a550b389-c41e-42e4-abb3-7da772dcbf3a}</destination>
+			<destination>{af739446-bfdf-4552-a33a-866bb575e180}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{6a729c01-0a74-4c2b-be58-9e7682cc363d}" />
@@ -215,12 +216,24 @@
 	</object>
 	<object class="GainEffect" id="{472d5bd9-d88e-4934-b27b-9e0fdd5ca80d}">
 		<property name="gain">
-			<value>10</value>
+			<value>2</value>
 		</property>
 	</object>
-	<object class="GainEffect" id="{86651551-bc2f-4ca1-887f-e9df48ebe843}">
-		<property name="gain">
+	<object class="MultibandEqEffect" id="{79b81dbd-16f8-4a43-bcd6-784be771f302}">
+		<property name="filterTypeB">
+			<value>9</value>
+		</property>
+		<property name="frequencyA">
+			<value>3200</value>
+		</property>
+		<property name="frequencyB">
+			<value>98.6033401</value>
+		</property>
+		<property name="qualityA">
 			<value>10</value>
+		</property>
+		<property name="gainB">
+			<value>30</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{e60a713f-c714-4623-8438-ff0fe4e89eef}" />
@@ -274,6 +287,11 @@
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{a550b389-c41e-42e4-abb3-7da772dcbf3a}" />
+	<object class="DistortionEffect" id="{af739446-bfdf-4552-a33a-866bb575e180}">
+		<property name="level">
+			<value>0.769999981</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{ebc19be9-f857-4c75-8b87-2cfaa620d4b0}">
 		<property name="position">
 			<value>0.99677072120559729</value>
