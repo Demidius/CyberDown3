@@ -67,6 +67,13 @@ MonoBehaviour:
       Data3: -1108160070
       Data4: 548604075
     Path: event:/Music1
+  musicMenu1:
+    Guid:
+      Data1: -1211716589
+      Data2: 1141798557
+      Data3: -412662632
+      Data4: 266651533
+    Path: event:/MusicMenu
   spiderRun:
     Guid:
       Data1: 864144743

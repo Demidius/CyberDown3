@@ -18,7 +18,7 @@ namespace BsseCode.Audio.AudioSourcesHandlers
             else
                 Destroy(gameObject);
         }
-
+        
         // Инициализация пула для звука
         public SoundPool InitializeSoundPool(EventReference soundPath, int initialCount = 5)
         {

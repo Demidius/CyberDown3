@@ -1,4 +1,5 @@
 using BsseCode.Services.TimeProvider;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -10,7 +11,7 @@ namespace BsseCode.Mechanics.TimerLevel
 
         public class TimerLevel : MonoBehaviour, ITimerLevel
         {
-            [SerializeField] private Text timerText;
+            [SerializeField] private TextMeshProUGUI timerText;
             
             public string CurrentTimeOnString { get; set; }
             public float CurrentTimerValue { get; set; }

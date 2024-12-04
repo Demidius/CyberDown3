@@ -9,6 +9,7 @@ namespace BsseCode.Audio.AudioSourcesHandlers
         public EventReference shootTrack;
         public EventReference stepEvent;
         public EventReference music1;
+        public EventReference musicMenu1;
         public EventReference spiderRun;
         public EventReference explosionSound;
 
@@ -17,7 +18,8 @@ namespace BsseCode.Audio.AudioSourcesHandlers
         {
             AudioManager.Instance.InitializeSoundPool(shootTrack, 30);
             AudioManager.Instance.InitializeSoundPool(stepEvent,30);
-            AudioManager.Instance.InitializeSoundPool(music1);
+            AudioManager.Instance.InitializeSoundPool(music1, 1);
+            AudioManager.Instance.InitializeSoundPool(musicMenu1, 1);
             AudioManager.Instance.InitializeSoundPool(spiderRun, 30);
             AudioManager.Instance.InitializeSoundPool(explosionSound, 30);
             
