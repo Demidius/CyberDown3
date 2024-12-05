@@ -32,12 +32,12 @@ Material:
     m_Floats:
     - _FaceDilate: 0
     - _GlowInner: 0
-    - _GlowOffset: 0.4
+    - _GlowOffset: -1
     - _GlowOuter: 1
     - _GlowPower: 0.52
     - _GradientScale: 11
     - _ScaleRatioA: 0.90909094
-    - _ScaleRatioB: 0.5275974
+    - _ScaleRatioB: 0.7386364
     - _ScaleRatioC: 0.7386364
     - _TextureHeight: 1024
     - _TextureWidth: 1024
