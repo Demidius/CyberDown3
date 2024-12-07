@@ -12,6 +12,9 @@ namespace BsseCode.Audio.AudioSourcesHandlers
         public EventReference musicMenu1;
         public EventReference spiderRun;
         public EventReference explosionSound;
+        public EventReference emptyBarSound;
+        public EventReference refillEnergyBarSound;
+        public EventReference energyBarIsFullSound;
 
 
         private void Start()
@@ -22,6 +25,9 @@ namespace BsseCode.Audio.AudioSourcesHandlers
             AudioManager.Instance.InitializeSoundPool(musicMenu1, 1);
             AudioManager.Instance.InitializeSoundPool(spiderRun, 30);
             AudioManager.Instance.InitializeSoundPool(explosionSound, 30);
+            AudioManager.Instance.InitializeSoundPool(emptyBarSound, 10);
+            AudioManager.Instance.InitializeSoundPool(refillEnergyBarSound, 10);
+            AudioManager.Instance.InitializeSoundPool(energyBarIsFullSound, 10);
             
         }
     }

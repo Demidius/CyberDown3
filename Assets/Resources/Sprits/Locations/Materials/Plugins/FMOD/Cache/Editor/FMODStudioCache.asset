@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8481195097168602321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ENERGY FULFILL/TimeController
+  m_EditorClassIdentifier: 
+  Name: TimeController
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2653580880
+    data2: 1906607243
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-7214593814450492051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/NO MORE SPACE FOR ENERGY/TimeController
+  m_EditorClassIdentifier: 
+  Name: TimeController
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2653580880
+    data2: 1906607243
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &-6781187841864389589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,10 +226,10 @@ MonoBehaviour:
   Path: 2D Shooter/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638690368871948595
+  lastModified: 638691825446259414
   FileSizes:
   - Name: Desktop
-    Value: 6878752
+    Value: 6887104
   Exists: 1
 --- !u!114 &-4191511201637455799
 MonoBehaviour:
@@ -257,10 +305,11 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: -8481195097168602321}
   MinDistance: 1
   MaxDistance: 20
-  Length: 1406
+  Length: 516
 --- !u!114 &-2557315192932793406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,6 +358,34 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &-2064446471958846372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/ACTIONS/NO MORE SPACE FOR ENERGY
+  m_EditorClassIdentifier: 
+  Path: event:/ACTIONS/NO MORE SPACE FOR ENERGY
+  Guid:
+    Data1: -1947955017
+    Data2: 1142131650
+    Data3: 188887986
+    Data4: 156937121
+  Banks:
+  - {fileID: -4490260625938609656}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -7214593814450492051}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 100
 --- !u!114 &-1562510585477686746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,13 +463,15 @@ MonoBehaviour:
   - {fileID: -5591601592680260438}
   - {fileID: -6704387232423208292}
   - {fileID: 7072801031208941914}
+  - {fileID: 6356528643795503251}
+  - {fileID: -2064446471958846372}
   EditorParameters:
   - {fileID: -3796793255901461457}
   MasterBanks:
   - {fileID: -4490260625938609656}
   StringsBanks:
   - {fileID: 6229976477368895519}
-  cacheTime: 638690368871973634
+  cacheTime: 638691825446299627
   cacheVersion: 131621
 --- !u!114 &1665592537083680904
 MonoBehaviour:
@@ -442,6 +521,30 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &1978354574520183180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/NO ENERGY/TimeController
+  m_EditorClassIdentifier: 
+  Name: TimeController
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2653580880
+    data2: 1906607243
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &6229976477368895519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,11 +560,39 @@ MonoBehaviour:
   Path: 2D Shooter/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638690368871973634
+  lastModified: 638691825446299627
   FileSizes:
   - Name: Desktop
-    Value: 1282
+    Value: 1398
   Exists: 1
+--- !u!114 &6356528643795503251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/ACTIONS/NO ENERGY
+  m_EditorClassIdentifier: 
+  Path: event:/ACTIONS/NO ENERGY
+  Guid:
+    Data1: -1079289820
+    Data2: 1198806040
+    Data3: 2061859740
+    Data4: -1837906852
+  Banks:
+  - {fileID: -4490260625938609656}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 1978354574520183180}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 251
 --- !u!114 &7072801031208941914
 MonoBehaviour:
   m_ObjectHideFlags: 0

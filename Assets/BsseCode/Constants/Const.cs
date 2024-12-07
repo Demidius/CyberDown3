@@ -13,9 +13,10 @@ namespace BsseCode.Constants
         
         public const float SpeedEnemy = 3.5f;
         public const float SpeedPlayer = 4f;
-        
+
+        public const float NormalTimeSpeed = 1f;
         public const float SlowTimeModificator = 0.2f;
 
-        public const int StartCountBullet = 1000;
+        public const float MaxEnergyCount = 10;
     }
 }

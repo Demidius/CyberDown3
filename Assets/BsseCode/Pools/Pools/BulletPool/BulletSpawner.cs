@@ -15,7 +15,7 @@ namespace BsseCode.Pools.Pools.BulletPool
         private Vector2 _direction;
         
         private IInputService _inputService;
-        private IBulletCounter _bulletCounter;
+        private IEnergyCounter _energyCounter;
         private IPoolController _poolController;
         private AudioTracksBase _audioTracksBase;
 
@@ -24,13 +24,13 @@ namespace BsseCode.Pools.Pools.BulletPool
         public void Construct(
             IPoolController poolController, 
             IInputService inputService, 
-            IBulletCounter bulletCounter,
+            IEnergyCounter energyCounter,
             AudioTracksBase audioTracksBase)
            
         {
             _audioTracksBase = audioTracksBase;
             _poolController = poolController;
-            _bulletCounter = bulletCounter;
+            _energyCounter = energyCounter;
             _inputService = inputService;
         }
 
@@ -46,24 +46,24 @@ namespace BsseCode.Pools.Pools.BulletPool
 
         private void Shoot()
         {
-            if (_bulletCounter.BulletCount > 0)
+            if (_energyCounter.EnergyCount > 0)
             {
                 var bullet = _poolController.GetPool<Bullet>().GetElement();
                 bullet.transform.position = _bulletSpawnPoint.transform.position;
                 bullet.SetParameters(_bulletSpeed, _direction);
-                _bulletCounter.SubtractBullet();
+                _energyCounter.SubtractEnergy(1);
                 
-                PlaySound(bullet);
+                PlaySound();
             }
             else
             {
-                Debug.Log("Gun is empty");
+                AudioManager.Instance.PlaySound(_audioTracksBase.emptyBarSound, useInstance: false, position: this.transform.position);
             }
         }
 
-        private void PlaySound(Bullet bullet)
+        private void PlaySound()
         {
-            AudioManager.Instance.PlaySound(_audioTracksBase.shootTrack, useInstance: false, position: bullet.transform.position);
+            AudioManager.Instance.PlaySound(_audioTracksBase.shootTrack, useInstance: false, position: this.transform.position);
         }
     }
 }

@@ -1,3 +1,4 @@
+using BsseCode.Audio.AudioSourcesHandlers;
 using BsseCode.Mechanics.BulletCounter;
 using BsseCode.Services;
 using BsseCode.Tags;
@@ -10,30 +11,36 @@ namespace BsseCode.Pools.Pools.AmmoLootPool
     [RequireComponent(typeof(Collider2D))]
     public class AmmoLoot : MonoBehaviour, IPoolsElement
     {
-       
         private float _speed;
         private MoveService _moveService;
 
-       
+
         private Coroutine _coroutineLifeRoutine;
-        private IBulletCounter _bulletCounter;
+        private IEnergyCounter _energyCounter;
         private IPoolController _poolController;
+        private AudioTracksBase _audioTracksBase;
 
         [Inject]
-        public void Construct(IPoolController poolController, IBulletCounter bulletCounter)
+        public void Construct(IPoolController poolController, IEnergyCounter energyCounter, AudioTracksBase audioTracksBase)
         {
+            _audioTracksBase = audioTracksBase;
             _poolController = poolController;
-            _bulletCounter = bulletCounter;
-           
-            
+            _energyCounter = energyCounter;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.TryGetComponent<PlayerTag>(out PlayerTag player))
             {
-                _bulletCounter.AddBullet();
-                Deactivate();
+                if (_energyCounter.AddEnergy() == true)
+                {
+                    Deactivate();
+                    Debug.Log("Ammo Loot Deactivated");
+                }
+                else
+                {
+                    Debug.Log("Ammo Loot notDeactivated");
+                }
             }
         }
 

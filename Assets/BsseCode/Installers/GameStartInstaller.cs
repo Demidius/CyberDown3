@@ -17,10 +17,7 @@ namespace BsseCode.Installers
 {
     public class GameStartInstaller : MonoInstaller
     {
-      //  [SerializeField] private GameObject poolsBasePrefab;
-        [SerializeField] private GameObject playerPrefab;
-        // [SerializeField] private GameObject PoolController;
-        
+      [SerializeField] private GameObject playerPrefab;
         
         public override void InstallBindings()
         {
@@ -36,7 +33,7 @@ namespace BsseCode.Installers
 
             #region Mechanics
 
-            Container.Bind<IBulletCounter>().To<BulletCounter>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<IEnergyCounter>().To<EnergyCounter>().FromComponentInHierarchy().AsSingle();
             Container.Bind<ITimerLevel>().To<TimerLevel>().AsSingle();
           //  Container.Bind<SpawnZonaController>().FromComponentInHierarchy().AsSingle();
             
@@ -52,14 +49,14 @@ namespace BsseCode.Installers
 
             #endregion
 
-            // Container.Bind<PlayerFactory>().FromComponentInHierarchy().AsSingle();
+            
             Container.Bind<IFactoryComponent>().To<FactoryComponent>().AsSingle();
             
             Container.Bind<Player>().FromComponentInNewPrefab(playerPrefab).AsSingle();
             
             Container.Bind<IPoolController>().To<PoolController>().FromComponentInHierarchy().AsSingle();
             
-            
+            Container.Bind<TimeController>().FromComponentInHierarchy().AsSingle();
               
             
         }

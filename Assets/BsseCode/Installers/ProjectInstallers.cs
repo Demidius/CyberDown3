@@ -33,6 +33,8 @@ namespace BsseCode.Installers
             #endregion
 
             Container.Bind<ITimeService>().To<TimeService>().AsSingle();
+           
+            
 
             #region Coroutine
 

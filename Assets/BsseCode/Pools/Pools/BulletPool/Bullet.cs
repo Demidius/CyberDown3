@@ -31,11 +31,7 @@ namespace BsseCode.Pools.Pools.BulletPool
             _poolController = poolController;
             _bulletMover = new BulletMover(moveService, transform);
         }
-
-        private void Awake()
-        {
-            LoadAudioBanks();
-        }
+        
         public void SetParameters(float speed, Vector2 direction)
         {
             _speed = speed;
@@ -48,12 +44,6 @@ namespace BsseCode.Pools.Pools.BulletPool
 
         public void Deactivate() => 
             _poolController?.ReturnToPool(this);
-
-        private void LoadAudioBanks()
-        {
-            RuntimeManager.LoadBank("Master");
-            RuntimeManager.LoadBank("Master.strings");
-        }
         
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -65,7 +55,6 @@ namespace BsseCode.Pools.Pools.BulletPool
             {
                 Deactivate();
             }
-            
         }
         
     }

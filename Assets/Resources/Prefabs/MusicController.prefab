@@ -88,6 +88,27 @@ MonoBehaviour:
       Data3: -707685503
       Data4: -141407836
     Path: event:/ROBOT SOUNDS/ROBOT EXPLOSION
+  emptyBarSound:
+    Guid:
+      Data1: -1947955017
+      Data2: 1142131650
+      Data3: 188887986
+      Data4: 156937121
+    Path: event:/ACTIONS/NO MORE SPACE FOR ENERGY
+  refillEnergyBarSound:
+    Guid:
+      Data1: -1906315018
+      Data2: 1333731394
+      Data3: -2140639355
+      Data4: 1135686353
+    Path: event:/ACTIONS/ENERGY FULFILL
+  energyBarIsFullSound:
+    Guid:
+      Data1: -1079289820
+      Data2: 1198806040
+      Data3: 2061859740
+      Data4: -1837906852
+    Path: event:/ACTIONS/NO ENERGY
 --- !u!114 &576163077868940883
 MonoBehaviour:
   m_ObjectHideFlags: 0

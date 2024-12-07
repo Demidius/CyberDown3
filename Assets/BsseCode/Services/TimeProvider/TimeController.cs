@@ -1,4 +1,5 @@
 using BsseCode.Constants;
+using BsseCode.Mechanics.BulletCounter;
 using BsseCode.Services.InputFol;
 using UnityEngine;
 using Zenject;
@@ -9,12 +10,14 @@ namespace BsseCode.Services.TimeProvider
     public class TimeController : MonoBehaviour
     {
         private ITimeService _timeService;
-        private bool _isSlowMotion;
+        public bool IsSlowMotion { get; private set; }
         private IInputService _inputService;
+        private IEnergyCounter _energyCounter;
 
         [Inject]
-        public void Construct(ITimeService timeService, IInputService inputService)
+        public void Construct(ITimeService timeService, IInputService inputService, IEnergyCounter energyCounter)
         {
+            _energyCounter = energyCounter;
             _inputService = inputService;
             _timeService = timeService;
         }
@@ -23,11 +26,12 @@ namespace BsseCode.Services.TimeProvider
         {
             ResetIsSlowMotion();
             _inputService.ToggleTimeEvent += ToggleTimeScale;
+            _energyCounter.EnergyBarIsEmpty += ExitFromSlowMotion;
         }
 
         public void ResetIsSlowMotion()
         {
-            _isSlowMotion = false;
+            IsSlowMotion = false;
         }
 
         private void Update()
@@ -37,9 +41,21 @@ namespace BsseCode.Services.TimeProvider
 
         private void ToggleTimeScale()
         {
-            _timeService.TimeScale = _isSlowMotion ? 1f : Constants.Const.SlowTimeModificator;
-            _isSlowMotion = !_isSlowMotion;
-            
+            _timeService.TimeScale = IsSlowMotion ? Const.NormalTimeSpeed : Constants.Const.SlowTimeModificator;
+            if (Mathf.Approximately(_timeService.TimeScale, Const.NormalTimeSpeed))
+            {
+                IsSlowMotion = false;
+            }
+            else
+            {
+                IsSlowMotion = true;
+            } 
+        }
+
+        private void ExitFromSlowMotion()
+        {
+            _timeService.TimeScale = Const.NormalTimeSpeed;
+            IsSlowMotion = false;
         }
 
 
@@ -47,7 +63,6 @@ namespace BsseCode.Services.TimeProvider
         {
             // Отписываемся от события
             _inputService.ToggleTimeEvent -= ToggleTimeScale;
-            
         }
     }
 }

@@ -76,10 +76,9 @@ namespace BsseCode.Pools.Pools.EnemesPool
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            
             if (other.TryGetComponent<Bullet>(out Bullet bullet))
             {
-                
-                
                Deactivate();
             }
         }

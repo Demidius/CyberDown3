@@ -29,7 +29,7 @@ namespace BsseCode.Mechanics.GameResults
                 GameObject entry = Instantiate(resultEntryPrefab, contentParent);
                 ResultEntryUI entryUI = entry.GetComponent<ResultEntryUI>();
                 entryUI.SetResult(result);
-                Debug.Log(result);
+                // Debug.Log(result);
             }
         }
     }
