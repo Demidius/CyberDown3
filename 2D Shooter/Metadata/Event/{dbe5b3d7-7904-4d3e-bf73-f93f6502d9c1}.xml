@@ -84,7 +84,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{aa6c8f2b-8983-4f9c-9894-657932d5fdaa}">
 		<property name="volume">
-			<value>10</value>
+			<value>0.5</value>
 		</property>
 		<relationship name="automators">
 			<destination>{f7df3fea-9c00-4225-8ef1-ce41d256bea7}</destination>
@@ -112,7 +112,7 @@
 	<object class="MixerBusPanner" id="{388b4fb2-6849-4b6f-a594-870199be8ab7}" />
 	<object class="MultiSound" id="{0db10b53-9d65-465a-a494-3415ff68786d}">
 		<property name="length">
-			<value>0.46000000000000002</value>
+			<value>0.26000000000000001</value>
 		</property>
 		<relationship name="sounds">
 			<destination>{a15d5934-f23c-4b13-8766-6ae89b7038c7}</destination>
@@ -123,7 +123,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{f50b0f9d-4da5-4edf-a7d9-1d68bcacdb5f}">
 		<property name="volume">
-			<value>1</value>
+			<value>-6.5</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
@@ -214,11 +214,7 @@
 			<destination>{acb42bed-9d18-43c6-a4c1-a771516ccc14}</destination>
 		</relationship>
 	</object>
-	<object class="GainEffect" id="{472d5bd9-d88e-4934-b27b-9e0fdd5ca80d}">
-		<property name="gain">
-			<value>2</value>
-		</property>
-	</object>
+	<object class="GainEffect" id="{472d5bd9-d88e-4934-b27b-9e0fdd5ca80d}" />
 	<object class="MultibandEqEffect" id="{79b81dbd-16f8-4a43-bcd6-784be771f302}">
 		<property name="filterTypeB">
 			<value>9</value>
