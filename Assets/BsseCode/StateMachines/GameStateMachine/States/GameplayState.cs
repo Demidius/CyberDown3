@@ -9,7 +9,6 @@ namespace BsseCode.StateMachines.GameStateMachine.States
 {
     public class GameplayState : IGameState
     {
-
         private readonly GameStateMachine _gameStateMachine;
 
         public GameplayState(GameStateMachine gameStateMachine)
@@ -24,6 +23,7 @@ namespace BsseCode.StateMachines.GameStateMachine.States
 
         public void Exit()
         {
+            
         }
 
         public void StartMenu()
@@ -34,7 +34,6 @@ namespace BsseCode.StateMachines.GameStateMachine.States
 
         public void EndGame()
         {
-
             // Завершение игры, переход к GameOverState
             _gameStateMachine.SetState(new GameOverState(_gameStateMachine));
         }

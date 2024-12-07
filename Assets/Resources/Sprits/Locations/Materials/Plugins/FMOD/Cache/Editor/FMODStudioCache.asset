@@ -24,6 +24,30 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &-7286394323246188084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SpeiderRun2/GlobalVolume
+  m_EditorClassIdentifier: 
+  Name: GlobalVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3781086499
+    data2: 2270176536
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &-7214593814450492051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +124,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters:
   - {fileID: 1665592537083680904}
+  - {fileID: 8620747898957862268}
   MinDistance: 1
   MaxDistance: 20
   Length: 1040
@@ -128,6 +153,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters:
   - {fileID: -2299272443807591507}
+  - {fileID: 4148745028583566328}
   MinDistance: 1
   MaxDistance: 20
   Length: 1640
@@ -156,6 +182,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters:
   - {fileID: -5106969545647488914}
+  - {fileID: 7143794063569549084}
   MinDistance: 1
   MaxDistance: 20
   Length: 260
@@ -184,6 +211,7 @@ MonoBehaviour:
   IsOneShot: 0
   Parameters:
   - {fileID: 1850299383072916713}
+  - {fileID: -7286394323246188084}
   MinDistance: 1
   MaxDistance: 20
   Length: 1631
@@ -226,10 +254,10 @@ MonoBehaviour:
   Path: 2D Shooter/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638691825446259414
+  lastModified: 638691936618449106
   FileSizes:
   - Name: Desktop
-    Value: 6887104
+    Value: 6889888
   Exists: 1
 --- !u!114 &-4191511201637455799
 MonoBehaviour:
@@ -307,9 +335,34 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters:
   - {fileID: -8481195097168602321}
+  - {fileID: -2334025621460251329}
   MinDistance: 1
   MaxDistance: 20
   Length: 516
+--- !u!114 &-3040385604725676745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/GlobalVolume
+  m_EditorClassIdentifier: 
+  Name: GlobalVolume
+  StudioPath: parameter:/GlobalVolume
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3781086499
+    data2: 2270176536
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &-2557315192932793406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +383,30 @@ MonoBehaviour:
   ID:
     data1: 2653580880
     data2: 1906607243
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-2334025621460251329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ENERGY FULFILL/GlobalVolume
+  m_EditorClassIdentifier: 
+  Name: GlobalVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3781086499
+    data2: 2270176536
   Type: 0
   IsGlobal: 1
   Labels: []
@@ -383,6 +460,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters:
   - {fileID: -7214593814450492051}
+  - {fileID: 5223330134796225418}
   MinDistance: 1
   MaxDistance: 20
   Length: 100
@@ -467,12 +545,37 @@ MonoBehaviour:
   - {fileID: -2064446471958846372}
   EditorParameters:
   - {fileID: -3796793255901461457}
+  - {fileID: -3040385604725676745}
   MasterBanks:
   - {fileID: -4490260625938609656}
   StringsBanks:
   - {fileID: 6229976477368895519}
-  cacheTime: 638691825446299627
+  cacheTime: 638691936618484392
   cacheVersion: 131621
+--- !u!114 &764526270983352522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music1/GlobalVolume
+  m_EditorClassIdentifier: 
+  Name: GlobalVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3781086499
+    data2: 2270176536
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &1665592537083680904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545,6 +648,78 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &4148745028583566328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BLASTER SHOOT/GlobalVolume
+  m_EditorClassIdentifier: 
+  Name: GlobalVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3781086499
+    data2: 2270176536
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &4914076221634028188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/NO ENERGY/GlobalVolume
+  m_EditorClassIdentifier: 
+  Name: GlobalVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3781086499
+    data2: 2270176536
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &5223330134796225418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/NO MORE SPACE FOR ENERGY/GlobalVolume
+  m_EditorClassIdentifier: 
+  Name: GlobalVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3781086499
+    data2: 2270176536
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &6229976477368895519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,10 +735,10 @@ MonoBehaviour:
   Path: 2D Shooter/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638691825446299627
+  lastModified: 638691936618484392
   FileSizes:
   - Name: Desktop
-    Value: 1398
+    Value: 1454
   Exists: 1
 --- !u!114 &6356528643795503251
 MonoBehaviour:
@@ -590,9 +765,34 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters:
   - {fileID: 1978354574520183180}
+  - {fileID: 4914076221634028188}
   MinDistance: 1
   MaxDistance: 20
   Length: 251
+--- !u!114 &6581950694900636622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MusicMenu/GlobalVolume
+  m_EditorClassIdentifier: 
+  Name: GlobalVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3781086499
+    data2: 2270176536
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &7072801031208941914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -618,9 +818,34 @@ MonoBehaviour:
   IsOneShot: 0
   Parameters:
   - {fileID: -1562510585477686746}
+  - {fileID: 6581950694900636622}
   MinDistance: 1
   MaxDistance: 20
   Length: 144091
+--- !u!114 &7143794063569549084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Sand Steps/GlobalVolume
+  m_EditorClassIdentifier: 
+  Name: GlobalVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3781086499
+    data2: 2270176536
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &7859042838906308834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,6 +871,31 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters:
   - {fileID: -2557315192932793406}
+  - {fileID: 764526270983352522}
   MinDistance: 1
   MaxDistance: 20
   Length: 442651
+--- !u!114 &8620747898957862268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Explision/GlobalVolume
+  m_EditorClassIdentifier: 
+  Name: GlobalVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3781086499
+    data2: 2270176536
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1

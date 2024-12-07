@@ -17,6 +17,6 @@ namespace BsseCode.Constants
         public const float NormalTimeSpeed = 1f;
         public const float SlowTimeModificator = 0.2f;
 
-        public const float MaxEnergyCount = 10;
+        public const float MaxEnergyCount = 30;
     }
 }

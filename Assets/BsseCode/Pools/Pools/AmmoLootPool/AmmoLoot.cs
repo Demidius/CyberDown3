@@ -35,11 +35,6 @@ namespace BsseCode.Pools.Pools.AmmoLootPool
                 if (_energyCounter.AddEnergy() == true)
                 {
                     Deactivate();
-                    Debug.Log("Ammo Loot Deactivated");
-                }
-                else
-                {
-                    Debug.Log("Ammo Loot notDeactivated");
                 }
             }
         }

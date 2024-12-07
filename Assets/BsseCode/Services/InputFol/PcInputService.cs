@@ -5,8 +5,10 @@ namespace BsseCode.Services.InputFol
 {
     public class PcInputService : IInputService
     {
+        private bool isPause = false;
         public event Action ShootType1;
         public event Action ToggleTimeEvent;
+        public event Action<bool> PauseEvent;
         
         public Vector2 GetMovementInput()
         {
@@ -31,6 +33,14 @@ namespace BsseCode.Services.InputFol
                 ToggleTimeEvent?.Invoke();
             }
         }
-        
+
+        public void PauseInput()
+        {
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
+            {
+                isPause = !isPause;
+                PauseEvent?.Invoke(isPause);
+            }
+        }
     }
 }

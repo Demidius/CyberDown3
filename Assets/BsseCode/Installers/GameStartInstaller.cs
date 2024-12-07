@@ -8,6 +8,7 @@ using BsseCode.Services.Factory;
 using BsseCode.Services.InputFol;
 using BsseCode.Services.PlayerMouseService;
 using BsseCode.Services.TimeProvider;
+using BsseCode.UI_Script.Pause_Panel;
 using Cinemachine;
 using UnityEngine;
 using Zenject;
@@ -35,8 +36,7 @@ namespace BsseCode.Installers
 
             Container.Bind<IEnergyCounter>().To<EnergyCounter>().FromComponentInHierarchy().AsSingle();
             Container.Bind<ITimerLevel>().To<TimerLevel>().AsSingle();
-          //  Container.Bind<SpawnZonaController>().FromComponentInHierarchy().AsSingle();
-            
+         
             //Container.Bind<ResultsManager>().FromComponentInHierarchy().AsSingle();
 
             #endregion
@@ -57,6 +57,7 @@ namespace BsseCode.Installers
             Container.Bind<IPoolController>().To<PoolController>().FromComponentInHierarchy().AsSingle();
             
             Container.Bind<TimeController>().FromComponentInHierarchy().AsSingle();
+            
               
             
         }

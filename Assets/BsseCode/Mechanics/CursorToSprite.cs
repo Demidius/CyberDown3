@@ -9,11 +9,16 @@ namespace BsseCode.Mechanics
 
         private void Start()
         {
-            // Установить кастомный курсор
+            SetCorsor();
+
+        }
+
+        public void SetCorsor()
+        {
             Cursor.SetCursor(cursorSprite, hotSpot, CursorMode.Auto);
         }
 
-        private void OnDisable()
+        public void ReturnCursor()
         {
             // Вернуть стандартный курсор, если объект деактивирован
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
