@@ -16,7 +16,7 @@ namespace BsseCode._0._Installers
     {
 
         public GameObject resultsManagerPrefab;
-        public AudioTracksBase AudioManagerPrefab;
+        public AudioTracksBase audioManagerPrefab;
 
         public override void InstallBindings()
         {
@@ -33,6 +33,7 @@ namespace BsseCode._0._Installers
             #endregion
 
             Container.Bind<ITimeGlobalService>().To<TimeGlobalService>().AsSingle();
+            Container.Bind<IRandomizerService>().To<RandomizerService>().AsSingle();
            
             
 
@@ -42,7 +43,6 @@ namespace BsseCode._0._Installers
             DontDestroyOnLoad(coroutineRunner);
             Container.Bind<CoroutineRunner>().FromInstance(coroutineRunner).AsSingle();
             Container.Bind<ICoroutineGlobalService>().To<CoroutineGlobalService>().AsSingle();
-            Container.Bind<IRandomizerService>().To<RandomizerService>().AsSingle();
 
             #endregion
 
@@ -54,7 +54,7 @@ namespace BsseCode._0._Installers
             #region Sound
 
             // Container.Bind<IAudioExplorer>().To<AudioExplorer>().AsTransient();
-             Container.Bind<AudioTracksBase>().FromComponentInNewPrefab(AudioManagerPrefab).AsSingle();
+             Container.Bind<AudioTracksBase>().FromComponentInNewPrefab(audioManagerPrefab).AsSingle();
 
             // var audioTracksDate = Resources.Load<AudioTracksDate>("AudioTracksDate");
             // if (audioTracksDate == null)

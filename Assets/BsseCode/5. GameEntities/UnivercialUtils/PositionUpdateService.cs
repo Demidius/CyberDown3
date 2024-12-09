@@ -12,9 +12,13 @@ namespace BsseCode._5._GameEntities.UnivercialUtils
         }
        public Vector3 Move(Vector2 moveDirection, float movementSpeed, Vector3 objPosition)
         {
-            Vector3 newpPosition = new Vector3(moveDirection.x, moveDirection.y, 0) * (movementSpeed * _timeGlobalService.DeltaTime);
+            Vector2 normalizedDirection = moveDirection.normalized;
+            Vector3 newpPosition = new Vector3(normalizedDirection.x, normalizedDirection.y, 0) * (movementSpeed * _timeGlobalService.DeltaTime);
             objPosition += newpPosition;
             return objPosition;
         }
     }
 }
+
+   
+  

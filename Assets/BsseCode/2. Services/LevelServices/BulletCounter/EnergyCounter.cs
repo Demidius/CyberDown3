@@ -10,20 +10,21 @@ namespace BsseCode._2._Services.LevelServices.BulletCounter
 {
     public class EnergyCounter : MonoBehaviour, IEnergyCounter
     {
-        private readonly IRandomizerService _randomizerService;
-        private readonly AudioTracksBase _audioTracksBase;
-        
-        public float EnergyCount { get; private set; }
         
         public event Action OnEnergyCountChanged;
         public event Action OnEnergyBarEmpty;
 
+        private IRandomizerService _randomizerService;
+        private AudioTracksBase _audioTracksBase;
+        public float EnergyCount { get; private set; }
+
         [Inject]
-        public EnergyCounter(IRandomizerService randomizerService, AudioTracksBase audioTracksBase)
+        public void Construct(IRandomizerService randomizerService, AudioTracksBase audioTracksBase)
         {
-            _randomizerService = randomizerService ?? throw new ArgumentNullException(nameof(randomizerService));
-            _audioTracksBase = audioTracksBase ?? throw new ArgumentNullException(nameof(audioTracksBase));
+            _audioTracksBase = audioTracksBase;
+            _randomizerService = randomizerService;
         }
+
 
         private void Awake()
         {
@@ -35,17 +36,21 @@ namespace BsseCode._2._Services.LevelServices.BulletCounter
             if (EnergyCount < Const.MaxEnergyCount)
             {
                 EnergyCount += _randomizerService.GetRandomValue(Const.MinValueEnergyFromLoot, Const.MaxValueEnergyFromLoot);
-                if (EnergyCount > Const.MaxEnergyCount)
+
+                AudioManager.Instance.PlaySound(_audioTracksBase.refillEnergyBarSound, useInstance: false,
+                    position: this.transform.position);
+
+                if (EnergyCount > Const.MaxEnergyCount) // Исправление: если энергия превышает максимум
                 {
                     EnergyCount = Const.MaxEnergyCount;
                 }
 
-                AudioManager.Instance.PlaySound(_audioTracksBase.refillEnergyBarSound, useInstance: false, position: transform.position);
                 OnEnergyCountChanged?.Invoke();
                 return true;
             }
 
-            AudioManager.Instance.PlaySound(_audioTracksBase.energyBarIsFullSound, useInstance: false, position: transform.position);
+            AudioManager.Instance.PlaySound(_audioTracksBase.energyBarIsFullSound, useInstance: false,
+                position: this.transform.position);
             return false;
         }
 

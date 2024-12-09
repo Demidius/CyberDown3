@@ -17,16 +17,16 @@ namespace BsseCode._5._GameEntities.Objects.Bullet
         private BulletMover _bulletMover;
       
         private IPoolController _poolController;
-        private ITimeGlobalService _timeGlobalService;
+       
 
         [Inject]
         public void Construct(
             PositionUpdateService positionUpdateService,
             IPoolController poolController,
-            ICoroutineGlobalService coroutineGlobalService,
-            ITimeGlobalService timeGlobalService)
+            ICoroutineGlobalService coroutineGlobalService)
+            
         {
-            _timeGlobalService = timeGlobalService;
+            
             _poolController = poolController;
             _bulletMover = new BulletMover(positionUpdateService, transform);
         }

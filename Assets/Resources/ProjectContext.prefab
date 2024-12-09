@@ -107,4 +107,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resultsManagerPrefab: {fileID: 3118820539555204910, guid: b7f2d6d6a8b31534f9645acfcbd37e73, type: 3}
-  AudioManagerPrefab: {fileID: 5664458815669103617, guid: dc018d6b71f12d945bc2687477184744, type: 3}
+  audioManagerPrefab: {fileID: 5664458815669103617, guid: dc018d6b71f12d945bc2687477184744, type: 3}
