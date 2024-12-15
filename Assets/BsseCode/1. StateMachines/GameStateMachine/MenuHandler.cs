@@ -7,29 +7,29 @@ namespace BsseCode._1._StateMachines.GameStateMachine
 {
     public class MenuHandler : MonoBehaviour
     {
-        [SerializeField] private Button _button; 
-        
-        private MainMenuState _mainMenuState;
+        [SerializeField] private Button button;
+        private GameMachineStarter _starter;
 
         [Inject]
-        public void Construct(MainMenuState mainMenuState)
+        public void Construct(GameMachineStarter starter)
         {
-            _mainMenuState = mainMenuState;
+            _starter = starter;
         }
 
-        private void Awake()
+        private void Start()
         {
-            _button.onClick.AddListener(OnStartButtonClicked);
+            button.onClick.AddListener(OnStartButtonClicked);
         }
 
         private void OnDestroy()
         {
-          _button.onClick.RemoveListener(OnStartButtonClicked);
+            button.onClick.RemoveListener(OnStartButtonClicked);
         }
 
-        private void OnStartButtonClicked()
+
+        public void OnStartButtonClicked()
         {
-            _mainMenuState.StartGame();
+            _starter.BootstrapState.StartGame();
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using BsseCode._2._Services.GlobalServices.Coroutines;
 using BsseCode._2._Services.GlobalServices.Pools;
 using BsseCode._2._Services.GlobalServices.TimeProvider;
@@ -55,6 +56,5 @@ namespace BsseCode._5._GameEntities.Objects.Bullet
                 Deactivate();
             }
         }
-        
     }
 }

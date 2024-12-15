@@ -4,11 +4,12 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 {
     public class PauseState : IGameState
     {
-        private readonly GameStateMachine _gameStateMachine;
+        public IGameState CurrentState;
+        private GameMachineStarter _gameMachineStarter;
 
-        public PauseState(GameStateMachine gameStateMachine)
+        public PauseState(GameMachineStarter gameMachineStarter)
         {
-            _gameStateMachine = gameStateMachine;
+            _gameMachineStarter = gameMachineStarter;
         }
 
         public void Enter()
@@ -20,7 +21,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
         public void ResumeGame()
         {
             Time.timeScale = 1;
-            _gameStateMachine.SetState(new GameplayState(_gameStateMachine));
+            // _gameStateMachine.SetState(new GameplayState(_gameStateMachine));
         }
 
         public void Exit()

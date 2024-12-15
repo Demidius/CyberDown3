@@ -44,7 +44,7 @@ namespace BsseCode._6._Audio.Managers
             {
                 Debug.LogWarning("Sound path is empty!");
                 return;
-            }
+            } 
 
             if (!useInstance)
             {
