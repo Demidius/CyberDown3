@@ -1,3 +1,4 @@
+using BsseCode._2._Services.GlobalServices.PlayerHandler;
 using BsseCode._2._Services.GlobalServices.TimeProvider;
 using BsseCode._3._SupportCode.Constants;
 using UnityEngine;
@@ -9,26 +10,26 @@ namespace BsseCode._5._GameEntities.Hero
     {
         private Animator legsAnimator;
         private ITimeGlobalService _timeGlobalService;
-        private Player _player;
+        private PlayerHandler _playerHandler;
 
 
         [Inject]
-        public void Construct(ITimeGlobalService timeGlobalService, Player player)
+        public void Construct(ITimeGlobalService timeGlobalService, PlayerHandler playerHandler)
         {
-            _player = player;
+            _playerHandler = playerHandler;
             _timeGlobalService = timeGlobalService;
         }
 
         private void Start()
         {
-            legsAnimator = _player.LegsRotaionHero.GetComponentInChildren<Animator>();
-            _player.MoveHandler.OnMovementStateChanged += Run;
+            legsAnimator = _playerHandler.CurrentPlayer.LegsRotaionHero.GetComponentInChildren<Animator>();
+            _playerHandler.CurrentPlayer.MoveHandler.OnMovementStateChanged += Run;
         }
 
 
         private void Run()
         {
-            legsAnimator.SetBool(Const.Run, _player.MoveHandler.IsMoving);
+            legsAnimator.SetBool(Const.Run, _playerHandler.CurrentPlayer.MoveHandler.IsMoving);
         }
 
         private void Update()
@@ -38,7 +39,7 @@ namespace BsseCode._5._GameEntities.Hero
 
         private void OnDestroy()
         {
-            _player.MoveHandler.OnMovementStateChanged -= Run;
+            _playerHandler.CurrentPlayer.MoveHandler.OnMovementStateChanged -= Run;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
         private EventInstance _spiderRunInstance;
 
         [Inject]
-        public void Construct(Player player, AudioTracksBase audioTracksBase)
+        public void Construct(AudioTracksBase audioTracksBase)
         {
             _audioTracksBase = audioTracksBase;
         }

@@ -1,5 +1,6 @@
 using System.Collections;
 using BsseCode._2._Services.GlobalServices.Coroutines;
+using BsseCode._2._Services.GlobalServices.PlayerHandler;
 using BsseCode._2._Services.GlobalServices.Pools;
 using BsseCode._2._Services.GlobalServices.Pools.ExplosionPool;
 using BsseCode._2._Services.LevelServices.GameResults;
@@ -19,16 +20,23 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
         private IPoolController _poolController;
         private float _speed;
 
-        private Player _player;
+        
         private PositionUpdateService _positionUpdateService;
         private Vector2 _moveDirection;
         private ICoroutineGlobalService _coroutineGlobalService;
         private KillsController _killsController;
-        
+        private PlayerHandler _playerHandler;
+
         [Inject]
-        public void Construct(PositionUpdateService positionUpdateService,  Player player, IPoolController poolController, ICoroutineGlobalService coroutineGlobalService, KillsController killsController)
+        public void Construct(
+            PositionUpdateService positionUpdateService, 
+            IPoolController poolController, 
+            ICoroutineGlobalService coroutineGlobalService, 
+            KillsController killsController,
+            PlayerHandler playerHandler)
         {
-            _player = player;
+            _playerHandler = playerHandler;
+
             _killsController = killsController;
 
             _coroutineGlobalService = coroutineGlobalService;
@@ -65,7 +73,7 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
 
         private void Direction()
         {
-            _moveDirection = _player.transform.position - transform.position;
+            _moveDirection = _playerHandler.CurrentPlayer.transform.position - transform.position;
             _moveDirection.Normalize();
             Vector2 newPosition = _positionUpdateService.Move(_moveDirection, _speed, this.transform.position);
             transform.position = newPosition;

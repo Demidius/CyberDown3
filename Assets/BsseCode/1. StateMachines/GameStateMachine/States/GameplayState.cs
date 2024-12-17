@@ -1,5 +1,6 @@
 using System;
 using BsseCode._3._SupportCode.Constants;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace BsseCode._1._StateMachines.GameStateMachine.States
@@ -8,6 +9,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
     {
         private GameMachineStarter _gameMachineStarter;
         public event Action OnGameState;
+
         public GameplayState(GameMachineStarter gameMachineStarter)
         {
             _gameMachineStarter = gameMachineStarter;
@@ -15,27 +17,38 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 
         public void Enter()
         {
-            Debug.Log("Gameplay: Начало игрового процесса");
-            // _gameMachineStarter.AddressableSceneLoader.LoadLevelByIndex(0);\
+            _gameMachineStarter.PCInputGlobalService.PauseEvent += StartPause;
+            Debug.Log("Gameplay: Enter");
             OnGameState?.Invoke();
+            _gameMachineStarter.uiController.HUD.GameObject().SetActive(true);
+            _gameMachineStarter.uiController.CursorToSprite.GameObject().SetActive(true);
+            
+            
+            _gameMachineStarter.playerHandler.CreatePlayer();
+
+            _gameMachineStarter.PCInputGlobalService.OnGameplayState = true;
         }
 
         public void Exit()
         {
-            
+            _gameMachineStarter.uiController.HUD.GameObject().SetActive(false);
+            _gameMachineStarter.uiController.CursorToSprite.GameObject().SetActive(false);
+            _gameMachineStarter.PCInputGlobalService.OnGameplayState = false;
+            _gameMachineStarter.PCInputGlobalService.PauseEvent -= StartPause;
         }
 
         public void StartMenu()
         {
             // Переход к загрузке уровня
-            
-            // _gameStateMachine.SetState(new LoadLevelState(_gameStateMachine, Const.Menu));
+            _gameMachineStarter.GameStateMachine.SetState(_gameMachineStarter.MainMenuState);
         }
 
-        public void EndGame()
+        public void StartPause(bool OnOff)
         {
-            // Завершение игры, переход к GameOverState
-            // _gameStateMachine.SetState(new GameOverState(_gameStateMachine));
+            if (OnOff)
+            {
+                _gameMachineStarter.GameStateMachine.SetState(_gameMachineStarter.PauseState);
+            }
         }
     }
 }

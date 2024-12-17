@@ -1,3 +1,4 @@
+using BsseCode._2._Services.GlobalServices.PlayerHandler;
 using BsseCode._6._Audio.Data;
 using BsseCode._6._Audio.Managers;
 using UnityEngine;
@@ -7,19 +8,20 @@ namespace BsseCode._5._GameEntities.Hero
 {
     public class HeroAudioController : MonoBehaviour
     {
-        private Player _player;
+     
         private AudioTracksBase _audioTracksBase;
+        private PlayerHandler _playerHandler;
 
         [Inject]
-        public void Construct(Player player, AudioTracksBase audioTracksBase )
+        public void Construct(PlayerHandler playerHandler ,AudioTracksBase audioTracksBase )
         {
+            _playerHandler = playerHandler;
             _audioTracksBase = audioTracksBase;
-            _player = player;
         }
 
         public void PlayStep()
         {
-            AudioManager.Instance.PlaySound(_audioTracksBase.stepEvent, useInstance: false, position: _player.transform.position);
+            AudioManager.Instance.PlaySound(_audioTracksBase.stepEvent, useInstance: false, position: _playerHandler.CurrentPlayer.transform.position);
         }
     }
 }

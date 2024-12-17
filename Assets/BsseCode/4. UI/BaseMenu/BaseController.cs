@@ -8,7 +8,7 @@ namespace BsseCode._4._UI.BaseMenu
     public class BaseController : MonoBehaviour
     {
         [SerializeField] GameObject baseMenu;
-        
+       
         private GameMachineStarter _starter;
 
         [Inject]

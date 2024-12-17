@@ -1,7 +1,12 @@
 using BsseCode._1._StateMachines.GameStateMachine.States;
 using BsseCode._2._Services.GlobalServices.Addressable;
+using BsseCode._2._Services.GlobalServices.InputFol;
+using BsseCode._2._Services.GlobalServices.PlayerHandler;
+using BsseCode._2._Services.GlobalServices.TimeProvider;
+using BsseCode._4._UI;
+using BsseCode._6._Audio.Data;
+using Cinemachine;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using Zenject;
 
 namespace BsseCode._1._StateMachines.GameStateMachine
@@ -9,9 +14,22 @@ namespace BsseCode._1._StateMachines.GameStateMachine
     public class GameMachineStarter : MonoBehaviour
     {
         [Inject]
-        void Construct(IAddressableLoader loader)
+        void Construct(
+            IAddressableLoader loader,
+            UIController uiController, 
+            PlayerHandler playerHandler,
+            IInputGlobalService pcInputGlobalService,
+            ITimeGlobalService timeGlobalService, 
+            AudioTracksBase audioTracksBase,
+            CinemachineVirtualCamera vcam)
         {
-            _loader = loader;
+            this.vcam = vcam;
+            this.audioTracksBase = audioTracksBase;
+            TimeGlobalService = timeGlobalService;
+            PCInputGlobalService = pcInputGlobalService;
+            this.playerHandler = playerHandler;
+            this.uiController = uiController;
+            AddressableLoader = loader;
         }
         
         
@@ -22,11 +40,17 @@ namespace BsseCode._1._StateMachines.GameStateMachine
         public MainMenuState MainMenuState;
         public PauseState PauseState;
         public LoadingState LoadingState;
-        private IAddressableLoader _loader;
+        public IAddressableLoader AddressableLoader;
+        public UIController uiController;
+        public PlayerHandler playerHandler;
+        public IInputGlobalService PCInputGlobalService;
+        public ITimeGlobalService TimeGlobalService;
+        public AudioTracksBase audioTracksBase;
+        public CinemachineVirtualCamera vcam;
 
         private void Awake()
         {
-            BootstrapState = new BootstrapState(this, _loader);
+            BootstrapState = new BootstrapState(this);
             GameplayState = new GameplayState( this);
             GameOverState = new GameOverState(this);
             MainMenuState = new MainMenuState(this);
@@ -35,6 +59,12 @@ namespace BsseCode._1._StateMachines.GameStateMachine
             GameStateMachine = new GameStateMachine(this);
             
             GameStateMachine.Start();
+        }
+
+
+        private void Update()
+        {
+            PCInputGlobalService.PauseInput();
         }
     }
 }

@@ -77,7 +77,7 @@ namespace BsseCode._2._Services.GlobalServices.Addressable
         }
     }
 
-    public interface IAddressableLoader
+    public interface  IAddressableLoader
     {
         public void UnloadCurrentLevel();
         public void LoadLevelByIndex(int index);

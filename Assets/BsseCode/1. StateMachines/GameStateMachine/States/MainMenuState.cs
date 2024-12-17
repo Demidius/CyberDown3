@@ -1,4 +1,6 @@
 using BsseCode._3._SupportCode.Constants;
+using BsseCode._6._Audio.Managers;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace BsseCode._1._StateMachines.GameStateMachine.States
@@ -14,15 +16,29 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 
         public void Enter()
         {
-            Debug.Log("Главное меню: ожидание выбора игрока");
-            // Логика для отображения главного меню, например, ожидание нажатия кнопки "Начать игру"
+            Debug.Log("Enter MainMenuState");
+            AudioManager.Instance.PlaySound(_gameMachineStarter.audioTracksBase.musicMenu1, useInstance: true,
+                position: _gameMachineStarter.vcam.transform.position);
+
+            if (_gameMachineStarter.playerHandler.CurrentPlayer != null)
+                _gameMachineStarter.playerHandler.DestroyPlayer();
+
+            if (_gameMachineStarter.uiController.BaseMenu.GameObject().activeSelf == false)
+                _gameMachineStarter.uiController.BaseMenu.GameObject().SetActive(true);
+
+            _gameMachineStarter.AddressableLoader.UnloadCurrentLevel();
         }
 
-        
+        public void StartGame()
+        {
+            _gameMachineStarter.GameStateMachine.SetState(_gameMachineStarter.LoadingState);
+            _gameMachineStarter.AddressableLoader.LoadLevelByIndex(0);
+        }
+
 
         public void Exit()
         {
-            // Очистка данных, если необходимо
+            AudioManager.Instance.StopSound(_gameMachineStarter.audioTracksBase.musicMenu1);
         }
     }
 }
