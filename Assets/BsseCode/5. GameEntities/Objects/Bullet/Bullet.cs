@@ -42,18 +42,18 @@ namespace BsseCode._5._GameEntities.Objects.Bullet
         private void Update() => 
             _bulletMover.Move(_direction, _speed);
 
-        public void Deactivate() => 
+        public void Kill() => 
             _poolController?.ReturnToPool(this);
         
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.TryGetComponent<Enemy.Enemy>(out Enemy.Enemy enemy))
             {
-                Deactivate();
+                Kill();
             }
             else if (other.TryGetComponent<BulletDestroyer>(out BulletDestroyer bullet))
             {
-                Deactivate();
+                Kill();
             }
         }
     }

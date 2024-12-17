@@ -3,7 +3,7 @@ using BsseCode._2._Services.GlobalServices.Addressable;
 using BsseCode._2._Services.GlobalServices.Coroutines;
 using BsseCode._2._Services.GlobalServices.Factory;
 using BsseCode._2._Services.GlobalServices.InputFol;
-using BsseCode._2._Services.GlobalServices.PlayerHandler;
+using BsseCode._2._Services.GlobalServices.PlayerHandlerFl;
 using BsseCode._2._Services.GlobalServices.Pools;
 using BsseCode._2._Services.GlobalServices.TimeProvider;
 using BsseCode._2._Services.LevelServices.BulletCounter;
@@ -21,10 +21,9 @@ namespace BsseCode._0._Installers
 {
     public class GameStartInstaller : MonoInstaller
     {
-        public GameObject resultsManagerPrefab;
-        public GameMachineStarter gameMachineStarter;
+      
         public AudioTracksBase audioManagerPrefab;
-        public KillsController killsControllerPrefab;
+      
 
         public override void InstallBindings()
         {
@@ -45,7 +44,7 @@ namespace BsseCode._0._Installers
 
             #endregion
 
-            Container.Bind<ResultsManager>().FromComponentInNewPrefab(resultsManagerPrefab).AsSingle().NonLazy();
+            // Container.Bind<ResultsManager>().FromComponentInNewPrefab(resultsManagerPrefab).AsSingle().NonLazy();
 
 
             Container.Bind<AudioTracksBase>().FromComponentInNewPrefab(audioManagerPrefab).AsSingle();
@@ -57,7 +56,7 @@ namespace BsseCode._0._Installers
             Container.Bind<IAddressableLoader>().To<AddressableLoader>().FromComponentInHierarchy().AsSingle();
 
             Container.Bind<PositionUpdateService>().AsSingle();
-            Container.Bind<KillsController>().FromComponentInNewPrefab(killsControllerPrefab).AsSingle();
+            Container.Bind<KillsController>().FromComponentInHierarchy().AsSingle();
 
             #endregion
 
@@ -66,7 +65,7 @@ namespace BsseCode._0._Installers
             Container.Bind<IEnergyCounter>().To<EnergyCounter>().FromComponentInHierarchy().AsSingle();
             Container.Bind<ITimerLevel>().To<TimerLevel>().AsSingle();
 
-            //Container.Bind<ResultsManager>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<ResultsManager>().FromComponentInHierarchy().AsSingle();
 
             #endregion
 

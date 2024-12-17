@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BsseCode._2._Services.LevelServices
+namespace BsseCode._4._UI.Cursor
 {
     public class CursorToSprite : MonoBehaviour
     {
@@ -15,13 +15,13 @@ namespace BsseCode._2._Services.LevelServices
 
         public void SetCorsor()
         {
-            Cursor.SetCursor(cursorSprite, hotSpot, CursorMode.Auto);
+            UnityEngine.Cursor.SetCursor(cursorSprite, hotSpot, CursorMode.Auto);
         }
 
         public void OnDisable()
         {
             // Вернуть стандартный курсор, если объект деактивирован
-            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            UnityEngine.Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         }
     }
 }

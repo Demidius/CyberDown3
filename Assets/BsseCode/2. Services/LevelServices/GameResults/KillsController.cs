@@ -31,9 +31,16 @@ namespace BsseCode._2._Services.LevelServices.GameResults
         public void EndGame()
         {
             _isGameActive = false;
-            GameResult result = new GameResult(Kills, _survivalTime);
+            GameResult result = new GameResult(Kills, _survivalTime, _resultsManager.GetNumberOfTry());
             _resultsManager.AddResult(result);
             // Перейти в меню или выполнить другие действия
+        }
+        
+        
+        public void ResetKills()
+        {
+            Kills = 0;             
+            ChangeKills?.Invoke(); 
         }
     }
 }

@@ -23,6 +23,11 @@ namespace BsseCode._2._Services.LevelServices.GameResults
             SaveResults();
         }
 
+        public int GetNumberOfTry()
+        {
+            return results.Count;
+        }
+
         private void SortResults()
         {
             results.Sort((a, b) => b.kills.CompareTo(a.kills));
@@ -49,6 +54,13 @@ namespace BsseCode._2._Services.LevelServices.GameResults
         {
             return Path.Combine(Application.persistentDataPath, SaveFileName);
         }
+        
+        public void ClearResults()
+        {
+            results.Clear(); // Очищаем список результатов
+            SaveResults();   // Сохраняем изменения в файле
+        }
+        
     }
 
    

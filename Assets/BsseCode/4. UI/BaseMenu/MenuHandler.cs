@@ -1,11 +1,9 @@
-using System;
-using BsseCode._1._StateMachines.GameStateMachine.States;
-using BsseCode._6._Audio.Managers;
+using BsseCode._1._StateMachines.GameStateMachine;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace BsseCode._1._StateMachines.GameStateMachine
+namespace BsseCode._4._UI.BaseMenu
 {
     public class MenuHandler : MonoBehaviour
     {
@@ -18,6 +16,9 @@ namespace BsseCode._1._StateMachines.GameStateMachine
         [SerializeField] private Button returnFromAutorsButton;
         
         [SerializeField] private Button startGameButton;
+        
+        [SerializeField] private Button resultsCleanerButton;
+        
         
         
         [SerializeField] private GameObject menu;
@@ -44,6 +45,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine
             returnFromAutorsButton.onClick.AddListener(OnMenu);
             
             startGameButton.onClick.AddListener(StartGame);
+            resultsCleanerButton.onClick.AddListener(ResultsCleaner);
         }
 
 
@@ -67,6 +69,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine
             newMenu.SetActive(false);
             parametrs.SetActive(false);
             autors.SetActive(false);
+            
         } 
         void OnPrametrs()
         {
@@ -74,6 +77,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine
             newMenu.SetActive(false);
             parametrs.SetActive(true);
             autors.SetActive(false);
+            _starter.uiController.ResultsUI.DisplayResults();
         }
         
         void OnAutors()
@@ -83,8 +87,11 @@ namespace BsseCode._1._StateMachines.GameStateMachine
             parametrs.SetActive(false);
             autors.SetActive(true);
         }
-        
-        
-        
+
+        void ResultsCleaner()
+        {
+            _starter.resultsManager.ClearResults();
+        }
+
     }
 }

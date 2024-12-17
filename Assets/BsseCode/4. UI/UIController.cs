@@ -1,3 +1,4 @@
+using BsseCode._2._Services.LevelServices.GameResults;
 using UnityEngine;
 
 namespace BsseCode._4._UI
@@ -9,6 +10,8 @@ namespace BsseCode._4._UI
         [SerializeField] private GameObject pausePanel;
         [SerializeField] private GameObject slowMotionHUD;
         [SerializeField] private GameObject cursorToSprite;
+        [SerializeField] private ResultsUI resultsUI;
+        
 
         public GameObject HUD
         {
@@ -38,6 +41,11 @@ namespace BsseCode._4._UI
         {
             get => cursorToSprite;
             set => cursorToSprite = value;
+        }
+        public ResultsUI ResultsUI
+        {
+            get => resultsUI;
+            set => resultsUI = value;
         }
     }
 

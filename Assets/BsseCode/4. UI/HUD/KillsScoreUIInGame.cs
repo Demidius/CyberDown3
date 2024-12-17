@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace BsseCode._4._UI
+namespace BsseCode._4._UI.HUD
 {
     public class KillsScoreUIInGame : MonoBehaviour
     {

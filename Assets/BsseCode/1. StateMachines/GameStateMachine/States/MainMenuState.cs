@@ -1,3 +1,4 @@
+using System;
 using BsseCode._3._SupportCode.Constants;
 using BsseCode._6._Audio.Managers;
 using Unity.VisualScripting;
@@ -9,6 +10,8 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
     {
         private GameMachineStarter _gameMachineStarter;
 
+        public event Action OnMenuState; 
+
         public MainMenuState(GameMachineStarter gameMachineStarter)
         {
             _gameMachineStarter = gameMachineStarter;
@@ -16,6 +19,8 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 
         public void Enter()
         {
+            OnMenuState?.Invoke();
+            
             Debug.Log("Enter MainMenuState");
             AudioManager.Instance.PlaySound(_gameMachineStarter.audioTracksBase.musicMenu1, useInstance: true,
                 position: _gameMachineStarter.vcam.transform.position);
@@ -27,6 +32,10 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
                 _gameMachineStarter.uiController.BaseMenu.GameObject().SetActive(true);
 
             _gameMachineStarter.AddressableLoader.UnloadCurrentLevel();
+
+            _gameMachineStarter.uiController.ResultsUI.DisplayResults();
+
+            _gameMachineStarter.killsController.ResetKills();
         }
 
         public void StartGame()

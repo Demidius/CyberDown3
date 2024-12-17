@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using BsseCode._2._Services.GlobalServices.PlayerHandlerFl;
 using BsseCode._2._Services.GlobalServices.Pools.ExplosionPool;
 using BsseCode._2._Services.GlobalServices.TimeProvider;
 using BsseCode._3._SupportCode.Constants;
-using BsseCode._5._GameEntities.Hero;
 using BsseCode._5._GameEntities.Objects.Enemy;
 using UnityEngine;
 using Zenject;
@@ -23,18 +23,17 @@ namespace BsseCode._2._Services.GlobalServices.Pools.EnemesPool
         private float _timer = 0f;
         private ITimeGlobalService _timeGlobalService;
         private IExplosionSpawner _explosionSpawner;
-        private Player _player;
+       
         private IPoolController _poolController;
+        private PlayerHandler _playerHandler;
 
 
         [Inject]
-        public void Construct(IPoolController poolController, ITimeGlobalService timeGlobalService, Player player)
+        public void Construct(IPoolController poolController, ITimeGlobalService timeGlobalService, PlayerHandler playerHandler)
         {
+            _playerHandler = playerHandler;
             _poolController = poolController;
-            _player = player;
-           
             _timeGlobalService = timeGlobalService;
-            
         }
 
         private void Start()
@@ -84,7 +83,7 @@ namespace BsseCode._2._Services.GlobalServices.Pools.EnemesPool
             {
                 selectedCollider = spawnAreas[Random.Range(0, spawnAreas.Count)];
                 randomPosition = GetRandomPointInCollider(selectedCollider);
-            } while (Vector3.Distance(randomPosition, _player.transform.position) < minDistansForEnemy);
+            } while (Vector3.Distance(randomPosition, _playerHandler.CurrentPlayer.transform.position) < minDistansForEnemy);
 
             var enemy = _poolController.GetPool<Enemy>().GetElement();
             enemy.transform.position = randomPosition;

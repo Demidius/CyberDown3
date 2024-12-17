@@ -1,4 +1,5 @@
 using BsseCode._2._Services.GlobalServices.InputFol;
+using BsseCode._2._Services.GlobalServices.PlayerHandlerFl;
 using BsseCode._5._GameEntities.Hero;
 using BsseCode._5._GameEntities.Objects.ShootFire;
 using UnityEngine;
@@ -12,32 +13,37 @@ namespace BsseCode._2._Services.GlobalServices.Pools.ShootFiresPool
         
         private Vector2 _direction;
         private IInputGlobalService _inputGlobalService;
-        private Player _player;
         private IPoolController _poolController;
+        private PlayerHandler _playerHandler;
 
 
         [Inject]
-        public void Construct(IPoolController poolController, IInputGlobalService inputGlobalService, Player player )
+        public void Construct(IPoolController poolController, IInputGlobalService inputGlobalService, PlayerHandler playerHandler )
         {
-            _poolController = poolController;
-            _player = player;
+            _playerHandler = playerHandler;
+            _poolController = poolController;            
             _inputGlobalService = inputGlobalService;
         }
 
         private void Start()
         {
             _inputGlobalService.ShootType1 += Shoot;
-            _spawnPoint = _player.BulletSpawnPoint.transform;
+            // _spawnPoint = _playerHandler.CurrentPlayer.BulletSpawnPoint.transform;
+            // _spawnPoint = _playerHandler.CurrentPlayer.BulletSpawnPoint.gameObject.transform;
         }
 
         private void Update()
         {
+            if (!_spawnPoint)
+            {
+                _spawnPoint = _playerHandler.CurrentPlayer.BulletSpawnPoint.transform;
+            }
             _inputGlobalService.Shoot();
             _direction = _spawnPoint.up ;
         }
 
-        private void Shoot()
-        {
+        private void Shoot() {
+            
             var element = _poolController.GetPool<ShootFire>().GetElement();
             element.transform.position = _spawnPoint.transform.position;
             element.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg);

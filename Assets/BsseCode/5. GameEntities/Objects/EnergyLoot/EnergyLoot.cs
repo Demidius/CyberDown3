@@ -35,13 +35,13 @@ namespace BsseCode._5._GameEntities.Objects.EnergyLoot
             {
                 if (_energyCounter.AddEnergy() == true)
                 {
-                    Deactivate();
+                    Kill();
                 }
             }
         }
 
 
-        public void Deactivate()
+        public void Kill()
         {
             _poolController.ReturnToPool(this);
         }

@@ -16,7 +16,7 @@ namespace BsseCode._5._GameEntities.Objects.ShootFire
         }
 
         
-        public void Deactivate()
+        public void Kill()
         {
             _poolController.ReturnToPool(this);
         }

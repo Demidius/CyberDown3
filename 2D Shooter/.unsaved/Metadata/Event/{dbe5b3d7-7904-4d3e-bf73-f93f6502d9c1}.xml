@@ -250,7 +250,7 @@
 			<value>3200</value>
 		</property>
 		<property name="frequencyB">
-			<value>98.6033401</value>
+			<value>100.667625</value>
 		</property>
 		<property name="qualityA">
 			<value>10</value>
@@ -336,7 +336,7 @@
 			<value>0</value>
 		</property>
 		<property name="value">
-			<value>-80</value>
+			<value>10</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{975aeda0-9476-46fc-beb5-4588f7684615}">

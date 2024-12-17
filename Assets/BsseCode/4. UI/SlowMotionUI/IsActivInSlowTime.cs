@@ -2,7 +2,7 @@ using BsseCode._2._Services.GlobalServices.TimeProvider;
 using UnityEngine;
 using Zenject;
 
-namespace BsseCode._4._UI
+namespace BsseCode._4._UI.SlowMotionUI
 {
     public class IsActivInSlowTime : MonoBehaviour
     {
