@@ -254,7 +254,7 @@ MonoBehaviour:
   Path: 2D Shooter/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638704069395860085
+  lastModified: 638704098209430897
   FileSizes:
   - Name: Desktop
     Value: 8785984
@@ -550,7 +550,7 @@ MonoBehaviour:
   - {fileID: -4490260625938609656}
   StringsBanks:
   - {fileID: 6229976477368895519}
-  cacheTime: 638704069395900893
+  cacheTime: 638704098209441313
   cacheVersion: 131621
 --- !u!114 &764526270983352522
 MonoBehaviour:
@@ -735,7 +735,7 @@ MonoBehaviour:
   Path: 2D Shooter/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638704069395900893
+  lastModified: 638704098209441313
   FileSizes:
   - Name: Desktop
     Value: 1454

@@ -250,13 +250,13 @@
 			<value>3200</value>
 		</property>
 		<property name="frequencyB">
-			<value>98.6033401</value>
+			<value>100.667625</value>
 		</property>
 		<property name="qualityA">
 			<value>10</value>
 		</property>
 		<property name="gainB">
-			<value>30</value>
+			<value>28.965519</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{e60a713f-c714-4623-8438-ff0fe4e89eef}" />
@@ -336,7 +336,7 @@
 			<value>0</value>
 		</property>
 		<property name="value">
-			<value>-80</value>
+			<value>-0.5</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{975aeda0-9476-46fc-beb5-4588f7684615}">
@@ -344,7 +344,7 @@
 			<value>1</value>
 		</property>
 		<property name="value">
-			<value>10</value>
+			<value>-0.5</value>
 		</property>
 	</object>
 </objects>
