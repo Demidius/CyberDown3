@@ -254,10 +254,10 @@ MonoBehaviour:
   Path: 2D Shooter/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638693862314398683
+  lastModified: 638704069395860085
   FileSizes:
   - Name: Desktop
-    Value: 6889888
+    Value: 8785984
   Exists: 1
 --- !u!114 &-4191511201637455799
 MonoBehaviour:
@@ -550,7 +550,7 @@ MonoBehaviour:
   - {fileID: -4490260625938609656}
   StringsBanks:
   - {fileID: 6229976477368895519}
-  cacheTime: 638693862314408677
+  cacheTime: 638704069395900893
   cacheVersion: 131621
 --- !u!114 &764526270983352522
 MonoBehaviour:
@@ -735,7 +735,7 @@ MonoBehaviour:
   Path: 2D Shooter/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638693862314408677
+  lastModified: 638704069395900893
   FileSizes:
   - Name: Desktop
     Value: 1454
@@ -821,7 +821,7 @@ MonoBehaviour:
   - {fileID: 6581950694900636622}
   MinDistance: 1
   MaxDistance: 20
-  Length: 144091
+  Length: 188868
 --- !u!114 &7143794063569549084
 MonoBehaviour:
   m_ObjectHideFlags: 0
