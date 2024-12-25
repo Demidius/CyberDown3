@@ -16,7 +16,6 @@ namespace BsseCode._6._Audio.UI
         )
         {
             _audioTracksBase = audioTracksBase;
-            
         }
         private void Start()
         {

@@ -29,6 +29,7 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
         private KillsController _killsController;
         private PlayerHandler _playerHandler;
         private GameMachineStarter _gameMachineStarter;
+        private Vector2 _diePosition;
 
         [Inject]
         public void Construct(
@@ -61,6 +62,15 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
             Rotation();
         }
 
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            
+            if (other.TryGetComponent<Bullet.Bullet>(out Bullet.Bullet bullet))
+            {
+                Kill();
+            }
+        }
+
         public void Kill()
         {
             _coroutineGlobalService.StartCoroutine(PostMortemEventHandler());
@@ -87,17 +97,9 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
         }
 
 
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            
-            if (other.TryGetComponent<Bullet.Bullet>(out Bullet.Bullet bullet))
-            {
-               Kill();
-            }
-        }
-
         private IEnumerator PostMortemEventHandler()
         {
+            _diePosition = transform.position;
             CreateExplosion();
             audioController.ExplosionSound();
             yield return new WaitForSeconds(0.1f);
@@ -111,18 +113,18 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
         private void CreateExplosionResidue()
         {
             var element = _poolController.GetPool<AfterDeathMarks.AfterDeathMarks>().GetElement();
-            element.transform.position = this.transform.position;
+            element.transform.position = _diePosition;
         }
 
         private void CreateExplosion()
         {
             var element = _poolController.GetPool<Explosion.Explosion>().GetElement();
-            element.transform.position = this.transform.position;
+            element.transform.position = _diePosition;
         } 
         private void CreateAmmoLoot()
         {
             var element = _poolController.GetPool<EnergyLoot.EnergyLoot>().GetElement();
-            element.transform.position = this.transform.position;
+            element.transform.position = _diePosition;
         }
 
         private void OnDestroy()

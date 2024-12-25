@@ -1,3 +1,5 @@
+using System;
+using BsseCode._1._StateMachines.GameStateMachine;
 using BsseCode._2._Services.GlobalServices.Pools;
 using BsseCode._2._Services.LevelServices.BulletCounter;
 using BsseCode._3._SupportCode.Tags;
@@ -20,13 +22,21 @@ namespace BsseCode._5._GameEntities.Objects.EnergyLoot
         private IEnergyCounter _energyCounter;
         private IPoolController _poolController;
         private AudioTracksBase _audioTracksBase;
+        private GameMachineStarter _gameMachineStarter;
 
         [Inject]
-        public void Construct(IPoolController poolController, IEnergyCounter energyCounter, AudioTracksBase audioTracksBase)
+        public void Construct(
+            IPoolController poolController, 
+            IEnergyCounter energyCounter, 
+            AudioTracksBase audioTracksBase, 
+            GameMachineStarter gameMachineStarter)
         {
+            _gameMachineStarter = gameMachineStarter;
             _audioTracksBase = audioTracksBase;
             _poolController = poolController;
             _energyCounter = energyCounter;
+
+            _gameMachineStarter.MainMenuState.OnMenuState += Kill;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -44,6 +54,11 @@ namespace BsseCode._5._GameEntities.Objects.EnergyLoot
         public void Kill()
         {
             _poolController.ReturnToPool(this);
+        }
+
+        private void OnDestroy()
+        {
+            _gameMachineStarter.MainMenuState.OnMenuState -= Kill;
         }
     }
 }

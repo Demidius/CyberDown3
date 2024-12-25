@@ -24,30 +24,6 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &-7286394323246188084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/SpeiderRun2/GlobalVolume
-  m_EditorClassIdentifier: 
-  Name: GlobalVolume
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3781086499
-    data2: 2270176536
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
 --- !u!114 &-7214593814450492051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,38 +159,10 @@ MonoBehaviour:
   Parameters:
   - {fileID: -5106969545647488914}
   - {fileID: 7143794063569549084}
+  - {fileID: 4246603837226108954}
   MinDistance: 1
   MaxDistance: 20
   Length: 260
---- !u!114 &-5591601592680260438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SpeiderRun2
-  m_EditorClassIdentifier: 
-  Path: event:/SpeiderRun2
-  Guid:
-    Data1: 864144743
-    Data2: 1278349538
-    Data3: -1498113128
-    Data4: 1572884665
-  Banks:
-  - {fileID: -4490260625938609656}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 1850299383072916713}
-  - {fileID: -7286394323246188084}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1631
 --- !u!114 &-5106969545647488914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,6 +187,35 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &-4902614535935644100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Musicc/Music1
+  m_EditorClassIdentifier: 
+  Path: event:/Musicc/Music1
+  Guid:
+    Data1: 1132060409
+    Data2: 1270993756
+    Data3: -1108160070
+    Data4: 548604075
+  Banks:
+  - {fileID: -4490260625938609656}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 3936909650029396146}
+  - {fileID: 7315306801267830731}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 442651
 --- !u!114 &-4490260625938609656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,10 +231,10 @@ MonoBehaviour:
   Path: 2D Shooter/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638704098209430897
+  lastModified: 638707519873188346
   FileSizes:
   - Name: Desktop
-    Value: 8785984
+    Value: 8786848
   Exists: 1
 --- !u!114 &-4191511201637455799
 MonoBehaviour:
@@ -363,30 +340,6 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &-2557315192932793406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Music1/TimeController
-  m_EditorClassIdentifier: 
-  Name: TimeController
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2653580880
-    data2: 1906607243
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
 --- !u!114 &-2334025621460251329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,7 +417,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 100
---- !u!114 &-1562510585477686746
+--- !u!114 &-1325771369072214316
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -474,16 +427,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MusicMenu/TimeController
+  m_Name: parameter:/MusicMenu/MusicVolume
   m_EditorClassIdentifier: 
-  Name: TimeController
+  Name: MusicVolume
   StudioPath: 
   Min: 0
   Max: 1
   Default: 0
   ID:
-    data1: 2653580880
-    data2: 1906607243
+    data1: 4175793657
+    data2: 2123561424
   Type: 0
   IsGlobal: 1
   Labels: []
@@ -515,6 +468,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2211
+--- !u!114 &-728437501212551344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/EffectVolume
+  m_EditorClassIdentifier: 
+  Name: EffectVolume
+  StudioPath: parameter:/EffectVolume
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 918974467
+    data2: 1856076111
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,22 +514,24 @@ MonoBehaviour:
   - {fileID: -5681438074125929393}
   - {fileID: -4191511201637455799}
   - {fileID: -1248935360724376240}
-  - {fileID: 7859042838906308834}
-  - {fileID: -5591601592680260438}
   - {fileID: -6704387232423208292}
-  - {fileID: 7072801031208941914}
   - {fileID: 6356528643795503251}
   - {fileID: -2064446471958846372}
+  - {fileID: 6819412667052936175}
+  - {fileID: 3199864554689539942}
+  - {fileID: -4902614535935644100}
   EditorParameters:
   - {fileID: -3796793255901461457}
   - {fileID: -3040385604725676745}
+  - {fileID: 3502348854005962877}
+  - {fileID: -728437501212551344}
   MasterBanks:
   - {fileID: -4490260625938609656}
   StringsBanks:
   - {fileID: 6229976477368895519}
-  cacheTime: 638704098209441313
+  cacheTime: 638707519873213794
   cacheVersion: 131621
---- !u!114 &764526270983352522
+--- !u!114 &497008523282902482
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -562,7 +541,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Music1/GlobalVolume
+  m_Name: parameter:/MusicMenu/TimeController
+  m_EditorClassIdentifier: 
+  Name: TimeController
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2653580880
+    data2: 1906607243
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &555966758299642354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SpeiderRun2/GlobalVolume
   m_EditorClassIdentifier: 
   Name: GlobalVolume
   StudioPath: 
@@ -600,7 +603,31 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &1850299383072916713
+--- !u!114 &1978354574520183180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/NO ENERGY/TimeController
+  m_EditorClassIdentifier: 
+  Name: TimeController
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2653580880
+    data2: 1906607243
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &3078259290697430448
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -624,7 +651,36 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &1978354574520183180
+--- !u!114 &3199864554689539942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/ROBOT SOUNDS/SpeiderRun2
+  m_EditorClassIdentifier: 
+  Path: event:/ROBOT SOUNDS/SpeiderRun2
+  Guid:
+    Data1: 864144743
+    Data2: 1278349538
+    Data3: -1498113128
+    Data4: 1572884665
+  Banks:
+  - {fileID: -4490260625938609656}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 3078259290697430448}
+  - {fileID: 555966758299642354}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1631
+--- !u!114 &3502348854005962877
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -634,7 +690,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/NO ENERGY/TimeController
+  m_Name: parameter:/MusicVolume
+  m_EditorClassIdentifier: 
+  Name: MusicVolume
+  StudioPath: parameter:/MusicVolume
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4175793657
+    data2: 2123561424
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &3936909650029396146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music1/TimeController
   m_EditorClassIdentifier: 
   Name: TimeController
   StudioPath: 
@@ -668,6 +748,30 @@ MonoBehaviour:
   ID:
     data1: 3781086499
     data2: 2270176536
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &4246603837226108954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Sand Steps/EffectVolume
+  m_EditorClassIdentifier: 
+  Name: EffectVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 918974467
+    data2: 1856076111
   Type: 0
   IsGlobal: 1
   Labels: []
@@ -735,10 +839,10 @@ MonoBehaviour:
   Path: 2D Shooter/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638704098209441313
+  lastModified: 638707519873213794
   FileSizes:
   - Name: Desktop
-    Value: 1454
+    Value: 1558
   Exists: 1
 --- !u!114 &6356528643795503251
 MonoBehaviour:
@@ -769,31 +873,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 251
---- !u!114 &6581950694900636622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/MusicMenu/GlobalVolume
-  m_EditorClassIdentifier: 
-  Name: GlobalVolume
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3781086499
-    data2: 2270176536
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &7072801031208941914
+--- !u!114 &6819412667052936175
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -803,9 +883,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/MusicMenu
+  m_Name: event:/Musicc/MusicMenu
   m_EditorClassIdentifier: 
-  Path: event:/MusicMenu
+  Path: event:/Musicc/MusicMenu
   Guid:
     Data1: -1211716589
     Data2: 1141798557
@@ -817,8 +897,9 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -1562510585477686746}
-  - {fileID: 6581950694900636622}
+  - {fileID: -1325771369072214316}
+  - {fileID: 7613602583269605777}
+  - {fileID: 497008523282902482}
   MinDistance: 1
   MaxDistance: 20
   Length: 188868
@@ -846,7 +927,7 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &7859042838906308834
+--- !u!114 &7315306801267830731
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -855,26 +936,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music1
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music1/GlobalVolume
   m_EditorClassIdentifier: 
-  Path: event:/Music1
-  Guid:
-    Data1: 1132060409
-    Data2: 1270993756
-    Data3: -1108160070
-    Data4: 548604075
-  Banks:
-  - {fileID: -4490260625938609656}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 1
-  Parameters:
-  - {fileID: -2557315192932793406}
-  - {fileID: 764526270983352522}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 442651
+  Name: GlobalVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3781086499
+    data2: 2270176536
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &7613602583269605777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MusicMenu/GlobalVolume
+  m_EditorClassIdentifier: 
+  Name: GlobalVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3781086499
+    data2: 2270176536
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &8620747898957862268
 MonoBehaviour:
   m_ObjectHideFlags: 0
