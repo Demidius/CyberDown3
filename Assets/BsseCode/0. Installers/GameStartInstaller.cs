@@ -47,7 +47,7 @@ namespace BsseCode._0._Installers
             // Container.Bind<ResultsManager>().FromComponentInNewPrefab(resultsManagerPrefab).AsSingle().NonLazy();
 
 
-            Container.Bind<AudioTracksBase>().FromComponentInNewPrefab(audioManagerPrefab).AsSingle();
+            Container.Bind<AudioTracksBase>().FromComponentInHierarchy().AsSingle();
 
 
             #region Services
