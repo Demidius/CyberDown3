@@ -66,21 +66,21 @@ MonoBehaviour:
       Data2: 1270993756
       Data3: -1108160070
       Data4: 548604075
-    Path: event:/Music1
+    Path: event:/Musicc/Music1
   musicMenu1:
     Guid:
       Data1: -1211716589
       Data2: 1141798557
       Data3: -412662632
       Data4: 266651533
-    Path: event:/MusicMenu
+    Path: event:/Musicc/MusicMenu
   spiderRun:
     Guid:
       Data1: 864144743
       Data2: 1278349538
       Data3: -1498113128
       Data4: 1572884665
-    Path: event:/SpeiderRun2
+    Path: event:/ROBOT SOUNDS/SpeiderRun2
   explosionSound:
     Guid:
       Data1: 570257669

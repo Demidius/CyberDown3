@@ -15,10 +15,16 @@ namespace BsseCode._6._Audio.Managers
         private void Awake()
         {
             if (Instance == null)
+            {
                 Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
             else
+            {
                 Destroy(gameObject);
+            }
         }
+
         
         // Инициализация пула для звука
         public SoundPool InitializeSoundPool(EventReference soundPath, int initialCount = 5)

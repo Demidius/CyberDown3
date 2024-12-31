@@ -20,23 +20,52 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
         public void Enter()
         {
             OnMenuState?.Invoke();
-            
             Debug.Log("Enter MainMenuState");
+
+            if (AudioManager.Instance == null)
+            {
+                Debug.LogError("AudioManager.Instance is null!");
+                return;
+            }
+
+            if (_gameMachineStarter?.audioTracksBase?.musicMenu1 == null)
+            {
+                Debug.LogError("AudioTracksBase or musicMenu1 is null!");
+                return;
+            }
+
+            if (_gameMachineStarter.vcam == null)
+            {
+                Debug.LogError("Virtual Camera (vcam) is null!");
+                return;
+            }
+
             AudioManager.Instance.PlaySound(_gameMachineStarter.audioTracksBase.musicMenu1, useInstance: true,
                 position: _gameMachineStarter.vcam.transform.position);
 
-            if (_gameMachineStarter.playerHandler.CurrentPlayer != null)
+            if (_gameMachineStarter.playerHandler?.CurrentPlayer != null)
                 _gameMachineStarter.playerHandler.DestroyPlayer();
 
-            if (_gameMachineStarter.uiController.BaseMenu.GameObject().activeSelf == false)
+            if (_gameMachineStarter.uiController?.BaseMenu?.GameObject() != null && 
+                !_gameMachineStarter.uiController.BaseMenu.GameObject().activeSelf)
+            {
                 _gameMachineStarter.uiController.BaseMenu.GameObject().SetActive(true);
+            }
 
-            _gameMachineStarter.AddressableLoader.UnloadCurrentLevel();
+            if (_gameMachineStarter.AddressableLoader != null)
+            {
+                _gameMachineStarter.AddressableLoader.UnloadCurrentLevel();
+            }
+            else
+            {
+                Debug.LogError("AddressableLoader is null!");
+            }
 
-            _gameMachineStarter.uiController.ResultsUI.DisplayResults();
+            _gameMachineStarter.uiController?.ResultsUI?.DisplayResults();
 
-            _gameMachineStarter.killsController.ResetKills();
+            _gameMachineStarter.killsController?.ResetKills();
         }
+
 
         public void StartGame()
         {

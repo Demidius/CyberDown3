@@ -16,13 +16,13 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
     public class Enemy : MonoBehaviour, IPoolsElement
     {
         private ExplosionSpawner _explosionSpawner;
-        
+
         [SerializeField] private EnemyAudioController audioController;
 
         private IPoolController _poolController;
         private float _speed;
 
-        
+
         private PositionUpdateService _positionUpdateService;
         private Vector2 _moveDirection;
         private ICoroutineGlobalService _coroutineGlobalService;
@@ -31,31 +31,46 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
         private GameMachineStarter _gameMachineStarter;
         private Vector2 _diePosition;
 
+        private bool _goToBase = false;
+        private Vector3 _targetTransformPosition;
+
         [Inject]
         public void Construct(
-            PositionUpdateService positionUpdateService, 
-            IPoolController poolController, 
-            ICoroutineGlobalService coroutineGlobalService, 
+            PositionUpdateService positionUpdateService,
+            IPoolController poolController,
+            ICoroutineGlobalService coroutineGlobalService,
             KillsController killsController,
             PlayerHandler playerHandler,
             GameMachineStarter gameMachineStarter)
         {
-            _gameMachineStarter = gameMachineStarter;
-            _playerHandler = playerHandler;
-            _killsController = killsController;
-            _coroutineGlobalService = coroutineGlobalService;
-            _positionUpdateService = positionUpdateService;
-            _poolController = poolController;
-           
+            _gameMachineStarter = gameMachineStarter ?? throw new ArgumentNullException(nameof(gameMachineStarter));
+            _playerHandler = playerHandler ?? throw new ArgumentNullException(nameof(playerHandler));
+            _killsController = killsController ?? throw new ArgumentNullException(nameof(killsController));
+            _coroutineGlobalService =
+                coroutineGlobalService ?? throw new ArgumentNullException(nameof(coroutineGlobalService));
+            _positionUpdateService =
+                positionUpdateService ?? throw new ArgumentNullException(nameof(positionUpdateService));
+            _poolController = poolController ?? throw new ArgumentNullException(nameof(poolController));
+
+            if (_gameMachineStarter.MainMenuState == null)
+            {
+                Debug.LogError("MainMenuState is null!");
+                return;
+            }
+
             _gameMachineStarter.MainMenuState.OnMenuState += Deactivata;
         }
+
 
         public void SetParameters(float speed)
         {
             _speed = speed;
+            ResetDirection();
+            _gameMachineStarter.baseHandler.OnFillingStarted += SetNewDirection;
+            _gameMachineStarter.baseHandler.OnFillingEndedEvent += ResetDirection;
         }
 
-        
+
         private void Update()
         {
             Direction();
@@ -64,7 +79,6 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            
             if (other.TryGetComponent<Bullet.Bullet>(out Bullet.Bullet bullet))
             {
                 Kill();
@@ -90,12 +104,29 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
 
         private void Direction()
         {
-            _moveDirection = _playerHandler.CurrentPlayer.transform.position - transform.position;
+            if (_goToBase)
+            {
+                _moveDirection = _targetTransformPosition - transform.position;
+            }
+            else
+            {
+                _moveDirection = _playerHandler.CurrentPlayer.transform.position - transform.position;
+            }
             _moveDirection.Normalize();
             Vector2 newPosition = _positionUpdateService.Move(_moveDirection, _speed, this.transform.position);
             transform.position = newPosition;
         }
 
+        void ResetDirection()
+        {
+            _goToBase = false;
+        }
+
+        void SetNewDirection(Vector3 newDirection)
+        {
+            _goToBase = true;
+            _targetTransformPosition = newDirection;
+        }
 
         private IEnumerator PostMortemEventHandler()
         {
@@ -120,7 +151,8 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
         {
             var element = _poolController.GetPool<Explosion.Explosion>().GetElement();
             element.transform.position = _diePosition;
-        } 
+        }
+
         private void CreateAmmoLoot()
         {
             var element = _poolController.GetPool<EnergyLoot.EnergyLoot>().GetElement();
@@ -130,6 +162,12 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
         private void OnDestroy()
         {
             _gameMachineStarter.MainMenuState.OnMenuState -= Deactivata;
+            _gameMachineStarter.baseHandler.OnFillingStarted -= SetNewDirection;
+            _gameMachineStarter.baseHandler.OnFillingEndedEvent -= ResetDirection;
+        }
+
+        private void OnDisable()
+        {
         }
     }
 }

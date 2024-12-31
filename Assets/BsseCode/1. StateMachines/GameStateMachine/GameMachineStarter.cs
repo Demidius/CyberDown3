@@ -1,10 +1,12 @@
 using BsseCode._1._StateMachines.GameStateMachine.States;
 using BsseCode._2._Services.GlobalServices.Addressable;
+using BsseCode._2._Services.GlobalServices.BasesHandler;
 using BsseCode._2._Services.GlobalServices.InputFol;
 using BsseCode._2._Services.GlobalServices.PlayerHandlerFl;
 using BsseCode._2._Services.GlobalServices.TimeProvider;
 using BsseCode._2._Services.LevelServices.GameResults;
 using BsseCode._4._UI;
+using BsseCode._5._GameEntities.Objects;
 using BsseCode._6._Audio.Data;
 using Cinemachine;
 using UnityEngine;
@@ -24,8 +26,11 @@ namespace BsseCode._1._StateMachines.GameStateMachine
             AudioTracksBase audioTracksBase,
             CinemachineVirtualCamera vcam,
             ResultsManager resultsManager,
-            KillsController killsController)
+            KillsController killsController,
+            BasesHandler baseHandler
+            )
         {
+            this.baseHandler = baseHandler;
             this.killsController = killsController;
             this.resultsManager = resultsManager;
             this.vcam = vcam;
@@ -54,6 +59,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine
         public CinemachineVirtualCamera vcam;
         public ResultsManager resultsManager;
         public KillsController killsController;
+        public BasesHandler baseHandler;
 
         private void Awake()
         {
@@ -65,6 +71,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine
             LoadingState = new LoadingState(this);
             GameStateMachine = new GameStateMachine(this);
 
+            Debug.Log("Game machine starter started");
             GameStateMachine.Start();
         }
 
