@@ -1,4 +1,5 @@
 using System;
+using BsseCode._1._StateMachines.GameStateMachine;
 using BsseCode._3._SupportCode.Constants;
 using BsseCode._3._SupportCode.RandomNumder;
 using BsseCode._6._Audio.Data;
@@ -16,11 +17,13 @@ namespace BsseCode._2._Services.LevelServices.BulletCounter
 
         private IRandomizerService _randomizerService;
         private AudioTracksBase _audioTracksBase;
+        private GameMachineStarter _gameMachineStarter;
         public float EnergyCount { get; private set; }
 
         [Inject]
-        public void Construct(IRandomizerService randomizerService, AudioTracksBase audioTracksBase)
+        public void Construct(IRandomizerService randomizerService, AudioTracksBase audioTracksBase, GameMachineStarter gameMachineStarter)
         {
+            _gameMachineStarter = gameMachineStarter;
             _audioTracksBase = audioTracksBase;
             _randomizerService = randomizerService;
         }
@@ -37,7 +40,7 @@ namespace BsseCode._2._Services.LevelServices.BulletCounter
             {
                 EnergyCount += _randomizerService.GetRandomValue(Const.MinValueEnergyFromLoot, Const.MaxValueEnergyFromLoot);
 
-                AudioManager.Instance.PlaySound(_audioTracksBase.refillEnergyBarSound, useInstance: false,
+                _gameMachineStarter.audioManager.PlaySound(_audioTracksBase.refillEnergyBarSound, useInstance: false,
                     position: this.transform.position);
 
                 if (EnergyCount > Const.MaxEnergyCount) // Исправление: если энергия превышает максимум
@@ -49,7 +52,7 @@ namespace BsseCode._2._Services.LevelServices.BulletCounter
                 return true;
             }
 
-            AudioManager.Instance.PlaySound(_audioTracksBase.energyBarIsFullSound, useInstance: false,
+            _gameMachineStarter.audioManager.PlaySound(_audioTracksBase.energyBarIsFullSound, useInstance: false,
                 position: this.transform.position);
             return false;
         }

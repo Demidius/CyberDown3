@@ -51,6 +51,8 @@ namespace BsseCode._4._UI.BaseMenu
 
         private void OnNewGameButton()
         {
+            _starter.audioManager.PlaySound(_starter.audioTracksBase.click1Sound, useInstance: false, position: this.transform.position);
+
             menu.SetActive(false);
             newMenu.SetActive(true);
             parametrs.SetActive(false);
@@ -59,12 +61,16 @@ namespace BsseCode._4._UI.BaseMenu
 
         private void StartGame()
         {
+            _starter.audioManager.PlaySound(_starter.audioTracksBase.click1Sound, useInstance: false, position: this.transform.position);
+
             _starter.MainMenuState.StartGame();
         }
 
 
         void OnMenu()
         {
+            _starter.audioManager.PlaySound(_starter.audioTracksBase.click1Sound, useInstance: false, position: this.transform.position);
+            
             menu.SetActive(true);
             newMenu.SetActive(false);
             parametrs.SetActive(false);
@@ -73,6 +79,8 @@ namespace BsseCode._4._UI.BaseMenu
         } 
         void OnPrametrs()
         {
+            _starter.audioManager.PlaySound(_starter.audioTracksBase.click1Sound, useInstance: false, position: this.transform.position);
+
             menu.SetActive(false);
             newMenu.SetActive(false);
             parametrs.SetActive(true);
@@ -82,6 +90,8 @@ namespace BsseCode._4._UI.BaseMenu
         
         void OnAutors()
         {
+            _starter.audioManager.PlaySound(_starter.audioTracksBase.click1Sound, useInstance: false, position: this.transform.position);
+
             menu.SetActive(false);
             newMenu.SetActive(false);
             parametrs.SetActive(false);
@@ -90,6 +100,8 @@ namespace BsseCode._4._UI.BaseMenu
 
         void ResultsCleaner()
         {
+            _starter.audioManager.PlaySound(_starter.audioTracksBase.click1Sound, useInstance: false, position: this.transform.position);
+
             _starter.resultsManager.ClearResults();
         }
 

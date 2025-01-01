@@ -1,3 +1,4 @@
+using BsseCode._1._StateMachines.GameStateMachine;
 using BsseCode._5._GameEntities.Hero;
 using BsseCode._6._Audio.Data;
 using BsseCode._6._Audio.Managers;
@@ -12,10 +13,12 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
     {
         private AudioTracksBase _audioTracksBase;
         private EventInstance _spiderRunInstance;
+        private GameMachineStarter _gameMachineStarter;
 
         [Inject]
-        public void Construct(AudioTracksBase audioTracksBase)
+        public void Construct(AudioTracksBase audioTracksBase, GameMachineStarter gameMachineStarter)
         {
+            _gameMachineStarter = gameMachineStarter;
             _audioTracksBase = audioTracksBase;
         }
 
@@ -31,9 +34,9 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
 
         public void PlayRunning()
         {
-            if (_audioTracksBase != null && AudioManager.Instance != null)
+            if (_audioTracksBase != null && _gameMachineStarter.audioManager != null)
             {
-                _spiderRunInstance = AudioManager.Instance.PlaySoundWithInstance(
+                _spiderRunInstance = _gameMachineStarter.audioManager.PlaySoundWithInstance(
                     _audioTracksBase.spiderRun,
                     useInstance: true,
                     position: this.transform.position
@@ -64,9 +67,9 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
 
         public void ExplosionSound()
         {
-            if (_audioTracksBase != null && AudioManager.Instance != null)
+            if (_audioTracksBase != null && _gameMachineStarter.audioManager != null)
             {
-                AudioManager.Instance.PlaySound(
+                _gameMachineStarter.audioManager.PlaySound(
                     _audioTracksBase.explosionSound,
                     useInstance: false,
                     position: this.transform.position

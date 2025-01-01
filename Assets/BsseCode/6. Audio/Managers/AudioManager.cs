@@ -8,24 +8,10 @@ namespace BsseCode._6._Audio.Managers
 {
     public class AudioManager : MonoBehaviour
     {
-        public static AudioManager Instance;
+        
 
         private Dictionary<string, SoundPool> soundPools = new Dictionary<string, SoundPool>();
-
-        private void Awake()
-        {
-            if (Instance == null)
-            {
-                Instance = this;
-                Debug.Log("AudioManager is created!");
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-        }
-
-        
+     
         // Инициализация пула для звука
         public SoundPool InitializeSoundPool(EventReference soundPath, int initialCount = 5)
         {

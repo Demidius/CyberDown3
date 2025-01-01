@@ -8,6 +8,7 @@ using BsseCode._2._Services.LevelServices.GameResults;
 using BsseCode._4._UI;
 using BsseCode._5._GameEntities.Objects;
 using BsseCode._6._Audio.Data;
+using BsseCode._6._Audio.Managers;
 using Cinemachine;
 using UnityEngine;
 using Zenject;
@@ -27,9 +28,11 @@ namespace BsseCode._1._StateMachines.GameStateMachine
             CinemachineVirtualCamera vcam,
             ResultsManager resultsManager,
             KillsController killsController,
-            BasesHandler baseHandler
+            BasesHandler baseHandler,
+            AudioManager audioManager
             )
         {
+            this.audioManager = audioManager;
             this.baseHandler = baseHandler;
             this.killsController = killsController;
             this.resultsManager = resultsManager;
@@ -60,6 +63,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine
         public ResultsManager resultsManager;
         public KillsController killsController;
         public BasesHandler baseHandler;
+        public AudioManager audioManager;
 
         private void Awake()
         {

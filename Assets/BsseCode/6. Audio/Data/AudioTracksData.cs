@@ -1,11 +1,18 @@
 using BsseCode._6._Audio.Managers;
 using FMODUnity;
 using UnityEngine;
+using Zenject;
 
 namespace BsseCode._6._Audio.Data
 {
     public class AudioTracksBase : MonoBehaviour
     {
+
+        [Inject]
+        void Construct(AudioManager audioManager)
+        {
+            _audioManager = audioManager;
+        }
         
         public EventReference shootTrack;
         public EventReference stepEvent;
@@ -16,19 +23,30 @@ namespace BsseCode._6._Audio.Data
         public EventReference emptyBarSound;
         public EventReference refillEnergyBarSound;
         public EventReference energyBarIsFullSound;
+        public EventReference click1Sound;
+        public EventReference click2Sound;
+        public EventReference click3Sound;
+        
+       
+        
+        
+        private AudioManager _audioManager;
 
 
         private void Start()
         {
-            AudioManager.Instance.InitializeSoundPool(shootTrack, 30);
-            AudioManager.Instance.InitializeSoundPool(stepEvent,30);
-            AudioManager.Instance.InitializeSoundPool(music1, 1);
-            AudioManager.Instance.InitializeSoundPool(musicMenu1, 1);
-            AudioManager.Instance.InitializeSoundPool(spiderRun, 30);
-            AudioManager.Instance.InitializeSoundPool(explosionSound, 30);
-            AudioManager.Instance.InitializeSoundPool(emptyBarSound, 10);
-            AudioManager.Instance.InitializeSoundPool(refillEnergyBarSound, 10);
-            AudioManager.Instance.InitializeSoundPool(energyBarIsFullSound, 10);
+            _audioManager.InitializeSoundPool(shootTrack, 30);
+            _audioManager.InitializeSoundPool(stepEvent,30);
+            _audioManager.InitializeSoundPool(music1, 3);
+            _audioManager.InitializeSoundPool(musicMenu1, 3);
+            _audioManager.InitializeSoundPool(spiderRun, 30);
+            _audioManager.InitializeSoundPool(explosionSound, 30);
+            _audioManager.InitializeSoundPool(emptyBarSound, 10);
+            _audioManager.InitializeSoundPool(refillEnergyBarSound, 10);
+            _audioManager.InitializeSoundPool(energyBarIsFullSound, 10);
+            _audioManager.InitializeSoundPool(click1Sound, 10);
+            _audioManager.InitializeSoundPool(click2Sound, 10);
+            _audioManager.InitializeSoundPool(click3Sound, 10);
             
         }
     }

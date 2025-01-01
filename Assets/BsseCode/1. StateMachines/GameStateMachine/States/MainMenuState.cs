@@ -22,12 +22,6 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
             OnMenuState?.Invoke();
             Debug.Log("Enter MainMenuState");
 
-            if (AudioManager.Instance == null)
-            {
-                Debug.LogError("AudioManager.Instance is null!");
-                return;
-            }
-
             if (_gameMachineStarter?.audioTracksBase?.musicMenu1 == null)
             {
                 Debug.LogError("AudioTracksBase or musicMenu1 is null!");
@@ -40,7 +34,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
                 return;
             }
 
-            AudioManager.Instance.PlaySound(_gameMachineStarter.audioTracksBase.musicMenu1, useInstance: true,
+            _gameMachineStarter.audioManager.PlaySound(_gameMachineStarter.audioTracksBase.musicMenu1, useInstance: true,
                 position: _gameMachineStarter.vcam.transform.position);
 
             if (_gameMachineStarter.playerHandler?.CurrentPlayer != null)
@@ -76,7 +70,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 
         public void Exit()
         {
-            AudioManager.Instance.StopSound(_gameMachineStarter.audioTracksBase.musicMenu1);
+            _gameMachineStarter.audioManager.StopSound(_gameMachineStarter.audioTracksBase.musicMenu1);
         }
     }
 }

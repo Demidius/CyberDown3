@@ -9,27 +9,29 @@ namespace BsseCode._6._Audio.UI
     {
        
         private AudioTracksBase _audioTracksBase;
+        private AudioManager _audioManager;
 
         [Inject]
         public void Construct(
-          AudioTracksBase audioTracksBase
+          AudioTracksBase audioTracksBase, AudioManager audioManager
         )
         {
+            _audioManager = audioManager;
             _audioTracksBase = audioTracksBase;
         }
         private void Start()
         {
-            AudioManager.Instance.PlaySound(_audioTracksBase.musicMenu1, useInstance: true, position: this.transform.position);
+            _audioManager.PlaySound(_audioTracksBase.musicMenu1, useInstance: true, position: this.transform.position);
         }
 
         private void OnDestroy()
         {
-            AudioManager.Instance.StopSound(_audioTracksBase.musicMenu1);
+            _audioManager.StopSound(_audioTracksBase.musicMenu1);
         }
 
         private void OnDisable()
         {
-            AudioManager.Instance.StopSound(_audioTracksBase.musicMenu1);
+            _audioManager.StopSound(_audioTracksBase.musicMenu1);
         }
     }
 }

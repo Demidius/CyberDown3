@@ -419,9 +419,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.010882072, y: 0.012242496}
+  m_Offset: {x: 0.022950888, y: 0.012242496}
   serializedVersion: 2
-  m_Radius: 0.25107062
+  m_Radius: 0.38900477
 --- !u!1 &6135874766059111243
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,13 +541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d4b7d45761c4da4bae4948649d0a855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stepEnemyEvent:
-    Guid:
-      Data1: -1420634546
-      Data2: 1167789697
-      Data3: 1993159583
-      Data4: 1854687628
-    Path: event:/SpiderRun
 --- !u!1 &6230138313140900104
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,20 +585,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc0eee5a80c04593ba85ca4df1cc7723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bladesEvent:
-    Guid:
-      Data1: 2085232609
-      Data2: 1163619751
-      Data3: 340622268
-      Data4: -575581264
-    Path: event:/ROBOT SOUNDS/SAW SPINNING
-  explosionSoundEvent:
-    Guid:
-      Data1: 570257669
-      Data2: 1243624103
-      Data3: -707685503
-      Data4: -141407836
-    Path: event:/ROBOT SOUNDS/ROBOT EXPLOSION
 --- !u!1 &6477674189595897170
 GameObject:
   m_ObjectHideFlags: 0
