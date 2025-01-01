@@ -22,7 +22,6 @@ namespace BsseCode._2._Services.LevelServices.GameResults
         {
             ClearAllResults();
             List<GameResult> results = _resultsManager.Results;
-            Debug.Log(results.Count);
 
             float yOffset = 0f;
             float spacing = 50f;

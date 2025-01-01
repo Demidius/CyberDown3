@@ -17,7 +17,7 @@ namespace BsseCode._6._Audio.Managers
             if (Instance == null)
             {
                 Instance = this;
-                DontDestroyOnLoad(gameObject);
+                Debug.Log("AudioManager is created!");
             }
             else
             {

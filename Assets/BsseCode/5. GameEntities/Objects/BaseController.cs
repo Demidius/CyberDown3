@@ -1,6 +1,4 @@
-using System;
 using BsseCode._3._SupportCode.Tags;
-using BsseCode._5._GameEntities.Hero;
 using UnityEngine;
 using System.Collections;
 using BsseCode._2._Services.GlobalServices.BasesHandler;
@@ -8,7 +6,7 @@ using Zenject;
 
 namespace BsseCode._5._GameEntities.Objects
 {
-    public class BaseController : MonoBehaviour
+    public class BaseController : MonoBehaviour, IBaseController
     {
         [SerializeField] private GameObject greenBottom;
         [SerializeField] private GameObject redBottom;
@@ -50,7 +48,7 @@ namespace BsseCode._5._GameEntities.Objects
         
         private IEnumerator FillButton()
         {
-            _handler.SetBaseController(this);
+            _handler.SetBaseController(this.transform.position);
             isFilling = true;
 
             greenBottom.SetActive(true);
@@ -92,5 +90,9 @@ namespace BsseCode._5._GameEntities.Objects
             isFilling = false;
             _handler.OnFillingEnded();
         }
+    }
+
+    public interface IBaseController
+    {
     }
 }

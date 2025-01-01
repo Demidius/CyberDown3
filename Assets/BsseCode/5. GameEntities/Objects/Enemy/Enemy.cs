@@ -15,13 +15,13 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
 {
     public class Enemy : MonoBehaviour, IPoolsElement
     {
-        private ExplosionSpawner _explosionSpawner;
 
         [SerializeField] private EnemyAudioController audioController;
 
+        private ExplosionSpawner _explosionSpawner;
+        
         private IPoolController _poolController;
         private float _speed;
-
 
         private PositionUpdateService _positionUpdateService;
         private Vector2 _moveDirection;
@@ -166,8 +166,5 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
             _gameMachineStarter.baseHandler.OnFillingEndedEvent -= ResetDirection;
         }
 
-        private void OnDisable()
-        {
-        }
     }
 }
