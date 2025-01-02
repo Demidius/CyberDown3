@@ -109,6 +109,34 @@ MonoBehaviour:
       Data3: 2061859740
       Data4: -1837906852
     Path: event:/ACTIONS/NO ENERGY
+  click1Sound:
+    Guid:
+      Data1: -517815073
+      Data2: 1254618708
+      Data3: -881477750
+      Data4: 1897335165
+    Path: event:/Menu/Click1
+  click2Sound:
+    Guid:
+      Data1: -1469611586
+      Data2: 1308909442
+      Data3: -1636641361
+      Data4: -412694180
+    Path: event:/Menu/Click2
+  click3Sound:
+    Guid:
+      Data1: -934465539
+      Data2: 1257923370
+      Data3: 524955531
+      Data4: -2009397077
+    Path: event:/Menu/Click3
+  clickExit:
+    Guid:
+      Data1: 1355628618
+      Data2: 1306901656
+      Data3: 1994642349
+      Data4: -2384046
+    Path: event:/Menu/Enter
 --- !u!114 &576163077868940883
 MonoBehaviour:
   m_ObjectHideFlags: 0

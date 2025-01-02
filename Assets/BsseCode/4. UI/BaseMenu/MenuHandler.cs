@@ -51,7 +51,7 @@ namespace BsseCode._4._UI.BaseMenu
 
         private void OnNewGameButton()
         {
-            _starter.audioManager.PlaySound(_starter.audioTracksBase.click1Sound, useInstance: false, position: this.transform.position);
+            ExitSoudPlay();
 
             menu.SetActive(false);
             newMenu.SetActive(true);
@@ -59,9 +59,14 @@ namespace BsseCode._4._UI.BaseMenu
             autors.SetActive(false);
         }
 
+        private void ExitSoudPlay()
+        {
+            _starter.audioManager.PlaySound(_starter.audioTracksBase.clickExit);
+        }
+
         private void StartGame()
         {
-            _starter.audioManager.PlaySound(_starter.audioTracksBase.click1Sound, useInstance: false, position: this.transform.position);
+            ExitSoudPlay();
 
             _starter.MainMenuState.StartGame();
         }
@@ -69,7 +74,7 @@ namespace BsseCode._4._UI.BaseMenu
 
         void OnMenu()
         {
-            _starter.audioManager.PlaySound(_starter.audioTracksBase.click1Sound, useInstance: false, position: this.transform.position);
+            ExitSoudPlay();
             
             menu.SetActive(true);
             newMenu.SetActive(false);
@@ -79,7 +84,7 @@ namespace BsseCode._4._UI.BaseMenu
         } 
         void OnPrametrs()
         {
-            _starter.audioManager.PlaySound(_starter.audioTracksBase.click1Sound, useInstance: false, position: this.transform.position);
+            ExitSoudPlay();
 
             menu.SetActive(false);
             newMenu.SetActive(false);
@@ -90,7 +95,7 @@ namespace BsseCode._4._UI.BaseMenu
         
         void OnAutors()
         {
-            _starter.audioManager.PlaySound(_starter.audioTracksBase.click1Sound, useInstance: false, position: this.transform.position);
+            ExitSoudPlay();
 
             menu.SetActive(false);
             newMenu.SetActive(false);
@@ -100,7 +105,7 @@ namespace BsseCode._4._UI.BaseMenu
 
         void ResultsCleaner()
         {
-            _starter.audioManager.PlaySound(_starter.audioTracksBase.click1Sound, useInstance: false, position: this.transform.position);
+            ExitSoudPlay();
 
             _starter.resultsManager.ClearResults();
         }

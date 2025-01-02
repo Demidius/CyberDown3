@@ -24,6 +24,35 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &-7683524300027701691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Menu/Enter
+  m_EditorClassIdentifier: 
+  Path: event:/Menu/Enter
+  Guid:
+    Data1: 1355628618
+    Data2: 1306901656
+    Data3: 1994642349
+    Data4: -2384046
+  Banks:
+  - {fileID: -4490260625938609656}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -162147921281974619}
+  - {fileID: -5027312146880227774}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3365
 --- !u!114 &-7214593814450492051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +243,30 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &-5027312146880227774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Enter/GlobalVolume
+  m_EditorClassIdentifier: 
+  Name: GlobalVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3781086499
+    data2: 2270176536
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &-4902614535935644100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,10 +311,10 @@ MonoBehaviour:
   Path: 2D Shooter/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638713567391618697
+  lastModified: 638713733743686049
   FileSizes:
   - Name: Desktop
-    Value: 8847520
+    Value: 8890272
   Exists: 1
 --- !u!114 &-4191511201637455799
 MonoBehaviour:
@@ -567,6 +620,30 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &-162147921281974619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Enter/EffectVolume
+  m_EditorClassIdentifier: 
+  Name: EffectVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 918974467
+    data2: 1856076111
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,6 +675,7 @@ MonoBehaviour:
   - {fileID: 2064321515553631184}
   - {fileID: 710520200163797435}
   - {fileID: -5433123740788284896}
+  - {fileID: -7683524300027701691}
   EditorParameters:
   - {fileID: -3796793255901461457}
   - {fileID: -3040385604725676745}
@@ -607,7 +685,7 @@ MonoBehaviour:
   - {fileID: -4490260625938609656}
   StringsBanks:
   - {fileID: 6229976477368895519}
-  cacheTime: 638713567391651286
+  cacheTime: 638713733743721172
   cacheVersion: 131621
 --- !u!114 &497008523282902482
 MonoBehaviour:
@@ -973,10 +1051,10 @@ MonoBehaviour:
   Path: 2D Shooter/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638713567391651286
+  lastModified: 638713733743721172
   FileSizes:
   - Name: Desktop
-    Value: 1686
+    Value: 1734
   Exists: 1
 --- !u!114 &6356528643795503251
 MonoBehaviour:
