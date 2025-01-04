@@ -1,6 +1,6 @@
 using BsseCode._1._StateMachines.GameStateMachine.States;
 using BsseCode._2._Services.GlobalServices.Addressable;
-using BsseCode._2._Services.GlobalServices.BasesHandler;
+using BsseCode._2._Services.GlobalServices.BeaconHandler;
 using BsseCode._2._Services.GlobalServices.InputFol;
 using BsseCode._2._Services.GlobalServices.PlayerHandlerFl;
 using BsseCode._2._Services.GlobalServices.TimeProvider;
@@ -28,12 +28,12 @@ namespace BsseCode._1._StateMachines.GameStateMachine
             CinemachineVirtualCamera vcam,
             ResultsManager resultsManager,
             KillsController killsController,
-            BasesHandler baseHandler,
+            BeaconHandler beaconHandler,
             AudioManager audioManager
             )
         {
             this.audioManager = audioManager;
-            this.baseHandler = baseHandler;
+            this.beaconHandler = beaconHandler;
             this.killsController = killsController;
             this.resultsManager = resultsManager;
             this.vcam = vcam;
@@ -52,8 +52,11 @@ namespace BsseCode._1._StateMachines.GameStateMachine
         public GameOverState GameOverState;
         public MainMenuState MainMenuState;
         public PauseState PauseState;
+        public WindowState WindowState;
         public LoadingState LoadingState;
+        
         public IAddressableLoader AddressableLoader;
+        
         public UIController uiController;
         public PlayerHandler playerHandler;
         public IInputGlobalService PCInputGlobalService;
@@ -62,7 +65,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine
         public CinemachineVirtualCamera vcam;
         public ResultsManager resultsManager;
         public KillsController killsController;
-        public BasesHandler baseHandler;
+        public BeaconHandler beaconHandler;
         public AudioManager audioManager;
 
         private void Awake()
@@ -71,9 +74,10 @@ namespace BsseCode._1._StateMachines.GameStateMachine
             GameplayState = new GameplayState(this);
             GameOverState = new GameOverState(this);
             MainMenuState = new MainMenuState(this);
-            PauseState = new PauseState(this);
             LoadingState = new LoadingState(this);
             GameStateMachine = new GameStateMachine(this);
+            PauseState = new PauseState(this);
+            WindowState = new WindowState(this);
 
             Debug.Log("Game machine starter started");
             GameStateMachine.Start();

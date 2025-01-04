@@ -1,6 +1,6 @@
 using BsseCode._1._StateMachines.GameStateMachine;
 using BsseCode._2._Services.GlobalServices.Addressable;
-using BsseCode._2._Services.GlobalServices.BasesHandler;
+using BsseCode._2._Services.GlobalServices.BeaconHandler;
 using BsseCode._2._Services.GlobalServices.Coroutines;
 using BsseCode._2._Services.GlobalServices.Factory;
 using BsseCode._2._Services.GlobalServices.InputFol;
@@ -38,7 +38,7 @@ namespace BsseCode._0._Installers
             Container.Bind<ITimeGlobalService>().To<TimeGlobalService>().AsSingle();
             Container.Bind<IRandomizerService>().To<RandomizerService>().AsSingle();
 
-            Container.Bind<BasesHandler>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<BeaconHandler>().FromComponentInHierarchy().AsSingle();
 
             #region Coroutine
 

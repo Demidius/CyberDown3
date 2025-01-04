@@ -27,6 +27,9 @@ namespace BsseCode._6._Audio.Data
         public EventReference click2Sound;
         public EventReference click3Sound;
         public EventReference clickExit;
+        public EventReference levelStartSound;
+        public EventReference beaconSound;
+        public EventReference slowMotionSound;
         
        
         
@@ -49,6 +52,10 @@ namespace BsseCode._6._Audio.Data
             _audioManager.InitializeSoundPool(click2Sound, 10);
             _audioManager.InitializeSoundPool(click3Sound, 10);
             _audioManager.InitializeSoundPool(clickExit, 10);
+            _audioManager.InitializeSoundPool(levelStartSound, 2);
+            _audioManager.InitializeSoundPool(beaconSound, 2);
+            _audioManager.InitializeSoundPool(slowMotionSound, 2);
+            
             
         }
     }

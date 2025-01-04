@@ -7,16 +7,22 @@ namespace BsseCode._4._UI
     {
         [SerializeField] private GameObject hud;
         [SerializeField] private GameObject baseMenu;
-        [SerializeField] private GameObject pausePanel;
         [SerializeField] private GameObject slowMotionHUD;
         [SerializeField] private GameObject cursorToSprite;
         [SerializeField] private ResultsUI resultsUI;
         
+        [SerializeField] private GameObject window1Panel;
+        [SerializeField] private GameObject pausePanel;
 
         public GameObject HUD
         {
             get => hud;
             set => hud = value;
+        } 
+        public GameObject Window1Panel
+        {
+            get => window1Panel;
+            set => window1Panel = value;
         }
 
         public GameObject BaseMenu

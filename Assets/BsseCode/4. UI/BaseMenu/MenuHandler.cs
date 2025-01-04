@@ -28,6 +28,7 @@ namespace BsseCode._4._UI.BaseMenu
        
         private GameMachineStarter _starter;
 
+        
         [Inject]
         public void Construct(GameMachineStarter starter)
         {
@@ -63,10 +64,14 @@ namespace BsseCode._4._UI.BaseMenu
         {
             _starter.audioManager.PlaySound(_starter.audioTracksBase.clickExit);
         }
+        private void EnterLevelSoudPlay()
+        {
+            _starter.audioManager.PlaySound(_starter.audioTracksBase.levelStartSound);
+        }
 
         private void StartGame()
         {
-            ExitSoudPlay();
+            EnterLevelSoudPlay();
 
             _starter.MainMenuState.StartGame();
         }

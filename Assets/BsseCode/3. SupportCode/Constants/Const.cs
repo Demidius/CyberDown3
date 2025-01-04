@@ -21,5 +21,9 @@ namespace BsseCode._3._SupportCode.Constants
         public const int MinValueEnergyFromLoot = 1;
         public const int MaxValueEnergyFromLoot = 3;
         public const float ValueForEmptyEvent = 2;
+        
+        public const float BeaconFillDuration = 30f;
+        
+        
     }
 }

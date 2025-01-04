@@ -31,9 +31,6 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
         private GameMachineStarter _gameMachineStarter;
         private Vector2 _diePosition;
 
-        private bool _goToBase = false;
-        private Vector3 _targetTransformPosition;
-
         [Inject]
         public void Construct(
             PositionUpdateService positionUpdateService,
@@ -65,9 +62,7 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
         public void SetParameters(float speed)
         {
             _speed = speed;
-            ResetDirection();
-            _gameMachineStarter.baseHandler.OnFillingStarted += SetNewDirection;
-            _gameMachineStarter.baseHandler.OnFillingEndedEvent += ResetDirection;
+           
         }
 
 
@@ -104,9 +99,9 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
 
         private void Direction()
         {
-            if (_goToBase)
+            if (_gameMachineStarter.beaconHandler.IsActive)
             {
-                _moveDirection = _targetTransformPosition - transform.position;
+                _moveDirection = _gameMachineStarter.beaconHandler.BaaconControllerPosition - transform.position;
             }
             else
             {
@@ -115,17 +110,6 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
             _moveDirection.Normalize();
             Vector2 newPosition = _positionUpdateService.Move(_moveDirection, _speed, this.transform.position);
             transform.position = newPosition;
-        }
-
-        void ResetDirection()
-        {
-            _goToBase = false;
-        }
-
-        void SetNewDirection(Vector3 newDirection)
-        {
-            _goToBase = true;
-            _targetTransformPosition = newDirection;
         }
 
         private IEnumerator PostMortemEventHandler()
@@ -162,8 +146,6 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
         private void OnDestroy()
         {
             _gameMachineStarter.MainMenuState.OnMenuState -= Deactivata;
-            _gameMachineStarter.baseHandler.OnFillingStarted -= SetNewDirection;
-            _gameMachineStarter.baseHandler.OnFillingEndedEvent -= ResetDirection;
         }
 
     }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{fdb094b3-3538-4afa-b785-35e370f23535}">
+		<property name="assetPath">
+			<value>02.01/Locator.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.2019274376417233</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b8d0625d-8de1-4e41-a89a-da19320335a6}</destination>
+		</relationship>
+	</object>
+</objects>

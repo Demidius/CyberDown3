@@ -5,7 +5,7 @@ using Zenject;
 
 namespace BsseCode._4._UI.BaseMenu
 {
-    public class BaseController : MonoBehaviour
+    public class BaseMenuController : MonoBehaviour
     {
         [SerializeField] GameObject baseMenu;
        

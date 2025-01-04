@@ -21,10 +21,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
         public void Enter()
         {
             _gameMachineStarter.PCInputGlobalService.PauseEvent += ReturnToGame;
-            Debug.Log("Enter PauseState");
             _gameMachineStarter.uiController.PausePanel.SetActive(true);
-            // _temtTimeSpeed = _gameMachineStarter.TimeGlobalService.TimeScale;
-            // _gameMachineStarter.TimeGlobalService.TimeScale = 0;
             Time.timeScale = 0;
         }
 
@@ -43,11 +40,8 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 
         public void Exit()
         {
-            Time.timeScale = 1; // Возвращение времени к нормальному состоянию
+            Time.timeScale = 1; 
             _gameMachineStarter.uiController.PausePanel.SetActive(false);
-            // _gameMachineStarter.TimeGlobalService.TimeScale = _temtTimeSpeed;
-            // _temtTimeSpeed = 1;
-            Time.timeScale = 1;
             _gameMachineStarter.PCInputGlobalService.PauseEvent -= ReturnToGame;
         }
     }

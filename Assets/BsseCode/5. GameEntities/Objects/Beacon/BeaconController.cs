@@ -1,23 +1,23 @@
+using System.Collections;
+using BsseCode._3._SupportCode.Constants;
 using BsseCode._3._SupportCode.Tags;
 using UnityEngine;
-using System.Collections;
-using BsseCode._2._Services.GlobalServices.BasesHandler;
 using Zenject;
 
-namespace BsseCode._5._GameEntities.Objects
+namespace BsseCode._2._Services.GlobalServices.BeaconHandler
 {
     public class BaseController : MonoBehaviour, IBaseController
     {
         [SerializeField] private GameObject greenBottom;
         [SerializeField] private GameObject redBottom;
 
-        private float fillDuration = 30f; // Время заполнения
+        private float fillDuration = Const.BeaconFillDuration; 
         private Coroutine fillCoroutine;
         private bool isFilling = false;
-        private BasesHandler _handler;
+        private BeaconHandler _handler;
 
         [Inject]
-        public void Construct(BasesHandler handler)
+        public void Construct(BeaconHandler handler)
         {
             _handler = handler;
         }
@@ -36,7 +36,7 @@ namespace BsseCode._5._GameEntities.Objects
                     fillCoroutine = StartCoroutine(FillButton());
                 }
             }
-            else if (collision.TryGetComponent<Enemy.Enemy>(out Enemy.Enemy enemy))
+            else if (collision.TryGetComponent<_5._GameEntities.Objects.Enemy.Enemy>(out _5._GameEntities.Objects.Enemy.Enemy enemy))
             {
                 if (isFilling && fillCoroutine != null)
                 {

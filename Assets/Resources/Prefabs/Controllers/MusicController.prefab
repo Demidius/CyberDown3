@@ -137,6 +137,27 @@ MonoBehaviour:
       Data3: 1994642349
       Data4: -2384046
     Path: event:/Menu/Enter
+  levelStartSound:
+    Guid:
+      Data1: -1970103939
+      Data2: 1189551054
+      Data3: 645967269
+      Data4: 1668253985
+    Path: event:/LevelAudios/LevelStart
+  beaconSound:
+    Guid:
+      Data1: -1816835005
+      Data2: 1167129231
+      Data3: 1431380655
+      Data4: 763035624
+    Path: event:/LevelAudios/BeaconSound
+  slowMotionSound:
+    Guid:
+      Data1: 976353715
+      Data2: 1113387170
+      Data3: -1808083046
+      Data4: -1668170659
+    Path: event:/LevelAudios/SlowmotionSound
 --- !u!114 &576163077868940883
 MonoBehaviour:
   m_ObjectHideFlags: 0
