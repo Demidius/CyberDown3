@@ -10,19 +10,27 @@ namespace BsseCode._4._UI
         [SerializeField] private GameObject slowMotionHUD;
         [SerializeField] private GameObject cursorToSprite;
         [SerializeField] private ResultsUI resultsUI;
-        
+
         [SerializeField] private GameObject window1Panel;
         [SerializeField] private GameObject pausePanel;
+        [SerializeField] private GameObject finishState;
 
         public GameObject HUD
         {
             get => hud;
             set => hud = value;
-        } 
-        public GameObject Window1Panel
+        }
+
+        public GameObject Window1Panel 
         {
             get => window1Panel;
             set => window1Panel = value;
+        }
+
+        public GameObject FinishState
+        {
+            get => finishState;
+            set => finishState = value;
         }
 
         public GameObject BaseMenu
@@ -48,11 +56,11 @@ namespace BsseCode._4._UI
             get => cursorToSprite;
             set => cursorToSprite = value;
         }
+
         public ResultsUI ResultsUI
         {
             get => resultsUI;
             set => resultsUI = value;
         }
     }
-
 }

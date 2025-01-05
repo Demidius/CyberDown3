@@ -67,7 +67,7 @@ namespace BsseCode._2._Services.GlobalServices.Pools.EnemesPool
                 else if (spawnInterval > 0.5f)
                     spawnInterval -= 0.01f;
 
-                spawnInterval = Mathf.Max(spawnInterval, 0.5f);
+                spawnInterval = Mathf.Max(spawnInterval, 0.2f);
                 yield return new WaitForSeconds(1f); // Уменьшать интервал раз в секунду
             }
         }

@@ -13,7 +13,8 @@ namespace BsseCode._2._Services.GlobalServices.BeaconHandler
 
         private float fillDuration = Const.BeaconFillDuration; 
         private Coroutine fillCoroutine;
-        private bool isFilling = false;
+        private bool isFilling;
+        public bool IsFull { get; private set; } = false;
         private BeaconHandler _handler;
 
         [Inject]
@@ -31,14 +32,14 @@ namespace BsseCode._2._Services.GlobalServices.BeaconHandler
         {
             if (collision.TryGetComponent<PlayerTag>(out PlayerTag player))
             {
-                if (!isFilling)
+                if (!isFilling && !IsFull)
                 {
                     fillCoroutine = StartCoroutine(FillButton());
                 }
             }
             else if (collision.TryGetComponent<_5._GameEntities.Objects.Enemy.Enemy>(out _5._GameEntities.Objects.Enemy.Enemy enemy))
             {
-                if (isFilling && fillCoroutine != null)
+                if (isFilling && fillCoroutine != null && !IsFull)
                 {
                     StopCoroutine(fillCoroutine);
                     ResetButton();
@@ -79,6 +80,7 @@ namespace BsseCode._2._Services.GlobalServices.BeaconHandler
 
             _handler.OnFillingEnded();
             isFilling = false;
+            IsFull = true;
         }
 
 

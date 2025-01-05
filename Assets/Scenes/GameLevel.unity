@@ -1297,8 +1297,9 @@ GameObject:
   - component: {fileID: 137658246}
   - component: {fileID: 137658248}
   - component: {fileID: 137658247}
+  - component: {fileID: 137658249}
   m_Layer: 0
-  m_Name: Base (3)
+  m_Name: Beacon 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1383,6 +1384,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   greenBottom: {fileID: 729868821}
   redBottom: {fileID: 2018574415}
+--- !u!114 &137658249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137658245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70fdd2d7b3844c0b16ebe90c8ae1574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &178578955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -565786,7 +565799,7 @@ GameObject:
   - component: {fileID: 1060717567}
   - component: {fileID: 1060717568}
   m_Layer: 0
-  m_Name: Beacon
+  m_Name: Beacon 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -566872,8 +566885,9 @@ GameObject:
   - component: {fileID: 1221662459}
   - component: {fileID: 1221662461}
   - component: {fileID: 1221662460}
+  - component: {fileID: 1221662462}
   m_Layer: 0
-  m_Name: Base (1)
+  m_Name: Beacon 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -566958,6 +566972,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   greenBottom: {fileID: 968482445}
   redBottom: {fileID: 26811698}
+--- !u!114 &1221662462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221662458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70fdd2d7b3844c0b16ebe90c8ae1574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1226162393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -567693,8 +567719,9 @@ GameObject:
   - component: {fileID: 1297934673}
   - component: {fileID: 1297934675}
   - component: {fileID: 1297934674}
+  - component: {fileID: 1297934676}
   m_Layer: 0
-  m_Name: Base (2)
+  m_Name: Beacon 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -567779,6 +567806,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   greenBottom: {fileID: 652753584}
   redBottom: {fileID: 2096778364}
+--- !u!114 &1297934676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297934672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70fdd2d7b3844c0b16ebe90c8ae1574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1304207028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -570499,6 +570538,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5cbbb5207f47019da10862bdac8048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  beacon1: {fileID: 1060717566}
+  beacon2: {fileID: 1221662461}
+  beacon3: {fileID: 1297934675}
+  beacon4: {fileID: 137658248}
 --- !u!4 &1695974722
 Transform:
   m_ObjectHideFlags: 0

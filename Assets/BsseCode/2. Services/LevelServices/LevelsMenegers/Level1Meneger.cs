@@ -1,14 +1,22 @@
 using BsseCode._1._StateMachines.GameStateMachine;
+using BsseCode._2._Services.GlobalServices.BeaconHandler;
 using FMOD.Studio;
 using UnityEngine;
 using Zenject;
 
 namespace BsseCode._2._Services.LevelServices
 {
-    public class StateStarter : MonoBehaviour
+    public class Level1Meneger : MonoBehaviour
     {
         private GameMachineStarter _starter;
         private EventInstance _slowMotionSoundInstance;
+
+        [SerializeField] private BaseController beacon1;
+        [SerializeField] private BaseController beacon2;
+        [SerializeField] private BaseController beacon3;
+        [SerializeField] private BaseController beacon4;
+        
+        
         [Inject]
         void Construct(GameMachineStarter starter)
         {
@@ -27,6 +35,16 @@ namespace BsseCode._2._Services.LevelServices
             _starter.GameStateMachine.SetState(_starter.WindowState);
             
         }
+
+        void Update()
+        {
+            if (beacon1.IsFull && beacon2.IsFull && beacon3.IsFull && beacon4.IsFull)
+            {
+                Debug.Log("Finish");
+                _starter.GameStateMachine.SetState(_starter.FinishState);
+            }
+        }
+        
 
         private void OnDestroy()
         {

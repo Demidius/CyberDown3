@@ -17,7 +17,7 @@ namespace BsseCode._3._SupportCode.Constants
         public const float NormalTimeSpeed = 1f;
         public const float SlowTimeModificator = 0.2f;
 
-        public const float MaxEnergyCount = 30;
+        public const float MaxEnergyCount = 3000;
         public const int MinValueEnergyFromLoot = 1;
         public const int MaxValueEnergyFromLoot = 3;
         public const float ValueForEmptyEvent = 2;
