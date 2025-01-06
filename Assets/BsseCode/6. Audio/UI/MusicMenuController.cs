@@ -5,7 +5,7 @@ using Zenject;
 
 namespace BsseCode._6._Audio.UI
 {
-    public class MusicMenuController : MonoBehaviour
+    public class MusicMenuController
     {
        
         private AudioTracksBase _audioTracksBase;
@@ -19,9 +19,9 @@ namespace BsseCode._6._Audio.UI
             _audioManager = audioManager;
             _audioTracksBase = audioTracksBase;
         }
-        private void Start()
+        private void StartMenuMusic()
         {
-            _audioManager.PlaySound(_audioTracksBase.musicMenu1, useInstance: true, position: this.transform.position);
+            _audioManager.PlaySound(_audioTracksBase.musicMenu1, useInstance: true);
         }
 
         private void OnDestroy()

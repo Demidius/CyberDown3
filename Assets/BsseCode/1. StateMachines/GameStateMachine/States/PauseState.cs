@@ -8,7 +8,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 {
     public class PauseState : IGameState
     {
-        public IGameState CurrentState;
+        
         private GameMachineStarter _gameMachineStarter;
 
         private float _temtTimeSpeed;

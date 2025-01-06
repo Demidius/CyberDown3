@@ -1,6 +1,4 @@
 using System;
-using BsseCode._3._SupportCode.Constants;
-using BsseCode._6._Audio.Managers;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,13 +6,13 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 {
     public class MainMenuState : IGameState
     {
-        private GameMachineStarter _gameMachineStarter;
+        private readonly GameMachineStarter _gameMachineStarter;
 
-        public event Action OnMenuState; 
+        public event Action OnMenuState;
 
         public MainMenuState(GameMachineStarter gameMachineStarter)
         {
-            _gameMachineStarter = gameMachineStarter;
+            _gameMachineStarter = gameMachineStarter ?? throw new ArgumentNullException(nameof(gameMachineStarter));
         }
 
         public void Enter()
@@ -22,44 +20,15 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
             OnMenuState?.Invoke();
             Debug.Log("Enter MainMenuState");
 
-            if (_gameMachineStarter?.audioTracksBase?.musicMenu1 == null)
-            {
-                Debug.LogError("AudioTracksBase or musicMenu1 is null!");
-                return;
-            }
+            if (!ValidateDependencies()) return;
 
-            if (_gameMachineStarter.vcam == null)
-            {
-                Debug.LogError("Virtual Camera (vcam) is null!");
-                return;
-            }
-
-            _gameMachineStarter.audioManager.PlaySound(_gameMachineStarter.audioTracksBase.musicMenu1, useInstance: true,
-                position: _gameMachineStarter.vcam.transform.position);
-
-            if (_gameMachineStarter.playerHandler?.CurrentPlayer != null)
-                _gameMachineStarter.playerHandler.DestroyPlayer();
-
-            if (_gameMachineStarter.uiController?.BaseMenu?.GameObject() != null && 
-                !_gameMachineStarter.uiController.BaseMenu.GameObject().activeSelf)
-            {
-                _gameMachineStarter.uiController.BaseMenu.GameObject().SetActive(true);
-            }
-
-            if (_gameMachineStarter.AddressableLoader != null)
-            {
-                _gameMachineStarter.AddressableLoader.UnloadCurrentLevel();
-            }
-            else
-            {
-                Debug.LogError("AddressableLoader is null!");
-            }
-
-            _gameMachineStarter.uiController?.ResultsUI?.DisplayResults();
-
-            _gameMachineStarter.killsController?.ResetKills();
+            PlayMenuMusic();
+            DestroyExistingPlayer();
+            ShowMainMenuUI();
+            UnloadCurrentLevel();
+            DisplayResultsUI();
+            ResetKillsCounter();
         }
-
 
         public void StartGame()
         {
@@ -67,10 +36,65 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
             _gameMachineStarter.AddressableLoader.LoadLevelByIndex(0);
         }
 
-
         public void Exit()
         {
-            _gameMachineStarter.audioManager.StopSound(_gameMachineStarter.audioTracksBase.musicMenu1);
+            StopMenuMusic();
+        }
+
+        private bool ValidateDependencies()
+        {
+            if (_gameMachineStarter.vcam == null)
+            {
+                Debug.LogError("Virtual Camera (vcam) is null!");
+                return false;
+            }
+
+            if (_gameMachineStarter.AddressableLoader == null)
+            {
+                Debug.LogError("AddressableLoader is null!");
+                return false;
+            }
+
+            return true;
+        }
+
+        private void PlayMenuMusic()
+        {
+            _gameMachineStarter.audioManager?.PlaySound(_gameMachineStarter.audioTracksBase.musicMenu1, useInstance: true);
+        }
+
+        private void StopMenuMusic()
+        {
+            _gameMachineStarter.audioManager?.StopSound(_gameMachineStarter.audioTracksBase.musicMenu1);
+        }
+
+        private void DestroyExistingPlayer()
+        {
+            _gameMachineStarter.playerHandler?.DestroyPlayer();
+        }
+
+        private void ShowMainMenuUI()
+        {
+            var baseMenu = _gameMachineStarter.uiController?.BaseMenu?.GameObject();
+            if (baseMenu != null && !baseMenu.activeSelf)
+            {
+                baseMenu.SetActive(true);
+            }
+        }
+
+        private void UnloadCurrentLevel()
+        {
+            _gameMachineStarter.AddressableLoader?.UnloadCurrentLevel();
+        }
+
+        private void DisplayResultsUI()
+        {
+            _gameMachineStarter.uiController?.ResultsUI?.DisplayResults();
+        }
+
+        private void ResetKillsCounter()
+        {
+            _gameMachineStarter.killsController?.ResetKills();
         }
     }
 }

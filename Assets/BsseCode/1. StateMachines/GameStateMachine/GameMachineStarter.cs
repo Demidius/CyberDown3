@@ -55,6 +55,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine
         public WindowState WindowState;
         public LoadingState LoadingState;
         public FinishState FinishState;
+        public ResetState ResetState;
         
         public IAddressableLoader AddressableLoader;
         
@@ -81,6 +82,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine
             PauseState = new PauseState(this);
             WindowState = new WindowState(this);
             FinishState = new FinishState(this);
+            ResetState = new ResetState(this);
 
             Debug.Log("Game machine starter started");
             GameStateMachine.Start();

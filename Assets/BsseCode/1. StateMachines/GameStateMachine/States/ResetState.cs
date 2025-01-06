@@ -6,37 +6,35 @@ using Zenject;
 
 namespace BsseCode._1._StateMachines.GameStateMachine.States
 {
-    public class WindowState : IGameState
+    public class ResetState : IGameState
     {
+        
         private GameMachineStarter _gameMachineStarter;
 
         private float _temtTimeSpeed;
 
-        public WindowState(GameMachineStarter gameMachineStarter)
+        public ResetState(GameMachineStarter gameMachineStarter)
         {
             _gameMachineStarter = gameMachineStarter;
         }
 
         public void Enter()
         {
-            _gameMachineStarter.PCInputGlobalService.PauseEvent += ReturnToGame;
-            _gameMachineStarter.uiController.Window1Panel.SetActive(true);
+            _gameMachineStarter.playerHandler.DestroyPlayer();
+            _gameMachineStarter.uiController.ResetStatePanel.SetActive(true);
             Time.timeScale = 0;
         }
 
-        public void ReturnToGame(bool OnOff)
+        public void ReturnToGame()
         {
-            if (!OnOff)
-            {
-                _gameMachineStarter.GameStateMachine.SetState(_gameMachineStarter.GameplayState);
-            }
+            _gameMachineStarter.GameStateMachine.SetState(_gameMachineStarter.GameplayState);
         }
 
         public void Exit()
         {
             Time.timeScale = 1;
-            _gameMachineStarter.uiController.Window1Panel.SetActive(false);
-            _gameMachineStarter.PCInputGlobalService.PauseEvent -= ReturnToGame;
+            _gameMachineStarter.playerHandler.CreatePlayer();
+            _gameMachineStarter.uiController.ResetStatePanel.SetActive(false);
         }
     }
 }

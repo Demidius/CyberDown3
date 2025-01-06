@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using BsseCode._1._StateMachines.GameStateMachine;
 using BsseCode._5._GameEntities.Objects.Enemy;
 using UnityEngine;
@@ -9,7 +10,6 @@ namespace BsseCode._5._GameEntities.Hero.Components
     {
         private GameMachineStarter _gameMachineStarter;
 
-
         [Inject]
         public void Construct(GameMachineStarter gameMachineStarter)
         {
@@ -20,8 +20,10 @@ namespace BsseCode._5._GameEntities.Hero.Components
         {
             if (other.TryGetComponent<Enemy>(out Enemy enemy))
             {
-                _gameMachineStarter.playerHandler.CurrentPlayer.transform.position = Vector3.zero;
+                _gameMachineStarter.GameStateMachine.SetState(_gameMachineStarter.ResetState);
             }
         }
+        
+       
     }
 }

@@ -1,10 +1,11 @@
 using System.Collections;
+using BsseCode._2._Services.GlobalServices.BeaconHandler;
 using BsseCode._3._SupportCode.Constants;
 using BsseCode._3._SupportCode.Tags;
 using UnityEngine;
 using Zenject;
 
-namespace BsseCode._2._Services.GlobalServices.BeaconHandler
+namespace BsseCode._5._GameEntities.Objects.Beacon
 {
     public class BaseController : MonoBehaviour, IBaseController
     {

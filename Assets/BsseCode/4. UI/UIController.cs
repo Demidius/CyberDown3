@@ -14,6 +14,7 @@ namespace BsseCode._4._UI
         [SerializeField] private GameObject window1Panel;
         [SerializeField] private GameObject pausePanel;
         [SerializeField] private GameObject finishState;
+        [SerializeField] private GameObject resetStatePanel;
 
         public GameObject HUD
         {
@@ -21,7 +22,13 @@ namespace BsseCode._4._UI
             set => hud = value;
         }
 
-        public GameObject Window1Panel 
+        public GameObject ResetStatePanel
+        {
+            get => resetStatePanel;
+            set => resetStatePanel = value;
+        }
+
+        public GameObject Window1Panel
         {
             get => window1Panel;
             set => window1Panel = value;

@@ -1,5 +1,29 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8991863793652195900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music1/MusicVolume
+  m_EditorClassIdentifier: 
+  Name: MusicVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4175793657
+    data2: 2123561424
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &-8481195097168602321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,6 +68,30 @@ MonoBehaviour:
   ID:
     data1: 3781086499
     data2: 2270176536
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-8059105261680465283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ROBOT EXPLOSION/TimeController
+  m_EditorClassIdentifier: 
+  Name: TimeController
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2653580880
+    data2: 1906607243
   Type: 0
   IsGlobal: 1
   Labels: []
@@ -154,6 +202,7 @@ MonoBehaviour:
   Parameters:
   - {fileID: 1665592537083680904}
   - {fileID: 8620747898957862268}
+  - {fileID: 6790917328398235395}
   MinDistance: 1
   MaxDistance: 20
   Length: 1040
@@ -207,6 +256,7 @@ MonoBehaviour:
   Parameters:
   - {fileID: -2299272443807591507}
   - {fileID: 4148745028583566328}
+  - {fileID: 4190616935663650762}
   MinDistance: 1
   MaxDistance: 20
   Length: 1640
@@ -361,13 +411,14 @@ MonoBehaviour:
   - {fileID: -4490260625938609656}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters:
   - {fileID: 3936909650029396146}
   - {fileID: 7315306801267830731}
+  - {fileID: -8991863793652195900}
   MinDistance: 1
   MaxDistance: 20
-  Length: 442651
+  Length: 176039
 --- !u!114 &-4490260625938609656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,10 +434,10 @@ MonoBehaviour:
   Path: 2D Shooter/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638714563595634773
+  lastModified: 638717004355233533
   FileSizes:
   - Name: Desktop
-    Value: 9369408
+    Value: 6258336
   Exists: 1
 --- !u!114 &-4191511201637455799
 MonoBehaviour:
@@ -489,6 +540,7 @@ MonoBehaviour:
   Parameters:
   - {fileID: -8481195097168602321}
   - {fileID: -2334025621460251329}
+  - {fileID: 8731693665444738347}
   MinDistance: 1
   MaxDistance: 20
   Length: 516
@@ -614,9 +666,34 @@ MonoBehaviour:
   Parameters:
   - {fileID: -7214593814450492051}
   - {fileID: 5223330134796225418}
+  - {fileID: 2073420278559976753}
   MinDistance: 1
   MaxDistance: 20
   Length: 100
+--- !u!114 &-1902965905527943600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/NO ENERGY/EffectVolume
+  m_EditorClassIdentifier: 
+  Name: EffectVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 918974467
+    data2: 1856076111
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &-1325771369072214316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -664,10 +741,13 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: 6620250928792672023}
+  - {fileID: 303034264846812425}
+  - {fileID: -8059105261680465283}
   MinDistance: 1
   MaxDistance: 20
-  Length: 2211
+  Length: 2120
 --- !u!114 &-728437501212551344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -838,8 +918,32 @@ MonoBehaviour:
   - {fileID: -4490260625938609656}
   StringsBanks:
   - {fileID: 6229976477368895519}
-  cacheTime: 638714563595664875
+  cacheTime: 638717004355274871
   cacheVersion: 131621
+--- !u!114 &303034264846812425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ROBOT EXPLOSION/GlobalVolume
+  m_EditorClassIdentifier: 
+  Name: GlobalVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3781086499
+    data2: 2270176536
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &497008523282902482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1016,6 +1120,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1653
+--- !u!114 &2073420278559976753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/NO MORE SPACE FOR ENERGY/EffectVolume
+  m_EditorClassIdentifier: 
+  Name: EffectVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 918974467
+    data2: 1856076111
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &3078259290697430448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1066,9 +1194,34 @@ MonoBehaviour:
   Parameters:
   - {fileID: 3078259290697430448}
   - {fileID: 555966758299642354}
+  - {fileID: 3246232298259162289}
   MinDistance: 0
   MaxDistance: 9
   Length: 1631
+--- !u!114 &3246232298259162289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SpeiderRun2/EffectVolume
+  m_EditorClassIdentifier: 
+  Name: EffectVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 918974467
+    data2: 1856076111
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &3502348854005962877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1137,6 +1290,30 @@ MonoBehaviour:
   ID:
     data1: 3781086499
     data2: 2270176536
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &4190616935663650762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BLASTER SHOOT/EffectVolume
+  m_EditorClassIdentifier: 
+  Name: EffectVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 918974467
+    data2: 1856076111
   Type: 0
   IsGlobal: 1
   Labels: []
@@ -1228,7 +1405,7 @@ MonoBehaviour:
   Path: 2D Shooter/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638714563595664875
+  lastModified: 638717004355274871
   FileSizes:
   - Name: Desktop
     Value: 1938
@@ -1259,9 +1436,34 @@ MonoBehaviour:
   Parameters:
   - {fileID: 1978354574520183180}
   - {fileID: 4914076221634028188}
+  - {fileID: -1902965905527943600}
   MinDistance: 1
   MaxDistance: 20
   Length: 251
+--- !u!114 &6620250928792672023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ROBOT EXPLOSION/EffectVolume
+  m_EditorClassIdentifier: 
+  Name: EffectVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 918974467
+    data2: 1856076111
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &6740811532005388826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1282,6 +1484,30 @@ MonoBehaviour:
   ID:
     data1: 2653580880
     data2: 1906607243
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &6790917328398235395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Explision/EffectVolume
+  m_EditorClassIdentifier: 
+  Name: EffectVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 918974467
+    data2: 1856076111
   Type: 0
   IsGlobal: 1
   Labels: []
@@ -1490,6 +1716,30 @@ MonoBehaviour:
   ID:
     data1: 3781086499
     data2: 2270176536
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &8731693665444738347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/ENERGY FULFILL/EffectVolume
+  m_EditorClassIdentifier: 
+  Name: EffectVolume
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 918974467
+    data2: 1856076111
   Type: 0
   IsGlobal: 1
   Labels: []

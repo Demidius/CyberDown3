@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace BsseCode._4._UI.WindowPanels
+namespace BsseCode._4._UI.Level1UI
 {
     public class Window1Panel : MonoBehaviour
     {

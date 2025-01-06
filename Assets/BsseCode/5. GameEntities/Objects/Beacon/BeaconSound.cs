@@ -3,7 +3,7 @@ using FMOD.Studio;
 using UnityEngine;
 using Zenject;
 
-namespace BsseCode._5._GameEntities.Objects.BeaconSound
+namespace BsseCode._5._GameEntities.Objects.Beacon
 {
     public class Locator : MonoBehaviour
     {
