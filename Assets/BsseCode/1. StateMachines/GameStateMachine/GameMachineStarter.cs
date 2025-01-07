@@ -1,6 +1,7 @@
 using BsseCode._1._StateMachines.GameStateMachine.States;
 using BsseCode._2._Services.GlobalServices.Addressable;
 using BsseCode._2._Services.GlobalServices.BeaconHandler;
+using BsseCode._2._Services.GlobalServices.Coroutines;
 using BsseCode._2._Services.GlobalServices.InputFol;
 using BsseCode._2._Services.GlobalServices.PlayerHandlerFl;
 using BsseCode._2._Services.GlobalServices.TimeProvider;
@@ -29,9 +30,10 @@ namespace BsseCode._1._StateMachines.GameStateMachine
             ResultsManager resultsManager,
             KillsController killsController,
             BeaconHandler beaconHandler,
-            AudioManager audioManager
-            )
+            AudioManager audioManager,
+            ICoroutineGlobalService coroutineGlobalService)
         {
+            CoroutineGlobalService = coroutineGlobalService;
             this.audioManager = audioManager;
             this.beaconHandler = beaconHandler;
             this.killsController = killsController;
@@ -56,6 +58,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine
         public LoadingState LoadingState;
         public FinishState FinishState;
         public ResetState ResetState;
+        public LandingState LandingState;
         
         public IAddressableLoader AddressableLoader;
         
@@ -69,6 +72,8 @@ namespace BsseCode._1._StateMachines.GameStateMachine
         public KillsController killsController;
         public BeaconHandler beaconHandler;
         public AudioManager audioManager;
+        public ICoroutineGlobalService CoroutineGlobalService;
+       
 
         private void Awake()
         {
@@ -83,6 +88,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine
             WindowState = new WindowState(this);
             FinishState = new FinishState(this);
             ResetState = new ResetState(this);
+            LandingState = new LandingState(this);
 
             Debug.Log("Game machine starter started");
             GameStateMachine.Start();

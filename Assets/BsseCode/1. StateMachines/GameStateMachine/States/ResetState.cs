@@ -27,7 +27,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 
         public void ReturnToGame()
         {
-            _gameMachineStarter.GameStateMachine.SetState(_gameMachineStarter.GameplayState);
+            _gameMachineStarter.GameStateMachine.SetState(_gameMachineStarter.LandingState);
         }
 
         public void Exit()

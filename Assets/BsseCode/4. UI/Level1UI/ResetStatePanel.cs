@@ -19,7 +19,6 @@ namespace BsseCode._4._UI.Level1UI
 
         public void OnEnable()
         {
-            
             StartCoroutine(CountdownCoroutine());
         }
 

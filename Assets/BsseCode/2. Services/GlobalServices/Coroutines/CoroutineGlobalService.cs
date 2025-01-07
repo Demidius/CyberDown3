@@ -8,7 +8,6 @@ namespace BsseCode._2._Services.GlobalServices.Coroutines
     {
         private readonly CoroutineRunner _coroutineRunner;
 
-        [Inject]
         public CoroutineGlobalService(CoroutineRunner coroutineRunner) =>
             _coroutineRunner = coroutineRunner;
 

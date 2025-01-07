@@ -16,8 +16,9 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
         public void Enter()
         {
            Debug.Log("LoadingState: Enter");
+           
         }
-
+        
         public void Exit()
         {
             

@@ -1,5 +1,6 @@
 using System.Collections;
 using BsseCode._2._Services.GlobalServices.BeaconHandler;
+using BsseCode._2._Services.GlobalServices.Coroutines;
 using BsseCode._3._SupportCode.Constants;
 using BsseCode._3._SupportCode.Tags;
 using UnityEngine;
@@ -17,10 +18,12 @@ namespace BsseCode._5._GameEntities.Objects.Beacon
         private bool isFilling;
         public bool IsFull { get; private set; } = false;
         private BeaconHandler _handler;
+        private ICoroutineGlobalService _coroutineGlobalService;
 
         [Inject]
-        public void Construct(BeaconHandler handler)
+        public void Construct(BeaconHandler handler, ICoroutineGlobalService coroutineGlobalService)
         {
+            _coroutineGlobalService = coroutineGlobalService;
             _handler = handler;
         }
         
@@ -35,14 +38,14 @@ namespace BsseCode._5._GameEntities.Objects.Beacon
             {
                 if (!isFilling && !IsFull)
                 {
-                    fillCoroutine = StartCoroutine(FillButton());
+                    fillCoroutine = _coroutineGlobalService.StartCoroutine(FillButton());
                 }
             }
             else if (collision.TryGetComponent<_5._GameEntities.Objects.Enemy.Enemy>(out _5._GameEntities.Objects.Enemy.Enemy enemy))
             {
                 if (isFilling && fillCoroutine != null && !IsFull)
                 {
-                    StopCoroutine(fillCoroutine);
+                    _coroutineGlobalService.StopCoroutine(fillCoroutine);
                     ResetButton();
                 }
             }

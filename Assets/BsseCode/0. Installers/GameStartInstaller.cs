@@ -30,16 +30,6 @@ namespace BsseCode._0._Installers
 
         public override void InstallBindings()
         {
-            Container.Bind<AudioTracksBase>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<AudioManager>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<IFactoryComponent>().To<FactoryComponent>().AsSingle();
-            Container.Bind<GameMachineStarter>().FromComponentInHierarchy().AsSingle().NonLazy();
-            Container.Bind<UIController>().FromComponentInHierarchy().AsSingle().NonLazy();
-
-            Container.Bind<ITimeGlobalService>().To<TimeGlobalService>().AsSingle();
-            Container.Bind<IRandomizerService>().To<RandomizerService>().AsSingle();
-
-            Container.Bind<BeaconHandler>().FromComponentInHierarchy().AsSingle();
 
             #region Coroutine
 
@@ -51,6 +41,16 @@ namespace BsseCode._0._Installers
             #endregion
 
             // Container.Bind<ResultsManager>().FromComponentInNewPrefab(resultsManagerPrefab).AsSingle().NonLazy();
+            Container.Bind<AudioTracksBase>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<AudioManager>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<IFactoryComponent>().To<FactoryComponent>().AsSingle();
+            Container.Bind<GameMachineStarter>().FromComponentInHierarchy().AsSingle().NonLazy();
+            Container.Bind<UIController>().FromComponentInHierarchy().AsSingle().NonLazy();
+
+            Container.Bind<ITimeGlobalService>().To<TimeGlobalService>().AsSingle();
+            Container.Bind<IRandomizerService>().To<RandomizerService>().AsSingle();
+
+            Container.Bind<BeaconHandler>().FromComponentInHierarchy().AsSingle();
 
 
 
