@@ -36,7 +36,7 @@ namespace BsseCode._5._GameEntities.Objects.EnergyLoot
             _poolController = poolController;
             _energyCounter = energyCounter;
 
-            _gameMachineStarter.MainMenuState.OnMenuState += Kill;
+            _gameMachineStarter.MainMenuState.OnMenuState += ReturnToPool;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -45,20 +45,20 @@ namespace BsseCode._5._GameEntities.Objects.EnergyLoot
             {
                 if (_energyCounter.AddEnergy() == true)
                 {
-                    Kill();
+                    ReturnToPool();
                 }
             }
         }
 
 
-        public void Kill()
+        public void ReturnToPool()
         {
             _poolController.ReturnToPool(this);
         }
 
         private void OnDestroy()
         {
-            _gameMachineStarter.MainMenuState.OnMenuState -= Kill;
+            _gameMachineStarter.MainMenuState.OnMenuState -= ReturnToPool;
         }
     }
 }

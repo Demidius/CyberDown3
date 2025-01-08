@@ -20,7 +20,7 @@ namespace BsseCode._2._Services.GlobalServices.TimeProvider
 
         private void Update()
         {
-            if (_timeController.IsSlowMotion && !_isCoroutineRunning)
+            if (_timeController.isSlowMotionActive && !_isCoroutineRunning)
             {
                 StartCoroutine(ConditionCoroutine());
             }
@@ -29,7 +29,7 @@ namespace BsseCode._2._Services.GlobalServices.TimeProvider
         IEnumerator ConditionCoroutine()
         {
             _isCoroutineRunning = true;
-            while (_timeController.IsSlowMotion)
+            while (_timeController.isSlowMotionActive)
             {
                 EnergyDrain();
                 yield return new WaitForSeconds(0.1f); 

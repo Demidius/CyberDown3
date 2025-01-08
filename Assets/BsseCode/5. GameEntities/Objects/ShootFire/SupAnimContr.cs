@@ -23,7 +23,7 @@ namespace BsseCode._5._GameEntities.Objects.ShootFire
         {
             if (_iPoolsElement != null)
             {
-                _iPoolsElement.Kill();
+                _iPoolsElement.ReturnToPool();
             }
             else
             {

@@ -6,7 +6,7 @@ namespace BsseCode._2._Services.GlobalServices.InputFol
 {
     public class PcInputGlobalService : IInputGlobalService
     {
-        private bool isPause = false;
+        private bool isPause;
         public event Action ShootType1;
         public event Action ToggleTimeEvent;
         public event Action<bool> PauseEvent;

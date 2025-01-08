@@ -15,7 +15,6 @@ using BsseCode._4._UI;
 using BsseCode._5._GameEntities.UnivercialUtils;
 using BsseCode._6._Audio.Data;
 using BsseCode._6._Audio.Managers;
-using BsseCode._6._Audio.UI;
 using Cinemachine;
 using UnityEngine;
 using Zenject;
@@ -24,69 +23,67 @@ namespace BsseCode._0._Installers
 {
     public class GameStartInstaller : MonoInstaller
     {
-      
-        public AudioTracksBase audioManagerPrefab;
-      
-
         public override void InstallBindings()
         {
+            RegisterCoroutines();
+            RegisterAudioServices();
+            RegisterSpecializedServices();
+            RegisterReusableServices();
+            RegisterCameraServices();
+            RegisterGameManagers();
+            RegisterStateMachine();
+        }
 
-            #region Coroutine
+        private void RegisterStateMachine()
+        {
+            Container.Bind<GameMachineStarter>().FromComponentInHierarchy().AsSingle().NonLazy();
+        }
 
+        private void RegisterGameManagers()
+        {
+            Container.Bind<BeaconHandler>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<KillsController>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<IEnergyCounter>().To<EnergyCounter>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<ResultsManager>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<PlayerHandler>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<ITimerLevel>().To<TimerLevel>().AsSingle();
+        }
+
+        private void RegisterReusableServices()
+        {
+            Container.Bind<IFactoryComponent>().To<FactoryComponent>().AsSingle();
+            Container.Bind<IRandomizerService>().To<RandomizerService>().AsSingle();
+            Container.Bind<PositionUpdateService>().AsSingle();
+            Container.Bind<IPoolController>().To<PoolController>().FromComponentInHierarchy().AsSingle();
+        }
+
+        private void RegisterSpecializedServices()
+        {
+            Container.Bind<IInputGlobalService>().To<PcInputGlobalService>().AsSingle();
+            Container.Bind<UIController>().FromComponentInHierarchy().AsSingle().NonLazy();
+            Container.Bind<ITimeGlobalService>().To<TimeGlobalService>().AsSingle();
+            Container.Bind<TimeController>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<IAddressableLoader>().To<AddressableLoader>().FromComponentInHierarchy().AsSingle();
+        }
+
+        private void RegisterCameraServices()
+        {
+            Container.Bind<CinemachineVirtualCamera>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<Camera>().FromComponentInHierarchy().AsSingle();
+        }
+
+        private void RegisterAudioServices()
+        {
+            Container.Bind<AudioTracksBase>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<AudioManager>().FromComponentInHierarchy().AsSingle();
+        }
+
+        private void RegisterCoroutines()
+        {
             var coroutineRunner = new GameObject("CoroutineRunner").AddComponent<CoroutineRunner>();
             DontDestroyOnLoad(coroutineRunner);
             Container.Bind<CoroutineRunner>().FromInstance(coroutineRunner).AsSingle();
             Container.Bind<ICoroutineGlobalService>().To<CoroutineGlobalService>().AsSingle();
-
-            #endregion
-
-            // Container.Bind<ResultsManager>().FromComponentInNewPrefab(resultsManagerPrefab).AsSingle().NonLazy();
-            Container.Bind<AudioTracksBase>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<AudioManager>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<IFactoryComponent>().To<FactoryComponent>().AsSingle();
-            Container.Bind<GameMachineStarter>().FromComponentInHierarchy().AsSingle().NonLazy();
-            Container.Bind<UIController>().FromComponentInHierarchy().AsSingle().NonLazy();
-
-            Container.Bind<ITimeGlobalService>().To<TimeGlobalService>().AsSingle();
-            Container.Bind<IRandomizerService>().To<RandomizerService>().AsSingle();
-
-            Container.Bind<BeaconHandler>().FromComponentInHierarchy().AsSingle();
-
-
-
-
-            #region Services
-
-            Container.Bind<IInputGlobalService>().To<PcInputGlobalService>().AsSingle();
-            Container.Bind<IAddressableLoader>().To<AddressableLoader>().FromComponentInHierarchy().AsSingle();
-
-            Container.Bind<PositionUpdateService>().AsSingle();
-            Container.Bind<KillsController>().FromComponentInHierarchy().AsSingle();
-          
-            Container.Bind<IEnergyCounter>().To<EnergyCounter>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<ITimerLevel>().To<TimerLevel>().AsSingle();
-
-            Container.Bind<ResultsManager>().FromComponentInHierarchy().AsSingle();
-
-            #endregion
-
-
-            #region Camera
-
-            Container.Bind<Camera>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<CinemachineVirtualCamera>().FromComponentInHierarchy().AsSingle();
-
-            #endregion
-
-
-            Container.Bind<PlayerHandler>().FromComponentInHierarchy().AsSingle();
-
-
-            Container.Bind<TimeController>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<IPoolController>().To<PoolController>().FromComponentInHierarchy().AsSingle();
-            // Container.Bind<MusicMenuController>().FromComponentInHierarchy().AsSingle();
-            
-            
         }
     }
 }

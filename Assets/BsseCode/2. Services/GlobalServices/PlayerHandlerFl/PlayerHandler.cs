@@ -89,7 +89,7 @@ namespace BsseCode._2._Services.GlobalServices.PlayerHandlerFl
             foreach (var enemyObject in enemiesToDeactivate)
             {
                 var enemyComponent = enemyObject.GetComponent<Enemy>();
-                enemyComponent?.Kill();
+                enemyComponent?.ReturnToPool();
             }
 
 

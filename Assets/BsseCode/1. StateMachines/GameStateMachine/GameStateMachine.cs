@@ -6,16 +6,16 @@ namespace BsseCode._1._StateMachines.GameStateMachine
     public class GameStateMachine
     {
         private IGameState _currentState;
-        private GameMachineStarter _starter;
+        private GameMachineStarter _gameMachineStarter;
 
-        public GameStateMachine(GameMachineStarter starter)
+        public GameStateMachine(GameMachineStarter gameMachineStarter)
         {
-            _starter = starter;
+            _gameMachineStarter = gameMachineStarter;
         }
        
-        public void Start()
+        public void StartStateMachine()
         {
-            SetState(_starter.BootstrapState);
+            SetState(_gameMachineStarter.BootstrapState);
         }
 
         public void SetState(IGameState newState)

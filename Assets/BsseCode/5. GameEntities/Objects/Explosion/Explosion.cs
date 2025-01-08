@@ -16,7 +16,7 @@ namespace BsseCode._5._GameEntities.Objects.Explosion
         }
 
 
-        public void Kill()
+        public void ReturnToPool()
         {
             _poolController.ReturnToPool(this);
         }

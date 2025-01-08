@@ -9,7 +9,7 @@ namespace BsseCode._5._GameEntities.Objects.Explosion
 
         private void Deactivate()
         {
-            iPoolsElementObject.Kill();
+            iPoolsElementObject.ReturnToPool();
         }
     }
 }

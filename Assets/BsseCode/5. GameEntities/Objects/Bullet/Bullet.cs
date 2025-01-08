@@ -11,29 +11,22 @@ namespace BsseCode._5._GameEntities.Objects.Bullet
 {
     public class Bullet : MonoBehaviour, IPoolsElement
     {
-       
-
         private float _speed;
         private Vector2 _direction;
+        
         private BulletMover _bulletMover;
-      
         private IPoolController _poolController;
         private GameMachineStarter _gameMachineStarter;
-
 
         [Inject]
         public void Construct(
             PositionUpdateService positionUpdateService,
             IPoolController poolController,
-            ICoroutineGlobalService coroutineGlobalService,
             GameMachineStarter gameMachineStarter)
-            
         {
             _gameMachineStarter = gameMachineStarter;
             _poolController = poolController;
             _bulletMover = new BulletMover(positionUpdateService, transform);
-            
-            _gameMachineStarter.MainMenuState.OnMenuState += Kill;
         }
         
         public void SetParameters(float speed, Vector2 direction)
@@ -46,7 +39,7 @@ namespace BsseCode._5._GameEntities.Objects.Bullet
         private void Update() => 
             _bulletMover.Move(_direction, _speed);
 
-        public void Kill()
+        public void ReturnToPool()
         {
             _poolController?.ReturnToPool(this);
         }
@@ -55,22 +48,22 @@ namespace BsseCode._5._GameEntities.Objects.Bullet
         {
             if (other.TryGetComponent<Enemy.Enemy>(out Enemy.Enemy enemy))
             {
-                Kill();
+                ReturnToPool();
             }
             else if (other.TryGetComponent<BulletDestroyer>(out BulletDestroyer bullet))
             {
-                Kill();
+                ReturnToPool();
             }
         }
 
-        private void OnEnable()
+        private void Start()
         {
-            
+            _gameMachineStarter.MainMenuState.OnMenuState += ReturnToPool;
         }
 
         private void OnDestroy()
         {
-            _gameMachineStarter.MainMenuState.OnMenuState -= Kill;
+            _gameMachineStarter.MainMenuState.OnMenuState -= ReturnToPool;
         }
     }
 }

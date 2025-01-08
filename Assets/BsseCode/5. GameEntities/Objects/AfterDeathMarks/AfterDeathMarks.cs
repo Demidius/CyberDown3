@@ -18,18 +18,18 @@ namespace BsseCode._5._GameEntities.Objects.AfterDeathMarks
             _gameMachineStarter = gameMachineStarter;
             _poolController = poolController;
 
-            _gameMachineStarter.MainMenuState.OnMenuState += Kill;
+            _gameMachineStarter.MainMenuState.OnMenuState += ReturnToPool;
         }
 
 
-        public void Kill()
+        public void ReturnToPool()
         {
             _poolController.ReturnToPool(this);
         }
 
         private void OnDestroy()
         {
-            _gameMachineStarter.MainMenuState.OnMenuState -= Kill;
+            _gameMachineStarter.MainMenuState.OnMenuState -= ReturnToPool;
         }
     }
 }

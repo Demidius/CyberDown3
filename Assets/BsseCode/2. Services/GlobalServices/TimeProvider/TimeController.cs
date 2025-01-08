@@ -9,7 +9,7 @@ namespace BsseCode._2._Services.GlobalServices.TimeProvider
     public class TimeController : MonoBehaviour
     {
         private ITimeGlobalService _timeGlobalService;
-        public bool IsSlowMotion { get; private set; }
+        public bool isSlowMotionActive { get; private set; }
         private IInputGlobalService _inputGlobalService;
         private IEnergyCounter _energyCounter;
 
@@ -30,7 +30,7 @@ namespace BsseCode._2._Services.GlobalServices.TimeProvider
 
         public void ResetIsSlowMotion()
         {
-            IsSlowMotion = false;
+            isSlowMotionActive = false;
         }
 
         private void Update()
@@ -40,21 +40,21 @@ namespace BsseCode._2._Services.GlobalServices.TimeProvider
 
         private void ToggleTimeScale()
         {
-            _timeGlobalService.TimeScale = IsSlowMotion ? Const.NormalTimeSpeed : Const.SlowTimeModificator;
+            _timeGlobalService.TimeScale = isSlowMotionActive ? Const.NormalTimeSpeed : Const.SlowTimeModificator;
             if (Mathf.Approximately(_timeGlobalService.TimeScale, Const.NormalTimeSpeed))
             {
-                IsSlowMotion = false;
+                isSlowMotionActive = false;
             }
             else
             {
-                IsSlowMotion = true;
+                isSlowMotionActive = true;
             } 
         }
 
         private void ExitFromSlowMotion()
         {
             _timeGlobalService.TimeScale = Const.NormalTimeSpeed;
-            IsSlowMotion = false;
+            isSlowMotionActive = false;
         }
 
 

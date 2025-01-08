@@ -47,11 +47,9 @@ namespace BsseCode._1._StateMachines.GameStateMachine
             AddressableLoader = loader;
         }
 
-
         public GameStateMachine GameStateMachine;
         public BootstrapState BootstrapState;
         public GameplayState GameplayState;
-        public GameOverState GameOverState;
         public MainMenuState MainMenuState;
         public PauseState PauseState;
         public WindowState WindowState;
@@ -77,21 +75,34 @@ namespace BsseCode._1._StateMachines.GameStateMachine
 
         private void Awake()
         {
-            BootstrapState = new BootstrapState(this);
+            GreateStarterStates();
+            GreateBasicStates();
+            CreateLevelStates();
+
+            GameStateMachine.StartStateMachine();
+        }
+
+        private void GreateBasicStates()
+        {
             GameplayState = new GameplayState(this);
-            GameOverState = new GameOverState(this);
             MainMenuState = new MainMenuState(this);
             LoadingState = new LoadingState(this);
+        }
+
+        private void GreateStarterStates()
+        {
+            BootstrapState = new BootstrapState(this);
             GameStateMachine = new GameStateMachine(this);
-            
+        }
+
+        private void CreateLevelStates()
+        {
             PauseState = new PauseState(this);
             WindowState = new WindowState(this);
             FinishState = new FinishState(this);
             ResetState = new ResetState(this);
             LandingState = new LandingState(this);
-
-            Debug.Log("Game machine starter started");
-            GameStateMachine.Start();
+            
         }
 
 

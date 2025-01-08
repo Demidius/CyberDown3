@@ -76,11 +76,11 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
         {
             if (other.TryGetComponent<Bullet.Bullet>(out Bullet.Bullet bullet))
             {
-                Kill();
+                ReturnToPool();
             }
         }
 
-        public void Kill()
+        public void ReturnToPool()
         {
             _coroutineGlobalService.StartCoroutine(PostMortemEventHandler());
             Deactivata();
