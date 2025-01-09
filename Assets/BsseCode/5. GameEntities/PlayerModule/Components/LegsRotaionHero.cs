@@ -1,7 +1,7 @@
 using BsseCode._5._GameEntities.UnivercialUtils;
 using UnityEngine;
 
-namespace BsseCode._5._GameEntities.Hero.Components
+namespace BsseCode._5._GameEntities.PlayerModule.Components
 {
     public class LegsRotaionHero : MonoBehaviour
     {

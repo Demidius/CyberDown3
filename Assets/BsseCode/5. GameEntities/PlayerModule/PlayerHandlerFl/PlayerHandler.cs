@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 using BsseCode._2._Services.GlobalServices.Factory;
-using BsseCode._5._GameEntities.Hero;
 using BsseCode._5._GameEntities.Objects.Enemy;
 using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 
-namespace BsseCode._2._Services.GlobalServices.PlayerHandlerFl
+namespace BsseCode._5._GameEntities.PlayerModule.PlayerHandlerFl
 {
     public class PlayerHandler : MonoBehaviour
     {

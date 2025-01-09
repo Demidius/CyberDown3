@@ -1,6 +1,5 @@
 using BsseCode._1._StateMachines.GameStateMachine;
 using BsseCode._2._Services.ServiceLocator;
-using BsseCode._5._GameEntities.Hero;
 using BsseCode._6._Audio.Data;
 using BsseCode._6._Audio.Managers;
 using FMOD.Studio;

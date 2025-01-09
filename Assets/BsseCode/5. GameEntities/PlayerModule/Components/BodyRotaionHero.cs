@@ -3,7 +3,7 @@ using BsseCode._5._GameEntities.UnivercialUtils;
 using UnityEngine;
 using Zenject;
 
-namespace BsseCode._5._GameEntities.Hero.Components
+namespace BsseCode._5._GameEntities.PlayerModule.Components
 {
     public class BodyRotaionHero : MonoBehaviour
     {

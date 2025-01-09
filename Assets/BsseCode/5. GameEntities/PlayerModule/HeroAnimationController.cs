@@ -1,10 +1,10 @@
-using BsseCode._2._Services.GlobalServices.PlayerHandlerFl;
 using BsseCode._2._Services.GlobalServices.TimeProvider;
 using BsseCode._3._SupportCode.Constants;
+using BsseCode._5._GameEntities.PlayerModule.PlayerHandlerFl;
 using UnityEngine;
 using Zenject;
 
-namespace BsseCode._5._GameEntities.Hero
+namespace BsseCode._5._GameEntities.PlayerModule
 {
     public class HeroAnimationController : MonoBehaviour
     {

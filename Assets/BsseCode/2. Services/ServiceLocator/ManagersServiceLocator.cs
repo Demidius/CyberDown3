@@ -1,6 +1,6 @@
 using BsseCode._2._Services.GlobalServices.BeaconHandler;
-using BsseCode._2._Services.GlobalServices.PlayerHandlerFl;
 using BsseCode._2._Services.LevelServices.GameResults;
+using BsseCode._5._GameEntities.PlayerModule.PlayerHandlerFl;
 using Zenject;
 
 namespace BsseCode._2._Services.ServiceLocator

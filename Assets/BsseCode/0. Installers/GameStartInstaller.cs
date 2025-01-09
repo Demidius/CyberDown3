@@ -4,15 +4,18 @@ using BsseCode._2._Services.GlobalServices.BeaconHandler;
 using BsseCode._2._Services.GlobalServices.Coroutines;
 using BsseCode._2._Services.GlobalServices.Factory;
 using BsseCode._2._Services.GlobalServices.InputFol;
-using BsseCode._2._Services.GlobalServices.PlayerHandlerFl;
 using BsseCode._2._Services.GlobalServices.Pools;
 using BsseCode._2._Services.GlobalServices.TimeProvider;
 using BsseCode._2._Services.LevelServices.BulletCounter;
 using BsseCode._2._Services.LevelServices.GameResults;
 using BsseCode._2._Services.LevelServices.TimerLevel;
 using BsseCode._2._Services.ServiceLocator;
+using BsseCode._2._Services.UpdateManeger;
 using BsseCode._3._SupportCode.RandomNumder;
 using BsseCode._4._UI;
+using BsseCode._5._GameEntities.PlayerModule;
+using BsseCode._5._GameEntities.PlayerModule.Components;
+using BsseCode._5._GameEntities.PlayerModule.PlayerHandlerFl;
 using BsseCode._5._GameEntities.UnivercialUtils;
 using BsseCode._6._Audio.Data;
 using BsseCode._6._Audio.Managers;
@@ -25,6 +28,8 @@ namespace BsseCode._0._Installers
 {
     public class GameStartInstaller : MonoInstaller
     {
+        [SerializeField] private Player _playerPrefab;
+
         public override void InstallBindings()
         {
             RegisterCoroutines();
@@ -35,6 +40,15 @@ namespace BsseCode._0._Installers
             RegisterCameraServices();
             RegisterGameManagers();
             RegisterStateMachine();
+            RegisterPlayerModule();
+            RegisterUpdateService();
+        }
+
+        private void RegisterPlayerModule()
+        {
+            Container.Bind<IPlayerModule>().To<PlayerModule>().AsSingle();
+            Container.Bind<IPlayer>().To<Player>().FromComponentInNewPrefab(_playerPrefab).AsSingle();
+            Container.Bind<IBulletSpawnPoint>().To<BulletSpawnPoint>().FromComponentInNewPrefab(_playerPrefab).AsSingle();
         }
 
         private void RegisterServicesLocaters()
@@ -76,6 +90,13 @@ namespace BsseCode._0._Installers
             Container.Bind<ITimeGlobalService>().To<TimeGlobalService>().AsSingle();
             Container.Bind<TimeController>().FromComponentInHierarchy().AsSingle();
             Container.Bind<IAddressableLoader>().To<AddressableLoader>().FromComponentInHierarchy().AsSingle();
+        }
+
+        private void RegisterUpdateService()
+        {
+            var updateManegerBech = new GameObject("UpdateManegerBech").AddComponent<UpdateManeger>();
+            DontDestroyOnLoad(updateManegerBech);
+            Container.Bind<IUpdateManeger>().To<UpdateManeger>().FromInstance(updateManegerBech).AsSingle();
         }
 
         private void RegisterCameraServices()

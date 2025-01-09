@@ -1,10 +1,9 @@
-using System.Collections.Generic;
 using BsseCode._1._StateMachines.GameStateMachine;
 using BsseCode._5._GameEntities.Objects.Enemy;
 using UnityEngine;
 using Zenject;
 
-namespace BsseCode._5._GameEntities.Hero.Components
+namespace BsseCode._5._GameEntities.PlayerModule.Components
 {
     public class CollisionHandler : MonoBehaviour
     {

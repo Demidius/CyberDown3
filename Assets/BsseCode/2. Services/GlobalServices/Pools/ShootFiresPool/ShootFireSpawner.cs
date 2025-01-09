@@ -1,7 +1,7 @@
 using BsseCode._2._Services.GlobalServices.InputFol;
-using BsseCode._2._Services.GlobalServices.PlayerHandlerFl;
-using BsseCode._5._GameEntities.Hero;
 using BsseCode._5._GameEntities.Objects.ShootFire;
+using BsseCode._5._GameEntities.PlayerModule;
+using BsseCode._5._GameEntities.PlayerModule.PlayerHandlerFl;
 using UnityEngine;
 using Zenject;
 
@@ -15,11 +15,18 @@ namespace BsseCode._2._Services.GlobalServices.Pools.ShootFiresPool
         private IInputGlobalService _inputGlobalService;
         private IPoolController _poolController;
         private PlayerHandler _playerHandler;
+        private IPlayerModule _playerModule;
 
 
         [Inject]
-        public void Construct(IPoolController poolController, IInputGlobalService inputGlobalService, PlayerHandler playerHandler )
+        public void Construct(
+            IPoolController poolController, 
+            IInputGlobalService inputGlobalService, 
+            PlayerHandler playerHandler, 
+            IPlayerModule playerModule
+            )
         {
+            _playerModule = playerModule;
             _playerHandler = playerHandler;
             _poolController = poolController;            
             _inputGlobalService = inputGlobalService;
@@ -36,7 +43,7 @@ namespace BsseCode._2._Services.GlobalServices.Pools.ShootFiresPool
         {
             if (!_spawnPoint)
             {
-                _spawnPoint = _playerHandler.CurrentPlayer.BulletSpawnPoint.transform;
+                _spawnPoint = _playerModule.GetBulletSpawnPointTransform();
             }
             _inputGlobalService.Shoot();
             _direction = _spawnPoint.up ;
