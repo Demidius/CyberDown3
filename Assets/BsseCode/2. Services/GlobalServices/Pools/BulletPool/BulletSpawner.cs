@@ -1,6 +1,7 @@
 using BsseCode._1._StateMachines.GameStateMachine;
 using BsseCode._2._Services.GlobalServices.InputFol;
 using BsseCode._2._Services.LevelServices.BulletCounter;
+using BsseCode._2._Services.ServiceLocator;
 using BsseCode._5._GameEntities.Objects.Bullet;
 using BsseCode._6._Audio.Data;
 using UnityEngine;
@@ -18,8 +19,9 @@ namespace BsseCode._2._Services.GlobalServices.Pools.BulletPool
         private IInputGlobalService _inputGlobalService;
         private IEnergyCounter _energyCounter;
         private IPoolController _poolController;
-        private AudioTracksBase _audioTracksBase;
+       
         private GameMachineStarter _gameMachineStarter;
+        private IAudioServicesLocator _audioServicesLocator;
 
 
         [Inject]
@@ -27,12 +29,14 @@ namespace BsseCode._2._Services.GlobalServices.Pools.BulletPool
             IPoolController poolController, 
             IInputGlobalService inputGlobalService, 
             IEnergyCounter energyCounter,
-            AudioTracksBase audioTracksBase,
+            IAudioServicesLocator audioServicesLocator,
+          
             GameMachineStarter gameMachineStarter)
            
         {
+            _audioServicesLocator = audioServicesLocator;
             _gameMachineStarter = gameMachineStarter;
-            _audioTracksBase = audioTracksBase;
+           
             _poolController = poolController;
             _energyCounter = energyCounter;
             _inputGlobalService = inputGlobalService;
@@ -61,13 +65,13 @@ namespace BsseCode._2._Services.GlobalServices.Pools.BulletPool
             }
             else
             {
-                _gameMachineStarter.audioManager.PlaySound(_audioTracksBase.emptyBarSound, useInstance: false, position: this.transform.position);
+                _audioServicesLocator.AudioManager.PlaySound(_audioServicesLocator.AudioTracksBase.emptyBarSound, useInstance: false, position: this.transform.position);
             }
         }
 
         private void PlaySound()
         {
-            _gameMachineStarter.audioManager.PlaySound(_audioTracksBase.shootTrack, useInstance: false, position: this.transform.position);
+            _audioServicesLocator.AudioManager.PlaySound(_audioServicesLocator.AudioTracksBase.shootTrack, useInstance: false, position: this.transform.position);
         }
     }
 }

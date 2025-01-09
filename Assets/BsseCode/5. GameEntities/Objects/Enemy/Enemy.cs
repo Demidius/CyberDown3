@@ -6,6 +6,7 @@ using BsseCode._2._Services.GlobalServices.PlayerHandlerFl;
 using BsseCode._2._Services.GlobalServices.Pools;
 using BsseCode._2._Services.GlobalServices.Pools.ExplosionPool;
 using BsseCode._2._Services.LevelServices.GameResults;
+using BsseCode._2._Services.ServiceLocator;
 using BsseCode._5._GameEntities.Hero;
 using BsseCode._5._GameEntities.UnivercialUtils;
 using UnityEngine;
@@ -18,17 +19,19 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
 
         [SerializeField] private EnemyAudioController audioController;
 
-        private ExplosionSpawner _explosionSpawner;
+        
         
         private IPoolController _poolController;
-        private float _speed;
 
         private PositionUpdateService _positionUpdateService;
-        private Vector2 _moveDirection;
         private ICoroutineGlobalService _coroutineGlobalService;
-        private KillsController _killsController;
-        private PlayerHandler _playerHandler;
+        
         private GameMachineStarter _gameMachineStarter;
+        private IManagersServiceLocator _managersServiceLocator;
+        
+     
+        private float _speed;
+        private Vector2 _moveDirection;
         private Vector2 _diePosition;
 
         [Inject]
@@ -36,13 +39,14 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
             PositionUpdateService positionUpdateService,
             IPoolController poolController,
             ICoroutineGlobalService coroutineGlobalService,
-            KillsController killsController,
-            PlayerHandler playerHandler,
-            GameMachineStarter gameMachineStarter)
+            GameMachineStarter gameMachineStarter,
+            IManagersServiceLocator managersServiceLocator
+            )
         {
+            _managersServiceLocator = managersServiceLocator ?? throw new ArgumentNullException(nameof(managersServiceLocator));
             _gameMachineStarter = gameMachineStarter ?? throw new ArgumentNullException(nameof(gameMachineStarter));
-            _playerHandler = playerHandler ?? throw new ArgumentNullException(nameof(playerHandler));
-            _killsController = killsController ?? throw new ArgumentNullException(nameof(killsController));
+            
+            
             _coroutineGlobalService =
                 coroutineGlobalService ?? throw new ArgumentNullException(nameof(coroutineGlobalService));
             _positionUpdateService =
@@ -55,14 +59,13 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
                 return;
             }
 
-            _gameMachineStarter.MainMenuState.OnMenuState += Deactivata;
+            _gameMachineStarter.MainMenuState.OnMenuState += Deactivaite;
         }
 
 
         public void SetParameters(float speed)
         {
             _speed = speed;
-           
         }
 
 
@@ -83,10 +86,10 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
         public void ReturnToPool()
         {
             _coroutineGlobalService.StartCoroutine(PostMortemEventHandler());
-            Deactivata();
+            Deactivaite();
         }
 
-        private void Deactivata()
+        private void Deactivaite()
         {
             _poolController.ReturnToPool(this);
         }
@@ -99,13 +102,13 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
 
         private void Direction()
         {
-            if (_gameMachineStarter.beaconHandler.IsActive)
+            if (_managersServiceLocator.BeaconHandler.IsActive)
             {
-                _moveDirection = _gameMachineStarter.beaconHandler.BaaconControllerPosition - transform.position;
+                _moveDirection = _managersServiceLocator.BeaconHandler.BaaconControllerPosition - transform.position;
             }
             else
             {
-                _moveDirection = _playerHandler.CurrentPlayer.transform.position - transform.position;
+                _moveDirection = _managersServiceLocator.PlayerHandler.CurrentPlayer.transform.position - transform.position;
             }
             _moveDirection.Normalize();
             Vector2 newPosition = _positionUpdateService.Move(_moveDirection, _speed, this.transform.position);
@@ -118,7 +121,7 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
             CreateExplosion();
             audioController.ExplosionSound();
             yield return new WaitForSeconds(0.1f);
-            _killsController.OnEnemyKilled();
+            _managersServiceLocator.KillsController.OnEnemyKilled();
             yield return new WaitForSeconds(0.5f);
             CreateExplosionResidue();
             yield return new WaitForSeconds(0.2f);
@@ -145,7 +148,7 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
 
         private void OnDestroy()
         {
-            _gameMachineStarter.MainMenuState.OnMenuState -= Deactivata;
+            _gameMachineStarter.MainMenuState.OnMenuState -= Deactivaite;
         }
 
     }

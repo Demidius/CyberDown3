@@ -1,4 +1,5 @@
 using System;
+using BsseCode._2._Services.ServiceLocator;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -7,11 +8,22 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
     public class MainMenuState : IGameState
     {
         private readonly GameMachineStarter _gameMachineStarter;
+        private IUIServiceLocator _uiServiceLocator;
+        private IManagersServiceLocator _managersServiceLocator;
+        private IAudioServicesLocator _audioServicesLocator;
 
         public event Action OnMenuState;
 
-        public MainMenuState(GameMachineStarter gameMachineStarter)
+        public MainMenuState(
+            GameMachineStarter gameMachineStarter, 
+            IUIServiceLocator uiServiceLocator,
+            IManagersServiceLocator managersServiceLocator,
+            IAudioServicesLocator audioServicesLocator
+            )
         {
+            _audioServicesLocator = audioServicesLocator;
+            _managersServiceLocator = managersServiceLocator;
+            _uiServiceLocator = uiServiceLocator;
             _gameMachineStarter = gameMachineStarter ?? throw new ArgumentNullException(nameof(gameMachineStarter));
         }
 
@@ -43,11 +55,6 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 
         private bool ValidateDependencies()
         {
-            if (_gameMachineStarter.vcam == null)
-            {
-                Debug.LogError("Virtual Camera (vcam) is null!");
-                return false;
-            }
 
             if (_gameMachineStarter.AddressableLoader == null)
             {
@@ -60,22 +67,22 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 
         private void PlayMenuMusic()
         {
-            _gameMachineStarter.audioManager?.PlaySound(_gameMachineStarter.audioTracksBase.musicMenu1, useInstance: true);
+            _audioServicesLocator.AudioManager?.PlaySound(_audioServicesLocator.AudioTracksBase.musicMenu1, useInstance: true);
         }
 
         private void StopMenuMusic()
         {
-            _gameMachineStarter.audioManager?.StopSound(_gameMachineStarter.audioTracksBase.musicMenu1);
+            _audioServicesLocator.AudioManager?.StopSound(_audioServicesLocator.AudioTracksBase.musicMenu1);
         }
 
         private void DestroyExistingPlayer()
         {
-            _gameMachineStarter.playerHandler?.DestroyPlayer();
+            _managersServiceLocator.PlayerHandler?.DestroyPlayer();
         }
 
         private void ShowMainMenuUI()
         {
-            var baseMenu = _gameMachineStarter.uiController?.BaseMenu?.GameObject();
+            var baseMenu = _uiServiceLocator.UIController?.BaseMenu?.GameObject();
             if (baseMenu != null && !baseMenu.activeSelf)
             {
                 baseMenu.SetActive(true);
@@ -89,12 +96,12 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 
         private void DisplayResultsUI()
         {
-            _gameMachineStarter.uiController?.ResultsUI?.DisplayResults();
+            _uiServiceLocator.UIController?.ResultsUI?.DisplayResults();
         }
 
         private void ResetKillsCounter()
         {
-            _gameMachineStarter.killsController?.ResetKills();
+            _managersServiceLocator.KillsController?.ResetKills();
         }
     }
 }

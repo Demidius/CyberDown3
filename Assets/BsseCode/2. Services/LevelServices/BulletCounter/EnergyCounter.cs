@@ -1,9 +1,8 @@
 using System;
 using BsseCode._1._StateMachines.GameStateMachine;
+using BsseCode._2._Services.ServiceLocator;
 using BsseCode._3._SupportCode.Constants;
 using BsseCode._3._SupportCode.RandomNumder;
-using BsseCode._6._Audio.Data;
-using BsseCode._6._Audio.Managers;
 using UnityEngine;
 using Zenject;
 
@@ -16,15 +15,20 @@ namespace BsseCode._2._Services.LevelServices.BulletCounter
         public event Action OnEnergyBarEmpty;
 
         private IRandomizerService _randomizerService;
-        private AudioTracksBase _audioTracksBase;
+       
         private GameMachineStarter _gameMachineStarter;
+        private IAudioServicesLocator _audioServicesLocator;
         public float EnergyCount { get; private set; }
 
         [Inject]
-        public void Construct(IRandomizerService randomizerService, AudioTracksBase audioTracksBase, GameMachineStarter gameMachineStarter)
+        public void Construct(
+            IRandomizerService randomizerService, 
+            IAudioServicesLocator audioServicesLocator, 
+            GameMachineStarter gameMachineStarter)
         {
+            _audioServicesLocator = audioServicesLocator;
             _gameMachineStarter = gameMachineStarter;
-            _audioTracksBase = audioTracksBase;
+           
             _randomizerService = randomizerService;
         }
 
@@ -40,7 +44,7 @@ namespace BsseCode._2._Services.LevelServices.BulletCounter
             {
                 EnergyCount += _randomizerService.GetRandomValue(Const.MinValueEnergyFromLoot, Const.MaxValueEnergyFromLoot);
 
-                _gameMachineStarter.audioManager.PlaySound(_audioTracksBase.refillEnergyBarSound, useInstance: false,
+                _audioServicesLocator.AudioManager.PlaySound(_audioServicesLocator.AudioTracksBase.refillEnergyBarSound, useInstance: false,
                     position: this.transform.position);
 
                 if (EnergyCount > Const.MaxEnergyCount) // Исправление: если энергия превышает максимум
@@ -52,7 +56,7 @@ namespace BsseCode._2._Services.LevelServices.BulletCounter
                 return true;
             }
 
-            _gameMachineStarter.audioManager.PlaySound(_audioTracksBase.energyBarIsFullSound, useInstance: false,
+            _audioServicesLocator.AudioManager.PlaySound(_audioServicesLocator.AudioTracksBase.energyBarIsFullSound, useInstance: false,
                 position: this.transform.position);
             return false;
         }

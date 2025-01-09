@@ -1,4 +1,5 @@
 using BsseCode._1._StateMachines.GameStateMachine;
+using BsseCode._2._Services.ServiceLocator;
 using BsseCode._5._GameEntities.Hero;
 using BsseCode._6._Audio.Data;
 using BsseCode._6._Audio.Managers;
@@ -14,12 +15,16 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
         private AudioTracksBase _audioTracksBase;
         private EventInstance _spiderRunInstance;
         private GameMachineStarter _gameMachineStarter;
+        private IAudioServicesLocator _audioServicesLocator;
 
         [Inject]
-        public void Construct(AudioTracksBase audioTracksBase, GameMachineStarter gameMachineStarter)
+        public void Construct(
+            IAudioServicesLocator audioServicesLocator, 
+            GameMachineStarter gameMachineStarter
+            )
         {
+            _audioServicesLocator = audioServicesLocator;
             _gameMachineStarter = gameMachineStarter;
-            _audioTracksBase = audioTracksBase;
         }
 
         private void OnEnable()
@@ -34,9 +39,9 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
 
         public void PlayRunning()
         {
-            if (_audioTracksBase != null && _gameMachineStarter.audioManager != null)
+            if (_audioTracksBase != null && _audioServicesLocator.AudioManager != null)
             {
-                _spiderRunInstance = _gameMachineStarter.audioManager.PlaySoundWithInstance(
+                _spiderRunInstance = _audioServicesLocator.AudioManager.PlaySoundWithInstance(
                     _audioTracksBase.spiderRun,
                     useInstance: true,
                     position: this.transform.position
@@ -67,9 +72,9 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
 
         public void ExplosionSound()
         {
-            if (_audioTracksBase != null && _gameMachineStarter.audioManager != null)
+            if (_audioTracksBase != null && _audioServicesLocator.AudioManager != null)
             {
-                _gameMachineStarter.audioManager.PlaySound(
+                _audioServicesLocator.AudioManager.PlaySound(
                     _audioTracksBase.explosionSound,
                     useInstance: false,
                     position: this.transform.position

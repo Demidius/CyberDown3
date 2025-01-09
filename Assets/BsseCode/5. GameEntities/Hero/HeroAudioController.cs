@@ -1,7 +1,6 @@
 using BsseCode._1._StateMachines.GameStateMachine;
 using BsseCode._2._Services.GlobalServices.PlayerHandlerFl;
-using BsseCode._6._Audio.Data;
-using BsseCode._6._Audio.Managers;
+using BsseCode._2._Services.ServiceLocator;
 using UnityEngine;
 using Zenject;
 
@@ -9,22 +8,26 @@ namespace BsseCode._5._GameEntities.Hero
 {
     public class HeroAudioController : MonoBehaviour
     {
-     
-        private AudioTracksBase _audioTracksBase;
         private PlayerHandler _playerHandler;
         private GameMachineStarter _gameMachineStarter;
+        private IAudioServicesLocator _audioServicesLocator;
 
         [Inject]
-        public void Construct(PlayerHandler playerHandler ,AudioTracksBase audioTracksBase, GameMachineStarter gameMachineStarter )
+        public void Construct(
+            PlayerHandler playerHandler,
+            GameMachineStarter gameMachineStarter,
+            IAudioServicesLocator audioServicesLocator
+            )
         {
+            _audioServicesLocator = audioServicesLocator;
             _gameMachineStarter = gameMachineStarter;
             _playerHandler = playerHandler;
-            _audioTracksBase = audioTracksBase;
+            
         }
 
         public void PlayStep()
         {
-            _gameMachineStarter.audioManager.PlaySound(_audioTracksBase.stepEvent, useInstance: false, position: _playerHandler.CurrentPlayer.transform.position);
+            _audioServicesLocator.AudioManager.PlaySound(_audioServicesLocator.AudioTracksBase.stepEvent, useInstance: false, position: _playerHandler.CurrentPlayer.transform.position);
         }
     }
 }

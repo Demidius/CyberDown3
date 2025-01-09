@@ -1,5 +1,6 @@
 using System.Collections;
 using BsseCode._2._Services.GlobalServices.Coroutines;
+using BsseCode._2._Services.ServiceLocator;
 using BsseCode._3._SupportCode.Tags;
 using UnityEngine;
 
@@ -11,14 +12,23 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
         private GameMachineStarter _gameMachineStarter;
         private ICoroutineGlobalService _coroutineGlobalService;
         private GameObject _location;
-        public LandingState(GameMachineStarter gameMachineStarter)
+        private IReusableServiceLocator _reusableServiceLocator;
+        private IReusableServiceLocator _coroutineGlobalService1;
+
+        public LandingState(
+            GameMachineStarter gameMachineStarter,
+            IReusableServiceLocator reusableServiceLocator,
+            IReusableServiceLocator coroutineGlobalService
+            )
         {
+            _coroutineGlobalService1 = coroutineGlobalService;
+            _reusableServiceLocator = reusableServiceLocator;
             _gameMachineStarter = gameMachineStarter;
-            _coroutineGlobalService = _gameMachineStarter.CoroutineGlobalService;
+            _coroutineGlobalService = _reusableServiceLocator.CoroutineGlobalService;
         }
         public void Enter()
         {
-            _gameMachineStarter.PCInputGlobalService.OnGameplayState = true;
+            _reusableServiceLocator.PCInputGlobalService.OnGameplayState = true;
             Time.timeScale = 0.2f;
             _coroutineGlobalService.StartCoroutine(LandingTime());
             var _locationTemp = Object.FindObjectsOfType<LocationTag>();
@@ -63,7 +73,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
         public void Exit()
         {
             Time.timeScale = 1f; 
-            _gameMachineStarter.PCInputGlobalService.OnGameplayState = false;
+            _reusableServiceLocator.PCInputGlobalService.OnGameplayState = false;
         }
     }
 }

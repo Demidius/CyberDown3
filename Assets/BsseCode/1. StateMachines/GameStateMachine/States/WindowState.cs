@@ -1,6 +1,7 @@
 using BsseCode._2._Services.GlobalServices.InputFol;
 using BsseCode._2._Services.GlobalServices.TimeProvider;
 using BsseCode._2._Services.LevelServices;
+using BsseCode._2._Services.ServiceLocator;
 using UnityEngine;
 using Zenject;
 
@@ -11,16 +12,23 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
         private GameMachineStarter _gameMachineStarter;
 
         private float _temtTimeSpeed;
+        private IUIServiceLocator _uiServiceLocator;
+        private IReusableServiceLocator _reusableServiceLocator;
 
-        public WindowState(GameMachineStarter gameMachineStarter)
+        public WindowState(
+            GameMachineStarter gameMachineStarter, 
+            IUIServiceLocator uiServiceLocator,
+            IReusableServiceLocator reusableServiceLocator)
         {
+            _reusableServiceLocator = reusableServiceLocator;
+            _uiServiceLocator = uiServiceLocator;
             _gameMachineStarter = gameMachineStarter;
         }
 
         public void Enter()
         {
-            _gameMachineStarter.PCInputGlobalService.PauseEvent += ReturnToGame;
-            _gameMachineStarter.uiController.Window1Panel.SetActive(true);
+            _reusableServiceLocator.PCInputGlobalService.PauseEvent += ReturnToGame;
+            _uiServiceLocator.UIController.Window1Panel.SetActive(true);
             Time.timeScale = 0;
         }
 
@@ -35,8 +43,8 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
         public void Exit()
         {
             Time.timeScale = 1;
-            _gameMachineStarter.uiController.Window1Panel.SetActive(false);
-            _gameMachineStarter.PCInputGlobalService.PauseEvent -= ReturnToGame;
+            _uiServiceLocator.UIController.Window1Panel.SetActive(false);
+            _reusableServiceLocator.PCInputGlobalService.PauseEvent -= ReturnToGame;
         }
     }
 }

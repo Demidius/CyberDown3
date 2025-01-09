@@ -1,16 +1,6 @@
 using BsseCode._1._StateMachines.GameStateMachine.States;
 using BsseCode._2._Services.GlobalServices.Addressable;
-using BsseCode._2._Services.GlobalServices.BeaconHandler;
-using BsseCode._2._Services.GlobalServices.Coroutines;
-using BsseCode._2._Services.GlobalServices.InputFol;
-using BsseCode._2._Services.GlobalServices.PlayerHandlerFl;
-using BsseCode._2._Services.GlobalServices.TimeProvider;
-using BsseCode._2._Services.LevelServices.GameResults;
-using BsseCode._4._UI;
-using BsseCode._5._GameEntities.Objects;
-using BsseCode._6._Audio.Data;
-using BsseCode._6._Audio.Managers;
-using Cinemachine;
+using BsseCode._2._Services.ServiceLocator;
 using UnityEngine;
 using Zenject;
 
@@ -21,29 +11,19 @@ namespace BsseCode._1._StateMachines.GameStateMachine
         [Inject]
         void Construct(
             IAddressableLoader loader,
-            UIController uiController,
-            PlayerHandler playerHandler,
-            IInputGlobalService pcInputGlobalService,
-            ITimeGlobalService timeGlobalService,
-            AudioTracksBase audioTracksBase,
-            CinemachineVirtualCamera vcam,
-            ResultsManager resultsManager,
-            KillsController killsController,
-            BeaconHandler beaconHandler,
-            AudioManager audioManager,
-            ICoroutineGlobalService coroutineGlobalService)
+          
+            IAudioServicesLocator audioServicesLocator,
+            ICameraServiceLocator cameraServiceLocator,
+            IReusableServiceLocator reusableServiceLocator,
+            IManagersServiceLocator managersServiceLocator,
+            IUIServiceLocator uiServiceLocator)
         {
-            CoroutineGlobalService = coroutineGlobalService;
-            this.audioManager = audioManager;
-            this.beaconHandler = beaconHandler;
-            this.killsController = killsController;
-            this.resultsManager = resultsManager;
-            this.vcam = vcam;
-            this.audioTracksBase = audioTracksBase;
-            TimeGlobalService = timeGlobalService;
-            PCInputGlobalService = pcInputGlobalService;
-            this.playerHandler = playerHandler;
-            this.uiController = uiController;
+            AudioServiceLocator = audioServicesLocator;
+            CameraServiceLocator = cameraServiceLocator;
+            ReusableServiceLocator = reusableServiceLocator;
+            ManagersServiceLocator = managersServiceLocator;
+            UIServiceLocator = uiServiceLocator;
+            
             AddressableLoader = loader;
         }
 
@@ -51,27 +31,22 @@ namespace BsseCode._1._StateMachines.GameStateMachine
         public BootstrapState BootstrapState;
         public GameplayState GameplayState;
         public MainMenuState MainMenuState;
+        
         public PauseState PauseState;
         public WindowState WindowState;
         public LoadingState LoadingState;
         public FinishState FinishState;
         public ResetState ResetState;
+        
         public LandingState LandingState;
-        
         public IAddressableLoader AddressableLoader;
-        
-        public UIController uiController;
-        public PlayerHandler playerHandler;
-        public IInputGlobalService PCInputGlobalService;
-        public ITimeGlobalService TimeGlobalService;
-        public AudioTracksBase audioTracksBase;
-        public CinemachineVirtualCamera vcam;
-        public ResultsManager resultsManager;
-        public KillsController killsController;
-        public BeaconHandler beaconHandler;
-        public AudioManager audioManager;
-        public ICoroutineGlobalService CoroutineGlobalService;
        
+        public IUIServiceLocator UIServiceLocator;
+        public IManagersServiceLocator ManagersServiceLocator;
+        public IReusableServiceLocator ReusableServiceLocator;
+        public ICameraServiceLocator CameraServiceLocator;
+        public IAudioServicesLocator AudioServiceLocator;
+
 
         private void Awake()
         {
@@ -84,8 +59,8 @@ namespace BsseCode._1._StateMachines.GameStateMachine
 
         private void GreateBasicStates()
         {
-            GameplayState = new GameplayState(this);
-            MainMenuState = new MainMenuState(this);
+            GameplayState = new GameplayState(this, UIServiceLocator, ManagersServiceLocator, ReusableServiceLocator);
+            MainMenuState = new MainMenuState(this, UIServiceLocator, ManagersServiceLocator, AudioServiceLocator);
             LoadingState = new LoadingState(this);
         }
 
@@ -97,18 +72,17 @@ namespace BsseCode._1._StateMachines.GameStateMachine
 
         private void CreateLevelStates()
         {
-            PauseState = new PauseState(this);
-            WindowState = new WindowState(this);
-            FinishState = new FinishState(this);
-            ResetState = new ResetState(this);
-            LandingState = new LandingState(this);
-            
+            PauseState = new PauseState(this, UIServiceLocator, ReusableServiceLocator);
+            WindowState = new WindowState(this, UIServiceLocator, ReusableServiceLocator);
+            FinishState = new FinishState(this, UIServiceLocator);
+            ResetState = new ResetState(this, UIServiceLocator, ManagersServiceLocator);
+            LandingState = new LandingState(this, ReusableServiceLocator, ReusableServiceLocator);
         }
 
 
         private void Update()
         {
-            PCInputGlobalService.PauseInput();
+            ReusableServiceLocator.PCInputGlobalService.PauseInput();
         }
     }
 }

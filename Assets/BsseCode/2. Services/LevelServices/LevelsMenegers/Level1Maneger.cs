@@ -1,4 +1,5 @@
 using BsseCode._1._StateMachines.GameStateMachine;
+using BsseCode._2._Services.ServiceLocator;
 using BsseCode._5._GameEntities.Objects.Beacon;
 using FMOD.Studio;
 using UnityEngine;
@@ -6,7 +7,7 @@ using Zenject;
 
 namespace BsseCode._2._Services.LevelServices.LevelsMenegers
 {
-    public class Level1Meneger : MonoBehaviour
+    public class Level1Maneger : MonoBehaviour
     {
         private GameMachineStarter _starter;
         private EventInstance _slowMotionSoundInstance;
@@ -16,11 +17,15 @@ namespace BsseCode._2._Services.LevelServices.LevelsMenegers
         [SerializeField] private BaseController beacon2;
         [SerializeField] private BaseController beacon3;
         [SerializeField] private BaseController beacon4;
-        
-        
+        private IAudioServicesLocator _audioServicesLocator;
+
+
         [Inject]
-        void Construct(GameMachineStarter starter)
+        void Construct(
+            GameMachineStarter starter,
+            IAudioServicesLocator audioServicesLocator)
         {
+            _audioServicesLocator = audioServicesLocator;
             _starter = starter;
         }
 
@@ -37,7 +42,7 @@ namespace BsseCode._2._Services.LevelServices.LevelsMenegers
 
         private void StartSlowmotionSound()
         {
-            _slowMotionSoundInstance = _starter.audioManager.PlaySoundWithInstance(_starter.audioTracksBase.slowMotionSound,
+            _slowMotionSoundInstance = _audioServicesLocator.AudioManager.PlaySoundWithInstance(_audioServicesLocator.AudioTracksBase.slowMotionSound,
                 useInstance: true,
                 position: this.transform.position
             );
@@ -45,7 +50,7 @@ namespace BsseCode._2._Services.LevelServices.LevelsMenegers
 
         private void StartLevelMusic()
         {
-            _levelMusicInstance = _starter.audioManager.PlaySoundWithInstance(_starter.audioTracksBase.music1,
+            _levelMusicInstance = _audioServicesLocator.AudioManager.PlaySoundWithInstance(_audioServicesLocator.AudioTracksBase.music1,
                 useInstance: true,
                 position: this.transform.position
             );

@@ -1,4 +1,5 @@
 using System;
+using BsseCode._2._Services.ServiceLocator;
 using BsseCode._3._SupportCode.Constants;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -8,10 +9,20 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
     public class GameplayState : IGameState
     {
         private readonly GameMachineStarter _gameMachineStarter;
+        private IUIServiceLocator _uiServiceLocator;
+        private IManagersServiceLocator _managersServiceLocator;
+        private IReusableServiceLocator _reusableServiceLocator;
         public event Action OnGameState;
 
-        public GameplayState(GameMachineStarter gameMachineStarter)
+        public GameplayState(
+            GameMachineStarter gameMachineStarter, 
+            IUIServiceLocator uiServiceLocator,
+            IManagersServiceLocator managersServiceLocator,
+            IReusableServiceLocator reusableServiceLocator)
         {
+            _reusableServiceLocator = reusableServiceLocator;
+            _managersServiceLocator = managersServiceLocator;
+            _uiServiceLocator = uiServiceLocator;
             _gameMachineStarter = gameMachineStarter ?? throw new ArgumentNullException(nameof(gameMachineStarter));
         }
 
@@ -23,7 +34,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
             InitializeGameplayUI();
             CreatePlayer();
 
-            _gameMachineStarter.PCInputGlobalService.OnGameplayState = true;
+            _reusableServiceLocator.PCInputGlobalService.OnGameplayState = true;
             OnGameState?.Invoke();
         }
 
@@ -32,7 +43,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
             DeinitializeGameplayUI();
             UnsubscribeFromEvents();
 
-            _gameMachineStarter.PCInputGlobalService.OnGameplayState = false;
+            _reusableServiceLocator.PCInputGlobalService.OnGameplayState = false;
         }
 
         public void StartMenu()
@@ -50,29 +61,29 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 
         private void SubscribeToEvents()
         {
-            _gameMachineStarter.PCInputGlobalService.PauseEvent += StartPause;
+            _reusableServiceLocator.PCInputGlobalService.PauseEvent += StartPause;
         }
 
         private void UnsubscribeFromEvents()
         {
-            _gameMachineStarter.PCInputGlobalService.PauseEvent -= StartPause;
+            _reusableServiceLocator.PCInputGlobalService.PauseEvent -= StartPause;
         }
 
         private void InitializeGameplayUI()
         {
-            SetActiveState(_gameMachineStarter.uiController.HUD.GameObject(), true);
-            SetActiveState(_gameMachineStarter.uiController.CursorToSprite.GameObject(), true);
+            SetActiveState(_uiServiceLocator.UIController.HUD.GameObject(), true);
+            SetActiveState(_uiServiceLocator.UIController.CursorToSprite.GameObject(), true);
         }
 
         private void DeinitializeGameplayUI()
         {
-            SetActiveState(_gameMachineStarter.uiController.HUD.GameObject(), false);
-            SetActiveState(_gameMachineStarter.uiController.CursorToSprite.GameObject(), false);
+            SetActiveState(_uiServiceLocator.UIController.HUD.GameObject(), false);
+            SetActiveState(_uiServiceLocator.UIController.CursorToSprite.GameObject(), false);
         }
 
         private void CreatePlayer()
         {
-            _gameMachineStarter.playerHandler?.CreatePlayer();
+            _managersServiceLocator.PlayerHandler?.CreatePlayer();
         }
 
         private void SetActiveState(GameObject obj, bool state)

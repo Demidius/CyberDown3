@@ -10,6 +10,7 @@ using BsseCode._2._Services.GlobalServices.TimeProvider;
 using BsseCode._2._Services.LevelServices.BulletCounter;
 using BsseCode._2._Services.LevelServices.GameResults;
 using BsseCode._2._Services.LevelServices.TimerLevel;
+using BsseCode._2._Services.ServiceLocator;
 using BsseCode._3._SupportCode.RandomNumder;
 using BsseCode._4._UI;
 using BsseCode._5._GameEntities.UnivercialUtils;
@@ -18,6 +19,7 @@ using BsseCode._6._Audio.Managers;
 using Cinemachine;
 using UnityEngine;
 using Zenject;
+
 
 namespace BsseCode._0._Installers
 {
@@ -28,10 +30,20 @@ namespace BsseCode._0._Installers
             RegisterCoroutines();
             RegisterAudioServices();
             RegisterSpecializedServices();
+            RegisterServicesLocaters();
             RegisterReusableServices();
             RegisterCameraServices();
             RegisterGameManagers();
             RegisterStateMachine();
+        }
+
+        private void RegisterServicesLocaters()
+        {
+            Container.Bind<IUIServiceLocator>().To<UIServiceLocator>().AsSingle();
+            Container.Bind<IManagersServiceLocator>().To<ManagersServiceLocator>().AsSingle();
+            Container.Bind<IReusableServiceLocator>().To<ReusableServiceLocator>().AsSingle();
+            Container.Bind<ICameraServiceLocator>().To<CameraServiceLocator>().AsSingle();
+            Container.Bind<IAudioServicesLocator>().To<AudioServiceLocator>().AsSingle();
         }
 
         private void RegisterStateMachine()
