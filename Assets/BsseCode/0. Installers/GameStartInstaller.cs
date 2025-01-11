@@ -1,4 +1,5 @@
 using BsseCode._1._StateMachines.GameStateMachine;
+using BsseCode._2._Services.BaseSceneService;
 using BsseCode._2._Services.GlobalServices.Addressable;
 using BsseCode._2._Services.GlobalServices.BeaconHandler;
 using BsseCode._2._Services.GlobalServices.Coroutines;
@@ -33,7 +34,7 @@ namespace BsseCode._0._Installers
             RegisterServicesLocaters();
             RegisterReusableServices();
             RegisterCameraServices();
-            RegisterGameManagers();
+          
             RegisterStateMachine();
         }
 
@@ -50,31 +51,22 @@ namespace BsseCode._0._Installers
         {
             Container.Bind<IGameMachineModule>().To<GameMachineModule>().FromComponentInHierarchy().AsSingle().NonLazy();
         }
-
-        private void RegisterGameManagers()
-        {
-            Container.Bind<BeaconHandler>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<KillsController>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<IEnergyCounter>().To<EnergyCounter>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<ResultsManager>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<PlayerHandler>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<ITimerLevel>().To<TimerLevel>().AsSingle();
-        }
-
+        
         private void RegisterReusableServices()
         {
             Container.Bind<IFactoryComponent>().To<FactoryComponent>().AsSingle();
             Container.Bind<IRandomizerService>().To<RandomizerService>().AsSingle();
             Container.Bind<IPositionUpdateService>().To<PositionUpdateService>().AsSingle();
             Container.Bind<IPoolController>().To<PoolController>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<IUpdateService>().To<UpdateService>().FromComponentInHierarchy().AsSingle();
         }
 
         private void RegisterSpecializedServices()
         {
             Container.Bind<IInputGlobalService>().To<PcInputGlobalService>().AsSingle();
             Container.Bind<UIController>().FromComponentInHierarchy().AsSingle().NonLazy();
-            Container.Bind<ITimeGlobalService>().To<TimeGlobalService>().AsSingle();
-            Container.Bind<TimeController>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<ITimeModule>().To<ITimeModule>().FromComponentInHierarchy().AsSingle();
+            // Container.Bind<TimeController>().FromComponentInHierarchy().AsSingle();
             Container.Bind<IAddressableLoader>().To<AddressableLoader>().FromComponentInHierarchy().AsSingle();
         }
 

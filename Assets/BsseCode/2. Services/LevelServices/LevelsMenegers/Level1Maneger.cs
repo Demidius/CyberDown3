@@ -31,12 +31,12 @@ namespace BsseCode._2._Services.LevelServices.LevelsMenegers
 
         void Start()
         {
-            _module.Machine.SetState(_module.GameplayState);
+            _module.GameMachine.SetState(_module.GameplayState);
             
             StartSlowmotionSound();
             StartLevelMusic();
             
-            _module.Machine.SetState(_module.WindowState);
+            _module.GameMachine.SetState(_module.WindowState);
             
         }
 
@@ -61,7 +61,7 @@ namespace BsseCode._2._Services.LevelServices.LevelsMenegers
             if (beacon1.IsFull && beacon2.IsFull && beacon3.IsFull && beacon4.IsFull)
             {
                 Debug.Log("Finish");
-                _module.Machine.SetState(_module.FinishState);
+                _module.GameMachine.SetState(_module.FinishState);
             }
         }
         

@@ -1,6 +1,8 @@
 using System;
+using BsseCode._2._Services.BaseSceneService;
 using BsseCode._3._SupportCode.Constants;
 using UnityEngine;
+using Zenject;
 
 namespace BsseCode._2._Services.GlobalServices.InputFol
 {
@@ -13,7 +15,17 @@ namespace BsseCode._2._Services.GlobalServices.InputFol
 
         private Vector2 _lastLegsPosition;
         private Vector2 _lastBodyPosition;
+        
         public bool OnGameplayState { get; set; } = false;
+
+        [Inject]
+        void Construct(IUpdateService updateService)
+        {
+            updateService.RegisterMethod(Shoot);
+            updateService.RegisterMethod(ToggleTimeScaleInput);
+            updateService.RegisterMethod(PauseInput);
+            
+        }
 
 
         public Vector3 GetDirectionToMouse(Vector3 startPosition, Camera camera)
@@ -24,6 +36,7 @@ namespace BsseCode._2._Services.GlobalServices.InputFol
                 mousePosition.z = startPosition.z;
                 _lastBodyPosition = (mousePosition - startPosition).normalized;
             }
+
             return _lastBodyPosition;
         }
 
@@ -35,10 +48,11 @@ namespace BsseCode._2._Services.GlobalServices.InputFol
                 float vertical = UnityEngine.Input.GetAxis(Const.Vertical);
                 _lastLegsPosition = new Vector2(horizontal, vertical);
             }
+
             return _lastLegsPosition;
         }
 
-        public void Shoot()
+        private void Shoot()
         {
             if (UnityEngine.Input.GetKeyDown(KeyCode.Mouse0) && OnGameplayState)
             {
@@ -46,7 +60,7 @@ namespace BsseCode._2._Services.GlobalServices.InputFol
             }
         }
 
-        public void ToggleTimeScaleInput()
+        private void ToggleTimeScaleInput()
         {
             if (UnityEngine.Input.GetKeyDown(KeyCode.Space) && OnGameplayState)
             {
@@ -54,7 +68,7 @@ namespace BsseCode._2._Services.GlobalServices.InputFol
             }
         }
 
-        public void PauseInput()
+        private void PauseInput()
         {
             if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
             {

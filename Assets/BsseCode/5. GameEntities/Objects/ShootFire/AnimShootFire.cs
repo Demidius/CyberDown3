@@ -8,17 +8,17 @@ namespace BsseCode._5._GameEntities.Objects.ShootFire
     {
         [SerializeField]  private Animator shootAnimator;
        
-        private ITimeGlobalService _timeGlobalService;
+        private ITimeModule _timeModule;
          
         [Inject]
-        public void Construct(ITimeGlobalService timeGlobalService)
+        public void Construct(ITimeModule timeModule)
         {
-            _timeGlobalService = timeGlobalService;
+            _timeModule = timeModule;
         }
            
         private void Update()
         {
-            shootAnimator.speed = _timeGlobalService.TimeScale * 4f;
+            shootAnimator.speed = _timeModule.GetTimeScale() * 4f;
         }
     }
 }

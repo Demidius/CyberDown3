@@ -25,7 +25,7 @@ namespace BsseCode._4._UI.Level1UI
 
         void OnMenuButton()
         {
-            _gameMachineModule.Machine.SetState(_gameMachineModule.MenuState);
+            _gameMachineModule.GameMachine.SetState(_gameMachineModule.MenuState);
             _killsController.EndGame();
         }
 

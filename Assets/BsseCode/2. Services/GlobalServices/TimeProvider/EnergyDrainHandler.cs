@@ -1,4 +1,5 @@
 using System.Collections;
+using BsseCode._1._StateMachines.GameStateMachine;
 using BsseCode._2._Services.LevelServices.BulletCounter;
 using UnityEngine;
 using Zenject;
@@ -7,20 +8,21 @@ namespace BsseCode._2._Services.GlobalServices.TimeProvider
 {
     public class EnergyDrainHandler : MonoBehaviour
     {
-        private TimeController _timeController;
+     
         private IEnergyCounter _energyCounter;
         private bool _isCoroutineRunning;
+        private IGameMachineModule _gameMachineModule;
 
         [Inject]
-        public void Construct(TimeController timeController, IEnergyCounter energyCounter)
+        public void Construct(IGameMachineModule gameMachineModule, IEnergyCounter energyCounter)
         {
+            _gameMachineModule = gameMachineModule;
             _energyCounter = energyCounter;
-            _timeController = timeController;
         }
 
         private void Update()
         {
-            if (_timeController.isSlowMotionActive && !_isCoroutineRunning)
+            if (_gameMachineModule.GameplayState.SlowMotionTimeIsActive && !_isCoroutineRunning)
             {
                 StartCoroutine(ConditionCoroutine());
             }
@@ -29,7 +31,7 @@ namespace BsseCode._2._Services.GlobalServices.TimeProvider
         IEnumerator ConditionCoroutine()
         {
             _isCoroutineRunning = true;
-            while (_timeController.isSlowMotionActive)
+            while (_gameMachineModule.GameplayState.SlowMotionTimeIsActive)
             {
                 EnergyDrain();
                 yield return new WaitForSeconds(0.1f); 

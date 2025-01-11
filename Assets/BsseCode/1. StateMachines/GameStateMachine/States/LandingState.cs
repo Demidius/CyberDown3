@@ -67,7 +67,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
             _location.transform.localScale = targetScale;
 
             // Завершаем состояние
-            _gameMachineModule.Machine.SetState(_gameMachineModule.GameplayState);
+            _gameMachineModule.GameMachine.SetState(_gameMachineModule.GameplayState);
         }
         
         public void Exit()

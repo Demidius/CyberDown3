@@ -20,7 +20,7 @@ namespace BsseCode._5._GameEntities.Hero.Components
         {
             if (other.TryGetComponent<Enemy>(out Enemy enemy))
             {
-                _gameMachineModule.Machine.SetState(_gameMachineModule.ResetState);
+                _gameMachineModule.GameMachine.SetState(_gameMachineModule.ResetState);
             }
         }
         

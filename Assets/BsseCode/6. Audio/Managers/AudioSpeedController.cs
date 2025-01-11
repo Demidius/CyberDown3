@@ -11,17 +11,17 @@ namespace BsseCode._6._Audio.Managers
         private const float MaxPitch = 1.0f; 
         private const float SmoothSpeed = 4.0f; 
         
-        private ITimeGlobalService _timeGlobalService;
+        private ITimeModule _timeModule;
 
         [Inject]
-        public void Construct(ITimeGlobalService timeGlobalService)
+        public void Construct(ITimeModule timeModule)
         {
-            _timeGlobalService = timeGlobalService;
+            _timeModule = timeModule;
         }
 
         private void Update()
         {
-            float targetPitch = Mathf.Clamp(_timeGlobalService.TimeScale, MinPitch, MaxPitch);
+            float targetPitch = Mathf.Clamp(_timeModule.GetTimeScale(), MinPitch, MaxPitch);
             _currentPitch = Mathf.Lerp(_currentPitch, targetPitch, Time.deltaTime * SmoothSpeed);
             SetPlaybackSpeed(_currentPitch);
             

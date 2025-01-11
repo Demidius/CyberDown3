@@ -11,15 +11,16 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
         private IUIServiceLocator _uiServiceLocator;
         private IManagersServiceLocator _managersServiceLocator;
         private IAudioServicesLocator _audioServicesLocator;
+        
 
         public event Action OnMenuState;
 
         public MainMenuState(
-            IGameMachineModule gameMachineModule, 
+            IGameMachineModule gameMachineModule,
             IUIServiceLocator uiServiceLocator,
             IManagersServiceLocator managersServiceLocator,
             IAudioServicesLocator audioServicesLocator
-            )
+        )
         {
             _audioServicesLocator = audioServicesLocator;
             _managersServiceLocator = managersServiceLocator;
@@ -36,7 +37,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 
             PlayMenuMusic();
             DestroyExistingPlayer();
-            ShowMainMenuUI();
+            MainMenuUIToggle(true);
             UnloadCurrentLevel();
             DisplayResultsUI();
             ResetKillsCounter();
@@ -44,18 +45,18 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 
         public void StartGame()
         {
-            _gameMachineModule.Machine.SetState(_gameMachineModule.LoadingState);
+            _gameMachineModule.GameMachine.SetState(_gameMachineModule.LoadingState);
             _gameMachineModule.AddressableLoader.LoadLevelByIndex(0);
         }
 
         public void Exit()
         {
             StopMenuMusic();
+            MainMenuUIToggle(false);
         }
 
         private bool ValidateDependencies()
         {
-
             if (_gameMachineModule.AddressableLoader == null)
             {
                 Debug.LogError("AddressableLoader is null!");
@@ -67,7 +68,8 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 
         private void PlayMenuMusic()
         {
-            _audioServicesLocator.AudioManager?.PlaySound(_audioServicesLocator.AudioTracksBase.musicMenu1, useInstance: true);
+            _audioServicesLocator.AudioManager?.PlaySound(_audioServicesLocator.AudioTracksBase.musicMenu1,
+                useInstance: true);
         }
 
         private void StopMenuMusic()
@@ -80,12 +82,20 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
             _managersServiceLocator.PlayerHandler?.DestroyPlayer();
         }
 
-        private void ShowMainMenuUI()
+        private void MainMenuUIToggle(bool status)
         {
             var baseMenu = _uiServiceLocator.UIController?.BaseMenu?.GameObject();
-            if (baseMenu != null && !baseMenu.activeSelf)
+            
+            if (baseMenu == null)
+                return;
+
+            if (status)
             {
                 baseMenu.SetActive(true);
+            }
+            else
+            {
+                baseMenu.SetActive(false);
             }
         }
 

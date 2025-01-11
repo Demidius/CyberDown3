@@ -14,8 +14,8 @@ namespace BsseCode._2._Services.GlobalServices.InputFol
         Vector2 GetMovementInput(); // Метод для получения ввода на передвижение
 
         public Vector3 GetDirectionToMouse(Vector3 startPosition, Camera camera);
-        public void Shoot();
-        public void ToggleTimeScaleInput();
-        public void PauseInput();
+        // public void Shoot();
+        // public void ToggleTimeScaleInput();
+        // public void PauseInput();
     }
 }

@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using BsseCode._2._Services.GlobalServices.PlayerHandlerFl;
+using BsseCode._2._Services.GlobalServices.Pools;
 using BsseCode._2._Services.GlobalServices.Pools.ExplosionPool;
 using BsseCode._2._Services.GlobalServices.TimeProvider;
 using BsseCode._3._SupportCode.Constants;
-using BsseCode._5._GameEntities.Objects.Enemy;
 using UnityEngine;
 using Zenject;
 
-namespace BsseCode._2._Services.GlobalServices.Pools.EnemesPool
+namespace BsseCode._5._GameEntities.Objects.Enemy.EnemesPool
 {
     public class EnemySpawner : MonoBehaviour
     {
@@ -21,7 +21,7 @@ namespace BsseCode._2._Services.GlobalServices.Pools.EnemesPool
         private Collider2D _randomCollider;
         
         private float _timer = 0f;
-        private ITimeGlobalService _timeGlobalService;
+        private ITimeModule _timeModule;
         private IExplosionSpawner _explosionSpawner;
        
         private IPoolController _poolController;
@@ -29,11 +29,11 @@ namespace BsseCode._2._Services.GlobalServices.Pools.EnemesPool
 
 
         [Inject]
-        public void Construct(IPoolController poolController, ITimeGlobalService timeGlobalService, PlayerHandler playerHandler)
+        public void Construct(IPoolController poolController, ITimeModule timeGlobalService, PlayerHandler playerHandler)
         {
             _playerHandler = playerHandler;
             _poolController = poolController;
-            _timeGlobalService = timeGlobalService;
+            _timeModule = timeGlobalService;
         }
 
         private void Start()
@@ -46,7 +46,7 @@ namespace BsseCode._2._Services.GlobalServices.Pools.EnemesPool
         {
             while (true)
             {
-                _timer += _timeGlobalService.DeltaTime;
+                _timer += _timeModule.GetTimeScale();
 
                 if (_timer >= spawnInterval)
                 {
@@ -54,7 +54,7 @@ namespace BsseCode._2._Services.GlobalServices.Pools.EnemesPool
                     _timer = 0f;
                 }
 
-                yield return new WaitForSeconds(_timeGlobalService.DeltaTime);
+                yield return new WaitForSeconds(_timeModule.GetTimeDeltaTime());
             }
         }
 

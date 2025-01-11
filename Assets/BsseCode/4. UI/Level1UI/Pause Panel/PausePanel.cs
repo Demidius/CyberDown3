@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace BsseCode._4._UI.Pause_Panel
+namespace BsseCode._4._UI.Level1UI.Pause_Panel
 {
     public class PausePanel : MonoBehaviour
     {

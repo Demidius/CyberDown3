@@ -15,14 +15,14 @@ namespace BsseCode._2._Services.LevelServices.TimerLevel
             public string CurrentTimeOnString { get; set; }
             public float CurrentTimerValue { get; set; }
             
-            private ITimeGlobalService _timeGlobalService;
+            private ITimeModule _timeModule;
             private bool _isRunning = false;
 
 
             [Inject]
-            private void Construct(ITimeGlobalService timeGlobalService)
+            private void Construct(ITimeModule timeModule)
             {
-                _timeGlobalService = timeGlobalService;
+                _timeModule = timeModule;
             }
 
             void Start()
@@ -36,7 +36,7 @@ namespace BsseCode._2._Services.LevelServices.TimerLevel
             {
                 if (_isRunning)
                 {
-                    CurrentTimerValue += _timeGlobalService.DeltaTime;
+                    CurrentTimerValue += _timeModule.GetTimeDeltaTime();
                     UpdateTimerUI();
                 }
             }

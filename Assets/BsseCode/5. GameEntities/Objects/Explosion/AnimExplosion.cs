@@ -9,17 +9,17 @@ namespace BsseCode._5._GameEntities.Objects.Explosion
         [SerializeField]  private Animator _animator;
         [SerializeField] private float _animatorSpeed; 
 
-        private ITimeGlobalService _timeGlobalService;
+        private ITimeModule _timeModule;
          
         [Inject]
-        public void Construct(ITimeGlobalService timeGlobalService)
+        public void Construct(ITimeModule timeModule)
         {
-            _timeGlobalService = timeGlobalService;
+            _timeModule = timeModule;
         }
            
         private void Update()
         {
-            _animator.speed = Mathf.Clamp(_timeGlobalService.TimeScale, 0.3f, 1.0f);
+            _animator.speed = Mathf.Clamp(_timeModule.GetTimeScale(), 0.3f, 1.0f);
         }
     }
 }

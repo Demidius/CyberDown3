@@ -1,4 +1,5 @@
 using BsseCode._2._Services.GlobalServices.TimeProvider;
+using BsseCode._3._SupportCode.Constants;
 using UnityEngine;
 using Zenject;
 
@@ -8,18 +9,24 @@ namespace BsseCode._4._UI.SlowMotionUI
     {
         [SerializeField] GameObject[] objectsToActivate;
 
-        private ITimeGlobalService _timeGlobalService;
+        private ITimeModule _timeModule;
 
         [Inject]
-        public void Construct(ITimeGlobalService timeGlobalService)
+        public void Construct(ITimeModule timeModule)
         {
-            _timeGlobalService = timeGlobalService;
+            _timeModule = timeModule;
         }
 
         private void Start()
         {
-            _timeGlobalService.ChangeTimeScale += Activate;
+            _timeModule.ChangeTimeScaleAction += Activate;
         }
+
+        private void ChangeTimeScale()
+        {
+            _timeModule.SetNewTimeScale(Const.SlowTimeModificator);
+        }
+
 
         private void Activate(float value)
         {
@@ -36,7 +43,7 @@ namespace BsseCode._4._UI.SlowMotionUI
 
         private void OnDestroy()
         {
-            _timeGlobalService.ChangeTimeScale -= Activate;
+            _timeModule.ChangeTimeScaleAction -= Activate;
         }
     }
 }

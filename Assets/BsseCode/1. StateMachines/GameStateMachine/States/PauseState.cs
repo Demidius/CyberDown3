@@ -34,13 +34,13 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
         {
             if (!OnOff)
             {
-                _gameMachineModule.Machine.SetState(_gameMachineModule.GameplayState);
+                _gameMachineModule.GameMachine.SetState(_gameMachineModule.GameplayState);
             }
         }
 
         public void ReturnToMenu()
         {
-            _gameMachineModule.Machine.SetState(_gameMachineModule.MenuState);
+            _gameMachineModule.GameMachine.SetState(_gameMachineModule.MenuState);
         }
 
         public void Exit()

@@ -26,7 +26,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine
             AddressableLoader = loader;
         }
 
-        public IGameMachine Machine { get; private set; }
+        public IGameMachine GameMachine { get; private set; }
         public BootstrapState BootstrapState { get; private set; }
         public GameplayState GameplayState { get; private set; }
         public MainMenuState MenuState { get; private set; }
@@ -53,7 +53,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine
             CreateBasicStates();
             CreateLevelStates();
 
-            Machine.StartStateMachine();
+            GameMachine.StartStateMachine();
         }
 
         private void CreateBasicStates()
@@ -67,7 +67,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine
         private void CreateStarterStates()
         {
             BootstrapState = new BootstrapState(this);
-            Machine = new GameMachine(this);
+            GameMachine = new GameMachine(this);
         }
 
         private void CreateLevelStates()
@@ -78,17 +78,11 @@ namespace BsseCode._1._StateMachines.GameStateMachine
             ResetState = new ResetState(this, _uiServiceLocator, _managersServiceLocator);
             LandingState = new LandingState(this, _reusableServiceLocator, _reusableServiceLocator);
         }
-
-
-        private void Update()
-        {
-            _reusableServiceLocator.PCInputGlobalService.PauseInput();
-        }
     }
 
     public interface IGameMachineModule
     {
-        public IGameMachine Machine { get; }
+        public IGameMachine GameMachine { get; }
         public BootstrapState BootstrapState { get; }
         public GameplayState GameplayState { get; }
         public MainMenuState MenuState { get; }

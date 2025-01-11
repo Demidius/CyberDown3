@@ -9,15 +9,16 @@ namespace BsseCode._5._GameEntities.Hero
     public class HeroAnimationController : MonoBehaviour
     {
         private Animator legsAnimator;
-        private ITimeGlobalService _timeGlobalService;
+        
         private PlayerHandler _playerHandler;
+        private ITimeModule _timeModule;
 
 
         [Inject]
-        public void Construct(ITimeGlobalService timeGlobalService, PlayerHandler playerHandler)
+        public void Construct(ITimeModule timeModule, PlayerHandler playerHandler)
         {
+            _timeModule = timeModule;
             _playerHandler = playerHandler;
-            _timeGlobalService = timeGlobalService;
         }
 
         private void Start()
@@ -34,7 +35,7 @@ namespace BsseCode._5._GameEntities.Hero
 
         private void Update()
         {
-            legsAnimator.speed = Mathf.Clamp(_timeGlobalService.TimeScale, 0.5f, 0.8f);
+            legsAnimator.speed = Mathf.Clamp(_timeModule.GetTimeDeltaTime(), 0.5f, 0.8f);
         }
 
         private void OnDestroy()

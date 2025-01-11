@@ -38,7 +38,6 @@ namespace BsseCode._2._Services.GlobalServices.Pools.ShootFiresPool
             {
                 _spawnPoint = _playerHandler.CurrentPlayer.BulletSpawnPoint.transform;
             }
-            _inputGlobalService.Shoot();
             _direction = _spawnPoint.up ;
         }
 
