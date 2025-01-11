@@ -3,7 +3,6 @@ using BsseCode._2._Services.GlobalServices.InputFol;
 using BsseCode._2._Services.LevelServices.BulletCounter;
 using BsseCode._2._Services.ServiceLocator;
 using BsseCode._5._GameEntities.Objects.Bullet;
-using BsseCode._6._Audio.Data;
 using UnityEngine;
 using Zenject;
 

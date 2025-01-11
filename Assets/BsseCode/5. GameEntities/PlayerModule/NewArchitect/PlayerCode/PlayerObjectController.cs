@@ -20,7 +20,7 @@ namespace BsseCode._5._GameEntities.PlayerModule.NewArchitect.PlayerCode
             _serviceLocator = serviceLocator;
         }
 
-        public void CreatePlayer(Player currentPlayer, GameObject playerPrefab)
+        public void CreatePlayer(Player currentPlayer, Player playerPrefab)
         {
             if (currentPlayer == null)
             {
@@ -60,7 +60,7 @@ namespace BsseCode._5._GameEntities.PlayerModule.NewArchitect.PlayerCode
 
     public interface IPlayerObjectController
     {
-        public void CreatePlayer(Player currentPlayer, GameObject playerPrefab);
+        public void CreatePlayer(Player currentPlayer, Player playerPrefab);
         public void DestroyPlayer(Player currentPlayer);
     }
 }

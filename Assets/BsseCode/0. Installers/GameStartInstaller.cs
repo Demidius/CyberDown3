@@ -1,7 +1,9 @@
+using BaseCode2._2._Services.Addressable;
+using BaseCode2._2._Services.Coroutines;
+using BaseCode2._6._Audio;
+using BaseCode2._6._Audio.Data;
 using BsseCode._1._StateMachines.GameStateMachine;
-using BsseCode._2._Services.GlobalServices.Addressable;
 using BsseCode._2._Services.GlobalServices.BeaconHandler;
-using BsseCode._2._Services.GlobalServices.Coroutines;
 using BsseCode._2._Services.GlobalServices.Factory;
 using BsseCode._2._Services.GlobalServices.InputFol;
 using BsseCode._2._Services.GlobalServices.Pools;
@@ -17,8 +19,6 @@ using BsseCode._5._GameEntities.PlayerModule;
 using BsseCode._5._GameEntities.PlayerModule.Components;
 using BsseCode._5._GameEntities.PlayerModule.PlayerHandlerFl;
 using BsseCode._5._GameEntities.UnivercialUtils;
-using BsseCode._6._Audio.Data;
-using BsseCode._6._Audio.Managers;
 using Cinemachine;
 using UnityEngine;
 using Zenject;
@@ -28,7 +28,7 @@ namespace BsseCode._0._Installers
 {
     public class GameStartInstaller : MonoInstaller
     {
-        [SerializeField] private Player _playerPrefab;
+       
 
         public override void InstallBindings()
         {
@@ -40,16 +40,10 @@ namespace BsseCode._0._Installers
             RegisterCameraServices();
             RegisterGameManagers();
             RegisterStateMachine();
-            RegisterPlayerModule();
             RegisterUpdateService();
         }
 
-        private void RegisterPlayerModule()
-        {
-            Container.Bind<IPlayerModule>().To<PlayerModule>().AsSingle();
-            Container.Bind<IPlayer>().To<Player>().FromComponentInNewPrefab(_playerPrefab).AsSingle();
-            Container.Bind<IBulletSpawnPoint>().To<BulletSpawnPoint>().FromComponentInNewPrefab(_playerPrefab).AsSingle();
-        }
+       
 
         private void RegisterServicesLocaters()
         {

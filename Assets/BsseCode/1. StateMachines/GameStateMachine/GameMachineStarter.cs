@@ -1,5 +1,5 @@
+using BaseCode2._2._Services.Addressable;
 using BsseCode._1._StateMachines.GameStateMachine.States;
-using BsseCode._2._Services.GlobalServices.Addressable;
 using BsseCode._2._Services.ServiceLocator;
 using UnityEngine;
 using Zenject;

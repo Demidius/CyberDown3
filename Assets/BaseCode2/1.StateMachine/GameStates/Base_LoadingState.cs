@@ -1,0 +1,17 @@
+using BaseCode2._1.StateMachine.Logic;
+
+namespace BaseCode2._1.StateMachine.GameStates
+{
+    public class Base_LoadingState : IGameState
+    {
+        public void Enter()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Exit()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+}

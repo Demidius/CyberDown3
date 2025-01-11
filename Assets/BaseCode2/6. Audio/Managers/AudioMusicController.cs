@@ -1,0 +1,68 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace BaseCode2._6._Audio.Managers
+{
+    public class AudioMusicController : MonoBehaviour
+    {
+        private float _currentVolume = 0.5f;
+        private const float SmoothSpeed = 42.0f;
+        private bool _isSliderChanged; 
+        [SerializeField] private Slider VolumeSlider;
+
+        private const string VolumePrefKey = "MusicVolume"; // Ключ для сохранения в PlayerPrefs
+
+        private void Awake()
+        {
+            // Загрузка сохранённого значения громкости
+            if (PlayerPrefs.HasKey(VolumePrefKey))
+            {
+                _currentVolume = PlayerPrefs.GetFloat(VolumePrefKey);
+            }
+
+            if (VolumeSlider != null)
+            {
+                VolumeSlider.value = _currentVolume;
+                VolumeSlider.onValueChanged.AddListener(OnSliderValueChanged);
+            }
+
+            // Установка начального значения громкости
+            SetVolume(_currentVolume);
+        }
+
+        private void Update()
+        {
+            if (VolumeSlider == null)
+            {
+                Debug.LogWarning("VolumeSlider is not assigned!");
+                return;
+            }
+
+            FMODUnity.RuntimeManager.StudioSystem.getParameterByName("MusicVolume", out float externalVolume);
+
+            if (!_isSliderChanged)
+            {
+                _currentVolume = Mathf.Lerp(_currentVolume, externalVolume, Time.deltaTime * SmoothSpeed);
+                VolumeSlider.value = _currentVolume;
+            }
+
+            _isSliderChanged = false;
+        }
+
+        private void OnSliderValueChanged(float value)
+        {
+            _isSliderChanged = true;
+            _currentVolume = value;
+            SetVolume(_currentVolume);
+
+            // Сохранение значения громкости
+            PlayerPrefs.SetFloat(VolumePrefKey, _currentVolume);
+            PlayerPrefs.Save();
+        }
+
+        private void SetVolume(float volume)
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("MusicVolume", volume);
+        }
+    }
+}

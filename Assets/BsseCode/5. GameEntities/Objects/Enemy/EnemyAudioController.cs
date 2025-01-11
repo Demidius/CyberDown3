@@ -1,7 +1,6 @@
+using BaseCode2._6._Audio.Data;
 using BsseCode._1._StateMachines.GameStateMachine;
 using BsseCode._2._Services.ServiceLocator;
-using BsseCode._6._Audio.Data;
-using BsseCode._6._Audio.Managers;
 using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;

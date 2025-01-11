@@ -1,5 +1,5 @@
 using System.Collections;
-using BsseCode._2._Services.GlobalServices.Coroutines;
+using BaseCode2._2._Services.Coroutines;
 using BsseCode._2._Services.ServiceLocator;
 using BsseCode._3._SupportCode.Tags;
 using UnityEngine;
