@@ -7,12 +7,11 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
     public class AnimEnemy : MonoBehaviour
     {
         [SerializeField]  private Animator legsAnimator;
-        [SerializeField] private float legsAnimatorSpeed = 1f;
-       
-        [SerializeField]  private Animator knaifAnimatorR;
-        [SerializeField]  private Animator knaifAnimatorL;
-        [SerializeField] private float  knaifAnimatorSpeed = 1f;
+        private float legsAnimatorSpeed = 1f;
         
+        [SerializeField]  private Animator rightKnifeAnimator;
+        [SerializeField]  private Animator leftKnifeAnimator;
+        private float  knifeAnimatorSpeed = 1f;
         
         private ITimeGlobalService _timeGlobalService;
          
@@ -23,9 +22,19 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
         }
         private void Update()
         {
+            LegAnimatorController();
+            KnifeAnimatorController();
+        }
+
+        private void KnifeAnimatorController()
+        {
+            rightKnifeAnimator.speed = _timeGlobalService.TimeScale * knifeAnimatorSpeed;
+            leftKnifeAnimator.speed = _timeGlobalService.TimeScale * knifeAnimatorSpeed;
+        }
+
+        private void LegAnimatorController()
+        {
             legsAnimator.speed = _timeGlobalService.TimeScale * legsAnimatorSpeed;
-            knaifAnimatorR.speed = _timeGlobalService.TimeScale * knaifAnimatorSpeed;
-            knaifAnimatorL.speed = _timeGlobalService.TimeScale * knaifAnimatorSpeed;
         }
     }
 }

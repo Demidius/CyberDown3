@@ -3,7 +3,12 @@ using UnityEngine;
 
 namespace BsseCode._5._GameEntities.UnivercialUtils
 {
-    public class PositionUpdateService
+    public interface IPositionUpdateService
+    {
+        Vector3 Move(Vector2 moveDirection, float movementSpeed, Vector3 objPosition);
+    }
+
+    public class PositionUpdateService : IPositionUpdateService
     {
         private readonly ITimeGlobalService _timeGlobalService;
         public PositionUpdateService(ITimeGlobalService timeGlobalService)

@@ -12,14 +12,14 @@ namespace BsseCode._5._GameEntities.Hero
         public Vector2 movementHeroDirection;
 
         private IInputGlobalService _inputGlobalService;
-        private PositionUpdateService _positionUpdateService;
+        private IPositionUpdateService _positionUpdateService;
        
         public bool IsMoving { get; private set; }
 
         public event Action OnMovementStateChanged;
 
         [Inject]
-        public void Construct(IInputGlobalService inputGlobalService, PositionUpdateService positionUpdateService)
+        public void Construct(IInputGlobalService inputGlobalService, IPositionUpdateService positionUpdateService)
         {
             _inputGlobalService = inputGlobalService ?? throw new ArgumentNullException(nameof(inputGlobalService));
             _positionUpdateService = positionUpdateService ?? throw new ArgumentNullException(nameof(positionUpdateService));

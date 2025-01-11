@@ -15,28 +15,26 @@ namespace BsseCode._5._GameEntities.Objects.EnergyLoot
     public class EnergyLoot : MonoBehaviour, IPoolsElement
     {
         private float _speed;
-        private PositionUpdateService _positionUpdateService;
-
-
+        
         private Coroutine _coroutineLifeRoutine;
         private IEnergyCounter _energyCounter;
         private IPoolController _poolController;
         private AudioTracksBase _audioTracksBase;
-        private GameMachineStarter _gameMachineStarter;
+        private IGameMachineModule _gameMachineModule;
 
         [Inject]
         public void Construct(
             IPoolController poolController, 
             IEnergyCounter energyCounter, 
             AudioTracksBase audioTracksBase, 
-            GameMachineStarter gameMachineStarter)
+            IGameMachineModule gameMachineModule)
         {
-            _gameMachineStarter = gameMachineStarter;
+            _gameMachineModule = gameMachineModule;
             _audioTracksBase = audioTracksBase;
             _poolController = poolController;
             _energyCounter = energyCounter;
 
-            _gameMachineStarter.MainMenuState.OnMenuState += ReturnToPool;
+            _gameMachineModule.MenuState.OnMenuState += ReturnToPool;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -58,7 +56,7 @@ namespace BsseCode._5._GameEntities.Objects.EnergyLoot
 
         private void OnDestroy()
         {
-            _gameMachineStarter.MainMenuState.OnMenuState -= ReturnToPool;
+            _gameMachineModule.MenuState.OnMenuState -= ReturnToPool;
         }
     }
 }

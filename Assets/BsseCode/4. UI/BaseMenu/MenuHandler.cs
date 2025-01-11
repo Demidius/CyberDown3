@@ -27,7 +27,7 @@ namespace BsseCode._4._UI.BaseMenu
         [SerializeField] private GameObject parametrs;
         [SerializeField] private GameObject autors;
        
-        private GameMachineStarter _starter;
+        private IGameMachineModule _module;
         private IUIServiceLocator _uiServiceLocator;
         private IManagersServiceLocator _managersServiceLocator;
         private IAudioServicesLocator _audioServicesLocator;
@@ -35,7 +35,7 @@ namespace BsseCode._4._UI.BaseMenu
 
         [Inject]
         public void Construct(
-            GameMachineStarter starter, 
+            IGameMachineModule module, 
             IUIServiceLocator uiServiceLocator, 
             IManagersServiceLocator managersServiceLocator,
             IAudioServicesLocator audioServicesLocator
@@ -44,7 +44,7 @@ namespace BsseCode._4._UI.BaseMenu
             _audioServicesLocator = audioServicesLocator;
             _managersServiceLocator = managersServiceLocator;
             _uiServiceLocator = uiServiceLocator;
-            _starter = starter;
+            _module = module;
         }
 
         private void Start()
@@ -85,7 +85,7 @@ namespace BsseCode._4._UI.BaseMenu
         {
             EnterLevelSoudPlay();
 
-            _starter.MainMenuState.StartGame();
+            _module.MenuState.StartGame();
         }
 
 

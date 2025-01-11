@@ -17,11 +17,11 @@ namespace BsseCode._2._Services.GlobalServices.Addressable
         AsyncOperationHandle<SceneInstance> _sceneInstance;
         int _lastLoadedSceneIndex = -1;
         private CoroutineRunner _runner;
-        private GameMachineStarter _starter;
+        private IGameMachineModule _module;
 
-        public AddressableLoader(GameMachineStarter starter)
+        public AddressableLoader(IGameMachineModule module)
         {
-            _starter = starter;
+            _module = module;
         }
         
         [Inject]

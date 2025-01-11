@@ -9,16 +9,16 @@ namespace BsseCode._5._GameEntities.Objects.AfterDeathMarks
     public class AfterDeathMarks : MonoBehaviour, IPoolsElement
     {
         private IPoolController _poolController;
-        private GameMachineStarter _gameMachineStarter;
+        private IGameMachineModule _gameMachineModule;
 
 
         [Inject]
-        public void Construct(IPoolController poolController, GameMachineStarter gameMachineStarter)
+        public void Construct(IPoolController poolController, IGameMachineModule gameMachineModule)
         {
-            _gameMachineStarter = gameMachineStarter;
+            _gameMachineModule = gameMachineModule;
             _poolController = poolController;
 
-            _gameMachineStarter.MainMenuState.OnMenuState += ReturnToPool;
+            _gameMachineModule.MenuState.OnMenuState += ReturnToPool;
         }
 
 
@@ -29,7 +29,9 @@ namespace BsseCode._5._GameEntities.Objects.AfterDeathMarks
 
         private void OnDestroy()
         {
-            _gameMachineStarter.MainMenuState.OnMenuState -= ReturnToPool;
+            _gameMachineModule.MenuState.OnMenuState -= ReturnToPool;
         }
+
+       
     }
 }

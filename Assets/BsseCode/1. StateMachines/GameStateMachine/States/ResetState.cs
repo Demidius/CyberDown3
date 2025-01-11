@@ -10,20 +10,20 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
     public class ResetState : IGameState
     {
         
-        private GameMachineStarter _gameMachineStarter;
+        private IGameMachineModule _gameMachineModule;
 
         private float _temtTimeSpeed;
         private IUIServiceLocator _uiServiceLocator;
         private IManagersServiceLocator _managersServiceLocator;
 
         public ResetState(
-            GameMachineStarter gameMachineStarter, 
+            IGameMachineModule gameMachineModule, 
             IUIServiceLocator uiServiceLocator, 
             IManagersServiceLocator managersServiceLocator)
         {
             _managersServiceLocator = managersServiceLocator;
             _uiServiceLocator = uiServiceLocator;
-            _gameMachineStarter = gameMachineStarter;
+            _gameMachineModule = gameMachineModule;
         }
 
         public void Enter()
@@ -35,7 +35,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 
         public void ReturnToGame()
         {
-            _gameMachineStarter.GameStateMachine.SetState(_gameMachineStarter.LandingState);
+            _gameMachineModule.Machine.SetState(_gameMachineModule.LandingState);
         }
 
         public void Exit()

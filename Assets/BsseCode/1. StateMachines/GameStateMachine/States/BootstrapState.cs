@@ -4,15 +4,15 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 {
     public class BootstrapState : IGameState
     {
-        private GameMachineStarter _gameMachineStarter;
-        public BootstrapState(GameMachineStarter gameMachineStarter)
+        private IGameMachineModule _gameMachineModule;
+        public BootstrapState(IGameMachineModule gameMachineModule)
         {
-            _gameMachineStarter = gameMachineStarter;
+            _gameMachineModule = gameMachineModule;
         }
 
         public void Enter()
         {
-            _gameMachineStarter.GameStateMachine.SetState(_gameMachineStarter.MainMenuState);
+            _gameMachineModule.Machine.SetState(_gameMachineModule.MenuState);
         }
 
         public void Exit()

@@ -9,7 +9,7 @@ namespace BsseCode._2._Services.LevelServices.LevelsMenegers
 {
     public class Level1Maneger : MonoBehaviour
     {
-        private GameMachineStarter _starter;
+        private IGameMachineModule _module;
         private EventInstance _slowMotionSoundInstance;
         private EventInstance _levelMusicInstance;
 
@@ -22,21 +22,21 @@ namespace BsseCode._2._Services.LevelServices.LevelsMenegers
 
         [Inject]
         void Construct(
-            GameMachineStarter starter,
+            IGameMachineModule module,
             IAudioServicesLocator audioServicesLocator)
         {
             _audioServicesLocator = audioServicesLocator;
-            _starter = starter;
+            _module = module;
         }
 
         void Start()
         {
-            _starter.GameStateMachine.SetState(_starter.GameplayState);
+            _module.Machine.SetState(_module.GameplayState);
             
             StartSlowmotionSound();
             StartLevelMusic();
             
-            _starter.GameStateMachine.SetState(_starter.WindowState);
+            _module.Machine.SetState(_module.WindowState);
             
         }
 
@@ -61,7 +61,7 @@ namespace BsseCode._2._Services.LevelServices.LevelsMenegers
             if (beacon1.IsFull && beacon2.IsFull && beacon3.IsFull && beacon4.IsFull)
             {
                 Debug.Log("Finish");
-                _starter.GameStateMachine.SetState(_starter.FinishState);
+                _module.Machine.SetState(_module.FinishState);
             }
         }
         

@@ -9,12 +9,12 @@ namespace BsseCode._4._UI.Level1UI
     public class ResetStatePanel : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI countdownText;
-        private GameMachineStarter _gameMachineStarter;
+        private IGameMachineModule _gameMachineModule;
 
         [Inject]
-        void Construct(GameMachineStarter gameMachineStarter)
+        void Construct(IGameMachineModule gameMachineModule)
         {
-            _gameMachineStarter = gameMachineStarter;
+            _gameMachineModule = gameMachineModule;
         }
 
         public void OnEnable()
@@ -37,7 +37,7 @@ namespace BsseCode._4._UI.Level1UI
 
         private void OnCountdownFinished()
         { Debug.Log("CountdownCoroutine ResetStatePanel");
-            _gameMachineStarter.ResetState.ReturnToGame();
+            _gameMachineModule.ResetState.ReturnToGame();
         }
     }
 }

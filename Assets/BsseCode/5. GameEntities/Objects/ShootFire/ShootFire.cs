@@ -14,8 +14,7 @@ namespace BsseCode._5._GameEntities.Objects.ShootFire
         {
             _poolController = poolController;
         }
-
-        
+      
         public void ReturnToPool()
         {
             _poolController.ReturnToPool(this);

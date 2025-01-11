@@ -9,18 +9,18 @@ namespace BsseCode._5._GameEntities.Hero
     public class HeroAudioController : MonoBehaviour
     {
         private PlayerHandler _playerHandler;
-        private GameMachineStarter _gameMachineStarter;
+        private IGameMachineModule _gameMachineModule;
         private IAudioServicesLocator _audioServicesLocator;
 
         [Inject]
         public void Construct(
             PlayerHandler playerHandler,
-            GameMachineStarter gameMachineStarter,
+            IGameMachineModule gameMachineModule,
             IAudioServicesLocator audioServicesLocator
             )
         {
             _audioServicesLocator = audioServicesLocator;
-            _gameMachineStarter = gameMachineStarter;
+            _gameMachineModule = gameMachineModule;
             _playerHandler = playerHandler;
             
         }

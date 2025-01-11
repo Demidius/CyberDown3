@@ -7,7 +7,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 {
     public class MainMenuState : IGameState
     {
-        private readonly GameMachineStarter _gameMachineStarter;
+        private readonly IGameMachineModule _gameMachineModule;
         private IUIServiceLocator _uiServiceLocator;
         private IManagersServiceLocator _managersServiceLocator;
         private IAudioServicesLocator _audioServicesLocator;
@@ -15,7 +15,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
         public event Action OnMenuState;
 
         public MainMenuState(
-            GameMachineStarter gameMachineStarter, 
+            IGameMachineModule gameMachineModule, 
             IUIServiceLocator uiServiceLocator,
             IManagersServiceLocator managersServiceLocator,
             IAudioServicesLocator audioServicesLocator
@@ -24,7 +24,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
             _audioServicesLocator = audioServicesLocator;
             _managersServiceLocator = managersServiceLocator;
             _uiServiceLocator = uiServiceLocator;
-            _gameMachineStarter = gameMachineStarter ?? throw new ArgumentNullException(nameof(gameMachineStarter));
+            _gameMachineModule = gameMachineModule ?? throw new ArgumentNullException(nameof(gameMachineModule));
         }
 
         public void Enter()
@@ -44,8 +44,8 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 
         public void StartGame()
         {
-            _gameMachineStarter.GameStateMachine.SetState(_gameMachineStarter.LoadingState);
-            _gameMachineStarter.AddressableLoader.LoadLevelByIndex(0);
+            _gameMachineModule.Machine.SetState(_gameMachineModule.LoadingState);
+            _gameMachineModule.AddressableLoader.LoadLevelByIndex(0);
         }
 
         public void Exit()
@@ -56,7 +56,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
         private bool ValidateDependencies()
         {
 
-            if (_gameMachineStarter.AddressableLoader == null)
+            if (_gameMachineModule.AddressableLoader == null)
             {
                 Debug.LogError("AddressableLoader is null!");
                 return false;
@@ -91,7 +91,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 
         private void UnloadCurrentLevel()
         {
-            _gameMachineStarter.AddressableLoader?.UnloadCurrentLevel();
+            _gameMachineModule.AddressableLoader?.UnloadCurrentLevel();
         }
 
         private void DisplayResultsUI()

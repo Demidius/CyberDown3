@@ -8,14 +8,14 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 {
     public class GameplayState : IGameState
     {
-        private readonly GameMachineStarter _gameMachineStarter;
+        private readonly IGameMachineModule _gameMachineModule;
         private IUIServiceLocator _uiServiceLocator;
         private IManagersServiceLocator _managersServiceLocator;
         private IReusableServiceLocator _reusableServiceLocator;
         public event Action OnGameState;
 
         public GameplayState(
-            GameMachineStarter gameMachineStarter, 
+            IGameMachineModule gameMachineModule, 
             IUIServiceLocator uiServiceLocator,
             IManagersServiceLocator managersServiceLocator,
             IReusableServiceLocator reusableServiceLocator)
@@ -23,7 +23,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
             _reusableServiceLocator = reusableServiceLocator;
             _managersServiceLocator = managersServiceLocator;
             _uiServiceLocator = uiServiceLocator;
-            _gameMachineStarter = gameMachineStarter ?? throw new ArgumentNullException(nameof(gameMachineStarter));
+            _gameMachineModule = gameMachineModule ?? throw new ArgumentNullException(nameof(gameMachineModule));
         }
 
         public void Enter()
@@ -48,14 +48,14 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 
         public void StartMenu()
         {
-            _gameMachineStarter.GameStateMachine.SetState(_gameMachineStarter.MainMenuState);
+            _gameMachineModule.Machine.SetState(_gameMachineModule.MenuState);
         }
 
         public void StartPause(bool isPaused)
         {
             if (isPaused)
             {
-                _gameMachineStarter.GameStateMachine.SetState(_gameMachineStarter.PauseState);
+                _gameMachineModule.Machine.SetState(_gameMachineModule.PauseState);
             }
         }
 

@@ -7,11 +7,11 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
     public class LoadingState : IGameState
     {
         
-        private GameMachineStarter _gameMachineStarter;
+        private IGameMachineModule _gameMachineModule;
 
-        public LoadingState(GameMachineStarter gameMachineStarter)
+        public LoadingState(IGameMachineModule gameMachineModule)
         {
-            _gameMachineStarter = gameMachineStarter;
+            _gameMachineModule = gameMachineModule;
         }
         public void Enter()
         {

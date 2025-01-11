@@ -8,19 +8,19 @@ namespace BsseCode._5._GameEntities.Hero.Components
 {
     public class CollisionHandler : MonoBehaviour
     {
-        private GameMachineStarter _gameMachineStarter;
+        private IGameMachineModule _gameMachineModule;
 
         [Inject]
-        public void Construct(GameMachineStarter gameMachineStarter)
+        public void Construct(IGameMachineModule gameMachineModule)
         {
-            _gameMachineStarter = gameMachineStarter;
+            _gameMachineModule = gameMachineModule;
         }
 
         private void OnTriggerEnter2D(Collider2D other) 
         {
             if (other.TryGetComponent<Enemy>(out Enemy enemy))
             {
-                _gameMachineStarter.GameStateMachine.SetState(_gameMachineStarter.ResetState);
+                _gameMachineModule.Machine.SetState(_gameMachineModule.ResetState);
             }
         }
         

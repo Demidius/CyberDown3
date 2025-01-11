@@ -9,20 +9,20 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 {
     public class WindowState : IGameState
     {
-        private GameMachineStarter _gameMachineStarter;
+        private IGameMachineModule _gameMachineModule;
 
         private float _temtTimeSpeed;
         private IUIServiceLocator _uiServiceLocator;
         private IReusableServiceLocator _reusableServiceLocator;
 
         public WindowState(
-            GameMachineStarter gameMachineStarter, 
+            IGameMachineModule gameMachineModule, 
             IUIServiceLocator uiServiceLocator,
             IReusableServiceLocator reusableServiceLocator)
         {
             _reusableServiceLocator = reusableServiceLocator;
             _uiServiceLocator = uiServiceLocator;
-            _gameMachineStarter = gameMachineStarter;
+            _gameMachineModule = gameMachineModule;
         }
 
         public void Enter()
@@ -36,7 +36,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
         {
             if (!OnOff)
             {
-                _gameMachineStarter.GameStateMachine.SetState(_gameMachineStarter.GameplayState);
+                _gameMachineModule.Machine.SetState(_gameMachineModule.GameplayState);
             }
         }
 

@@ -9,18 +9,18 @@ namespace BsseCode._4._UI.Pause_Panel
     {
        
         [SerializeField] Button exitButton;
-        private GameMachineStarter _starter;
+        private IGameMachineModule _module;
 
         [Inject]
-        public void Construct(GameMachineStarter starter)
+        public void Construct(IGameMachineModule module)
         {
-            _starter = starter;
+            _module = module;
 
             exitButton.onClick.AddListener(ExitInMenu);
         }
         void ExitInMenu()
         {
-            _starter.PauseState.ReturnToMenu();
+            _module.PauseState.ReturnToMenu();
         }
 
         private void OnDestroy()

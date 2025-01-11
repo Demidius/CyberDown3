@@ -76,18 +76,18 @@ MonoBehaviour:
     Path: event:/Musicc/MusicMenu
   spiderRun:
     Guid:
-      Data1: 864144743
-      Data2: 1278349538
-      Data3: -1498113128
-      Data4: 1572884665
-    Path: event:/ROBOT SOUNDS/SpeiderRun2
+      Data1: 2100472699
+      Data2: 1258920994
+      Data3: 113606063
+      Data4: -1951389811
+    Path: event:/ROBOT SOUNDS/SpidersRun
   explosionSound:
     Guid:
-      Data1: 570257669
-      Data2: 1243624103
-      Data3: -707685503
-      Data4: -141407836
-    Path: event:/ROBOT SOUNDS/ROBOT EXPLOSION
+      Data1: -1790318827
+      Data2: 1259571695
+      Data3: 1347509655
+      Data4: -274867186
+    Path: event:/ROBOT SOUNDS/Explision
   emptyBarSound:
     Guid:
       Data1: -1947955017

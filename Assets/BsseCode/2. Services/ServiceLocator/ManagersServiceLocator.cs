@@ -5,6 +5,14 @@ using Zenject;
 
 namespace BsseCode._2._Services.ServiceLocator
 {
+    public interface IManagersServiceLocator
+    {
+        public PlayerHandler PlayerHandler { get; }
+        public ResultsManager ResultsManager { get; }
+        public KillsController KillsController { get; }
+        public BeaconHandler BeaconHandler { get; }
+    }
+
     public class ManagersServiceLocator : IManagersServiceLocator
 
     {
@@ -26,15 +34,5 @@ namespace BsseCode._2._Services.ServiceLocator
             ResultsManager = resultsManager;
             PlayerHandler = playerHandler;
         }
-    }
-
-    public interface IManagersServiceLocator
-    {
-        public PlayerHandler PlayerHandler { get; }
-        public ResultsManager ResultsManager { get; }
-        public KillsController KillsController { get; }
-        public BeaconHandler BeaconHandler { get; }
-
-
     }
 }

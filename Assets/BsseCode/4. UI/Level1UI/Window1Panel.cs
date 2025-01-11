@@ -8,12 +8,12 @@ namespace BsseCode._4._UI.Level1UI
     public class Window1Panel : MonoBehaviour
     {
         [SerializeField] Button nextButton;
-        private GameMachineStarter _gameMachineStarter;
+        private IGameMachineModule _gameMachineModule;
 
         [Inject]
-        void Construct(GameMachineStarter gameMachineStarter)
+        void Construct(IGameMachineModule gameMachineModule)
         {
-            _gameMachineStarter = gameMachineStarter;
+            _gameMachineModule = gameMachineModule;
         }
         void Start()
         {
@@ -22,7 +22,7 @@ namespace BsseCode._4._UI.Level1UI
 
         void OnNewGameButton()
         {
-            _gameMachineStarter.WindowState.ReturnToGame(false);
+            _gameMachineModule.WindowState.ReturnToGame(false);
         }
 
     }

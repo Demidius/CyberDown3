@@ -48,7 +48,7 @@ namespace BsseCode._0._Installers
 
         private void RegisterStateMachine()
         {
-            Container.Bind<GameMachineStarter>().FromComponentInHierarchy().AsSingle().NonLazy();
+            Container.Bind<IGameMachineModule>().To<GameMachineModule>().FromComponentInHierarchy().AsSingle().NonLazy();
         }
 
         private void RegisterGameManagers()
@@ -65,7 +65,7 @@ namespace BsseCode._0._Installers
         {
             Container.Bind<IFactoryComponent>().To<FactoryComponent>().AsSingle();
             Container.Bind<IRandomizerService>().To<RandomizerService>().AsSingle();
-            Container.Bind<PositionUpdateService>().AsSingle();
+            Container.Bind<IPositionUpdateService>().To<PositionUpdateService>().AsSingle();
             Container.Bind<IPoolController>().To<PoolController>().FromComponentInHierarchy().AsSingle();
         }
 

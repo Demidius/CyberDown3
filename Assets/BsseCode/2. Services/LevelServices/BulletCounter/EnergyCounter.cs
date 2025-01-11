@@ -16,7 +16,7 @@ namespace BsseCode._2._Services.LevelServices.BulletCounter
 
         private IRandomizerService _randomizerService;
        
-        private GameMachineStarter _gameMachineStarter;
+        private IGameMachineModule _gameMachineModule;
         private IAudioServicesLocator _audioServicesLocator;
         public float EnergyCount { get; private set; }
 
@@ -24,10 +24,10 @@ namespace BsseCode._2._Services.LevelServices.BulletCounter
         public void Construct(
             IRandomizerService randomizerService, 
             IAudioServicesLocator audioServicesLocator, 
-            GameMachineStarter gameMachineStarter)
+            IGameMachineModule gameMachineModule)
         {
             _audioServicesLocator = audioServicesLocator;
-            _gameMachineStarter = gameMachineStarter;
+            _gameMachineModule = gameMachineModule;
            
             _randomizerService = randomizerService;
         }

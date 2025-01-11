@@ -9,14 +9,14 @@ namespace BsseCode._4._UI.Level1UI
     public class Finish1Panel : MonoBehaviour
     {
         [SerializeField] Button returnToMemuButton;
-        private GameMachineStarter _gameMachineStarter;
+        private IGameMachineModule _gameMachineModule;
         private KillsController _killsController;
 
         [Inject]
-        void Construct(GameMachineStarter gameMachineStarter, KillsController killsController )
+        void Construct(IGameMachineModule gameMachineModule, KillsController killsController )
         {
             _killsController = killsController;
-            _gameMachineStarter = gameMachineStarter;
+            _gameMachineModule = gameMachineModule;
         }
         void Start()
         {
@@ -25,7 +25,7 @@ namespace BsseCode._4._UI.Level1UI
 
         void OnMenuButton()
         {
-            _gameMachineStarter.GameStateMachine.SetState(_gameMachineStarter.MainMenuState);
+            _gameMachineModule.Machine.SetState(_gameMachineModule.MenuState);
             _killsController.EndGame();
         }
 

@@ -20,7 +20,7 @@ namespace BsseCode._2._Services.GlobalServices.Pools.BulletPool
         private IEnergyCounter _energyCounter;
         private IPoolController _poolController;
        
-        private GameMachineStarter _gameMachineStarter;
+        private IGameMachineModule _gameMachineModule;
         private IAudioServicesLocator _audioServicesLocator;
 
 
@@ -31,11 +31,11 @@ namespace BsseCode._2._Services.GlobalServices.Pools.BulletPool
             IEnergyCounter energyCounter,
             IAudioServicesLocator audioServicesLocator,
           
-            GameMachineStarter gameMachineStarter)
+            IGameMachineModule gameMachineModule)
            
         {
             _audioServicesLocator = audioServicesLocator;
-            _gameMachineStarter = gameMachineStarter;
+            _gameMachineModule = gameMachineModule;
            
             _poolController = poolController;
             _energyCounter = energyCounter;

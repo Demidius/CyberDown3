@@ -5,10 +5,10 @@ namespace BsseCode._5._GameEntities.Objects.Bullet
 {
     public class BulletMover
     {
-        private readonly PositionUpdateService _positionUpdateService;
+        private readonly IPositionUpdateService _positionUpdateService;
         private Transform _transform;
 
-        public BulletMover(PositionUpdateService positionUpdateService, Transform transform)
+        public BulletMover(IPositionUpdateService positionUpdateService, Transform transform)
         {
             _positionUpdateService = positionUpdateService;
             _transform = transform;

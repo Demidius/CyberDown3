@@ -3,19 +3,25 @@ using Zenject;
 
 namespace BsseCode._1._StateMachines.GameStateMachine
 {
-    public class GameStateMachine
+    public interface IGameMachine
+    {
+        void StartStateMachine();
+        void SetState(IGameState newState);
+    }
+
+    public class GameMachine : IGameMachine
     {
         private IGameState _currentState;
-        private GameMachineStarter _gameMachineStarter;
+        private IGameMachineModule _gameMachineModule;
 
-        public GameStateMachine(GameMachineStarter gameMachineStarter)
+        public GameMachine(IGameMachineModule gameMachineModule)
         {
-            _gameMachineStarter = gameMachineStarter;
+            _gameMachineModule = gameMachineModule;
         }
        
         public void StartStateMachine()
         {
-            SetState(_gameMachineStarter.BootstrapState);
+            SetState(_gameMachineModule.BootstrapState);
         }
 
         public void SetState(IGameState newState)

@@ -16,15 +16,15 @@ namespace BsseCode._5._GameEntities.Objects.Bullet
         
         private BulletMover _bulletMover;
         private IPoolController _poolController;
-        private GameMachineStarter _gameMachineStarter;
+        private IGameMachineModule _gameMachineModule;
 
         [Inject]
         public void Construct(
-            PositionUpdateService positionUpdateService,
+            IPositionUpdateService positionUpdateService,
             IPoolController poolController,
-            GameMachineStarter gameMachineStarter)
+            IGameMachineModule gameMachineModule)
         {
-            _gameMachineStarter = gameMachineStarter;
+            _gameMachineModule = gameMachineModule;
             _poolController = poolController;
             _bulletMover = new BulletMover(positionUpdateService, transform);
         }
@@ -58,12 +58,12 @@ namespace BsseCode._5._GameEntities.Objects.Bullet
 
         private void Start()
         {
-            _gameMachineStarter.MainMenuState.OnMenuState += ReturnToPool;
+            _gameMachineModule.MenuState.OnMenuState += ReturnToPool;
         }
 
         private void OnDestroy()
         {
-            _gameMachineStarter.MainMenuState.OnMenuState -= ReturnToPool;
+            _gameMachineModule.MenuState.OnMenuState -= ReturnToPool;
         }
     }
 }

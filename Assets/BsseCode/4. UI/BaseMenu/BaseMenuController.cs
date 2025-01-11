@@ -9,17 +9,17 @@ namespace BsseCode._4._UI.BaseMenu
     {
         [SerializeField] GameObject baseMenu;
        
-        private GameMachineStarter _starter;
+        private IGameMachineModule _module;
 
         [Inject]
-        void Construct(GameMachineStarter starter)
+        void Construct(IGameMachineModule module)
         {
-            _starter = starter;
+            _module = module;
         }
 
         void Start()
         {
-            _starter.GameplayState.OnGameState += DisableMenu;
+            _module.GameplayState.OnGameState += DisableMenu;
         }
 
         private void DisableMenu()
@@ -30,7 +30,7 @@ namespace BsseCode._4._UI.BaseMenu
 
         private void OnDestroy()
         {
-            _starter.GameplayState.OnGameState -= DisableMenu;
+            _module.GameplayState.OnGameState -= DisableMenu;
         }
         
     }

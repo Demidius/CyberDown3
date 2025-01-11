@@ -6,17 +6,17 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
     public class FinishState : IGameState
     {
         public IGameState CurrentState;
-        private GameMachineStarter _gameMachineStarter;
+        private IGameMachineModule _gameMachineModule;
 
         private float _temtTimeSpeed;
         private IUIServiceLocator _uiServiceLocator;
 
         public FinishState(
-            GameMachineStarter gameMachineStarter, 
+            IGameMachineModule gameMachineModule, 
             IUIServiceLocator uiServiceLocator
             )
         {
-            _gameMachineStarter = gameMachineStarter;
+            _gameMachineModule = gameMachineModule;
             _uiServiceLocator = uiServiceLocator;
         }
 

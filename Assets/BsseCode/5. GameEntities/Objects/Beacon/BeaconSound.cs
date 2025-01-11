@@ -8,17 +8,17 @@ namespace BsseCode._5._GameEntities.Objects.Beacon
 {
     public class Locator : MonoBehaviour
     {
-        private GameMachineStarter _starter;
+        private IGameMachineModule _gameMachineModule;
         private EventInstance _beaconSoundInstance;
         private IAudioServicesLocator _audioServicesLocator;
 
         [Inject]
         void Construct(
-            GameMachineStarter starter,
+            IGameMachineModule stateeMachineModule,
             IAudioServicesLocator audioServicesLocator)
         {
             _audioServicesLocator = audioServicesLocator;
-            _starter = starter;
+            _gameMachineModule = stateeMachineModule;
         }
 
         void Start()

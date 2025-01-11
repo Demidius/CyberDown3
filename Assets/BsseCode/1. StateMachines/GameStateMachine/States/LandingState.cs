@@ -9,21 +9,21 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
     public class LandingState : IGameState
     {
         
-        private GameMachineStarter _gameMachineStarter;
+        private IGameMachineModule _gameMachineModule;
         private ICoroutineGlobalService _coroutineGlobalService;
         private GameObject _location;
         private IReusableServiceLocator _reusableServiceLocator;
         private IReusableServiceLocator _coroutineGlobalService1;
 
         public LandingState(
-            GameMachineStarter gameMachineStarter,
+            IGameMachineModule gameMachineModule,
             IReusableServiceLocator reusableServiceLocator,
             IReusableServiceLocator coroutineGlobalService
             )
         {
             _coroutineGlobalService1 = coroutineGlobalService;
             _reusableServiceLocator = reusableServiceLocator;
-            _gameMachineStarter = gameMachineStarter;
+            _gameMachineModule = gameMachineModule;
             _coroutineGlobalService = _reusableServiceLocator.CoroutineGlobalService;
         }
         public void Enter()
@@ -67,7 +67,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
             _location.transform.localScale = targetScale;
 
             // Завершаем состояние
-            _gameMachineStarter.GameStateMachine.SetState(_gameMachineStarter.GameplayState);
+            _gameMachineModule.Machine.SetState(_gameMachineModule.GameplayState);
         }
         
         public void Exit()

@@ -14,17 +14,17 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
     {
         private AudioTracksBase _audioTracksBase;
         private EventInstance _spiderRunInstance;
-        private GameMachineStarter _gameMachineStarter;
+        private IGameMachineModule _gameMachineModule;
         private IAudioServicesLocator _audioServicesLocator;
 
         [Inject]
         public void Construct(
             IAudioServicesLocator audioServicesLocator, 
-            GameMachineStarter gameMachineStarter
+            IGameMachineModule gameMachineModule
             )
         {
             _audioServicesLocator = audioServicesLocator;
-            _gameMachineStarter = gameMachineStarter;
+            _gameMachineModule = gameMachineModule;
         }
 
         private void OnEnable()
