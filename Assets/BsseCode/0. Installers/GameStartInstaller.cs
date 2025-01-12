@@ -30,45 +30,40 @@ namespace BsseCode._0._Installers
         {
             RegisterCoroutines();
             RegisterAudioServices();
-            RegisterSpecializedServices();
             RegisterServicesLocaters();
-            RegisterReusableServices();
+            RegisterMainServices();
             RegisterCameraServices();
-          
             RegisterStateMachine();
         }
 
         private void RegisterServicesLocaters()
         {
+            Container.Bind<ITimeModule>().To<ITimeModule>().FromComponentInHierarchy().AsSingle();
             Container.Bind<IUIServiceLocator>().To<UIServiceLocator>().AsSingle();
             Container.Bind<IManagersServiceLocator>().To<ManagersServiceLocator>().AsSingle();
             Container.Bind<IReusableServiceLocator>().To<ReusableServiceLocator>().AsSingle();
             Container.Bind<ICameraServiceLocator>().To<CameraServiceLocator>().AsSingle();
             Container.Bind<IAudioServicesLocator>().To<AudioServiceLocator>().AsSingle();
+            Container.Bind<PlayerHandler>().FromComponentInHierarchy().AsSingle();
         }
 
         private void RegisterStateMachine()
         {
             Container.Bind<IGameMachineModule>().To<GameMachineModule>().FromComponentInHierarchy().AsSingle().NonLazy();
         }
-        
-        private void RegisterReusableServices()
+
+        private void RegisterMainServices()
         {
             Container.Bind<IFactoryComponent>().To<FactoryComponent>().AsSingle();
             Container.Bind<IRandomizerService>().To<RandomizerService>().AsSingle();
-            Container.Bind<IPositionUpdateService>().To<PositionUpdateService>().AsSingle();
-            Container.Bind<IPoolController>().To<PoolController>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<IUpdateService>().To<UpdateService>().FromComponentInHierarchy().AsSingle();
-        }
 
-        private void RegisterSpecializedServices()
-        {
             Container.Bind<IInputGlobalService>().To<PcInputGlobalService>().AsSingle();
             Container.Bind<UIController>().FromComponentInHierarchy().AsSingle().NonLazy();
-            Container.Bind<ITimeModule>().To<ITimeModule>().FromComponentInHierarchy().AsSingle();
-            // Container.Bind<TimeController>().FromComponentInHierarchy().AsSingle();
             Container.Bind<IAddressableLoader>().To<AddressableLoader>().FromComponentInHierarchy().AsSingle();
+
+            Container.Bind<IUpdateService>().To<UpdateService>().FromComponentInHierarchy().AsSingle();
         }
+      
 
         private void RegisterCameraServices()
         {

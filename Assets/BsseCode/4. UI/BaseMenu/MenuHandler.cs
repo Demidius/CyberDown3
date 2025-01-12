@@ -11,22 +11,21 @@ namespace BsseCode._4._UI.BaseMenu
         [SerializeField] private Button newGameButton;
         [SerializeField] private Button onParametrsButton;
         [SerializeField] private Button onAutorsButton;
-        
+
         [SerializeField] private Button returnFromNewGameButton;
         [SerializeField] private Button returnFromParametrsButton;
         [SerializeField] private Button returnFromAutorsButton;
-        
+
         [SerializeField] private Button startGameButton;
-        
+
         [SerializeField] private Button resultsCleanerButton;
-        
-        
-        
+
+
         [SerializeField] private GameObject menu;
         [SerializeField] private GameObject newMenu;
         [SerializeField] private GameObject parametrs;
         [SerializeField] private GameObject autors;
-       
+
         private IGameMachineModule _module;
         private IUIServiceLocator _uiServiceLocator;
         private IManagersServiceLocator _managersServiceLocator;
@@ -35,11 +34,11 @@ namespace BsseCode._4._UI.BaseMenu
 
         [Inject]
         public void Construct(
-            IGameMachineModule module, 
-            IUIServiceLocator uiServiceLocator, 
+            IGameMachineModule module,
+            IUIServiceLocator uiServiceLocator,
             IManagersServiceLocator managersServiceLocator,
             IAudioServicesLocator audioServicesLocator
-            )
+        )
         {
             _audioServicesLocator = audioServicesLocator;
             _managersServiceLocator = managersServiceLocator;
@@ -52,11 +51,11 @@ namespace BsseCode._4._UI.BaseMenu
             newGameButton.onClick.AddListener(OnNewGameButton);
             onParametrsButton.onClick.AddListener(OnPrametrs);
             onAutorsButton.onClick.AddListener(OnAutors);
-            
+
             returnFromNewGameButton.onClick.AddListener(OnMenu);
             returnFromParametrsButton.onClick.AddListener(OnMenu);
             returnFromAutorsButton.onClick.AddListener(OnMenu);
-            
+
             startGameButton.onClick.AddListener(StartGame);
             resultsCleanerButton.onClick.AddListener(ResultsCleaner);
         }
@@ -76,6 +75,7 @@ namespace BsseCode._4._UI.BaseMenu
         {
             _audioServicesLocator.AudioManager.PlaySound(_audioServicesLocator.AudioTracksBase.clickExit);
         }
+
         private void EnterLevelSoudPlay()
         {
             _audioServicesLocator.AudioManager.PlaySound(_audioServicesLocator.AudioTracksBase.levelStartSound);
@@ -92,13 +92,13 @@ namespace BsseCode._4._UI.BaseMenu
         void OnMenu()
         {
             ExitSoudPlay();
-            
+
             menu.SetActive(true);
             newMenu.SetActive(false);
             parametrs.SetActive(false);
             autors.SetActive(false);
-            
-        } 
+        }
+
         void OnPrametrs()
         {
             ExitSoudPlay();
@@ -109,7 +109,7 @@ namespace BsseCode._4._UI.BaseMenu
             autors.SetActive(false);
             _uiServiceLocator.UIController.ResultsUI.DisplayResults();
         }
-        
+
         void OnAutors()
         {
             ExitSoudPlay();
@@ -123,9 +123,8 @@ namespace BsseCode._4._UI.BaseMenu
         void ResultsCleaner()
         {
             ExitSoudPlay();
-
-            _managersServiceLocator.ResultsManager.ClearResults();
+            Debug.Log("Fix It!");
+            // _managersServiceLocator.ResultsManager.ClearResults();
         }
-
     }
 }

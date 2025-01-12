@@ -6,4 +6,8 @@ namespace BsseCode._2._Services.GlobalServices.Factory
     {
         T Create(Vector2 position);
     }
+
+    public interface IGlobalService
+    {
+    }
 }

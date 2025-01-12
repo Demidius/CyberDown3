@@ -7,18 +7,18 @@ namespace BsseCode._2._Services.LevelServices.GameResults
     public class ResultsManager : MonoBehaviour
     {
         private const string SaveFileName = "results.json";
-        private List<GameResult> results = new List<GameResult>();
+        private List<GameResultForm> results = new List<GameResultForm>();
 
-        public List<GameResult> Results => results;
+        public List<GameResultForm> Results => results;
 
         private void Awake()
         {
             LoadResults();
         }
 
-        public void AddResult(GameResult result)
+        public void AddResult(GameResultForm resultForm)
         {
-            results.Add(result);
+            results.Add(resultForm);
             SortResults();
             SaveResults();
         }

@@ -21,7 +21,7 @@ namespace BsseCode._2._Services.LevelServices.GameResults
         public void DisplayResults()
         {
             ClearAllResults();
-            List<GameResult> results = _resultsManager.Results;
+            List<GameResultForm> results = _resultsManager.Results;
 
             float yOffset = 0f;
             float spacing = 50f;

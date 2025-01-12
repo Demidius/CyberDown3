@@ -31,8 +31,8 @@ namespace BsseCode._2._Services.LevelServices.GameResults
         public void EndGame()
         {
             _isGameActive = false;
-            GameResult result = new GameResult(Kills, _survivalTime, _resultsManager.GetNumberOfTry());
-            _resultsManager.AddResult(result);
+            GameResultForm resultForm = new GameResultForm(Kills, _survivalTime, _resultsManager.GetNumberOfTry());
+            _resultsManager.AddResult(resultForm);
             // Перейти в меню или выполнить другие действия
         }
         

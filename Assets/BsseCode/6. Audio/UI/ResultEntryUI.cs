@@ -11,11 +11,11 @@ namespace BsseCode._2._Services.LevelServices.GameResults
         public TextMeshProUGUI survivalTimeText;
         public TextMeshProUGUI numberOfTry;
         
-        public void SetResult(GameResult result)
+        public void SetResult(GameResultForm resultForm)
         {
-            killsText.text = $"{result.kills}";
-            survivalTimeText.text = $"{FormatTime(result.survivalTime)}";
-            numberOfTry.text = $"{result.numberOfTry}";
+            killsText.text = $"{resultForm.kills}";
+            survivalTimeText.text = $"{FormatTime(resultForm.survivalTime)}";
+            numberOfTry.text = $"{resultForm.numberOfTry}";
         }
 
         private string FormatTime(float time)

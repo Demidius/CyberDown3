@@ -12,28 +12,29 @@ namespace BsseCode._4._UI.HUD
 
         private IEnergyCounter _energyCounter;
 
-        [Inject]
-        public void Construct(IEnergyCounter energyCounter)
-        {
-            _energyCounter = energyCounter;
-        }
+        // [Inject]
+        // public void Construct(IEnergyCounter energyCounter)
+        // {
+        //     _energyCounter = energyCounter;
+        // }
 
         void Start()
         {
-            UpdateHealthBar();
-            _energyCounter.OnEnergyCountChanged += UpdateHealthBar;
-        }
-
-        private void UpdateHealthBar()
-        { 
-            healthBarImage.fillAmount = Const.MaxEnergyCount > 0 
-                ? (float)_energyCounter.EnergyCount / Const.MaxEnergyCount 
-                : 0;
-        }
-
-        private void OnDestroy()
-        {
-            _energyCounter.OnEnergyCountChanged -= UpdateHealthBar;
+            Debug.Log("EnergyBarHandler not Work");
+        //     UpdateHealthBar();
+        //     _energyCounter.OnEnergyCountChanged += UpdateHealthBar;
+        // }
+        //
+        // private void UpdateHealthBar()
+        // { 
+        //     healthBarImage.fillAmount = Const.MaxEnergyCount > 0 
+        //         ? (float)_energyCounter.EnergyCount / Const.MaxEnergyCount 
+        //         : 0;
+        // }
+        //
+        // private void OnDestroy()
+        // {
+        //     _energyCounter.OnEnergyCountChanged -= UpdateHealthBar;
         }
     }
 }

@@ -4,6 +4,7 @@ using BsseCode._1._StateMachines.GameStateMachine;
 using BsseCode._2._Services.GlobalServices.Coroutines;
 using BsseCode._2._Services.GlobalServices.Handlers;
 using BsseCode._2._Services.GlobalServices.Pools;
+using BsseCode._2._Services.LevelServices.GameResults;
 using BsseCode._2._Services.ServiceLocator;
 using BsseCode._5._GameEntities.UnivercialUtils;
 using UnityEngine;
@@ -37,6 +38,7 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
         private Vector2 _diePosition;
 
         private IEnemyMovement _movement;
+        private KillsController _killsController;
 
         [Inject]
         public void Construct(
@@ -44,9 +46,11 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
             IPoolController poolController,
             ICoroutineGlobalService coroutineGlobalService,
             IGameMachineModule gameMachineModule,
-            IManagersServiceLocator managersServiceLocator
+            IManagersServiceLocator managersServiceLocator,
+            KillsController killsController
         )
         {
+            _killsController = killsController;
             _managersServiceLocator =
                 managersServiceLocator ?? throw new ArgumentNullException(nameof(managersServiceLocator));
             _gameMachineModule =
@@ -114,7 +118,7 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
             _deathEffectsHandler.CreateExplosion(_diePosition);
             audioController.ExplosionSound();
             yield return new WaitForSeconds(0.1f);
-            _managersServiceLocator.KillsController.OnEnemyKilled();
+            _killsController.OnEnemyKilled();
             yield return new WaitForSeconds(0.5f);
             _deathEffectsHandler.CreateResidue(_diePosition);
             yield return new WaitForSeconds(0.2f);

@@ -111,7 +111,8 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 
         private void ResetKillsCounter()
         {
-            _managersServiceLocator.KillsController?.ResetKills();
+            Debug.Log("Fix It!");
+            // _managersServiceLocator.KillsController?.ResetKills();
         }
     }
 }
