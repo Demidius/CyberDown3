@@ -1,12 +1,11 @@
-using NewBaseCode._1._GameMachine;
-using UnityEngine;
+using BsseCode._1._StateMachines.GameStateMachine;
 
-namespace BsseCode._1._StateMachines.GameStateMachine.States
+namespace NewBaseCode._1._GameMachine.States
 {
     public class BootstrapState : IGameState
-    {
+        {
         private IGameMachineModule _gameMachineModule;
-        public BootstrapState(IGameMachineModule gameMachineModule)
+        public BootstrapState (IGameMachineModule gameMachineModule)
         {
             _gameMachineModule = gameMachineModule;
         }

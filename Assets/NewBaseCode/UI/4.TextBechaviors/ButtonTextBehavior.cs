@@ -1,9 +1,8 @@
-using System;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace BsseCode._4._UI.BaseMenu
+namespace NewBaseCode.UI
 {
     public class ButtonTextBehavior : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {

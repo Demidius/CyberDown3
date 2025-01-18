@@ -1,16 +1,14 @@
 using System;
-using BsseCode._1._StateMachines.GameStateMachine.States;
-using NewBaseCode._1._GameMachine;
-using UnityEngine;
-using Zenject;
+using FMOD;
+using Debug = UnityEngine.Debug;
 
-namespace BsseCode._1._StateMachines.GameStateMachine
+namespace NewBaseCode._1._GameMachine
 {
     public interface IGameMachine
     {
         void StartStateMachine();
         void SetState(IGameState newState);
-        
+
         public event Action<IGameState> EnterInState;
     }
 
@@ -24,7 +22,7 @@ namespace BsseCode._1._StateMachines.GameStateMachine
         {
             _gameMachineModule = gameMachineModule;
         }
-       
+
         public void StartStateMachine()
         {
             SetState(_gameMachineModule.BootstrapState);
@@ -35,6 +33,8 @@ namespace BsseCode._1._StateMachines.GameStateMachine
             _currentState?.Exit();
             _currentState = newState;
             _currentState.Enter();
+
+            Debug.Log("In state " + _currentState.GetType().Name);
             
             EnterInState?.Invoke(_currentState);
         }

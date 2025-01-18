@@ -38,13 +38,13 @@ namespace BsseCode._0._Installers
 
         private void RegisterServicesLocaters()
         {
-            Container.Bind<ITimeModule>().To<ITimeModule>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<IUIServiceLocator>().To<UIServiceLocator>().AsSingle();
-            Container.Bind<IManagersServiceLocator>().To<ManagersServiceLocator>().AsSingle();
-            Container.Bind<IReusableServiceLocator>().To<ReusableServiceLocator>().AsSingle();
-            Container.Bind<ICameraServiceLocator>().To<CameraServiceLocator>().AsSingle();
-            Container.Bind<IAudioServicesLocator>().To<AudioServiceLocator>().AsSingle();
-            Container.Bind<PlayerHandler>().FromComponentInHierarchy().AsSingle();
+            // Container.Bind<ITimeModule>().To<ITimeModule>().FromComponentInHierarchy().AsSingle();
+            // Container.Bind<IUIServiceLocator>().To<UIServiceLocator>().AsSingle();
+            // Container.Bind<IManagersServiceLocator>().To<ManagersServiceLocator>().AsSingle();
+            // Container.Bind<IReusableServiceLocator>().To<ReusableServiceLocator>().AsSingle();
+            // Container.Bind<ICameraServiceLocator>().To<CameraServiceLocator>().AsSingle();
+            // Container.Bind<IAudioServicesLocator>().To<AudioServiceLocator>().AsSingle();
+            // Container.Bind<PlayerHandler>().FromComponentInHierarchy().AsSingle();
         }
 
         private void RegisterStateMachine()
@@ -54,35 +54,35 @@ namespace BsseCode._0._Installers
 
         private void RegisterMainServices()
         {
-            Container.Bind<IFactoryComponent>().To<FactoryComponent>().AsSingle();
-            Container.Bind<IRandomizerService>().To<RandomizerService>().AsSingle();
-
-            Container.Bind<IInputGlobalService>().To<PcInputGlobalService>().AsSingle();
-            Container.Bind<UIController>().FromComponentInHierarchy().AsSingle().NonLazy();
-            Container.Bind<IAddressableLoader>().To<AddressableLoader>().FromComponentInHierarchy().AsSingle();
-
-            Container.Bind<IUpdateService>().To<UpdateService>().FromComponentInHierarchy().AsSingle();
+            // Container.Bind<IFactoryComponent>().To<FactoryComponent>().AsSingle();
+            // Container.Bind<IRandomizerService>().To<RandomizerService>().AsSingle();
+            //
+            // Container.Bind<IInputGlobalService>().To<PcInputGlobalService>().AsSingle();
+            // Container.Bind<UIController>().FromComponentInHierarchy().AsSingle().NonLazy();
+            // Container.Bind<IAddressableLoader>().To<AddressableLoader>().FromComponentInHierarchy().AsSingle();
+            //
+            // Container.Bind<IUpdateService>().To<UpdateService>().FromComponentInHierarchy().AsSingle();
         }
       
 
         private void RegisterCameraServices()
         {
-            Container.Bind<CinemachineVirtualCamera>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<Camera>().FromComponentInHierarchy().AsSingle();
+            // Container.Bind<CinemachineVirtualCamera>().FromComponentInHierarchy().AsSingle();
+            // Container.Bind<Camera>().FromComponentInHierarchy().AsSingle();
         }
 
         private void RegisterAudioServices()
         {
-            Container.Bind<AudioTracksBase>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<AudioManager>().FromComponentInHierarchy().AsSingle();
+            // Container.Bind<AudioTracksBase>().FromComponentInHierarchy().AsSingle();
+            // Container.Bind<AudioManager>().FromComponentInHierarchy().AsSingle();
         }
 
         private void RegisterCoroutines()
         {
-            var coroutineRunner = new GameObject("CoroutineRunner").AddComponent<CoroutineRunner>();
-            DontDestroyOnLoad(coroutineRunner);
-            Container.Bind<CoroutineRunner>().FromInstance(coroutineRunner).AsSingle();
-            Container.Bind<ICoroutineGlobalService>().To<CoroutineGlobalService>().AsSingle();
+            // var coroutineRunner = new GameObject("CoroutineRunner").AddComponent<CoroutineRunner>();
+            // DontDestroyOnLoad(coroutineRunner);
+            // Container.Bind<CoroutineRunner>().FromInstance(coroutineRunner).AsSingle();
+            // Container.Bind<ICoroutineGlobalService>().To<CoroutineGlobalService>().AsSingle();
         }
     }
 }

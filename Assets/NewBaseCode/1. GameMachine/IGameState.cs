@@ -1,4 +1,4 @@
-namespace BsseCode._1._StateMachines.GameStateMachine
+namespace NewBaseCode._1._GameMachine
 {
     public interface IGameState
     {

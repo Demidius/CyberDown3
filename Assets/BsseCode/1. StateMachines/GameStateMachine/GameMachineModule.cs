@@ -8,23 +8,23 @@ namespace BsseCode._1._StateMachines.GameStateMachine
 {
     public class GameMachineModule : MonoBehaviour, IGameMachineModule
     {
-        [Inject]
-        void Construct(
-            IAddressableLoader loader,
-            IAudioServicesLocator audioServicesLocator,
-            ICameraServiceLocator cameraServiceLocator,
-            IReusableServiceLocator reusableServiceLocator,
-            IManagersServiceLocator managersServiceLocator,
-            IUIServiceLocator uiServiceLocator)
-        {
-            _audioServiceLocator = audioServicesLocator;
-            _cameraServiceLocator = cameraServiceLocator;
-            _reusableServiceLocator = reusableServiceLocator;
-            _managersServiceLocator = managersServiceLocator;
-            _uiServiceLocator = uiServiceLocator;
-
-            AddressableLoader = loader;
-        }
+        // [Inject]
+        // void Construct(
+        //     IAddressableLoader loader,
+        //     IAudioServicesLocator audioServicesLocator,
+        //     ICameraServiceLocator cameraServiceLocator,
+        //     IReusableServiceLocator reusableServiceLocator,
+        //     IManagersServiceLocator managersServiceLocator,
+        //     IUIServiceLocator uiServiceLocator)
+        // {
+        //     _audioServiceLocator = audioServicesLocator;
+        //     _cameraServiceLocator = cameraServiceLocator;
+        //     _reusableServiceLocator = reusableServiceLocator;
+        //     _managersServiceLocator = managersServiceLocator;
+        //     _uiServiceLocator = uiServiceLocator;
+        //
+        //     AddressableLoader = loader;
+        // }
 
         public IGameMachine GameMachine { get; private set; }
         public BootstrapState BootstrapState { get; private set; }
@@ -60,8 +60,10 @@ namespace BsseCode._1._StateMachines.GameStateMachine
         {
             GameplayState =
                 new GameplayState(this, _uiServiceLocator, _managersServiceLocator, _reusableServiceLocator);
-            MenuState = new MainMenuState(this, _uiServiceLocator, _managersServiceLocator, _audioServiceLocator);
-            LoadingState = new LoadingState(this);
+            MenuState = 
+                new MainMenuState(this, _uiServiceLocator, _managersServiceLocator, _audioServiceLocator);
+            LoadingState = 
+                new LoadingState(this);
         }
 
         private void CreateStarterStates()

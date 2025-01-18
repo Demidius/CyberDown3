@@ -2,6 +2,7 @@ using System.Collections;
 using BsseCode._2._Services.GlobalServices.Coroutines;
 using BsseCode._2._Services.ServiceLocator;
 using BsseCode._3._SupportCode.Tags;
+using NewBaseCode._1._GameMachine;
 using UnityEngine;
 
 namespace BsseCode._1._StateMachines.GameStateMachine.States

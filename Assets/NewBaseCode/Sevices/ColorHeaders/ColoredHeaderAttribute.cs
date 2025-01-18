@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BsseCode._3._SupportCode.ColorHeaders
+namespace NewBaseCode.Sevices.ColorHeaders
 {
     public class ColoredHeaderAttribute : PropertyAttribute
     {
