@@ -25,9 +25,9 @@ namespace BsseCode._5._GameEntities.Hero
             
         }
 
-        public void PlayStep()
-        {
-            _audioServicesLocator.AudioManager.PlaySound(_audioServicesLocator.AudioTracksBase.stepEvent, useInstance: false, position: _playerHandler.CurrentPlayer.transform.position);
-        }
+        // public void PlayStep()
+        // {
+        //     _audioServicesLocator.AudioManager.PlaySound(_audioServicesLocator.AudioTracksBase.stepEvent, useInstance: false, position: _playerHandler.CurrentPlayer.transform.position);
+        // }
     }
 }

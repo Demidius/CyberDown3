@@ -1,10 +1,9 @@
 using BsseCode._1._StateMachines.GameStateMachine;
 using BsseCode._2._Services.ServiceLocator;
 using BsseCode._5._GameEntities.Hero;
-using BsseCode._6._Audio.Data;
-using BsseCode._6._Audio.Managers;
 using FMOD.Studio;
 using FMODUnity;
+using NewBaseCode._4._Audio.Data;
 using UnityEngine;
 using Zenject;
 
@@ -29,7 +28,7 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
 
         private void OnEnable()
         {
-            PlayRunning();
+            // PlayRunning();
         }
 
         private void OnDisable()
@@ -37,21 +36,21 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
             StopRunning();
         }
 
-        public void PlayRunning()
-        {
-            if (_audioTracksBase != null && _audioServicesLocator.AudioManager != null)
-            {
-                _spiderRunInstance = _audioServicesLocator.AudioManager.PlaySoundWithInstance(
-                    _audioTracksBase.spiderRun,
-                    useInstance: true,
-                    position: this.transform.position
-                );
-            }
-            else
-            {
-                Debug.LogWarning("Spider run audio track or AudioManager is not set.");
-            }
-        }
+        // public void PlayRunning()
+        // {
+        //     if (_audioTracksBase != null && _audioServicesLocator.AudioManager != null)
+        //     {
+        //     //     _spiderRunInstance = _audioServicesLocator.AudioManager.PlaySoundWithInstance(
+        //     //         // // _audioTracksBase.spiderRun,
+        //     //         // useInstance: true,
+        //     //         // position: this.transform.position
+        //     //     // );
+        //     // }
+        //     else
+        //     {
+        //         Debug.LogWarning("Spider run audio track or AudioManager is not set.");
+        //     }
+        // }
 
         private void Update()
         {
@@ -72,18 +71,18 @@ namespace BsseCode._5._GameEntities.Objects.Enemy
 
         public void ExplosionSound()
         {
-            if (_audioTracksBase != null && _audioServicesLocator.AudioManager != null)
-            {
-                _audioServicesLocator.AudioManager.PlaySound(
-                    _audioTracksBase.explosionSound,
-                    useInstance: false,
-                    position: this.transform.position
-                );
-            }
-            else
-            {
-                Debug.LogWarning("Explosion sound or AudioManager is not set.");
-            }
+            // if (_audioTracksBase != null && _audioServicesLocator.AudioManager != null)
+            // {
+            //     _audioServicesLocator.AudioManager.PlaySound(
+            //         _audioTracksBase.explosionSound,
+            //         useInstance: false,
+            //         position: this.transform.position
+            //     );
+            // }
+            // else
+            // {
+            //     Debug.LogWarning("Explosion sound or AudioManager is not set.");
+            // }
         }
     }
 }

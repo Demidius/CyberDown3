@@ -73,12 +73,12 @@ namespace BsseCode._4._UI.BaseMenu
 
         private void ExitSoudPlay()
         {
-            _audioServicesLocator.AudioManager.PlaySound(_audioServicesLocator.AudioTracksBase.clickExit);
+            // _audioServicesLocator.AudioManager.PlaySound(_audioServicesLocator.AudioTracksBase.clickExit);
         }
 
         private void EnterLevelSoudPlay()
         {
-            _audioServicesLocator.AudioManager.PlaySound(_audioServicesLocator.AudioTracksBase.levelStartSound);
+            // _audioServicesLocator.AudioManager.PlaySound(_audioServicesLocator.AudioTracksBase.levelStartSound);
         }
 
         private void StartGame()

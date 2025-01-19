@@ -69,13 +69,13 @@ namespace BsseCode._1._StateMachines.GameStateMachine.States
 
         private void PlayMenuMusic()
         {
-            _audioServicesLocator.AudioManager?.PlaySound(_audioServicesLocator.AudioTracksBase.musicMenu1,
-                useInstance: true);
+            // _audioServicesLocator.AudioManager?.PlaySound(_audioServicesLocator.AudioTracksBase.musicMenu1,
+            //     useInstance: true);
         }
 
         private void StopMenuMusic()
         {
-            _audioServicesLocator.AudioManager?.StopSound(_audioServicesLocator.AudioTracksBase.musicMenu1);
+            // _audioServicesLocator.AudioManager?.StopSound(_audioServicesLocator.AudioTracksBase.musicMenu1);
         }
 
         private void DestroyExistingPlayer()

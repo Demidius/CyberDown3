@@ -44,8 +44,8 @@ namespace BsseCode._2._Services.LevelServices.BulletCounter
             {
                 EnergyCount += _randomizerService.GetRandomValue(Const.MinValueEnergyFromLoot, Const.MaxValueEnergyFromLoot);
 
-                _audioServicesLocator.AudioManager.PlaySound(_audioServicesLocator.AudioTracksBase.refillEnergyBarSound, useInstance: false,
-                    position: this.transform.position);
+                // _audioServicesLocator.AudioManager.PlaySound(_audioServicesLocator.AudioTracksBase.refillEnergyBarSound, useInstance: false,
+                //     position: this.transform.position);
 
                 if (EnergyCount > Const.MaxEnergyCount) // Исправление: если энергия превышает максимум
                 {
@@ -56,8 +56,8 @@ namespace BsseCode._2._Services.LevelServices.BulletCounter
                 return true;
             }
 
-            _audioServicesLocator.AudioManager.PlaySound(_audioServicesLocator.AudioTracksBase.energyBarIsFullSound, useInstance: false,
-                position: this.transform.position);
+            // _audioServicesLocator.AudioManager.PlaySound(_audioServicesLocator.AudioTracksBase.energyBarIsFullSound, useInstance: false,
+            //     position: this.transform.position);
             return false;
         }
 

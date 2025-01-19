@@ -3,7 +3,6 @@ using BsseCode._2._Services.GlobalServices.InputFol;
 using BsseCode._2._Services.LevelServices.BulletCounter;
 using BsseCode._2._Services.ServiceLocator;
 using BsseCode._5._GameEntities.Objects.Bullet;
-using BsseCode._6._Audio.Data;
 using UnityEngine;
 using Zenject;
 
@@ -65,13 +64,13 @@ namespace BsseCode._2._Services.GlobalServices.Pools.BulletPool
             }
             else
             {
-                _audioServicesLocator.AudioManager.PlaySound(_audioServicesLocator.AudioTracksBase.emptyBarSound, useInstance: false, position: this.transform.position);
+                // _audioServicesLocator.AudioManager.PlaySound(_audioServicesLocator.AudioTracksBase.emptyBarSound, useInstance: false, position: this.transform.position);
             }
         }
 
         private void PlaySound()
         {
-            _audioServicesLocator.AudioManager.PlaySound(_audioServicesLocator.AudioTracksBase.shootTrack, useInstance: false, position: this.transform.position);
+            // _audioServicesLocator.AudioManager.PlaySound(_audioServicesLocator.AudioTracksBase.shootTrack, useInstance: false, position: this.transform.position);
         }
     }
 }

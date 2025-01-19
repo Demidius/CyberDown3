@@ -23,10 +23,10 @@ namespace BsseCode._5._GameEntities.Objects.Beacon
 
         void Start()
         {
-            _beaconSoundInstance = _audioServicesLocator.AudioManager.PlaySoundWithInstance(_audioServicesLocator.AudioTracksBase.beaconSound,
-                useInstance: true,
-                position: this.transform.position
-            );
+            // // _beaconSoundInstance = _audioServicesLocator.AudioManager.PlaySoundWithInstance(_audioServicesLocator.AudioTracksBase.beaconSound,
+            //     useInstance: true,
+            //     position: this.transform.position
+            // );
         }
 
         private void OnDestroy()

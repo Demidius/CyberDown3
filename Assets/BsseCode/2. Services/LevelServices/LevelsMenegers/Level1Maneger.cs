@@ -42,18 +42,18 @@ namespace BsseCode._2._Services.LevelServices.LevelsMenegers
 
         private void StartSlowmotionSound()
         {
-            _slowMotionSoundInstance = _audioServicesLocator.AudioManager.PlaySoundWithInstance(_audioServicesLocator.AudioTracksBase.slowMotionSound,
-                useInstance: true,
-                position: this.transform.position
-            );
+            // _slowMotionSoundInstance = _audioServicesLocator.AudioManager.PlaySoundWithInstance(_audioServicesLocator.AudioTracksBase.slowMotionSound,
+            //     useInstance: true,
+            //     position: this.transform.position
+            // );
         }
 
         private void StartLevelMusic()
         {
-            _levelMusicInstance = _audioServicesLocator.AudioManager.PlaySoundWithInstance(_audioServicesLocator.AudioTracksBase.music1,
-                useInstance: true,
-                position: this.transform.position
-            );
+            // _levelMusicInstance = _audioServicesLocator.AudioManager.PlaySoundWithInstance(_audioServicesLocator.AudioTracksBase.music1,
+            //     useInstance: true,
+            //     position: this.transform.position
+            // );
         }
 
         void Update()
