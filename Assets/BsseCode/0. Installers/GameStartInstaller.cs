@@ -2,7 +2,6 @@ using BsseCode._1._StateMachines.GameStateMachine;
 using BsseCode._2._Services.BaseSceneService;
 using BsseCode._2._Services.GlobalServices.Addressable;
 using BsseCode._2._Services.GlobalServices.BeaconHandler;
-using BsseCode._2._Services.GlobalServices.Coroutines;
 using BsseCode._2._Services.GlobalServices.Factory;
 using BsseCode._2._Services.GlobalServices.InputFol;
 using BsseCode._2._Services.GlobalServices.PlayerHandlerFl;

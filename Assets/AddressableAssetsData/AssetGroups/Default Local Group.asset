@@ -17,6 +17,16 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 48c827e12c8d462418e41812821f481a
   m_SerializeEntries:
+  - m_GUID: 0af4f4320dc7a8f42ab152ced0d888e8
+    m_Address: Assets/1. Scenes/Level1.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a5565949d7c2d114abefa1160cf1f7a4
+    m_Address: PoolPrefabScObj1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ca7b8f1be677fb24087bf138ad18ad38
     m_Address: Prefabs/Empty
     m_ReadOnly: 0

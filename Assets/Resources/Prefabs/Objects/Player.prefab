@@ -82,7 +82,7 @@ SpriteRenderer:
   m_Size: {x: 0.125, y: 0.375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &2432284368151515132
@@ -117,8 +117,8 @@ GameObject:
   - component: {fileID: 4523540356751944767}
   - component: {fileID: 6275451067027568444}
   - component: {fileID: 1997144434694063362}
-  - component: {fileID: 9192550097228324437}
   - component: {fileID: 4558736541664264078}
+  - component: {fileID: 7606858052812183845}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -185,18 +185,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementHeroDirection: {x: 0, y: 0}
---- !u!114 &9192550097228324437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 404093767089904752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c9929b21be54d8894957b59a02dfec3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4558736541664264078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +199,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nonRigidbodyVelocity: 0
   attenuationObject: {fileID: 6047075387832432016}
+--- !u!114 &7606858052812183845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404093767089904752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f57381da2334efeb8d86046bf8edad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &549822260383071372
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,13 +343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 833a5811c5d24ff0acd1718fc38c2911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stepEvent:
-    Guid:
-      Data1: -605703209
-      Data2: 1295939844
-      Data3: 1073312703
-      Data4: -1042742683
-    Path: event:/STEPS/Sand Steps
 --- !u!1 &2762718058034439767
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,7 +612,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6047075387832432016
@@ -683,13 +676,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletSpawnPoint: {fileID: 7576504782784063509}
-  shootEvent:
-    Guid:
-      Data1: -722199231
-      Data2: 1108135508
-      Data3: 479890827
-      Data4: 935721338
-    Path: event:/SHOOTING/BLASTER SHOOT
 --- !u!1 &8095750306185753454
 GameObject:
   m_ObjectHideFlags: 0

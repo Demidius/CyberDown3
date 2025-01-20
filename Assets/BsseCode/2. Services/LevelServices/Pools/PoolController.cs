@@ -14,7 +14,7 @@ namespace BsseCode._2._Services.GlobalServices.Pools
 
     public class PoolController : MonoBehaviour, IPoolController
     {
-        [SerializeField] private PoolPrefabScObj poolPrefabScObj;
+        // [SerializeField] private PoolPrefabScObj poolPrefabScObj;
          private int startPoolSize = 25;
 
         private Dictionary<Type, object> _poolsDictionary;
@@ -33,10 +33,10 @@ namespace BsseCode._2._Services.GlobalServices.Pools
 
         private void Start()
         {
-            foreach (var poolElement in poolPrefabScObj.PoolPrefabs)
-            {
-                RegisterPool(poolElement);
-            }
+            // foreach (var poolElement in poolPrefabScObj.PoolPrefabs)
+            // {
+            //     RegisterPool(poolElement);
+            // }
         }
 
         private void RegisterPool(GameObject poolElement)

@@ -1,5 +1,5 @@
-using NewBaseCode._4._Audio.Data;
-using NewBaseCode._4._Audio.Managers;
+using _2_NewBaseCode.BaseSceneCode._4._Audio.Data;
+using _2_NewBaseCode.BaseSceneCode._4._Audio.Managers;
 using Zenject;
 
 namespace BsseCode._2._Services.ServiceLocator
