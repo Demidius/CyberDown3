@@ -7,8 +7,12 @@ namespace _2_NewBaseCode.BaseSceneCode._2._Sevices._1._SupportServices._1._Const
         public const float HoverScale = 1.1f; // Размер при наведении
         public const float AnimationDuration = 0.2f; // Длительность анимации
         
+        //universal
+        public const string Horizontal = "Horizontal";
+        public const string Vertical = "Vertical";
+        public const string Run = "Run";
         
-        
+        public const float MoveSpeed = 0.03f;
         
         
         
@@ -20,10 +24,7 @@ namespace _2_NewBaseCode.BaseSceneCode._2._Sevices._1._SupportServices._1._Const
         // public const string Menu = "Menu";
         // public const string Game = "Level1";
         //
-        // public const string Run = "Run";
         //
-        // public const string Horizontal = "Horizontal";
-        // public const string Vertical = "Vertical";
         //
         // public const float SpeedEnemy = 3.5f;
         // public const float SpeedPlayer = 4f;

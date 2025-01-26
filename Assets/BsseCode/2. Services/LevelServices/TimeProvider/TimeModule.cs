@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace BsseCode._2._Services.GlobalServices.TimeProvider
+namespace BsseCode._2._Services.LevelServices.TimeProvider
 {
     public interface ITimeModule
     {
@@ -31,7 +31,6 @@ namespace BsseCode._2._Services.GlobalServices.TimeProvider
         {
             return _currentTimeScale;
         }
-
 
         public void SetNewTimeScale(float newTimeScale)
         {

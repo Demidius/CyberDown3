@@ -1,4 +1,5 @@
 using BsseCode._2._Services.GlobalServices.TimeProvider;
+using BsseCode._2._Services.LevelServices.TimeProvider;
 using UnityEngine;
 using Zenject;
 

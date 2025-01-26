@@ -1,4 +1,5 @@
 using BsseCode._2._Services.GlobalServices.TimeProvider;
+using BsseCode._2._Services.LevelServices.TimeProvider;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -6,8 +7,6 @@ using Zenject;
 namespace BsseCode._2._Services.LevelServices.TimerLevel
 
     {
-
-
         public class TimerLevel : MonoBehaviour, ITimerLevel
         {
             [SerializeField] private TextMeshProUGUI timerText;

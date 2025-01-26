@@ -11,8 +11,6 @@ namespace BsseCode._5._GameEntities.Hero
         {
             PlayerObject = player;
         }
-        
-        
     }
 
     public interface IPlayerModule

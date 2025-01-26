@@ -1,6 +1,6 @@
 using _2_NewBaseCode.BaseSceneCode._2._Sevices._1._SupportServices.Coroutines;
 using BsseCode._2._Services.GlobalServices.InputFol;
-using BsseCode._2._Services.GlobalServices.TimeProvider;
+using BsseCode._2._Services.LevelServices.TimeProvider;
 using Cinemachine;
 using Zenject;
 

@@ -1,23 +1,31 @@
-using _2_NewBaseCode.BaseSceneCode._2._Sevices.Spawners.PlayerHandlerFl;
 using _2_NewBaseCode.Level1._2_Level1Services.Factory;
 using _2_NewBaseCode.Level1._2_Level1Services.Pools;
+using _2_NewBaseCode.Level1.Entites.Player;
+using _2_NewBaseCode.Level1.Entites.Player.PlayerEllements;
 using Zenject;
 
 namespace _2_NewBaseCode.Level1._0._Installers
 {
     public class Level1Installers : MonoInstaller
     {
+        
         public override void InstallBindings()
         {
             RegisterServices();
+            // Container.Bind<IPlayerBase>().To<PlayerBase>().FromComponentInNewPrefab(basePlayerPrefab).AsSingle();
+            // Container.Bind<IPlayersBodyBase>().To<PlayersBodyBase>().FromComponentInNewPrefab(basePlayerPrefab)
+            //     .AsSingle();
+            // Container.Bind<IPlayersLegsBase>().To<PlayersLegsBase>().FromComponentInNewPrefab(basePlayerPrefab)
+            //     .AsSingle();
         }
 
         private void RegisterServices()
         {
             Container.Bind<IFactoryComponent>().To<FactoryComponent>().AsSingle();
             Container.Bind<IPoolController>().To<PoolController>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<IPlayerHandler>().To<PlayerHandler>().FromComponentInHierarchy().AsSingle();
-            
+            Container.Bind<IPlayerHandler>().To<PlayerHandler>().FromComponentsInHierarchy().AsSingle();
+            Container.Bind<IObjectRotation>().To<ObjectRotation>().FromComponentsInHierarchy().AsSingle();
         }
     }
 }
+

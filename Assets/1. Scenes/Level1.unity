@@ -634502,10 +634502,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 551447491}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f07c8d17a913496d9b554a4121f7b9cb, type: 3}
+  m_Script: {fileID: 11500000, guid: ac4a5e39edfb4770b6c5dca6b37ff181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefs: {fileID: 7606858052812183845, guid: e6bc26b27227135448361af5d26b0bed, type: 3}
 --- !u!1 &684239137
 GameObject:
   m_ObjectHideFlags: 0
@@ -634816,6 +634815,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb9a38d790b432b8e3309a137dda8b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basePlayerPrefab: {fileID: 0}
+  playersBodyBasePrefab: {fileID: 0}
+  playersLegsBasePrefab: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
