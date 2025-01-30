@@ -74,6 +74,7 @@ namespace _2_NewBaseCode.BaseSceneCode._0._Installers
         {
             Container.Bind<IMenuPanelsController>().To<MenuPanelsController>().FromComponentInHierarchy().AsSingle();
             Container.Bind<ILoadPanelController>().To<LoadPanelController>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<IPausePanelController>().To<PausePanelController>().FromComponentInHierarchy().AsSingle();
             // Container.Bind<IMenuButtonsController>().To<MenuButtonsController>().FromComponentInHierarchy().AsSingle();
 
         }

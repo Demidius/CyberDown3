@@ -17,6 +17,7 @@ namespace _2_NewBaseCode.BaseSceneCode._1_GameMachine
         private IInputSwitcher _inputSwitcher;
         private IStateSwitcher _stateSwitcher;
         private IInputService _inputService;
+        private IPausePanelController _pausePanelController;
 
         public IGameMachine GameMachine { get; private set; }
         public BootstrapState BootstrapState { get; private set; }
@@ -30,6 +31,7 @@ namespace _2_NewBaseCode.BaseSceneCode._1_GameMachine
         [Inject]
         void Construct(
             IMenuPanelsController menuPanelsController,
+            IPausePanelController pausePanelController,
             IMusicController musicController,
             ILoadPanelController loadPanelController,
             IInputSwitcher inputSwitcher,
@@ -37,6 +39,7 @@ namespace _2_NewBaseCode.BaseSceneCode._1_GameMachine
             IStateSwitcher stateSwitcher
             )
         {
+            _pausePanelController = pausePanelController;
             _inputService = inputService;
             _inputSwitcher = inputSwitcher;
             _stateSwitcher = stateSwitcher;
@@ -69,7 +72,7 @@ namespace _2_NewBaseCode.BaseSceneCode._1_GameMachine
             GameState = new GameState(this, _inputSwitcher, _inputService, _stateSwitcher );
             GameMachine = new GameMachine(this);
             LoadState = new LoadState(this, _loadPanelController);
-            PauseState = new PauseState(this, _inputSwitcher, _inputService, _stateSwitcher );
+            PauseState = new PauseState(this, _inputSwitcher, _inputService, _stateSwitcher, _pausePanelController );
         }
     }
 
