@@ -1,0 +1,56 @@
+using _2_NewBaseCode.BaseSceneCode._2_Sevices.InputFol;
+using _2_NewBaseCode.BaseSceneCode._2._Sevices.InputFol;
+using UnityEngine;
+
+namespace _2_NewBaseCode.BaseSceneCode._1_GameMachine.States
+{
+    public class PauseState : IGameState
+    {
+        private IGameMachineModule _gameMachineModule;
+        private IInputSwitcher _inputSwitcher;
+        private IInputService _inputService;
+        private IStateSwitcher _stateSwitcher;
+
+        public PauseState(
+            IGameMachineModule gameMachineModule,
+            IInputSwitcher inputSwitcher,
+            IInputService inputService,
+            IStateSwitcher stateSwitcher
+        )
+        {
+            _stateSwitcher = stateSwitcher;
+            _inputService = inputService;
+            _inputSwitcher = inputSwitcher;
+            _gameMachineModule = gameMachineModule;
+        }
+
+        public void Enter()
+        {
+            Debug.Log("Pause State Enter");
+            
+            StateInitialize();
+            
+            _inputService.EscapeKeyDown += EscapeOnGame;
+        }
+        private void EscapeOnGame()
+        {
+            _stateSwitcher.SetGameplayState();
+        }
+        public void Update()
+        {
+            
+        }
+
+        private void StateInitialize()
+        {
+            _inputSwitcher.SetPauseInput();
+            Time.timeScale = 0f;
+        }
+
+        public void Exit()
+        {
+            _inputService.EscapeKeyDown -= EscapeOnGame;
+            Time.timeScale = 1f;
+        }
+    }
+}

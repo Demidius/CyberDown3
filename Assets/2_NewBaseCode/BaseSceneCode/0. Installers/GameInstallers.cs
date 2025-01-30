@@ -1,4 +1,6 @@
-using _2_NewBaseCode.BaseSceneCode._1._GameMachine;
+using _2_NewBaseCode.BaseSceneCode._1_GameMachine;
+using _2_NewBaseCode.BaseSceneCode._1_GameMachine.States;
+using _2_NewBaseCode.BaseSceneCode._2_Sevices.InputFol;
 using _2_NewBaseCode.BaseSceneCode._2._Sevices._1._SupportServices.Coroutines;
 using _2_NewBaseCode.BaseSceneCode._2._Sevices._1._SupportServices.UnivercialUtils;
 using _2_NewBaseCode.BaseSceneCode._2._Sevices.Addressable;
@@ -10,6 +12,7 @@ using _2_NewBaseCode.BaseSceneCode._4._Audio;
 using _2_NewBaseCode.BaseSceneCode._4._Audio.Data;
 using _2_NewBaseCode.BaseSceneCode._4._Audio.Managers;
 using _2_NewBaseCode.BaseSceneCode.PlayerPrefabManeger;
+using NewBaseCode.BaseScene.Services.TimeModule;
 using Zenject;
 
 namespace _2_NewBaseCode.BaseSceneCode._0._Installers
@@ -29,7 +32,8 @@ namespace _2_NewBaseCode.BaseSceneCode._0._Installers
 
         private void RegisterInputService()
         {
-            Container.Bind<IInputService>().To<InputService>().FromComponentsInHierarchy().AsSingle();
+            Container.Bind<IInputService>().To<InputServiceGameState>().FromComponentsInHierarchy().AsSingle();
+            Container.Bind<IInputSwitcher>().To<InputSwitcher>().FromComponentsInHierarchy().AsSingle();
             
             // Container.Bind<ITickable>().To<PcInputGlobalService>().AsSingle();
         }
@@ -41,6 +45,7 @@ namespace _2_NewBaseCode.BaseSceneCode._0._Installers
 
         private void RegisterServices()
         {
+            Container.Bind<ITimeManager>().To<TimeManager>().FromComponentInHierarchy().AsSingle();
             Container.Bind<ICoroutineGlobalService>().To<CoroutineGlobalService>().AsSingle();
             Container.Bind<CoroutineRunner>().FromComponentInHierarchy().AsSingle().NonLazy();
             Container.Bind<IPlayerPrefabsDate>().To<PlayerPrefabsDate>().FromComponentInHierarchy().AsSingle();
@@ -77,8 +82,9 @@ namespace _2_NewBaseCode.BaseSceneCode._0._Installers
         private void RegisterStateMachine()
         {
             Container.Bind<IGameMachineModule>().To<GameMachineModule>().FromComponentInHierarchy().AsSingle().NonLazy();
-            Container.Bind<ILevelLoadingController>().To<LevelLoadingController>().FromComponentInHierarchy().AsSingle().NonLazy();
-            
+            // Container.Bind<ILevelLoadingController>().To<LevelLoadingController>().FromComponentInHierarchy().AsSingle().NonLazy();
+            Container.Bind<IStateSwitcher>().To<StateSwitcher>().FromComponentInHierarchy().AsSingle();
+
         }
     }
 }

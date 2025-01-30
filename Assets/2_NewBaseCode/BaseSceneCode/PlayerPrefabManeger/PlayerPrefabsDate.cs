@@ -1,6 +1,5 @@
 using System;
-using _2_NewBaseCode.Level1.Entites.Player;
-using _2_NewBaseCode.Level1.Entites.Player.PlayerBaseCode;
+using _2_NewBaseCode.Level1.Entites._1_Player._2_PlayerBaseCode;
 using UnityEngine;
 
 namespace _2_NewBaseCode.BaseSceneCode.PlayerPrefabManeger

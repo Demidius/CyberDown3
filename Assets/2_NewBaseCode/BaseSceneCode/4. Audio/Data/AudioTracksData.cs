@@ -16,7 +16,7 @@ namespace _2_NewBaseCode.BaseSceneCode._4._Audio.Data
         }
 
         // public EventReference shootTrack;
-        // public EventReference stepEvent;
+        public EventReference playerSteps;
         // public EventReference music1;
         public EventReference musicMenu;
         // public EventReference spiderRun;
@@ -36,7 +36,7 @@ namespace _2_NewBaseCode.BaseSceneCode._4._Audio.Data
         private void Start()
         {
             // _audioManager.InitializeSoundPool(shootTrack, 30);
-            // _audioManager.InitializeSoundPool(stepEvent,30);
+            _audioManager.InitializeSoundPool(playerSteps,30);
             // _audioManager.InitializeSoundPool(music1, 3);
             _audioManager.InitializeSoundPool(musicMenu, 3);
             // _audioManager.InitializeSoundPool(spiderRun, 30);

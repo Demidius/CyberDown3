@@ -1,4 +1,4 @@
-using _2_NewBaseCode.BaseSceneCode._1._GameMachine;
+using _2_NewBaseCode.BaseSceneCode._1_GameMachine;
 using BsseCode._2._Services.ServiceLocator;
 using UnityEngine;
 
