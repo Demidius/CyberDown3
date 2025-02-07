@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace _2_NewBaseCode.BaseSceneCode._2._Sevices._1._SupportServices.ColorHeaders
+namespace _2_NewBaseCode.BaseSceneCode._2_Sevices._1_SupportServices.ColorHeaders
 {
     [CustomPropertyDrawer(typeof(ColoredHeaderAttribute))]
     public class ColoredHeaderDrawer : DecoratorDrawer

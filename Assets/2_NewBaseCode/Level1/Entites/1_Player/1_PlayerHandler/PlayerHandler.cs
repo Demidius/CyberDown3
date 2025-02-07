@@ -7,7 +7,7 @@ namespace _2_NewBaseCode.Level1.Entites._1_Player._1_PlayerHandler
 {
     public class PlayerHandler : MonoBehaviour, IPlayerHandler
     {
-        private IFactoryComponent _factoryComponent;
+        private IFactory1 _factory1;
         private IPlayerPrefabsDate _playerPrefabsDate;
 
         private PlayerComponent _currentPlayerBase;
@@ -18,21 +18,21 @@ namespace _2_NewBaseCode.Level1.Entites._1_Player._1_PlayerHandler
         [Inject]
         void Construct(
             IPlayerPrefabsDate playerPrefabsDate,
-            IFactoryComponent factoryComponent
+            IFactory1 factory1
         )
         {
             _playerPrefabsDate = playerPrefabsDate;
-            _factoryComponent = factoryComponent;
+            _factory1 = factory1;
         }
        
         public void CreatePlayer()
         {
-            _currentPlayerBase = _factoryComponent.Create(_playerPrefabsDate.GetCurrentPlayerBase());
+            _currentPlayerBase = _factory1.Create(_playerPrefabsDate.GetCurrentPlayerBase());
             
-            _currentBody = _factoryComponent.Create(_playerPrefabsDate.GetCurrentPlayerBody());
+            _currentBody = _factory1.Create(_playerPrefabsDate.GetCurrentPlayerBody());
             _currentBody.transform.SetParent(_currentPlayerBase.transform);
             
-            _currentLegs = _factoryComponent.Create(_playerPrefabsDate.GetCurrentPlayerLegs());
+            _currentLegs = _factory1.Create(_playerPrefabsDate.GetCurrentPlayerLegs());
             _currentLegs.transform.SetParent(_currentPlayerBase.transform);
 
             RegistrationPlayer();

@@ -10,13 +10,13 @@ namespace _2_NewBaseCode.Level1._2_Level1Services.Pools
         public Transform Container { get; }
 
         private readonly Queue<T> pool = new();
-        private readonly IFactoryComponent _factoryComponent;
+        private readonly IFactory1 _factory1;
 
-        public PoolComponent(T prefab, int count, Transform container, IFactoryComponent factoryComponent)
+        public PoolComponent(T prefab, int count, Transform container, IFactory1 factory1)
         {
             PrefabObject = prefab;
             Container = container;
-            _factoryComponent = factoryComponent;
+            _factory1 = factory1;
 
             Instantiate(count);
         }
@@ -42,7 +42,7 @@ namespace _2_NewBaseCode.Level1._2_Level1Services.Pools
 
         private T CreateComponent()
         {
-            var createdObject = _factoryComponent.Create(PrefabObject);
+            var createdObject = _factory1.Create(PrefabObject);
             createdObject.transform.SetParent(Container);
             createdObject.gameObject.SetActive(false);
             return createdObject;

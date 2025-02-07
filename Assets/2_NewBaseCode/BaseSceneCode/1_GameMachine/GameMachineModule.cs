@@ -1,7 +1,8 @@
 using System;
 using _2_NewBaseCode.BaseSceneCode._1_GameMachine.States;
 using _2_NewBaseCode.BaseSceneCode._2_Sevices.InputFol;
-using _2_NewBaseCode.BaseSceneCode._2._Sevices.InputFol;
+// using _2_NewBaseCode.BaseSceneCode._2_Sevices.InputFol;
+// using _2_NewBaseCode.BaseSceneCode._2._Sevices.InputFol;
 using _2_NewBaseCode.BaseSceneCode._3._UI._1.Controllers;
 using _2_NewBaseCode.BaseSceneCode._4._Audio;
 using UnityEngine;
@@ -14,10 +15,9 @@ namespace _2_NewBaseCode.BaseSceneCode._1_GameMachine
         private IMenuPanelsController _menuPanelsController;
         private IMusicController _musicController;
         private ILoadPanelController _loadPanelController;
-        private IInputSwitcher _inputSwitcher;
         private IStateSwitcher _stateSwitcher;
-        private IInputService _inputService;
         private IPausePanelController _pausePanelController;
+        private IInputController _inputController;
 
         public IGameMachine GameMachine { get; private set; }
         public BootstrapState BootstrapState { get; private set; }
@@ -34,14 +34,12 @@ namespace _2_NewBaseCode.BaseSceneCode._1_GameMachine
             IPausePanelController pausePanelController,
             IMusicController musicController,
             ILoadPanelController loadPanelController,
-            IInputSwitcher inputSwitcher,
-            IInputService inputService,
-            IStateSwitcher stateSwitcher
+            IStateSwitcher stateSwitcher,
+            IInputController inputController
             )
         {
+            _inputController = inputController;
             _pausePanelController = pausePanelController;
-            _inputService = inputService;
-            _inputSwitcher = inputSwitcher;
             _stateSwitcher = stateSwitcher;
             _loadPanelController = loadPanelController;
             _musicController = musicController;
@@ -63,16 +61,16 @@ namespace _2_NewBaseCode.BaseSceneCode._1_GameMachine
 
         private void CreateBasicStates()
         {
-            MenuState = new MainMenuState(this, _menuPanelsController, _musicController, _inputSwitcher);
+            MenuState = new MainMenuState(this, _menuPanelsController, _musicController, _inputController);
         }
 
         private void CreateStarterStates()
         {
             BootstrapState = new BootstrapState(this, _stateSwitcher);
-            GameState = new GameState(this, _inputSwitcher, _inputService, _stateSwitcher );
+            GameState = new GameState(this, _stateSwitcher, _inputController);
             GameMachine = new GameMachine(this);
             LoadState = new LoadState(this, _loadPanelController);
-            PauseState = new PauseState(this, _inputSwitcher, _inputService, _stateSwitcher, _pausePanelController );
+            PauseState = new PauseState(this, _stateSwitcher, _pausePanelController ); 
         }
     }
 

@@ -4,6 +4,7 @@ using _2_NewBaseCode.Level1._2_Level1Services.Factory;
 using UnityEngine;
 using Zenject;
 
+
 namespace _2_NewBaseCode.Level1._2_Level1Services.Pools
 {
     public class PoolController : MonoBehaviour, IPoolController
@@ -12,12 +13,12 @@ namespace _2_NewBaseCode.Level1._2_Level1Services.Pools
         [SerializeField] private Transform poolParentContainer;  // Родительский объект для всех пулов
 
         private readonly Dictionary<Type, object> _poolsDictionary = new();
-        private IFactoryComponent _factoryComponent;
+        private IFactory1 _factory1;
 
         [Inject]
-        public void Construct(IFactoryComponent factoryComponent)
+        public void Construct(IFactory1 factory1)
         {
-            _factoryComponent = factoryComponent;
+            _factory1 = factory1;
         }
 
         private void Start()
@@ -91,7 +92,7 @@ namespace _2_NewBaseCode.Level1._2_Level1Services.Pools
                 prefabComponent,
                 25, // Начальный размер пула
                 poolContainer,
-                _factoryComponent
+                _factory1
             );
         }
 

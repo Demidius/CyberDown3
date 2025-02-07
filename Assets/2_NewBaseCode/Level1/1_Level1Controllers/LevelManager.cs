@@ -1,11 +1,10 @@
 using _2_NewBaseCode.BaseSceneCode._1_GameMachine;
-using _2_NewBaseCode.BaseSceneCode._2._Sevices.CameraHandler;
+using _2_NewBaseCode.BaseSceneCode._2_Sevices.CameraHandler;
 using _2_NewBaseCode.Level1.Entites._1_Player._1_PlayerHandler;
-using NewBaseCode.Level1.Level1Services.SlowMotionTypeControllers;
 using UnityEngine;
 using Zenject;
 
-namespace _2_NewBaseCode.Level1._0._Installers
+namespace _2_NewBaseCode.Level1._1_Level1Controllers
 {
     public class LevelManager : MonoBehaviour
     {

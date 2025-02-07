@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace NewBaseCode.BaseScene.Services.TimeModule
+namespace _2_NewBaseCode.BaseSceneCode._2_Sevices.TimeModule
 {
     public class TimeManager : MonoBehaviour, ITimeManager
     {

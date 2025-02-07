@@ -1,12 +1,12 @@
 using System.Collections;
-using _2_NewBaseCode.BaseSceneCode._2._Sevices._1._SupportServices.Coroutines;
+using _2_NewBaseCode.BaseSceneCode._2_Sevices._1_SupportServices.Coroutines;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 
-namespace _2_NewBaseCode.BaseSceneCode._2._Sevices.Addressable
+namespace _2_NewBaseCode.BaseSceneCode._2_Sevices.Addressable
 {
     public abstract class BaseAddressableLoader : MonoBehaviour
     {

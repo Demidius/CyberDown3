@@ -1,4 +1,4 @@
-namespace _2_NewBaseCode.BaseSceneCode._2._Sevices._1._SupportServices._1._Const
+namespace _2_NewBaseCode.BaseSceneCode._2_Sevices._1_SupportServices._1_Const
 {
     public static class Const1
     {
@@ -14,6 +14,7 @@ namespace _2_NewBaseCode.BaseSceneCode._2._Sevices._1._SupportServices._1._Const
         
         // PlayerMove
         public const float MoveSpeed = 5f;
+        public const float SmoothTime = 0.2f; 
         
         //PlayerAnimator
         public const float AnimationSpeed = 1f;

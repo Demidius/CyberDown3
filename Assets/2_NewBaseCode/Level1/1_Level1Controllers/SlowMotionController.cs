@@ -1,12 +1,10 @@
 using System;
-using _2_NewBaseCode.BaseSceneCode._2._Sevices._1._SupportServices._1._Const;
-using _2_NewBaseCode.BaseSceneCode._2._Sevices.InputFol;
-using NewBaseCode.BaseScene.Services.TimeModule;
-
+using _2_NewBaseCode.BaseSceneCode._2_Sevices._1_SupportServices._1_Const;
+using _2_NewBaseCode.BaseSceneCode._2_Sevices.TimeModule;
 using UnityEngine;
 using Zenject;
 
-namespace NewBaseCode.Level1.Level1Services.SlowMotionTypeControllers
+namespace _2_NewBaseCode.Level1._1_Level1Controllers
 {
     public class SlowMotionController : MonoBehaviour, ISlowMotionController
     {
@@ -14,12 +12,11 @@ namespace NewBaseCode.Level1.Level1Services.SlowMotionTypeControllers
         private readonly float NormalTimeScale = Const1.NormalTimeScale;
         private bool _onSlowGameType;
         private ITimeManager _timeManager;
-        private IInputService _inputService;
+       
 
         [Inject]
-        void Construct(IInputService inputService, ITimeManager timeManager)
+        void Construct(ITimeManager timeManager)
         {
-            _inputService = inputService ?? throw new ArgumentNullException(nameof(inputService));
             _timeManager = timeManager ?? throw new ArgumentNullException(nameof(timeManager));
         }
 
@@ -36,12 +33,12 @@ namespace NewBaseCode.Level1.Level1Services.SlowMotionTypeControllers
 
         private void Awake()
         {
-            _inputService.SpaseKeyDown += SwitchGameType;
+            
         }
 
         private void OnDestroy()
         {
-            _inputService.SpaseKeyDown -= SwitchGameType;
+         
         }
     }
 

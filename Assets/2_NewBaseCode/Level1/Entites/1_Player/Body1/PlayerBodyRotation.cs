@@ -1,5 +1,5 @@
-using _2_NewBaseCode.BaseSceneCode._2._Sevices._1._SupportServices.UnivercialUtils;
-using _2_NewBaseCode.BaseSceneCode._2._Sevices.InputFol;
+using _2_NewBaseCode.BaseSceneCode._2_Sevices._1_SupportServices.UnivercialUtils;
+using _2_NewBaseCode.BaseSceneCode._2_Sevices.InputFol;
 using _2_NewBaseCode.Level1.Entites._1_Player._1_PlayerHandler;
 using UnityEngine;
 using Zenject;
@@ -9,31 +9,31 @@ namespace _2_NewBaseCode.Level1.Entites._1_Player.Body1
     public class PlayerBodyRotation : MonoBehaviour, IObjectRotation
     {
         
-        private IInputService _inputService;
+        
         private IPlayerHandler _playerHandler;
-        private RotationUpdateService _rotationUpdateService;
+     
+        private IInputController _inputController;
 
         [Inject]
         public void Construct(
-            IInputService inputService,
             IPlayerHandler playerHandler,
-            RotationUpdateService rotationUpdateService
+         
+            IInputController inputController
             )
         {
-            _rotationUpdateService = rotationUpdateService;
+            _inputController = inputController;
             _playerHandler = playerHandler;
-            _inputService = inputService;
         }
 
         void Update()
         {
-            RotationHandler(_inputService.MousePosition, _playerHandler.GetPlayerPosition().position);
+            RotationHandler(_inputController.MousePosition, _playerHandler.GetPlayerPosition().position);
         }
 
         private void RotationHandler(Vector2 mousePosition, Vector2 playerPosition)
         {
             var newDirectionBody = GetNewDirectionBody(mousePosition, playerPosition);
-            _rotationUpdateService.RotateTowardsDirection(transform, newDirectionBody);
+            transform.up = newDirectionBody.normalized;
             Debug.Log(newDirectionBody);
         }
 

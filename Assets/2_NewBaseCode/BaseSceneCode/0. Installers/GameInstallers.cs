@@ -1,19 +1,19 @@
 using _2_NewBaseCode.BaseSceneCode._1_GameMachine;
-using _2_NewBaseCode.BaseSceneCode._1_GameMachine.States;
+using _2_NewBaseCode.BaseSceneCode._2_Sevices._1_SupportServices.Coroutines;
+using _2_NewBaseCode.BaseSceneCode._2_Sevices._1_SupportServices.UnivercialUtils;
+using _2_NewBaseCode.BaseSceneCode._2_Sevices.Addressable;
+using _2_NewBaseCode.BaseSceneCode._2_Sevices.Addressable.NewBaseCode._2._Services.Addressable;
+using _2_NewBaseCode.BaseSceneCode._2_Sevices.CameraHandler;
 using _2_NewBaseCode.BaseSceneCode._2_Sevices.InputFol;
-using _2_NewBaseCode.BaseSceneCode._2._Sevices._1._SupportServices.Coroutines;
-using _2_NewBaseCode.BaseSceneCode._2._Sevices._1._SupportServices.UnivercialUtils;
-using _2_NewBaseCode.BaseSceneCode._2._Sevices.Addressable;
-using _2_NewBaseCode.BaseSceneCode._2._Sevices.Addressable.NewBaseCode._2._Services.Addressable;
-using _2_NewBaseCode.BaseSceneCode._2._Sevices.CameraHandler;
-using _2_NewBaseCode.BaseSceneCode._2._Sevices.InputFol;
+using _2_NewBaseCode.BaseSceneCode._2_Sevices.TimeModule;
 using _2_NewBaseCode.BaseSceneCode._3._UI._1.Controllers;
 using _2_NewBaseCode.BaseSceneCode._4._Audio;
 using _2_NewBaseCode.BaseSceneCode._4._Audio.Data;
 using _2_NewBaseCode.BaseSceneCode._4._Audio.Managers;
 using _2_NewBaseCode.BaseSceneCode.PlayerPrefabManeger;
-using NewBaseCode.BaseScene.Services.TimeModule;
+using _2_NewBaseCode.Level1._2_Level1Services.Factory;
 using Zenject;
+
 
 namespace _2_NewBaseCode.BaseSceneCode._0._Installers
 {
@@ -21,26 +21,35 @@ namespace _2_NewBaseCode.BaseSceneCode._0._Installers
     {
         public override void InstallBindings()
         {
-            RegisterServices();
-            RegisterAddressable();
-            RegisterStateMachine();
-            RegisterUiControllers();
-            RegisterAudioModule();
             RegisterCamera();
             RegisterInputService();
-        }
-
-        private void RegisterInputService()
-        {
-            Container.Bind<IInputService>().To<InputServiceGameState>().FromComponentsInHierarchy().AsSingle();
-            Container.Bind<IInputSwitcher>().To<InputSwitcher>().FromComponentsInHierarchy().AsSingle();
+            RegisterUiControllers();
             
-            // Container.Bind<ITickable>().To<PcInputGlobalService>().AsSingle();
+            RegisterServices();
+            
+            RegisterAddressable();
+            RegisterAudioModule();
+            
+            RegisterStateMachine();
+            
+            Container.Bind<IFactory1>().To<Factory1>().AsSingle();
         }
 
         private void RegisterCamera()
         {
             Container.Bind<ICameraHandler>().To<CameraHandler>().FromComponentInHierarchy().AsSingle();
+        }
+
+        private void RegisterInputService()
+        {
+            Container.Bind<IInputController>().To<InputController>().FromComponentInHierarchy().AsSingle();
+        }
+
+        private void RegisterUiControllers()
+        {
+            Container.Bind<IMenuPanelsController>().To<MenuPanelsController>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<ILoadPanelController>().To<LoadPanelController>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<IPausePanelController>().To<PausePanelController>().FromComponentInHierarchy().AsSingle();
         }
 
         private void RegisterServices()
@@ -49,36 +58,23 @@ namespace _2_NewBaseCode.BaseSceneCode._0._Installers
             Container.Bind<ICoroutineGlobalService>().To<CoroutineGlobalService>().AsSingle();
             Container.Bind<CoroutineRunner>().FromComponentInHierarchy().AsSingle().NonLazy();
             Container.Bind<IPlayerPrefabsDate>().To<PlayerPrefabsDate>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<RotationUpdateService>().AsSingle();
             Container.Bind<IPositionUpdateService>().To<PositionUpdateService>().AsSingle();
-            
-            
+            // Container.Bind<PrefabsBase>().FromComponentInHierarchy().AsSingle();
+
         }
 
         private void RegisterAddressable()
         {
             Container.Bind<IAddressableLoader>().To<AddressableLoader>().FromComponentInHierarchy().AsSingle();
-            
         }
 
         private void RegisterAudioModule()
         {
-            Container.Bind<AudioTracksBase>().FromComponentInHierarchy().AsSingle();
             Container.Bind<IAudioManager>().To<AudioManager>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<AudioTracksBase>().FromComponentInHierarchy().AsSingle();
             Container.Bind<IMusicController>().To<MusicController>().FromComponentInHierarchy().AsSingle();
-            
-            
         }
 
-        private void RegisterUiControllers()
-        {
-            Container.Bind<IMenuPanelsController>().To<MenuPanelsController>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<ILoadPanelController>().To<LoadPanelController>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<IPausePanelController>().To<PausePanelController>().FromComponentInHierarchy().AsSingle();
-            // Container.Bind<IMenuButtonsController>().To<MenuButtonsController>().FromComponentInHierarchy().AsSingle();
-
-        }
-            
 
         private void RegisterStateMachine()
         {

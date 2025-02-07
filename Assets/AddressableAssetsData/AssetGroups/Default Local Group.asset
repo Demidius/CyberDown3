@@ -22,8 +22,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a5565949d7c2d114abefa1160cf1f7a4
-    m_Address: PoolPrefabScObj1
+  - m_GUID: 0cde24336b4f4884ca04cfe06db6d49b
+    m_Address: PoolPrefabScObj
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -1,6 +1,6 @@
 using System;
-using _2_NewBaseCode.BaseSceneCode._2._Sevices.Addressable.NewBaseCode._2._Services.Addressable;
-using _2_NewBaseCode.BaseSceneCode._2._Sevices.InputFol;
+using _2_NewBaseCode.BaseSceneCode._2_Sevices.Addressable.NewBaseCode._2._Services.Addressable;
+
 using UnityEngine;
 using Zenject;
 
@@ -10,17 +10,15 @@ namespace _2_NewBaseCode.BaseSceneCode._1_GameMachine
     {
         private IGameMachineModule _gameMachineModule;
         private IAddressableLoader _addressableLoader;
-        private IInputService _inputService;
+        
 
         [Inject]
         void Construct
         (
             IGameMachineModule gameMachineModule,
-            IAddressableLoader addressableLoader,
-            IInputService inputService
+            IAddressableLoader addressableLoader
         )
         {
-            _inputService = inputService;
             _addressableLoader = addressableLoader;
             _gameMachineModule = gameMachineModule;
         }

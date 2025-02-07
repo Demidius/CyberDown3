@@ -1,5 +1,4 @@
 using _2_NewBaseCode.BaseSceneCode._2_Sevices.InputFol;
-using _2_NewBaseCode.BaseSceneCode._2._Sevices.InputFol;
 using UnityEngine;
 
 namespace _2_NewBaseCode.BaseSceneCode._1_GameMachine.States
@@ -7,20 +6,17 @@ namespace _2_NewBaseCode.BaseSceneCode._1_GameMachine.States
     public class GameState : IGameState
         {
         private IGameMachineModule _gameMachineModule;
-        private IInputSwitcher _inputSwitcher;
-        private IInputService _inputService;
         private IStateSwitcher _stateSwitcher;
+        private IInputController _inputController;
 
         public GameState (
             IGameMachineModule gameMachineModule,
-            IInputSwitcher inputSwitcher,
-            IInputService inputService,
-            IStateSwitcher stateSwitcher
+            IStateSwitcher stateSwitcher,
+            IInputController inputController
             )
         {
+            _inputController = inputController;
             _stateSwitcher = stateSwitcher;
-            _inputService = inputService;
-            _inputSwitcher = inputSwitcher;
             _gameMachineModule = gameMachineModule;
         }
 
@@ -28,7 +24,7 @@ namespace _2_NewBaseCode.BaseSceneCode._1_GameMachine.States
         {
             StateInitialize();
            Debug.Log("Enter Game State");
-           _inputService.EscapeKeyDown += EscapeOnPause;
+           _inputController.GameplayOnEnable();
         }
 
         private void EscapeOnPause()
@@ -43,8 +39,7 @@ namespace _2_NewBaseCode.BaseSceneCode._1_GameMachine.States
 
         private void StateInitialize()
         {
-            _inputSwitcher.SetGameInput();
-            _inputService.EscapeKeyDown -= EscapeOnPause;
+          
         }
 
         public void Exit()

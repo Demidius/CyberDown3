@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55e72a7c295e42ba9f9a92110d5d75ed, type: 3}
-  m_Name: PoolPrefabScObj1
+  m_Name: PoolPrefabScObj
   m_EditorClassIdentifier: 
   PoolPrefabs:
-  - {fileID: 1430629325868259239, guid: 5a46d5522eeafbf49b36ad113c8e44f6, type: 3}
+  - {fileID: 1474317485021809791, guid: 52dd4832dacef6f48af3b23efd049335, type: 3}

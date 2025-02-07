@@ -9,17 +9,17 @@ namespace _2_NewBaseCode.BaseSceneCode._1_GameMachine.States
         private IGameMachineModule _gameMachineModule;
         private readonly IMenuPanelsController _menuPanelsController;
         private readonly IMusicController _musicController;
-        private IInputSwitcher _inputSwitcher;
+        private IInputController _inputController;
 
         public MainMenuState
         (
             IGameMachineModule gameMachineModule,
             IMenuPanelsController menuPanelsController,
             IMusicController musicController,
-            IInputSwitcher inputSwitcher
+            IInputController inputController
         )
         {
-            _inputSwitcher = inputSwitcher;
+            _inputController = inputController;
             _musicController = musicController;
             _gameMachineModule = gameMachineModule;
             _menuPanelsController = menuPanelsController;
@@ -28,6 +28,7 @@ namespace _2_NewBaseCode.BaseSceneCode._1_GameMachine.States
         public void Enter()
         {
             StateInitialize();
+            
         }
 
         public void Update()
@@ -39,7 +40,9 @@ namespace _2_NewBaseCode.BaseSceneCode._1_GameMachine.States
         {
             _menuPanelsController.ActivateMenuPanels();
             _musicController.StartMenuMusic();
-            _inputSwitcher.SetGameInput();
+            
+            _inputController.UIOnEnable();
+            _inputController.GameplayOnDisable();
         }
 
         public void Exit()

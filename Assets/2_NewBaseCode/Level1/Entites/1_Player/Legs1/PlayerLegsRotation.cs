@@ -1,5 +1,5 @@
-using _2_NewBaseCode.BaseSceneCode._2._Sevices._1._SupportServices.UnivercialUtils;
-using _2_NewBaseCode.BaseSceneCode._2._Sevices.InputFol;
+using _2_NewBaseCode.BaseSceneCode._2_Sevices._1_SupportServices.UnivercialUtils;
+using _2_NewBaseCode.BaseSceneCode._2_Sevices.InputFol;
 using UnityEngine;
 using Zenject;
 
@@ -7,22 +7,29 @@ namespace _2_NewBaseCode.Level1.Entites._1_Player.Legs1
 {
     public class PlayerLegsRotation : MonoBehaviour
     {
-        private IInputService _inputService;
-        private RotationUpdateService _rotationUpdateService;
+        private IInputController _inputController;
+        private Vector2 _lastDirection;
 
         [Inject]
         void Construct(
-            IInputService inputService,
-            RotationUpdateService rotationUpdateService
-            )
+           
+            IInputController inputController
+        )
         {
-            _rotationUpdateService = rotationUpdateService;
-            _inputService = inputService;
+            _inputController = inputController;
         }
 
         void Update()
         {
-            _rotationUpdateService.RotateTowardsDirection(this.transform,_inputService.GetMovementDirectionInput());
+            if (_inputController.PlayerSmoothMoveDirection != Vector2.zero)
+            {
+                transform.up = _inputController.PlayerSmoothMoveDirection.normalized;
+                _lastDirection = _inputController.PlayerSmoothMoveDirection;
+            }
+            else
+            {
+                transform.up = _lastDirection;
+            }
         }
     }
 }

@@ -1,7 +1,7 @@
 using Cinemachine;
 using UnityEngine;
 
-namespace _2_NewBaseCode.BaseSceneCode._2._Sevices.CameraHandler
+namespace _2_NewBaseCode.BaseSceneCode._2_Sevices.CameraHandler
 {
     public class CameraHandler : MonoBehaviour, ICameraHandler
     {
