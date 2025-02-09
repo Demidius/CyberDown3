@@ -17,8 +17,8 @@ namespace _2_NewBaseCode.Level1._0._Installers
         private void RegisterServices()
         {
           
-            Container.Bind<IPoolController>().To<PoolController>().FromComponentInHierarchy().AsSingle();
             Container.Bind<IPlayerHandler>().To<PlayerHandler>().FromComponentsInHierarchy().AsSingle();
+            Container.Bind<IPoolController>().To<PoolController>().FromComponentInHierarchy().AsSingle();
             Container.Bind<IObjectRotation>().To<PlayerBodyRotation>().FromComponentsInHierarchy().AsSingle();
             Container.Bind<ISlowMotionController>().To<SlowMotionController>().FromComponentsInHierarchy().AsSingle();
             
