@@ -5,7 +5,7 @@ namespace BsseCode.Audio.AudioSourcesHandlers
 {
     public class AudioTracksBase : MonoBehaviour
     {
-        
+        //  public EventReference _nameTrack;
         public EventReference shootTrack;
         public EventReference stepEvent;
         public EventReference music1;
@@ -16,6 +16,7 @@ namespace BsseCode.Audio.AudioSourcesHandlers
 
         private void Start()
         {
+            // AudioManager.Instance.InitializeSoundPool(_nameTrack, 10);
             AudioManager.Instance.InitializeSoundPool(shootTrack, 30);
             AudioManager.Instance.InitializeSoundPool(stepEvent,30);
             AudioManager.Instance.InitializeSoundPool(music1, 1);
